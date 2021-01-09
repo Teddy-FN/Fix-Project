@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import Logo from '../../assets/logo.png'
-import Profile from '../../assets/profile.jpg'
+import Logo from '../../assets/img/logo.png'
+import Profile from '../../assets/img/profile.jpg'
 import '../header/header.css'
 
 const HeaderAuth = () => {

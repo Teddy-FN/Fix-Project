@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import { Card, CardText, CardBody, CardSubtitle, Row } from 'reactstrap';
-import Pict from '../../assets/ball.jpg'
+import Pict from '../../assets/img/ball.jpg'
 import '../landingPage/card.css'
 
 const Cards = () => {
@@ -15,7 +15,7 @@ const Cards = () => {
       <br/>
       <br/>
       <Row>
-        <Card className="body-card">
+        <Card className="body-card" style={{backgroundColor: '#545454'}}>
           <img class="ilustration" src={Pict} />
             <CardBody>
               <Row>
@@ -28,7 +28,7 @@ const Cards = () => {
               <button className="book-button">Book</button>
             </CardBody>
         </Card>
-        <Card className="body-card">
+        <Card className="body-card" style={{backgroundColor: '#545454'}}>
           <img class="ilustration" src={Pict} />
             <CardBody>
               <Row>
@@ -41,7 +41,7 @@ const Cards = () => {
               <button className="book-button">Book</button>
             </CardBody>
         </Card>
-        <Card className="body-card">
+        <Card className="body-card" style={{backgroundColor: '#545454'}}>
           <img class="ilustration" src={Pict} />
             <CardBody>
               <Row>
@@ -54,7 +54,7 @@ const Cards = () => {
               <button className="book-button">Book</button>
             </CardBody>
         </Card>
-        <Card className="body-card">
+          <Card className="body-card" style={{backgroundColor: '#545454'}}>
           <img class="ilustration" src={Pict} />
             <CardBody>
               <Row>

@@ -1,17 +1,12 @@
 import React from 'react'
-import HeaderNonAuth from './component/header/headerNonAuth'
-import HeaderAuth from './component/header/headerAuth'
-import Jumbotron from './component/landingPage/jumbotron'
-import Cards from './component/landingPage/card'
+import LandingPage from '../src/pages/landingPage/landingPage'
+import HLandingPage from '../src/pages/landingPage/landingPage'
 
 function App() {
   return (
     <>
       <React.Fragment>
-        <HeaderNonAuth />
-        {/* <HeaderAuth /> */}
-        <Jumbotron />
-        <Cards />
+        <LandingPage />
       </React.Fragment>
     </>
   )
