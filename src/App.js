@@ -11,15 +11,14 @@ function App() {
     //   <PlayerList />
     // </div>
     <>
-    
-    <Switch>
+      <Switch>
         <Route path='/' exact>
-            <FieldDetail />
+          <FieldDetail />
         </Route>
         <Route path='/player-list' exact>
           <PlayerList />
         </Route>
-    </Switch>
+      </Switch>
     </>
   );
 }

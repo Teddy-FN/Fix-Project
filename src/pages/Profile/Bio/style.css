@@ -1,0 +1,124 @@
+body {
+    color: #fff;
+}
+
+.leftSide {
+    width: 35%;
+    box-sizing: content-box;
+    float: left;
+}
+
+.profile {
+    padding: 20px;
+    width: 100%;
+    /* background-color: chocolate;  */
+}
+
+.photo {
+    height: 80px;
+    border-radius: 40px;
+    margin-left: 100px;
+}
+
+.desc p {
+    width: 95%;
+    font-size: 15px;
+}
+
+.nameUser {
+    font-size: 30px;
+    margin: 30px 0;
+    display: inline-block;
+}
+
+
+.button {
+    margin-top: 100px;
+}
+
+.editBio {
+    background-color: #28df99;
+    width: 100%;
+    color: #fff;
+    height: 50px;
+    margin-top: -50px;
+}
+
+
+.rightSide {
+    width: 65%;
+    float: right;
+    box-sizing: content-box;
+    float: right;
+}
+
+.card {
+    margin-bottom: 10px;
+}
+
+.borderHistory {
+    padding: 20px;
+}
+
+.contentBorder {
+    border: 1px solid #fff;
+    height: 480px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.headerBox {
+    color: #fff; 
+    padding-left: 5px;
+    margin: 10px 0;
+}
+
+.textCardHeader {
+    margin-left: -40px;
+    display: inline;
+}
+
+.date {
+    margin-left: 300px;
+}
+
+.headerCard{
+    /* background-color: blue; */
+    font-size: 14px;
+}
+
+.contentCard h5 {
+    float: left;
+}
+
+.status {
+    margin-left: 5px;
+    font-size: 14px;
+    color: #7B7B7B;
+}
+
+.date { 
+    float: right;
+}
+
+.player {
+    clear: both;
+    background-color: #7B7B7B;
+    width: 100%;
+    color: #fff;
+}
+
+.footerCard {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    color: #53C9C2;
+}
+
+
+.card:hover {
+    color: #FFCB74;
+}
+
+.card .footerCard:hover {
+    color: #FFCB74;   
+}
