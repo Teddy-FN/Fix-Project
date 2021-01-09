@@ -1,14 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
-import BrowseFields from './pages/FieldList/BrowseFields';
-import Bio from './pages/Profile/Bio/index';
+import FieldDetail from './component/fieldDetail/fieldDetail';
+import PlayerList from './component/playerList/playerList'
+import { Route, Switch } from "react-router-dom";
+
 
 function App() {
   return (
-    <div>
-      <BrowseFields />
-      {/* <Bio /> */}
-    </div>
+    // <div className="App">
+    //   {/* <FieldDetail /> */}
+    //   <PlayerList />
+    // </div>
+    <>
+      <Switch>
+        <Route path='/' exact>
+          <FieldDetail />
+        </Route>
+        <Route path='/player-list' exact>
+          <PlayerList />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
