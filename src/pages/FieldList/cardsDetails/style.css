@@ -1,0 +1,53 @@
+body {
+    background-color: #313131;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.main {
+    margin: 0 23px;
+    clear: both;
+}
+
+.card {
+    background-color: #545454;
+    color: #fff;
+    margin: 5px;
+}
+
+.card-body {
+    margin-top: -15px;
+}
+
+.card-title{
+    float: left;
+}
+
+.map {
+    height: 20px;
+    margin-right: 10px;
+}
+
+.price {
+    float: right;
+    margin-top: 3px;
+}
+
+.card-text {
+    clear: both;
+}
+
+.view {
+    width: 45%;
+}
+
+.book {
+    background-color: #28df99;
+    color: #fff;
+    margin-left: 10px;
+    width: 48%;
+}

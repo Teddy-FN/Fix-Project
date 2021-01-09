@@ -1,0 +1,41 @@
+.sorter {
+    background-color: orange;
+    margin-right: -13px;
+}
+
+.nameFitur {
+    margin-left: -10px;
+    font-size: 15px;
+}
+
+.filter {
+    float: right;
+    margin-right: -13px;
+    margin-left: 10px;
+}
+
+.dropdown-toggle {
+    margin-left: 64px;
+}
+
+.sorting {
+    width: 122px;
+}
+
+.sort {
+    float: right;
+}
+
+.searching {
+    background-color: #545454;
+}
+
+.searchButton {
+    float: right;
+    margin: 0 25px;
+}
+
+.buttonSearch {
+    margin-left: 16px;
+    background-color: #28df99;
+}
