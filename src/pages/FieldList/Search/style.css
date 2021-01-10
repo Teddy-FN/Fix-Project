@@ -1,6 +1,7 @@
 .sorter {
     background-color: orange;
-    margin-right: -13px;
+    margin-right: -20px;
+    margin-bottom: 10px;
 }
 
 .nameFitur {
@@ -10,7 +11,7 @@
 
 .filter {
     float: right;
-    margin-right: -13px;
+    margin-right: -17px;
     margin-left: 10px;
 }
 
@@ -32,10 +33,11 @@
 
 .searchButton {
     float: right;
-    margin: 0 25px;
+    margin-left: 27px;
+    margin-right: 27px;
+    margin-bottom: 15px;
 }
 
 .buttonSearch {
-    margin-left: 16px;
     background-color: #28df99;
 }

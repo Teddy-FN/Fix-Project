@@ -9,7 +9,7 @@ body {
 }
 
 .main {
-    margin: 0 23px;
+    margin: 0px 23px;
     clear: both;
 }
 
@@ -49,5 +49,6 @@ body {
     background-color: #28df99;
     color: #fff;
     margin-left: 10px;
-    width: 48%;
+    width: 50%;
+    color: #000;
 }
