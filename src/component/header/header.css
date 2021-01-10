@@ -78,5 +78,5 @@
 }
 
 .dropdown-menu-header {
-    width: 200px;
+    margin-right: 200px !important;
 }
