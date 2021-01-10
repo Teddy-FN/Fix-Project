@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap');
+
+
+body {
+    background-color: #313131;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.detail-top {
+    margin-top: 9%;
+    color: #e5e5e5;
+}
+
+.detail-text {
+    padding: 10px !important;
+}
+
+.field-img {
+    padding: 0 !important;
+}
+
+.field-img-big{
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    padding: 10px !important;
+    transition: transform 0.5s, filter 0.75s;
+}
+
+.desc-field{
+    min-height: 390px;
+}
+
+.field-name{
+    font-weight: 700;
+    font-size: calc(10px + 3vmin);
+    text-align: left;
+}
+
+.field-loc{
+    font-size: calc(8px + 1vmin);
+    text-align: left;
+}
+
+.description-title {
+    font-weight: 700!important;
+    font-size: calc(10px + 1vmin);
+    color: #F4F4F4;
+    text-align: left;
+}
+
+.description-p {
+    font-size: calc(8px + 1vmin);
+    color: #F4F4F4;
+    text-align: left;
+}
+.action-book {
+    bottom: 0 !important;
+    align-self: flex-end;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.price-field{
+    font-weight: 700;
+    text-align: center;
+    color: #e5e5e5;
+    padding-bottom: 10px;
+}
+
+.btn-player{
+    background-color: #545454 !important;
+    color: #28df99 !important;
+    font-weight: 700 !important;
+    height: 50px !important;
+    border: none !important;
+}
+
+.btn-player:hover{
+    background-color: #313131 !important;
+    color: #e5e5e5 !important;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.3));
+    border: 2px solid #545454 !important;
+}
+
+.btn-book{
+    color: #545454 !important;
+    background-color: #28df99 !important;
+    font-weight: 700 !important;
+    height: 50px !important;
+}
+
+.btn-book:hover{
+    color: #545454  !important;
+    background-color: #28df99 !important;
+    font-weight: 700 !important;
+    height: 50px !important;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.3));
+}
+
+.img-sm{
+    border-radius: 10px;
+    padding: 10px !important;
+    height: 130px;
+}
+
+.img-sm:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(0px 7px 7px rgba(0, 0, 0, 0.507));
+}
+
+.comment {
+    padding: 0px !important;
+}
+
+.review-title {
+    font-weight: 700;
+    color: #e5e5e5;
+    padding: 0;
+    text-align: left;
+}
+
+.review-p {
+    font-size: calc(8px + 1vmin);
+    color: #e5e5e5;
+    text-align: left;
+}
+
+.rating {
+    text-align: left;
+}
+
+.card-review {
+    background-color: #545454 !important;
+    border: none !important;
+}
+
+.star-rating {
+    padding-top: 10px;
+    text-align: end;
+}
+
+.num-rating {
+    padding-top: 10px;
+    text-align: end;
+    margin-right: 0%!important;
+}
+
+.marker {
+    padding-right: 10px;
+}
