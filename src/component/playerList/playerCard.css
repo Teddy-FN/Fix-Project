@@ -1,0 +1,54 @@
+.player-card {
+    background-color: #545454 !important;
+    border: none !important;
+    height: 114px;
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+    text-align: justify!important;
+}
+
+.player-name {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color: #F4F4F4;
+    text-align: left;
+}
+
+.code-pos {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: right;
+    color: #FFCB74;
+}
+
+.btn-profil {
+    margin-left: 20px;
+    background-color: #7B7B7B!important;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.btn-profil:hover{
+    background-color: #28df99 !important;
+    color: black !important;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.3));
+    border: 2px solid #545454 !important;
+}
+
+@media (min-width: 768px) {
+    .btn-profil {
+        margin-left: 20px;
+        margin-bottom: 50px;
+        background-color: #7B7B7B!important;
+        border-radius: 5px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+    }
+}

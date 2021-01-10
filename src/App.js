@@ -1,26 +1,15 @@
-import './App.css';
-import FieldDetail from './component/fieldDetail/fieldDetail';
-import PlayerList from './component/playerList/playerList'
-import { Route, Switch } from "react-router-dom";
-
+import React from 'react'
+import LandingPage from '../src/pages/landingPage/landingPage'
 
 function App() {
   return (
-    // <div className="App">
-    //   {/* <FieldDetail /> */}
-    //   <PlayerList />
-    // </div>
     <>
-      <Switch>
-        <Route path='/' exact>
-          <FieldDetail />
-        </Route>
-        <Route path='/player-list' exact>
-          <PlayerList />
-        </Route>
-      </Switch>
+      <React.Fragment>
+        <LandingPage />
+      </React.Fragment>
     </>
-  );
+  )
 }
 
 export default App;
+

@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap');
+
+
+body {
+    background-color: #313131 !important;
+    font-family: 'Montserrat' , sans-serif!important;
+}
+
+.team-name {
+    color: #e5e5e5;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    text-align: center;
+    padding-bottom: 16px;
+    padding-top: 27px;
+}
+
+.border {
+    background: #313131;
+    border: 1px solid #7B7B7B;
+    box-sizing: border-box;
+    border-radius: 5px;
+    justify-content: center!important;
+    display: table;
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+}
