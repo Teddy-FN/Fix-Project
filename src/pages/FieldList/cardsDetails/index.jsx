@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import './style.css'
 import { Container } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 
 function CardFields() {
@@ -20,8 +21,10 @@ function CardFields() {
                                 <h5 class="card-title">Fields A</h5>
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
-                                <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <Link to='/field-details'>
+                                    <button className="btn btn-secondary view">View</button>
+                                </Link>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -31,7 +34,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -41,7 +44,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -51,7 +54,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -61,7 +64,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -71,7 +74,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -81,7 +84,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -91,7 +94,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -101,7 +104,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -111,7 +114,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -121,7 +124,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                         <div class="card" style={{ width: '16rem' }}>
@@ -131,7 +134,7 @@ function CardFields() {
                                 <small class="price">Rp. 150.000</small>
                                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
                                 <button className="btn btn-secondary view">View</button>
-                                <button className="btn book">Book Now</button>
+                                <button className="btn book">Book</button>
                             </div>
                         </div>
                     </div>

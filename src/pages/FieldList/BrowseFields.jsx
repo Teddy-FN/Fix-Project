@@ -4,7 +4,7 @@ import CardDetails from './cardsDetails'
 
 function BrowseFields() {
     return (
-        <div>
+        <div style={{ margin: '30px 0px' }}>
             <Feature />
             <CardDetails />
         </div>
