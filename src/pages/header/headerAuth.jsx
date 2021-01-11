@@ -2,6 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
 import Profile from '../../assets/img/profile.jpg'
+import LandingPage from '../landingPage/landingPage'
 import '../header/header.css'
 
 const HeaderAuth = () => {
@@ -11,13 +12,17 @@ const HeaderAuth = () => {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
+                    <Link to="/">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </Link>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
+                    <Link to="/browseFields">
                         <a class="nav-link" href="#">Browse <span class="sr-only">(current)</span></a>
+                    </Link>
                     </li>
                 </ul>
             </div>

@@ -17,7 +17,7 @@ const Cards = () => {
       <div className="landingPageCards">
         <h3 className="feature-title">Feature Field</h3>
         <Link to='/browseFields'>
-          <button className="btn goto">Browse Field <FontAwesomeIcon icon={faArrowRight} class="map right" /></button>
+          <button className="btn goto" style={{color: 'white'}}>Browse Field <FontAwesomeIcon icon={faArrowRight} class="map right" /></button>
         </Link>
         <br />
         <br />
