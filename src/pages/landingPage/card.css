@@ -43,7 +43,6 @@ body {
    width: 100px;
    height: 35px;
    background-color: #7b7b7b;
-   /* color: white; */
    margin-left: 10px;
    border-radius: 5px;
 }
@@ -127,4 +126,5 @@ body {
 
 .right {
     margin-left: 20px;
+    color: #fff;
 }
