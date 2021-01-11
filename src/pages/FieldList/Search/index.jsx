@@ -10,8 +10,8 @@ function Feature() {
         <div>
             <Container>
                 <div className="searchButton">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2 searching" type="search" placeholder="Search" aria-label="Search" />
+                    <form class="form-inline my-0 my-lg-0">
+                        <input class="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search" />
                         <button type="button" class="btn btn-success buttonSearch">
                             <FontAwesomeIcon icon={faSearch} />
                         </button>
