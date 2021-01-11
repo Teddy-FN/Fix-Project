@@ -71,13 +71,13 @@ body {
 
 .landingPageCards {
     margin: 0 auto;
-    width: 86%;
+    width: 100%;
 }
 
 .content {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .main {
@@ -88,7 +88,7 @@ body {
 .card {
     background-color: #545454;
     color: #fff;
-    margin: 5px;
+    margin-left: 5px;
 }
 
 .card-body {

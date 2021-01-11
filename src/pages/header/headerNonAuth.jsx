@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
 import '../header/header.css'
+import { Link } from 'react-router-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Label, Input, FormGroup } from 'reactstrap'
 
 const HeaderNonAuth = () => {
@@ -17,21 +18,26 @@ const HeaderNonAuth = () => {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
+                    <Link to="/">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </Link>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
+                        <Link to="/browseFields">
                         <a class="nav-link" href="#">Browse <span class="sr-only">(current)</span></a>
+                        </Link>
                     </li>
                 </ul>
             </div>
             <div>
                 <Button class="btn-header" style={{color: 'white'}} color="link" onClick={toggleRegist}>Sign Up</Button>
                     <Modal isOpen={modalRegist} toggle={toggleRegist}>
-                        <ModalHeader class="modal-header" toggle={toggleRegist}>Sign Up</ModalHeader>
                         <ModalBody className="modal-body">
+                            <h4 class="modal-title"> Sign Up</h4>
+                            <br />
                             <FormGroup >
                                 <Label className="label" for="fullName">Full Name</Label>
                                 <Input className="modal-form" style={{backgroundColor: '#545454'}}
@@ -65,22 +71,23 @@ const HeaderNonAuth = () => {
                                     id="passwordUser"
                                 />
                             </FormGroup>
+                            <br />
                             <Button className="submit-button" style={{backgroundColor: '#28df99'}} onClick={toggleRegist}>Sign Up</Button>
                             <br />
                             <br />
                             <p class="para" >Or</p>
                             <Button className="facebook-button" style={{backgroundColor: '#3b5998'}} onClick={toggleLogin}>Sign Up with Facebook</Button>
+                            <br />
+                            <br />
+                            <span class="statement-login" >Have account? <Button color="link" style={{color: '#28df99'}} onClick={toggleLogin}>Log In</Button></span>
                         </ModalBody>
-                        <ModalFooter className="modal-foter">
-                            <span class="statement" >Have account? <Button color="link" style={{color: '#28df99'}} onClick={toggleLogin}>Log In</Button></span>
-                        </ModalFooter>
                     </Modal>
             </div>
             <div >
                 <Button class="btn-header" style={{color: 'white'}} color="link" onClick={toggleLogin}>Log In</Button>
                     <Modal isOpen={modalLogin} toggle={toggleLogin}>
-                        <ModalHeader class="modal-header" toggle={toggleLogin}>Log In</ModalHeader>
                         <ModalBody className="modal-body">
+                            <h4 class="modal-title">Log In</h4>
                             <FormGroup>
                                 <Label for="emailUser">Email</Label>
                                 <Input className="modal-form" style={{backgroundColor: '#545454'}}
@@ -103,10 +110,10 @@ const HeaderNonAuth = () => {
                             <br />
                             <p class="para">Or</p>
                             <Button className="facebook-button" style={{backgroundColor: '#3b5998'}} onClick={toggleLogin}>Log In with Facebook</Button>
+                            <br />
+                            <br />
+                            <span class="statement-signup">Don't have an account? <Button className="crosing-button" style={{color: '#28df99'}} color="link" onClick={toggleRegist}>Sign Up</Button></span>
                         </ModalBody>
-                        <ModalFooter className="modal-footer">
-                            <span class="statement">Don't have an account? <Button className="crosing-button" style={{color: '#28df99'}} color="link" onClick={toggleRegist}>Sign Up</Button></span>
-                        </ModalFooter>
                     </Modal>
                 </div>
         </nav>

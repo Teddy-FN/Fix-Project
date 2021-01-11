@@ -14,7 +14,7 @@
 }
 
 .btn-header {
-    margin-right: 30px;
+    margin-right: 50px !important;
     color: white !important;
 }
 
@@ -25,10 +25,9 @@
     border-radius: 50%;
 }
 
-.modal-header {
-   background-color: #313131;
+.modal-title {
    color: white;
-   text-align: justify;
+   text-align: center;
 }
 
 .modal-body {
@@ -72,9 +71,14 @@
     color: #28df99;
 }
 
-.statement {
+.statement-login {
     color: #28df99;
-    text-align: center;
+    margin-left: 29%;
+}
+
+.statement-signup {
+    color: #28df99;
+    margin-left: 19%;
 }
 
 .dropdown-menu-header {

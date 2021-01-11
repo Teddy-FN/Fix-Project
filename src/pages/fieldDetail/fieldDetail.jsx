@@ -12,7 +12,7 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Card, CardBody } from 'reactstrap';
-import { Rating } from '@material-ui/lab';
+//import { Rating } from '@material-ui/lab';
 
 const FieldDetail = () => {
 
@@ -147,13 +147,13 @@ const FieldDetail = () => {
                                 <b>Speedwagon</b>
                             </h4>
                             <div className='rating'>
-                                <Rating 
+                                {/* <Rating 
                                     name='half-rating-read'
                                     defaultValue={5}
                                     precision={0.2}
                                     max={5}
                                     readOnly
-                                />
+                                /> */}
                             </div>
                             <p className='review-p'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui aspernatur maxime possimus cum fuga! Autem odio temporibus voluptatum deleniti distinctio illum excepturi, cumque laboriosam perspiciatis esse placeat a inventore consequuntur.</p>
                         </CardBody>
@@ -165,13 +165,13 @@ const FieldDetail = () => {
                                 <b>Dio Brando</b>
                             </h4>
                             <div className='rating'>
-                                <Rating 
+                                {/* <Rating 
                                     name='half-rating-read'
                                     defaultValue={1}
                                     precision={0.2}
                                     max={5}
                                     readOnly
-                                />
+                                /> */}
                             </div>
                             <p className='review-p'>This place stinks</p>
                         </CardBody>
