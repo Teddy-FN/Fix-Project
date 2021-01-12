@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
@@ -78,7 +82,7 @@ const HeaderNonAuth = (props) => {
 
     return (
         <nav class="navbar navbar-expand-lg">
-            <img class="logo" src={Logo}></img>
+            <Link to="/"><img class="logo" src={Logo}></img></Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
