@@ -52,3 +52,21 @@ body {
     width: 50%;
     color: #000;
 }
+
+
+
+/* Media Query */
+@media (max-width: 1024px) { 
+    body {
+        background-color: blue;
+    }
+    .main {
+        margin-left: 70px;
+    }
+ }
+
+@media (max-width: 500px) {
+    .main {
+        margin-left: 60px;
+    }
+}
