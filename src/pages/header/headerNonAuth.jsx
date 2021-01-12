@@ -81,7 +81,7 @@ const HeaderNonAuth = (props) => {
 
     return (
         <nav class="navbar navbar-expand-lg">
-            <img class="logo" src={Logo}></img>
+            <Link to="/"><img class="logo" src={Logo}></img></Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
