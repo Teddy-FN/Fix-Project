@@ -126,3 +126,29 @@ body {
 .card .footerCard:hover {
     color: #FFCB74;   
 }
+
+/*modal css */
+
+.edit-title {
+    text-align: center;
+}
+
+.photo-edit {
+    height: 150px;
+    border-radius: 50%;
+    margin-left: 35%;
+}
+
+.edit-form-name {
+    margin-left: 3%;
+}
+
+.edit-form-description {
+    margin-left: 3%;
+}
+
+.edit-button-submit {
+    margin-left: 42.5%;
+    background-color: #28df99;
+    color: #313131;
+}

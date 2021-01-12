@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
 import '../header/header.css'
 import { Link } from 'react-router-dom'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Label, Input, FormGroup } from 'reactstrap'
+import { Button, Modal, ModalBody, Label, Input, FormGroup } from 'reactstrap'
 
 const HeaderNonAuth = () => {
     const [modalRegist, setModalRegist] = useState(false);
@@ -19,15 +19,15 @@ const HeaderNonAuth = () => {
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                     <Link to="/">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                     </Link>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">About<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <Link to="/browseFields">
-                        <a class="nav-link" href="#">Browse <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Browse<span class="sr-only">(current)</span></a>
                         </Link>
                     </li>
                 </ul>
@@ -40,7 +40,7 @@ const HeaderNonAuth = () => {
                             <br />
                             <FormGroup >
                                 <Label className="label" for="fullName">Full Name</Label>
-                                <Input className="modal-form" style={{backgroundColor: '#545454'}}
+                                <Input className="modal-form" style={{backgroundColor: '#545454', color: 'white'}}
                                     type="name"
                                     name="name"
                                     id="userName"
@@ -49,7 +49,7 @@ const HeaderNonAuth = () => {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="emailUser">Email</Label>
-                                <Input className="modal-form" style={{backgroundColor: '#545454'}}
+                                <Input className="modal-form" style={{backgroundColor: '#545454', color: 'white'}}
                                     type="email"
                                     name="email"
                                     id="emailUser"
@@ -57,7 +57,7 @@ const HeaderNonAuth = () => {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="passwordUser">Password</Label>
-                                <Input className="modal-form" style={{backgroundColor: '#545454'}}
+                                <Input className="modal-form" style={{backgroundColor: '#545454', color: 'white'}}
                                     type="password"
                                     name="password"
                                     id="passwordUser"
@@ -65,7 +65,7 @@ const HeaderNonAuth = () => {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="passwordUser">Confirm Password</Label>
-                                <Input className="modal-form" style={{backgroundColor: '#545454'}}
+                                <Input className="modal-form" style={{backgroundColor: '#545454', color: 'white'}}
                                     type="password"
                                     name="password"
                                     id="passwordUser"
@@ -90,7 +90,7 @@ const HeaderNonAuth = () => {
                             <h4 class="modal-title">Log In</h4>
                             <FormGroup>
                                 <Label for="emailUser">Email</Label>
-                                <Input className="modal-form" style={{backgroundColor: '#545454'}}
+                                <Input className="modal-form" style={{backgroundColor: '#545454', color: 'white'}}
                                     type="email"
                                     name="email"
                                     id="emailUser"
@@ -98,7 +98,7 @@ const HeaderNonAuth = () => {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="passwordUser">Password</Label>
-                                <Input className="modal-form" style={{backgroundColor: '#545454'}}
+                                <Input className="modal-form" style={{backgroundColor: '#545454', color: 'white'}}
                                     type="password"
                                     name="password"
                                     id="passwordUser"
