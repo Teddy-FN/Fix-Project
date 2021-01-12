@@ -1,11 +1,28 @@
-/* eslint-disable jsx-a11y/heading-has-content */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from 'reactstrap';
 import './style.css'
 import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 function Bio() {
+    const [infoUser, setState] = useState([])
+
+    useEffect(() => {
+        fetch('https://randomuser.me/api/?results=1')
+            .then(result => result.json())
+            .then(listDataUser => listDataUser.results.map(dataUser => ({
+                firstName: `${dataUser.name.first}`,
+                lastName: `${dataUser.name.last}`,
+                thumbnail: `${dataUser.picture.large}`
+            }
+            )))
+            .then(infoUser => setState({
+                infoUser
+            }))
+    })
+
+    console.log('InfoUser', infoUser)
     return (
         <div>
             <div className="subMenu">
@@ -15,7 +32,7 @@ function Bio() {
                             <div className="profile">
                                 <img src={User} alt="" className="photo" />
                             </div>
-                            <h3 className="nameUser">Giovani Ronaldo</h3>
+                            <h4>RonaldoWATI</h4>
                             <div className="desc">
                                 <h4>Description</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis pharetra tortor neque eu ut. Augue facilisis pretium placerat ultricies volutpat ipsum sed. Natoque ullamcorper turpis elit integer at nisl. Id tellus amet varius malesuada. Vel dignissim interdum ut facilisi luctus porttitor ut. Nunc adipiscing tristique.</p>
@@ -73,7 +90,7 @@ function Bio() {
                     </aside>
                 </Container>
             </div>
-        </div>
+        </div >
     )
 }
 
