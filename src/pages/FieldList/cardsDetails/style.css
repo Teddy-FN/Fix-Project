@@ -23,6 +23,10 @@ body {
     margin-top: -15px;
 }
 
+.card-image {
+    height: 150px !important;
+}
+
 .card-title{
     float: left;
 }
