@@ -4,6 +4,7 @@ import Logo from '../../assets/img/logo.png'
 import '../header/header.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Form } from 'reactstrap'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const HeaderNonAuth = (props) => {
     const {
@@ -81,13 +82,17 @@ const HeaderNonAuth = (props) => {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <Link to="/">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </Link>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Browse <span class="sr-only">(current)</span></a>
+                        <Link to="/browseFields">
+                            <a class="nav-link" href="#">Browse <span class="sr-only">(current)</span></a>
+                        </Link>
                     </li>
                 </ul>
             </div>

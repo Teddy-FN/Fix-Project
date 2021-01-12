@@ -8,8 +8,6 @@ import Cards from './card'
 function LandingPage() {
     return (
         <div>
-            {/* <HeaderNonAuth /> */}
-            {/* <HeaderAuth /> */}
             <Jumbotron />
             <Cards />
         </div>
