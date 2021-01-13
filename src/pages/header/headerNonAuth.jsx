@@ -79,7 +79,7 @@ const HeaderNonAuth = () => {
                             <Button className="facebook-button" style={{backgroundColor: '#3b5998'}} onClick={toggleLogin}>Sign Up with Facebook</Button>
                             <br />
                             <br />
-                            <span class="statement-login" >Have account? <Button color="link" style={{color: '#28df99'}} onClick={toggleLogin}>Log In</Button></span>
+                            <span class="statement-login" >Have account? <Button color="link" className="cross-button" style={{color: '#28df99'}} onClick={toggleRegist, toggleLogin}>Log In</Button></span>
                         </ModalBody>
                     </Modal>
             </div>
@@ -112,7 +112,7 @@ const HeaderNonAuth = () => {
                             <Button className="facebook-button" style={{backgroundColor: '#3b5998'}} onClick={toggleLogin}>Log In with Facebook</Button>
                             <br />
                             <br />
-                            <span class="statement-signup">Don't have an account? <Button className="crosing-button" style={{color: '#28df99'}} color="link" onClick={toggleRegist}>Sign Up</Button></span>
+                            <span class="statement-signup">Don't have an account? <Button className="cross-button" style={{color: '#28df99'}} color="link" onClick={toggleRegist}>Sign Up</Button></span>
                         </ModalBody>
                     </Modal>
                 </div>

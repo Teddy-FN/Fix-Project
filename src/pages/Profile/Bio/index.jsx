@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody } from 'reactstrap';
 import './style.css'
 import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
 
 const Bio = (props) => {
     const {
-        buttonLabel,
         className
       } = props;
 

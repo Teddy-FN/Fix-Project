@@ -11,8 +11,7 @@ function App() {
   return (
     <>
       <HeaderNonAuth />
-      <Bio />
-      {/* <Switch>
+      <Switch>
         <Route path='/' exact>
           <LandingPage />
         </Route>
@@ -28,7 +27,7 @@ function App() {
         <Route path='/bio' exact>
           <Bio />
         </Route>
-      </Switch> */}
+      </Switch>
     </>
   )
 }
