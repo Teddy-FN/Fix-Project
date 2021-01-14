@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
 import '../header/header.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Form } from 'reactstrap'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { handler } from '../../provider'
 
 const HeaderNonAuth = (props) => {
     const {
@@ -26,6 +26,7 @@ const HeaderNonAuth = (props) => {
     let auth = localStorage.getItem("token");
     console.log('auth', auth);
 
+    const { logged, setLogged } = useContext(handler)
 
     // Logic Register And Login 
     // Set State
@@ -75,6 +76,7 @@ const HeaderNonAuth = (props) => {
                 console.log('DATA RESULT', dataResult)
             })
             .then(err => {
+                setLogged(true)
                 console.log('error', err)
             });
     };
@@ -103,8 +105,9 @@ const HeaderNonAuth = (props) => {
             <div>
                 <Button class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleRegist}>Sign Up</Button>
                 <Modal isOpen={modalRegist} toggle={toggleRegist}>
-                    <ModalHeader class="modal-header" toggle={toggleRegist}>Sign Up</ModalHeader>
                     <ModalBody className="modal-body">
+                        <h4 class="modal-title"> Sign Up</h4>
+                        <br />
                         <Form onSubmit={handleOnSubmitSignUp}>
                             <FormGroup>
                                 <Label for="email">Email</Label>
@@ -161,8 +164,8 @@ const HeaderNonAuth = (props) => {
             <div >
                 <Button class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleLogin}>Log In</Button>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
-                    <ModalHeader class="modal-header" toggle={toggleLogin}>Log In</ModalHeader>
                     <ModalBody className="modal-body">
+                        <h4 class="modal-title">Log In</h4>
                         <Form onSubmit={handleSubmitLogin}>
                             <FormGroup>
                                 <Label for="emailUser">Email</Label>

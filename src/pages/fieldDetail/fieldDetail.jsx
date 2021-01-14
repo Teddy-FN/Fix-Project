@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './fieldDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,11 +11,32 @@ import {
     Carousel,
     Button,
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Card, CardBody } from 'reactstrap';
 import { Rating } from '@material-ui/lab';
+import axios from 'axios';
+
+
 
 const FieldDetail = () => {
+
+const params =useParams();
+const [fields, setFields] = useState([]);
+const url = `https://soka.kuyrek.com:3001/field/${params.id}`
+
+useEffect(() => {
+    axios
+      .get(url)
+      .then((res) => {
+        setFields(res.data.data);
+        console.log(fields);
+        // setLoading(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        
+      });
+  }, [fields, url])
 
     return (
         <>
@@ -89,19 +111,19 @@ const FieldDetail = () => {
                 </>
                 <Col className='detail-text'>
                     <div className='desc-field sm-3'>
-                        <h2 className='field-name'>Field A</h2>
+                        <h2 className='field-name'>{fields.fieldName}</h2>
                         <p className='field-loc'>
                         {/* <i class="fas fa-map-marker-alt"></i> */}
                         <i className='marker'><FontAwesomeIcon icon={faMapMarkerAlt} /></i>
-                        2972 Westheimer Rd. Santa Ana... 
+                        {fields.location} 
                         </p>
                         <h1 className='description-title'>Description</h1>
-                        <p className='description-p'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci velit recusandae iure, voluptatem a asperiores impedit aperiam totam unde repellat nihil ipsam! Ipsa voluptates magni quas nihil expedita, iusto quo.</p>
+                        <p className='description-p'>{fields.description}</p>
                     </div>
 
                     <div className='action-book'>
                         <h3 className='price-field'>
-                            Rp 120.000
+                            Rp. {fields?.price?.$numberDecimal}.000
                         </h3>
                         <Link to='/player-list'>
                             <Button className='col-12 mb-3 btn-player'>

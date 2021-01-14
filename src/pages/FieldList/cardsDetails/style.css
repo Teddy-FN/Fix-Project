@@ -43,6 +43,7 @@ body {
 
 .card-text {
     clear: both;
+    height: 150px;
 }
 
 .view {
@@ -55,6 +56,7 @@ body {
     margin-left: 10px;
     width: 50%;
     color: #000;
+
 }
 
 
