@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-unused-vars */
 import React, { useState, useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'

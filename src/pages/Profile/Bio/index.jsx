@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 import './style.css'
 import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 
 function Bio() {
     const [infoUser, setState] = useState([])
@@ -50,7 +50,7 @@ function Bio() {
                                     <div class="card-body">
                                         <div className="contentCard">
                                             <h5 className="headerCard">Field Name</h5>
-                                            <h5 className="status"></h5>
+                                            {/* <h5 className="status"></h5> */}
                                             <small className="date">2021-01-01</small>
                                             <Link to='player-list'>
                                                 <button className="btn player">Player List</button>
