@@ -58,6 +58,28 @@ body {
     color: #000;
 
 }
+.dropdown-toggle {
+    margin-left: 64px;
+}
+
+.sorting {
+    width: 122px;
+}
+
+.sort {
+    float: right;
+}
+
+.searching {
+    background-color: #545454;
+}
+
+.searchButton {
+    float: right;
+    margin-left: 27px;
+    margin-right: 27px;
+    margin-bottom: 15px;
+}
 
 
 
