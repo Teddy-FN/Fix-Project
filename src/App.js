@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useContext } from 'react'
 import HeaderNonAuth from './pages/header/headerNonAuth'
 import HeaderAuth from './pages/header/headerAuth'
@@ -41,7 +42,7 @@ function App() {
         <Route path='/browseFields' exact>
           <BrowseFields />
         </Route>
-        <Route path='/field-details' exact>
+        <Route path='/field-details/:id' exact>
           <FieldDetails />
         </Route>
         <Route path='/player-list' exact>
