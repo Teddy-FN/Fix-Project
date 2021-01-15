@@ -41,7 +41,9 @@ const HeaderAuth = () => {
                 <div class="dropdown">
                     <img src={Profile} class="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <Link to="/bio">
+                            <a class="dropdown-item" href="#">Profile</a>
+                        </Link>
                         <a class="dropdown-item" href="#">Setting</a>
                         <a class="dropdown-item" href="#" onClick={() => logOut()}>Log Out</a>
                     </div>
