@@ -14,11 +14,16 @@ function CardFields() {
     const [loading, setLoading] = useState(false);
 
 
-    const url = 'https://soka.kuyrek.com:3001/field'
+    // const url = 'http://54.251.238.126:3001/field/'
+    const url = 'https://soka.kuyrek.com:3001/field/'
 
     useEffect(() => {
         axios
-          .get(url)
+          .get(url, {
+              headers: {
+                  'Access-Control-Allow-Origin': '*',
+              }
+          })
           .then((res) => {
             setFields(res.data.data);
             // console.log(fields);
@@ -39,7 +44,7 @@ console.log(fields)
                     {fields && loading ? (
                         fields.map((field, idx) =>(
                         <div key={idx} class="card" style={{ width: '16rem' }}>
-                            <img src={`https://soka.kuyrek.com:3001/${field.image}`} className="card-img-top card-image" alt={field.fieldName} />
+                            <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
                             <div className="card-body">
                                 <h6 className="card-title">{field.fieldName}</h6>
                                 <small className="price">Rp. {field.price.$numberDecimal}.000</small>

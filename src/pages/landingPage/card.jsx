@@ -14,7 +14,9 @@ const Cards = () => {
     const [loading, setLoading] = useState(false);
 
 
+    // const url = 'http://54.251.238.126:3001/field/'
     const url = 'https://soka.kuyrek.com:3001/field/'
+
 
     useEffect(() => {
         axios
