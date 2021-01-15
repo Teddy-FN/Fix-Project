@@ -15,10 +15,30 @@ function CardFields() {
     const [search, setSearch] = useState('')
 
 
-    const url = 'https://soka.kuyrek.com:3001/field'
+    // const url = 'http://54.251.238.126:3001/field/'
+    const url = 'https://soka.kuyrek.com:3001/field/'
 
     useEffect(() => {
         axios
+<<<<<<< HEAD
+          .get(url, {
+              headers: {
+                  'Access-Control-Allow-Origin': '*',
+              }
+          })
+          .then((res) => {
+            setFields(res.data.data);
+            // console.log(fields);
+            setLoading(true);
+          })
+          .catch((err) => {
+            console.log(err);
+            
+          });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
+console.log(fields)
+=======
             .get(url)
             .then((res) => {
                 setFields(res.data.data);
@@ -32,6 +52,7 @@ function CardFields() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     console.log(fields)
+>>>>>>> fa91340f0c75c329d7a601d65d47780cc18e5b82
     return (
         <div>
             <Container>
@@ -66,6 +87,22 @@ function CardFields() {
                 </div>
                 <div className="main">
                     <div className="content">
+<<<<<<< HEAD
+                    {fields && loading ? (
+                        fields.map((field, idx) =>(
+                        <div key={idx} class="card" style={{ width: '16rem' }}>
+                            <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
+                            <div className="card-body">
+                                <h6 className="card-title">{field.fieldName}</h6>
+                                <small className="price">Rp. {field.price.$numberDecimal}.000</small>
+                                <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
+                                <Link to={`/field-details/${field._id}`}>
+                                    <button className="btn btn-secondary view">View</button>
+                                </Link>
+                                <button className="btn book">Book</button>
+                            </div>
+                        </div>))
+=======
                         {fields && loading ? (
                             fields.filter((val) => {
                                 if (setSearch == '') {
@@ -88,6 +125,7 @@ function CardFields() {
                                         <button className="btn book">Book</button>
                                     </div>
                                 </div>))
+>>>>>>> fa91340f0c75c329d7a601d65d47780cc18e5b82
                         ) : (
                                 <p>Loading...</p>
                             )}
