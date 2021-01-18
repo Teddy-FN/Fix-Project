@@ -69,7 +69,7 @@ function CardFields() {
                     <div className="content">
                         {fields && loading ? (
                             fields.filter((val) => {
-                                if (setSearch == '') {
+                                if (setSearch === '') {
                                     return val
                                 } else if (val.fieldName.toLowerCase().includes(search.toLowerCase())) {
                                     return val
