@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Container } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import './style.css'
 import FeatureSortAndFilter from '../FiturSort';
+// eslint-disable-next-line no-unused-vars
 import JSON from '../../../MOCK_DATA.json'
 
 function Feature() {

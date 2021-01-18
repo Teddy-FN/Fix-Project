@@ -14,6 +14,7 @@ function Bio() {
     console.log('ID', id)
 
     // Get data user    
+    // eslint-disable-next-line no-unused-vars
     const [user, setUser] = useState(null)
 
     const userAuth = () => {
@@ -34,6 +35,7 @@ function Bio() {
 
     useEffect(() => {
         userAuth()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
