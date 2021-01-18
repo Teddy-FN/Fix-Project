@@ -46,7 +46,7 @@
 .modal-form {
     background-color: #545454;
     border-color: #545454;
-    text-decoration-color: white;
+    color: white;
     height: 40px;
 }
 
@@ -83,4 +83,54 @@
 
 .dropdown-menu-header {
     margin-right: 200px !important;
+}
+
+/* Ipad */
+@media (max-width: 768px) {
+    
+    .btn-header {
+        color: white !important;
+        margin-right: 20px;
+    }
+
+    .cross-button {
+        color: #28df99 !important;
+    }
+}
+
+/* Iphone X */
+@media (max-width: 375px) {
+
+    .btn-link {
+        margin-right: 10px !important;
+        color: white !important;
+        width: 50px;        
+    }
+
+    .submit-button {
+        background-color: #28df99;
+        width: 327px;
+        height: 40px;
+        color: #313131 !important;
+    }
+
+    .facebook-button {
+        background-color: #3b5998;
+        width: 327px;
+        height: 40px;
+    }
+
+    .statement-login {
+        color: #28df99;
+        margin-left: 20%;
+    }
+
+    .statement-signup {
+        margin-left: 8%;
+    }
+
+    .cross-button {
+        color: #28df99 !important;
+        width: 90px;
+    }
 }
