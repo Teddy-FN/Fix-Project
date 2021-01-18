@@ -5,7 +5,7 @@ import CardDetails from './cardsDetails'
 function BrowseFields() {
     return (
         <div style={{ margin: '30px 0px' }}>
-            <Feature />
+            {/* <Feature /> */}
             <CardDetails />
         </div>
     )

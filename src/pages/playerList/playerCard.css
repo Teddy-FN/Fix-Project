@@ -42,14 +42,19 @@
     border: 2px solid #545454 !important;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .btn-profil {
-        margin-left: 20px;
-        margin-bottom: 50px;
-        background-color: #7B7B7B!important;
-        border-radius: 5px;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
+        margin-right: 40px;
+        width: 450px!important;
+    }
+
+    /* .code-pos {
+        margin-top: -45px;
+    } */
+}
+
+@media (max-width: 1190px) {
+    .btn-profil {
+        width: 836px;
     }
 }

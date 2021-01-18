@@ -1,14 +1,39 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css'
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 import { Card, CardText, CardBody, CardSubtitle, Row } from 'reactstrap';
-import Pict from '../../assets/img/ball.jpg'
-import Img from '../../assets/img/ball.jpg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
-import './card.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import './card.css';
+import axios from 'axios';
 
 const Cards = () => {
+
+  const [fields, setFields] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+
+    // const url = 'http://54.251.238.126:3001/field/'
+    const url = 'https://soka.kuyrek.com:3001/field/'
+
+
+    useEffect(() => {
+        axios
+          .get(url)
+          .then((res) => {
+            setFields(res.data.data);
+            // console.log(fields);
+            setLoading(true);
+          })
+          .catch((err) => {
+            console.log(err);
+            
+          });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
+console.log(fields)
+// const img = fields.image[0].slice(7)
   return (
     <div
       style={{
@@ -23,103 +48,20 @@ const Cards = () => {
         <br />
         <div className="main home">
           <div className="content">
-            <div class="card home" style={{ width: '18rem' }}>
-              <img src={Img} class="card-img-top" alt="..." />
+            {fields.slice(0, 4).map((field) => (<div class="card home" style={{ width: '18rem' }}>
+              <img src={`http://54.251.238.126:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
               <div class="card-body">
-                <h5 class="card-title">Fields A</h5>
-                <small class="price">Rp. 150.000</small>
-                <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
-                <button className="btn btn-secondary view">View</button>
+                <h5 class="card-title">{field.fieldName}</h5>
+                <small class="price">Rp. {field.price.$numberDecimal}.000</small>
+                <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
+                <Link to={`field-details/${field.id}`}><button className="btn btn-secondary view">View</button></Link>
                 <button className="btn book">Book</button>
               </div>
             </div>
-            <div class="card home" style={{ width: '18rem' }}>
-              <img src={Img} class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Fields A</h5>
-                <small class="price">Rp. 150.000</small>
-                <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
-                <button className="btn btn-secondary view">View</button>
-                <button className="btn book">Book</button>
-              </div>
-            </div>
-            <div class="card home" style={{ width: '18rem' }}>
-              <img src={Img} class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Fields A</h5>
-                <small class="price">Rp. 150.000</small>
-                <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
-                <button className="btn btn-secondary view">View</button>
-                <button className="btn book">Book</button>
-              </div>
-            </div>
-            <div class="card home" style={{ width: '18rem' }}>
-              <img src={Img} class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Fields A</h5>
-                <small class="price">Rp. 150.000</small>
-                <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />2972 Westheimer Rd. Santa Monica,United State Belakang alun-alun Kota samping balai kota.</p>
-                <button className="btn btn-secondary view">View</button>
-                <button className="btn book">Book</button>
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
-        {/* <Row>
-        <Card className="body-card" style={{ backgroundColor: '#545454' }}>
-          <img class="ilustration" src={Pict} />
-          <CardBody>
-            <Row>
-              <CardSubtitle className="field-name">Nama</CardSubtitle>
-              <CardSubtitle className="field-price">Harga</CardSubtitle>
-            </Row>
-            <br />
-            <CardText className="address">Alamat lapangan nanti disini</CardText>
-            <button className="view-button">View</button>
-            <button className="book-button">Book</button>
-          </CardBody>
-        </Card>
-        <Card className="body-card" style={{ backgroundColor: '#545454' }}>
-          <img class="ilustration" src={Pict} />
-          <CardBody>
-            <Row>
-              <CardSubtitle className="field-name">Nama</CardSubtitle>
-              <CardSubtitle className="field-price">Harga</CardSubtitle>
-            </Row>
-            <br />
-            <CardText className="address">Alamat lapangan nanti disini</CardText>
-            <button className="view-button">View</button>
-            <button className="book-button">Book</button>
-          </CardBody>
-        </Card>
-        <Card className="body-card" style={{ backgroundColor: '#545454' }}>
-          <img class="ilustration" src={Pict} />
-          <CardBody>
-            <Row>
-              <CardSubtitle className="field-name">Nama</CardSubtitle>
-              <CardSubtitle className="field-price">Harga</CardSubtitle>
-            </Row>
-            <br />
-            <CardText className="address">Alamat lapangan nanti disini</CardText>
-            <button className="view-button">View</button>
-            <button className="book-button">Book</button>
-          </CardBody>
-        </Card>
-        <Card className="body-card" style={{ backgroundColor: '#545454' }}>
-          <img class="ilustration" src={Pict} />
-          <CardBody>
-            <Row>
-              <CardSubtitle className="field-name">Nama</CardSubtitle>
-              <CardSubtitle className="field-price">Harga</CardSubtitle>
-            </Row>
-            <br />
-            <CardText className="address">Alamat lapangan nanti disini</CardText>
-            <button className="view-button">View</button>
-            <button className="book-button">Book</button>
-          </CardBody>
-        </Card>
-      </Row> */}
       </div>
+    </div>
     </div>
   )
 }

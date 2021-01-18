@@ -23,6 +23,10 @@ body {
     margin-top: -15px;
 }
 
+.card-image {
+    height: 150px !important;
+}
+
 .card-title{
     float: left;
 }
@@ -39,6 +43,7 @@ body {
 
 .card-text {
     clear: both;
+    height: 150px;
 }
 
 .view {
@@ -51,4 +56,45 @@ body {
     margin-left: 10px;
     width: 50%;
     color: #000;
+
+}
+.dropdown-toggle {
+    margin-left: 64px;
+}
+
+.sorting {
+    width: 122px;
+}
+
+.sort {
+    float: right;
+}
+
+.searching {
+    background-color: #545454;
+}
+
+.searchButton {
+    float: right;
+    margin-left: 27px;
+    margin-right: 27px;
+    margin-bottom: 15px;
+}
+
+
+
+/* Media Query */
+@media (max-width: 1024px) { 
+    body {
+        background-color: blue;
+    }
+    .main {
+        margin-left: 70px;
+    }
+ }
+
+@media (max-width: 500px) {
+    .main {
+        margin-left: 60px;
+    }
 }

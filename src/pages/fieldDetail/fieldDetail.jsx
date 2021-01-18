@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './fieldDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,98 +11,129 @@ import {
     Carousel,
     Button,
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Card, CardBody } from 'reactstrap';
-//import { Rating } from '@material-ui/lab';
+import { Rating } from '@material-ui/lab';
+import axios from 'axios';
+
+
 
 const FieldDetail = () => {
 
+const params =useParams();
+const [fields, setFields] = useState([]);
+const [loading, setLoading] = useState(false);
+// const [images, setImages] = useState([]);
+// const url = `http://54.251.238.126:3001/field/${params.id}`
+const url = `https://soka.kuyrek.com:3001/field/${params.id}`
+
+
+useEffect(() => {
+    axios
+      .get(url)
+      .then((res) => {
+        setFields(res.data.data);
+        setLoading(true);
+        // setImages(res.data.data.image);
+        console.log(fields);
+        // console.log(images)
+        // setLoading(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        
+      });
+  }, [fields, fields.image, url])
     return (
         <>
         <Container>
+            
             <Row className='detail-top'>
                 <>
                 <div className='col-12 col-sm-4 col-md-8 field-img'>
                     <div>
+                {fields && loading ? (
                         <Carousel>
                             <Carousel.Item>
                                 <img
                                 className="d-block w-100 field-img-big"
-                                src="https://www.jaringfutsalpengaman.com/wp-content/uploads/2018/07/24.jpg"
+                                src={`http://54.251.238.126:3001/${fields?.image[0]}`}
                                 alt="First slide"
                                 />
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                 className="d-block w-100 field-img-big"
-                                src="https://3.bp.blogspot.com/--mdedSWIJ4E/WGsokgMh3QI/AAAAAAAAPEI/BqHVU0l49BQDp5LU5xFIYFOPZEprnqNHACLcB/s1600/Domo%2BPolideportivo%2Bde%2Bla%2BCDAG%2BGuatemala.jpg"
+                                src={`http://54.251.238.126:3001/${fields?.image[1]}`}
                                 alt="Third slide"
                                 />
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                 className="d-block w-100 field-img-big"
-                                src="https://i0.wp.com/www.jurnalponsel.com/wp-content/uploads/2019/05/Tanda-Lain-pada-Lapangan-Futsal.jpg?resize=600%2C400&ssl=1"
+                                src={`http://54.251.238.126:3001/${fields?.image[2]}`}
                                 alt="Third slide"
                                 />
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                 className="d-block w-100 field-img-big"
-                                src="https://rumus.web.id/wp-content/uploads/2018/09/Ukuran-Lapangan-Futsal-Mini-Sesuai-Standar-Internasional.png"
+                                src={`http://54.251.238.126:3001/${fields?.image[3]}`}
                                 alt="Third slide"
                                 />
                             </Carousel.Item>
                         </Carousel>
+    ):(<p>Loading...</p>)}
                     </div>
-
+                    {fields && loading ? (
                     <div className="position-relative overflow-hidden">
                         <img
-                            src="https://www.jaringfutsalpengaman.com/wp-content/uploads/2018/07/24.jpg"
+                            src={`http://54.251.238.126:3001/${fields?.image[0]}`}
                             alt="field small"
                             md={6}
                             xs={12}
                             className="col-3 img-sm"
                         />
                         <img
-                            src="https://3.bp.blogspot.com/--mdedSWIJ4E/WGsokgMh3QI/AAAAAAAAPEI/BqHVU0l49BQDp5LU5xFIYFOPZEprnqNHACLcB/s1600/Domo%2BPolideportivo%2Bde%2Bla%2BCDAG%2BGuatemala.jpg"
+                            src={`http://54.251.238.126:3001/${fields?.image[1]}`}
                             alt="field small"
                             md={6}
                             xs={12}
                             className="col-3 img-sm"
                         />
                         <img
-                            src="https://i0.wp.com/www.jurnalponsel.com/wp-content/uploads/2019/05/Tanda-Lain-pada-Lapangan-Futsal.jpg?resize=600%2C400&ssl=1"
+                            src={`http://54.251.238.126:3001/${fields?.image[2]}`}
                             alt="field small"
                             md={6}
                             xs={12}
                             className="col-3 img-sm"
                         />
                         <img
-                            src="https://rumus.web.id/wp-content/uploads/2018/09/Ukuran-Lapangan-Futsal-Mini-Sesuai-Standar-Internasional.png"
+                            src={`http://54.251.238.126:3001/${fields?.image[3]}`}
                             alt="field small"
                             md={6}
                             xs={12}
                             className="col-3 img-sm"
                         />
                     </div>
+                    ):(<p>Loading...</p>)}
                 </div>
                 </>
                 <Col className='detail-text'>
                     <div className='desc-field sm-3'>
-                        <h2 className='field-name'>Field A</h2>
+                        <h2 className='field-name'>{fields.fieldName}</h2>
                         <p className='field-loc'>
                         {/* <i class="fas fa-map-marker-alt"></i> */}
                         <i className='marker'><FontAwesomeIcon icon={faMapMarkerAlt} /></i>
-                        2972 Westheimer Rd. Santa Ana... 
+                        {fields.location} 
                         </p>
                         <h1 className='description-title'>Description</h1>
-                        <p className='description-p'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci velit recusandae iure, voluptatem a asperiores impedit aperiam totam unde repellat nihil ipsam! Ipsa voluptates magni quas nihil expedita, iusto quo.</p>
+                        <p className='description-p'>{fields.description}</p>
                     </div>
 
                     <div className='action-book'>
                         <h3 className='price-field'>
-                            Rp 120.000
+                            Rp. {fields?.price?.$numberDecimal}.000
                         </h3>
                         <Link to='/player-list'>
                             <Button className='col-12 mb-3 btn-player'>
@@ -147,13 +179,13 @@ const FieldDetail = () => {
                                 <b>Speedwagon</b>
                             </h4>
                             <div className='rating'>
-                                {/* <Rating 
+                                <Rating 
                                     name='half-rating-read'
                                     defaultValue={5}
                                     precision={0.2}
                                     max={5}
                                     readOnly
-                                /> */}
+                                />
                             </div>
                             <p className='review-p'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui aspernatur maxime possimus cum fuga! Autem odio temporibus voluptatum deleniti distinctio illum excepturi, cumque laboriosam perspiciatis esse placeat a inventore consequuntur.</p>
                         </CardBody>
@@ -165,13 +197,13 @@ const FieldDetail = () => {
                                 <b>Dio Brando</b>
                             </h4>
                             <div className='rating'>
-                                {/* <Rating 
+                                <Rating 
                                     name='half-rating-read'
                                     defaultValue={1}
                                     precision={0.2}
                                     max={5}
                                     readOnly
-                                /> */}
+                                />
                             </div>
                             <p className='review-p'>This place stinks</p>
                         </CardBody>

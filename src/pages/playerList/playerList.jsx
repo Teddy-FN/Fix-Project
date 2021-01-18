@@ -16,6 +16,7 @@ const PlayerList = () => {
             </Col>
         </Row>
         <Row>
+            {/* <p className='team-name'>Team A</p> */}
             <Col  style={{marginRight: '10px'}} className='border'>
                 <PlayerCard name='Jonathan Joestar' pos='GK'/>
                 <PlayerCard name='Joseph Joestar' pos='MB'/>
@@ -23,6 +24,7 @@ const PlayerList = () => {
                 <PlayerCard name='Higashikata Josuke' pos='FW'/>
                 <PlayerCard name='Giorno Giovanna' pos='FW'/>
             </Col>
+            {/* <p className='team-name'>Team A</p> */}
             <Col className='border'>
                 <PlayerCard name='Dio Brando' pos='GK'/>
                 <PlayerCard name='Kars' pos='MB'/>
