@@ -14,12 +14,14 @@ function App() {
   const [tokens, setTokens] = useState({
     tokenUser: ''
   });
+  const [isLogin, setIsLogin] = useState(true);
   const { logged, setLogged } = useContext(handler)
   console.log(logged, 'ini Logic');
   useEffect(() => {
     // tokenUser();
     if ("token" in localStorage) {
       setTokens(true)
+      setIsLogin(true)
     }
   }, [logged])
 
@@ -46,7 +48,7 @@ function App() {
           <FieldDetails />
         </Route>
         <Route path='/player-list' exact>
-          <PlayerList />
+          <PlayerList isLogin={isLogin} setIsLogin={setIsLogin} />
         </Route>
         <Route path='/bio' exact>
           <Bio />

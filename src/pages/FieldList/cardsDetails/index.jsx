@@ -6,13 +6,17 @@ import './style.css';
 import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Pagination from './pagination';
 
 
 function CardFields() {
 
     const [fields, setFields] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [search, setSearch] = useState('')
+    // eslint-disable-next-line no-unused-vars
+    const [search, setSearch] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage] = useState(2);
 
 
     // const url = 'http://54.251.238.126:3001/field/'
@@ -20,7 +24,11 @@ function CardFields() {
 
     useEffect(() => {
         axios
-            .get(url)
+            .get(url, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
             .then((res) => {
                 setFields(res.data.data);
                 // console.log(fields);
@@ -32,6 +40,14 @@ function CardFields() {
             });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    // Get current posts
+    const indexOfLastPost = currentPage * postPerPage;
+    const indexOfFirstPost = indexOfLastPost - postPerPage;
+    const currentPosts = fields.slice(indexOfFirstPost, indexOfLastPost);
+
+    // ubah page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
     console.log(fields)
     return (
         <div>
@@ -95,6 +111,13 @@ function CardFields() {
                     </div>
                 </div>
             </Container>
+            <div className='page'>
+                <Pagination
+                    postsPerPage={postPerPage}
+                    totalPosts={fields.length}
+                    paginate={paginate}
+                />
+            </div>
         </div >
     )
 }
