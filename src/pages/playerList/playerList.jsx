@@ -18,9 +18,6 @@ const PlayerList = (props) => {
                   please log in first <br />
                   as user!!
                 </h3>
-                <h4 style={{ textAlign: "center" }}>
-                  if you see this page
-                </h4>
               </Col>
           </div>
         ) : (

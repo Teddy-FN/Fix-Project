@@ -21,6 +21,7 @@ function App() {
     // tokenUser();
     if ("token" in localStorage) {
       setTokens(true)
+      setIsLogin(true)
     }
   }, [logged])
 
