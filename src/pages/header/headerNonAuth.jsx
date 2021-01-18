@@ -83,7 +83,7 @@ const HeaderNonAuth = (props) => {
     console.log("token", token);
 
     return (
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: "#222222" }}>
             <Link to="/"><img class="logo" src={Logo}></img></Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 
 function FeatureSortAndFilter() {
+    // eslint-disable-next-line no-unused-vars
     const [sortName, setSortName] = useState('')
     const handleByName = () => {
 

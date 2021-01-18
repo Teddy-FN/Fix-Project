@@ -23,6 +23,7 @@ function Bio(props) {
     const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
 
     // Get data user    
+    // eslint-disable-next-line no-unused-vars
     const [user, setUser] = useState(null)
 
     const userAuth = () => {
@@ -43,6 +44,7 @@ function Bio(props) {
 
     useEffect(() => {
         userAuth()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

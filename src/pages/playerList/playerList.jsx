@@ -3,9 +3,25 @@ import { Col, Container, Row } from 'reactstrap';
 import './playerList.css';
 import PlayerCard from './playerCard';
 
-const PlayerList = () => {
+const PlayerList = (props) => {
     return (
         <>
+        {props.isLogin !== true ? (
+          <div>
+            
+             <Row>
+                
+              </Row>
+              <Col>
+                <h3 style={{ textAlign: "center" }}>
+                  Hello guest, <br />
+                  please log in first <br />
+                  as user!!
+                </h3>
+              </Col>
+          </div>
+        ) : (
+
         <Container>
         <Row>
             <Col sm='6' className='team-name'>
@@ -33,7 +49,7 @@ const PlayerList = () => {
                 <PlayerCard name='Pucci' pos='FW'/>
             </Col>
         </Row>
-        </Container>
+        </Container>)}
         </>
     )
 }

@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+// eslint-disable-next-line no-undef
+// eslint-disable-next-line no-unused-vars
 var DatePicker = React.createClass({
     getInitialState: function() {
         var def = this.props.selected || new Date();
