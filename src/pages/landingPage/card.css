@@ -74,7 +74,7 @@ body {
 }
 
 .landingPageCards {
-    margin-left: 20px;
+    margin: 0 auto;
     width: 100%;
 }
 
@@ -133,37 +133,4 @@ body {
 .right {
     margin-left: 20px;
     color: #fff;
-}
-
-/* Ipad */
-@media (max-width: 768px) {
-    .landingPageCards {
-        margin-left: 7%;
-        width: 100%;
-    }
-
-    .goto {
-        margin-top: 30px;
-        color: #fff;   
-        float: right;
-        margin-right: 90px;
-        font-size: 20px;
-    }
-}
-
-/* Iphone X */
-@media (max-width: 375px) {
-    
-    .landingPageCards {
-        margin-left: 4%;
-        width: 100%;
-    }
-
-    .goto {
-        margin-top: 30px;
-        color: #fff;   
-        float: right;
-        margin-right: 180px;
-        font-size: 20px;
-    }
 }

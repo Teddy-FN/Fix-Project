@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 
 
 function FeatureSortAndFilter() {
-    const [sortName, setSortName] = useState('')
-    const handleByName = () => {
-
-    }
-
     return (
         <div>
             <div className="sorter">
@@ -16,7 +11,6 @@ function FeatureSortAndFilter() {
                         <small className="dropdown-toggle"></small>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <p onClick={handleByName}>Name</p>
                     </div>
                 </div>
                 <div class="dropdown sort">
