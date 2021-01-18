@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody } from 'reactstrap';
 import './style.css'
 import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 // import { useSelector, useDispatch } from "react-redux";
 
-function Bio() {
+function Bio(props) {
 
     const token = localStorage.getItem('token')
     console.log(token)
     const id = localStorage.getItem('id')
     console.log('ID', id)
+
+    //modal edit profile
+    const {
+        className
+      } = props;
+
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+    const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
 
     // Get data user    
     // eslint-disable-next-line no-unused-vars
@@ -69,7 +78,51 @@ function Bio() {
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis pharetra tortor neque eu ut. Augue facilisis pretium placerat ultricies volutpat ipsum sed. Natoque ullamcorper turpis elit integer at nisl. Id tellus amet varius malesuada. Vel dignissim interdum ut facilisi luctus porttitor ut. Nunc adipiscing tristique.</p>
                             </div>
                             <div className="button">
-                                <button className="btn editBio">Edit Bio</button>
+                                <Button color="link" className="btn editBio" onClick={toggle}>Edit Profile</Button>
+                                    <Modal isOpen={modal} toggle={toggle} className={className}>
+                                        <ModalBody toggle={toggle} close={closeBtn}>
+                                            <h4 className="edit-title">Edit Profile</h4>
+                                            <br/>
+                                            <div>
+                                                <img src={User} alt="" className="photo-edit" />
+                                            </div>
+                                            <br />
+                                            <div>
+                                                <Form>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label for="exampleEmail" sm={3}>Full Name:</Label>
+                                                    <Col sm={8}>
+                                                    <Input 
+                                                    type="text" 
+                                                    name="text" 
+                                                    id="fullName" 
+                                                    placeholder=" " />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label for="exampleEmail" sm={3}>Phone Number:</Label>
+                                                    <Col sm={8}>
+                                                    <Input 
+                                                    type="number" 
+                                                    name="number" 
+                                                    id="PhoneNumber" 
+                                                    placeholder=" " />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup row className="edit-form-description">
+                                                    <Label for="exampleText" sm={3}>Description:</Label>
+                                                    <Col sm={8}>
+                                                    <Input className="input-desc"
+                                                    type="textarea" 
+                                                    name="text" 
+                                                    id="description" />
+                                                    </Col>
+                                                </FormGroup>
+                                                </Form>
+                                            </div>
+                                            <Button color="link" className="edit-button-submit">Submit</Button>
+                                        </ModalBody>
+                                    </Modal>
                             </div>
                         </div>
                     </aside>
