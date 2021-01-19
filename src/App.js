@@ -14,7 +14,7 @@ function App() {
   const [tokens, setTokens] = useState({
     tokenUser: ''
   });
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const { logged, setLogged } = useContext(handler)
   console.log(logged, 'ini Logic');
   useEffect(() => {

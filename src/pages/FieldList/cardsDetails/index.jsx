@@ -16,11 +16,11 @@ function CardFields() {
     // eslint-disable-next-line no-unused-vars
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage] = useState(2);
+    const [postPerPage] = useState(8);
 
 
     // const url = 'http://54.251.238.126:3001/field/'
-    const url = 'https://soka.kuyrek.com:3001/field/'
+    const url = 'https://soka.kuyrek.com:3001/field'
 
     useEffect(() => {
         axios
@@ -84,7 +84,7 @@ function CardFields() {
                 <div className="main">
                     <div className="content">
                         {fields && loading ? (
-                            fields.filter((val) => {
+                            currentPosts.filter((val) => {
                                 if (setSearch === '') {
                                     return val
                                 } else if (val.fieldName.toLowerCase().includes(search.toLowerCase())) {
