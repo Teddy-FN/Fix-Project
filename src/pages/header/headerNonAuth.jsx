@@ -48,7 +48,7 @@ const HeaderNonAuth = (props) => {
 
         // const urlApiSignup = '13.229.66.0:3005/signup';
         // const urlApiSignup = 'http://54.251.238.126:3005/signup';
-        axios.post('http://54.251.238.126:3005/signup', userDataLogIn)
+        axios.post('https://soka.kuyrek.com:3005/signup', userDataLogIn)
             .then((resultRegister) => {
                 localStorage.setItem('token', resultRegister.data.token)
                 console.log('result', resultRegister)
@@ -70,7 +70,7 @@ const HeaderNonAuth = (props) => {
             password: event.target.password.value
         }
 
-        axios.post('http://54.251.238.126:3005/login', userLogin)
+        axios.post('https://soka.kuyrek.com:3005/login', userLogin)
             .then((dataResult) => {
                 localStorage.setItem('token', dataResult.data.token)
                 console.log('DATA RESULT', dataResult)
