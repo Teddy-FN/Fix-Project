@@ -15,7 +15,7 @@ function CardFields() {
     const [loading, setLoading] = useState(false);
     // eslint-disable-next-line no-unused-vars
     const [search, setSearch] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
+    const[currentPage, setCurrentPage] = useState(1);
     const [postPerPage] = useState(8);
 
 
@@ -84,6 +84,7 @@ function CardFields() {
                 <div className="main">
                     <div className="content">
                         {fields && loading ? (
+                            // eslint-disable-next-line array-callback-return
                             currentPosts.filter((val) => {
                                 if (setSearch === '') {
                                     return val
@@ -94,9 +95,9 @@ function CardFields() {
                                 }
                             }).map((field, idx) => (
                                 <div key={idx} class="card" style={{ width: '16rem' }}>
-                                    <img src={`https://soka.kuyrek.com:3001/${field.image}`} className="card-img-top card-image" alt={field.fieldName} />
+                                    <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
                                     <div className="card-body">
-                                        <h6 className="card-title">{field.fieldName}</h6>
+                                        <h6 className="card-title">{field.fieldName.slice(0, 15)}</h6>
                                         <small className="price">Rp. {field.price.$numberDecimal}.000</small>
                                         <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
                                         <Link to={`/field-details/${field._id}`}>

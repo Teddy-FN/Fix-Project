@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody } from 'reactstrap';
 import './style.css'
-import User from '../../../assets/img/user.png'
+// import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 // import { useSelector, useDispatch } from "react-redux";
@@ -29,7 +29,7 @@ function Bio(props) {
     // Edit Profile User
     const [editUser, setEditUser] = useState([])
 
-    const [loading, setLoading] = useState(false)
+    // const [loading, setLoading] = useState(false)
     const url = `https://soka.kuyrek.com:3005/user/profile`;
     useEffect(() => {
         axios.get(url
@@ -42,13 +42,13 @@ function Bio(props) {
             }
         ).then((res) => {
             // console.log("Response", res)
-            setLoading(true);
+            // setLoading(true);
             setUser(res.data.data);
         })
             .catch(error => {
                 console.log(error)
             })
-    }, [user, url])
+    }, )
 
 
     console.log('User Info', editUser) // Line 29
@@ -72,6 +72,17 @@ function Bio(props) {
 
     return (
         <div>
+            {props.isLogin !== true ? (
+                <div>
+                    <Col>
+                        <h3 style={{ textAlign: "center", marginTop: '150px' }}>
+                        Hello guest, <br />
+                        please log in first <br />
+                        as user!!
+                        </h3>
+                    </Col>
+                </div>
+                ) : (
             <div className="subMenu">
                 <Container>
                     <aside className="leftSide">
@@ -79,10 +90,10 @@ function Bio(props) {
                             <div className="profile">
                                 <img src={`https://soka.kuyrek.com:3005/${user.image}`} alt="" className="photo" />
                             </div>
-                            <h4>{user.fullname}</h4>
+                            <h4>{user?.fullname}</h4>
                             <div className="desc">
                                 <h4>Description</h4>
-                                <p>{user.description}</p>
+                                <p>{user?.description}</p>
                             </div>
                             <div className="button">
                                 <Button color="link" className="btn editBio" onClick={toggle}>Edit Profile</Button>
@@ -149,7 +160,7 @@ function Bio(props) {
                                     <div class="card-body">
                                         <div className="contentCard">
                                             <h5 className="headerCard">Field Name</h5>
-                                            <h5 className="status"></h5>
+                                            {/* <h5 className="status"></h5> */}
                                             <small className="date">2021-01-01</small>
                                             <Link to='player-list'>
                                                 <button className="btn player">Player List</button>
@@ -186,9 +197,9 @@ function Bio(props) {
                                 </div>
                             </div >
                         </div>
-                    </aside >
-                </Container >
-            </div >
+                    </aside>
+                </Container>
+            </div>)}
         </div >
     )
 }

@@ -13,7 +13,7 @@ const PlayerList = (props) => {
                 
               </Row>
               <Col>
-                <h3 style={{ textAlign: "center" }}>
+                <h3 style={{ textAlign: "center", marginTop: '150px' }}>
                   Hello guest, <br />
                   please log in first <br />
                   as user!!
