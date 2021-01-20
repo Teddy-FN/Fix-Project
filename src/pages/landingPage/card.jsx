@@ -51,7 +51,7 @@ console.log(fields)
             {fields.slice(0, 4).map((field) => (<div class="card home" style={{ width: '18rem' }}>
               <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
               <div class="card-body">
-                <h5 class="card-title">{field.fieldName}</h5>
+                <h5 class="card-title">{field.fieldName.slice(0, 15)}</h5>
                 <small class="price">Rp. {field.price.$numberDecimal}.000</small>
                 <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
                 <Link to={`field-details/${field.id}`}><button className="btn btn-secondary view">View</button></Link>

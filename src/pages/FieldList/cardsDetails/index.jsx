@@ -20,35 +20,35 @@ function CardFields() {
 
 
     // const url = 'http://54.251.238.126:3001/field/'
-    const url = 'https://soka.kuyrek.com:3001/field/'
+    const url = 'https://soka.kuyrek.com:3001/field'
 
     useEffect(() => {
         axios
-          .get(url, {
-              headers: {
-                  'Access-Control-Allow-Origin': '*',
-              }
-          })
-          .then((res) => {
-            setFields(res.data.data);
-            // console.log(fields);
-            setLoading(true);
-          })
-          .catch((err) => {
-            console.log(err);
-            
-          });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
+            .get(url, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
+            .then((res) => {
+                setFields(res.data.data);
+                // console.log(fields);
+                setLoading(true);
+            })
+            .catch((err) => {
+                console.log(err);
 
-      // Get current posts
+            });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    // Get current posts
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const currentPosts = fields.slice(indexOfFirstPost, indexOfLastPost);
 
     // ubah page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-console.log(fields)
+    console.log(fields)
     return (
         <div>
             <Container>
@@ -83,20 +83,29 @@ console.log(fields)
                 </div>
                 <div className="main">
                     <div className="content">
-                    {fields && loading ? (
-                        currentPosts.map((field, idx) =>(
-                        <div key={idx} class="card" style={{ width: '16rem' }}>
-                            <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
-                            <div className="card-body">
-                                <h6 className="card-title">{field.fieldName}</h6>
-                                <small className="price">Rp. {field.price.$numberDecimal}.000</small>
-                                <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
-                                <Link to={`/field-details/${field._id}`}>
-                                    <button className="btn btn-secondary view">View</button>
-                                </Link>
-                                <button className="btn book">Book</button>
-                            </div>
-                        </div>))
+                        {fields && loading ? (
+                            // eslint-disable-next-line array-callback-return
+                            currentPosts.filter((val) => {
+                                if (setSearch === '') {
+                                    return val
+                                } else if (val.fieldName.toLowerCase().includes(search.toLowerCase())) {
+                                    return val
+                                } else if (val.location.toLowerCase().includes(search.toLowerCase())) {
+                                    return val
+                                }
+                            }).map((field, idx) => (
+                                <div key={idx} class="card" style={{ width: '16rem' }}>
+                                    <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
+                                    <div className="card-body">
+                                        <h6 className="card-title">{field.fieldName.slice(0, 15)}</h6>
+                                        <small className="price">Rp. {field.price.$numberDecimal}.000</small>
+                                        <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
+                                        <Link to={`/field-details/${field._id}`}>
+                                            <button className="btn btn-secondary view">View</button>
+                                        </Link>
+                                        <button className="btn book">Book</button>
+                                    </div>
+                                </div>))
                         ) : (
                                 <p>Loading...</p>
                             )}
@@ -104,11 +113,11 @@ console.log(fields)
                 </div>
             </Container>
             <div className='page'>
-            <Pagination 
-                postsPerPage={postPerPage} 
-                totalPosts={fields.length} 
-                paginate={paginate}
-            />
+                <Pagination
+                    postsPerPage={postPerPage}
+                    totalPosts={fields.length}
+                    paginate={paginate}
+                />
             </div>
         </div >
     )
