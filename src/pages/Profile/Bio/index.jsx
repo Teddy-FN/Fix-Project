@@ -28,7 +28,7 @@ function Bio(props) {
 
     const userAuth = () => {
         // axios.defaults.headers.common = { 'Authorization': 'Bearer' + token }
-        axios.get(`https://soka.kuyrek.com:3005/user/${id}`,
+        axios.get(`https://soka.kuyrek.com:3005/user/profile`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ function Bio(props) {
             }
         ).then((res) => {
             console.log("Response", res)
-            setUser(res.data)
+            setUser(res.data.data)
         })
     }
 
@@ -46,9 +46,20 @@ function Bio(props) {
         userAuth()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
+console.log(user)
     return (
         <div>
+            {props.isLogin !== true ? (
+                <div>
+                    <Col>
+                        <h3 style={{ textAlign: "center", marginTop: '150px' }}>
+                        Hello guest, <br />
+                        please log in first <br />
+                        as user!!
+                        </h3>
+                    </Col>
+                </div>
+                ) : (
             <div className="subMenu">
                 <Container>
                     <aside className="leftSide">
@@ -72,10 +83,10 @@ function Bio(props) {
                             <div className="profile">
                                 <img src={User} alt="" className="photo" />
                             </div>
-                            <h4>Ronaldo Wati</h4>
+                            <h4>{user?.fullname.toUpperCase()}</h4>
                             <div className="desc">
                                 <h4>Description</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis pharetra tortor neque eu ut. Augue facilisis pretium placerat ultricies volutpat ipsum sed. Natoque ullamcorper turpis elit integer at nisl. Id tellus amet varius malesuada. Vel dignissim interdum ut facilisi luctus porttitor ut. Nunc adipiscing tristique.</p>
+                                <p>{user?.description}</p>
                             </div>
                             <div className="button">
                                 <Button color="link" className="btn editBio" onClick={toggle}>Edit Profile</Button>
@@ -173,7 +184,7 @@ function Bio(props) {
                         </div>
                     </aside>
                 </Container>
-            </div>
+            </div>)}
         </div >
     )
 }

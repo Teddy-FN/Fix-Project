@@ -16,7 +16,7 @@ function CardFields() {
     // eslint-disable-next-line no-unused-vars
     const [search, setSearch] = useState('');
     const[currentPage, setCurrentPage] = useState(1);
-    const [postPerPage] = useState(2);
+    const [postPerPage] = useState(8);
 
 
     // const url = 'http://54.251.238.126:3001/field/'
