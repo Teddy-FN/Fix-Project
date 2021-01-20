@@ -42,16 +42,16 @@ function App() {
           <LandingPage />
         </Route>
         <Route path='/browseFields' exact>
-          <BrowseFields />
+          <BrowseFields isLogin={isLogin} setIsLogin={setIsLogin}/>
         </Route>
         <Route path='/field-details/:id' exact>
-          <FieldDetails />
+          <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin}/>
         </Route>
         <Route path='/player-list' exact>
           <PlayerList isLogin={isLogin} setIsLogin={setIsLogin} />
         </Route>
         <Route path='/bio' exact>
-          <Bio />
+          <Bio isLogin={isLogin} setIsLogin={setIsLogin}/>
         </Route>
       </Switch>
     </>

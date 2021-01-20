@@ -43,7 +43,7 @@ useEffect(() => {
         console.log(err);
         
       });
-  }, [fields, fields.image, url])
+  }, )
     return (
         <>
         <Container>
