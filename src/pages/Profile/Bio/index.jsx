@@ -32,6 +32,7 @@ function Bio(props) {
     const [loading, setLoading] = useState(false)
     const url = `https://soka.kuyrek.com:3005/user/profile`;
     useEffect(() => {
+        setLoading(true)
         axios.get(url
             , {
                 headers: {
@@ -42,21 +43,22 @@ function Bio(props) {
             }
         ).then((res) => {
             // console.log("Response", res)
-            setLoading(true);
+            setLoading(false);
             setUser(res.data.data);
         })
             .catch(error => {
                 console.log(error)
             })
-    }, [user, url])
+    }, [user, url, loading])
 
 
     console.log('User Info', editUser) // Line 29
     // Edit User Profile 
     const handleChangeBio = e => {
+        setLoading(true)
         e.preventDefault()
         console.log('Change Profile', e.currentTarget.value);
-        editUser(e.currentTarget.value);
+        setEditUser(e.currentTarget.value);
         axios.put(`https://soka.kuyrek.com:3005/user/edit`, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -65,8 +67,9 @@ function Bio(props) {
             }
         })
             .then((userProfile) => {
+                setLoading(false)
                 console.log(userProfile)
-                setEditUser(userProfile)
+                setUser(userProfile)
             })
     }
 
