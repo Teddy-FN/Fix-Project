@@ -19,7 +19,7 @@ const HeaderNonAuth = (props) => {
     const toggleRegist = () => setModalRegist(!modalRegist);
 
     const [modalLogin, setModalLogin] = useState(false);
-    const toggleLogin = () => setModalLogin(!modalLogin);
+    const toggleLogin = () => {setModalLogin(!modalLogin); setModalRegist(!modalRegist)};
 
     const [token] = useState('');
 

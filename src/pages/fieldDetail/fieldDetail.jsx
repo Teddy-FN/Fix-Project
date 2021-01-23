@@ -140,9 +140,11 @@ useEffect(() => {
                                 See Player List
                             </Button>
                         </Link>
-                        <Button className='col-12 mb-3 btn-book'>
-                            Book Now
-                        </Button>
+                        <Link to='/compiler'>
+                            <Button className='col-12 mb-3 btn-book'>
+                                Book Now
+                            </Button>
+                        </Link>
                     </div>
                 </Col>
             </Row>
