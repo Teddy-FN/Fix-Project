@@ -1,14 +1,15 @@
-import { createStore, applyMiddleware, combineReducers } from "redux"
-import { composeWithDevTools } from "redux-devtools-extension"
-import rootReducer from "./reducers"
-import thunk from "redux-thunk"
-import UserProfile from './reducers/userProfile'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleWare from 'redux-saga'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import rootReducer from './reducers'
+import Sagas from './sagas'
 
-const middleware = [thunk]
+const sagaMiddleWare = createSagaMiddleWare()
 
 const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(...middleware))
+    composeWithDevTools(applyMiddleware(sagaMiddleWare)) // Connect to extension browser
 )
+sagaMiddleWare.run(Sagas)
 
-export default store;
+export default store
