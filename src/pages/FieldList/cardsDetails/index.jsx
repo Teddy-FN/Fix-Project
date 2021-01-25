@@ -7,6 +7,7 @@ import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Pagination from './pagination';
+import ButtonAdmin from '../addFields/buttonAdmin';
 
 
 function CardFields() {
@@ -15,11 +16,9 @@ function CardFields() {
     const [loading, setLoading] = useState(false);
     // eslint-disable-next-line no-unused-vars
     const [search, setSearch] = useState('');
-    const[currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage] = useState(8);
 
-
-    // const url = 'http://54.251.238.126:3001/field/'
     const url = 'https://soka.kuyrek.com:3001/field'
 
     useEffect(() => {
@@ -38,7 +37,6 @@ function CardFields() {
                 console.log(err);
 
             });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // Get current posts
@@ -81,6 +79,7 @@ function CardFields() {
                         </div>
                     </div>
                 </div>
+                <ButtonAdmin />
                 <div className="main">
                     <div className="content">
                         {fields && loading ? (
