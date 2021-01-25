@@ -5,170 +5,82 @@ import {
     USER_LOG_OUT,
     USER_LOG_OUT_SUCCESS,
     USER_LOG_OUT_FAILURE,
-    USER_CONFIRM,
-    USER_CONFIRM_SUCCESS,
-    USER_CONFIRM_FAILURE,
-    USER_RESET_PASSWORD_REQUEST,
-    USER_RESET_PASSWORD_REQUEST_SUCCESS,
-    USER_RESET_PASSWORD_REQUEST_FAILURE,
-    USER_VALIDATE_TOKEN,
-    USER_VALIDATE_TOKEN_SUCCESS,
-    USER_VALIDATE_TOKEN_FAILURE,
-    USER_RESET_PASSWORD,
-    USER_RESET_PASSWORD_SUCCESS,
-    USER_RESET_PASSWORD_FAILURE,
+    USER_SIGNUP,
+    USER_SIGNUP_SUCCESS,
+    USER_SIGNUP_FAILURE,
 } from '../actions/types'
 
 
 // State 
 const initialState = {
-    data: [],
-    loading: false,
-    success: false,
-    error: []
+    isLoading: false,
+    isLoggedIn: false,
 }
 
 // Reducer 
-export default function reducer(state = initialState, action) {
+export default function reducerAuth(state = initialState, action) {
     switch (action.type) {
         case USER_LOG_IN:
             return {
                 ...state,
-                data: action.data,
-                loading: true,
-                success: false,
-                error: []
+                ...action,
+                isLoading: true
             }
         case USER_LOG_IN_SUCCESS:
             return {
                 ...state,
-                data: action.data,
-                loading: false,
-                success: true,
-                error: []
+                ...action,
+                isLoggedIn: false,
+                isLoading: false
             }
         case USER_LOG_IN_FAILURE:
             return {
                 ...state,
-                data: [],
-                loading: false,
-                success: false,
-                error: action.error
+                ...action,
+                isLoading: false,
+                isLoggedIn: false,
             }
-        case USER_CONFIRM:
+        case USER_SIGNUP:
             return {
                 ...state,
-                data: action.data,
-                loading: true,
-                success: false,
-                error: null
+                ...action,
+                isLoggedIn: true,
+                isLoading: true
             }
-        case USER_CONFIRM_SUCCESS:
+        case USER_SIGNUP_SUCCESS:
             return {
                 ...state,
-                data: action.data,
-                loading: false,
-                success: true,
-                error: null
+                ...action,
+                isLoggedIn: false,
+                isLoading: false
             }
-        case USER_CONFIRM_FAILURE:
+        case USER_SIGNUP_FAILURE:
             return {
                 ...state,
-                data: [],
-                loading: false,
-                success: false,
-                error: action.error
-            }
-        case USER_RESET_PASSWORD_REQUEST:
-            return {
-                ...state,
-                data: action.data,
-                loading: true,
-                success: false,
-                error: []
-            }
-        case USER_RESET_PASSWORD_REQUEST_SUCCESS:
-            return {
-                ...state,
-                data: action.data,
-                loading: false,
-                success: true,
-                error: []
-            }
-        case USER_RESET_PASSWORD_REQUEST_FAILURE:
-            return {
-                ...state,
-                data: [],
-                loading: false,
-                success: false,
-                error: action.error
-            }
-        case USER_VALIDATE_TOKEN:
-            return {
-                ...state,
-                data: action.data,
-                loading: true,
-                success: false,
-                error: null
-            }
-        case USER_VALIDATE_TOKEN_SUCCESS:
-            return {
-                ...state,
-                data: [],
-                loading: false,
-                success: true,
-                error: null
-            }
-        case USER_VALIDATE_TOKEN_FAILURE:
-            return {
-                ...state,
-                data: [],
-                loading: false,
-                success: false,
-                error: action.error
-            }
-        case USER_RESET_PASSWORD:
-            return {
-                ...state,
-                data: action.data,
-                loading: true,
-                success: false,
-                erorr: null
-            }
-        case USER_RESET_PASSWORD_SUCCESS:
-            return {
-                ...state,
-                data: [],
-                loading: false,
-                success: true,
-                erorr: null
-            }
-        case USER_RESET_PASSWORD_FAILURE:
-            return {
-                ...state,
-                data: [],
-                loading: false,
-                success: false,
-                error: action.error
+                ...action,
+                isLoggedIn: false,
+                isLoading: false,
             }
         case USER_LOG_OUT:
             return {
                 ...state,
-                erorr: []
+                ...action,
+                isLoggedIn: true,
+                isLoading: true
             }
         case USER_LOG_OUT_SUCCESS:
             return {
                 ...state,
-                data: [],
-                error: []
+                ...action,
+                isLoggedIn: false,
+                isLoading: false,
             }
         case USER_LOG_OUT_FAILURE:
             return {
                 ...state,
                 data: [],
-                loading: false,
-                success: false,
-                error: action.error
+                isLoggedIn: false,
+                isLoading: false,
             }
         default:
             return state;
