@@ -9,11 +9,12 @@ import PlayerList from './pages/playerList/playerList'
 import Bio from './pages/Profile/Bio'
 import { Switch, Route } from 'react-router-dom'
 import { handler } from './provider/index'
+import { connect } from 'react-redux'
 
 import SetDate from './pages/booking/component/setDate'
 import SetTime from './pages/booking/component/setTime'
 
-function App() {
+function App({ userLogin }) {
   const [tokens, setTokens] = useState({
     tokenUser: ''
   });
@@ -49,7 +50,7 @@ function App() {
           <BrowseFields/>
         </Route>
         <Route path='/field-details/:id' exact>
-          <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin}/>
+          <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin} />
         </Route>
         <Route path='/player-list' exact>
           <PlayerList  />
@@ -61,6 +62,9 @@ function App() {
     </>
   )
 }
+//                                dari action
+const mapStateToProps = state => ({ userLogin: state.user })
 
-export default App;
+
+export default connect(mapStateToProps)(App);
 
