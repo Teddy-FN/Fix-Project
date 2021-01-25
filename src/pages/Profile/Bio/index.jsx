@@ -72,17 +72,6 @@ function Bio(props) {
 
     return (
         <div>
-            {props.isLogin !== true ? (
-                <div>
-                    <Col>
-                        <h3 style={{ textAlign: "center", marginTop: '150px' }}>
-                        Hello guest, <br />
-                        please log in first <br />
-                        as user!!
-                        </h3>
-                    </Col>
-                </div>
-                ) : (
             <div className="subMenu">
                 <Container>
                     <aside className="leftSide">
@@ -95,11 +84,11 @@ function Bio(props) {
                                 <h4>Description</h4>
                                 <p>{user?.description}</p>
                             </div>
-                            <div className="button">
-                                <Button color="link" className="btn editBio" onClick={toggle}>Edit Profile</Button>
+                            <div className="button" >
+                                <Button color="link" className="btn editBio" onClick={toggle} style={{textDecoration: 'none'}}>Edit Profile</Button>
                                 <Modal isOpen={modal} toggle={toggle} className={className}>
                                     <ModalBody toggle={toggle} close={closeBtn}>
-                                        <h4 className="edit-title">Edit Profile</h4>
+                                        <h4 className="edit-title" style={{textDecoration: 'none'}}>Edit Profile</h4>
                                         <br />
                                         <div>
                                             <Form onSubmit={handleChangeBio}>
@@ -199,7 +188,7 @@ function Bio(props) {
                         </div>
                     </aside>
                 </Container>
-            </div>)}
+            </div>
         </div >
     )
 }
