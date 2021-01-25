@@ -13,9 +13,17 @@
     color: white;
 }
 
+.nav-link:hover {
+    color:#28df99
+}
+
 .btn-header {
-    margin-right: 50px !important;
+    margin-right: 30px !important;
     color: white !important;
+}
+
+.btn-header:hover {
+    color: #28df99 !important;
 }
 
 .img-button {
@@ -85,6 +93,11 @@
     margin-right: 200px !important;
 }
 
+<<<<<<< HEAD
+.dropdown-item:hover {
+    color: #28df99 !important;
+    background-color: #545454 !important;
+=======
 
 .passwordToogle {
     position: absolute;
@@ -104,4 +117,5 @@
     position: absolute;
     right: 30px;  
     top: 180px;
+>>>>>>> 9e20525b88c0c566579b390260c3f0641c5b115d
 }

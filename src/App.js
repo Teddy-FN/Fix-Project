@@ -41,21 +41,22 @@ function App({ userLogin }) {
       {
         logged || 'token' in localStorage ? <HeaderAuth /> : <HeaderNonAuth />
       }
+      {/* <HeaderNonAuth token={tokens} logged={logged}/> */}
       <Switch>
         <Route path='/' exact>
           <LandingPage />
         </Route>
         <Route path='/browseFields' exact>
-          <BrowseFields isLogin={isLogin} setIsLogin={setIsLogin} />
+          <BrowseFields/>
         </Route>
         <Route path='/field-details/:id' exact>
           <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin} />
         </Route>
         <Route path='/player-list' exact>
-          <PlayerList isLogin={isLogin} setIsLogin={setIsLogin} />
+          <PlayerList  />
         </Route>
         <Route path='/bio' exact>
-          <Bio isLogin={isLogin} setIsLogin={setIsLogin} />
+          <Bio />
         </Route>
       </Switch>
     </>

@@ -70,6 +70,105 @@ function Bio(props) {
 
     return (
         <div>
+<<<<<<< HEAD
+            <div className="subMenu">
+                <Container>
+                    <aside className="leftSide">
+                        <div>
+                            <div className="profile">
+                                <img src={`https://soka.kuyrek.com:3005/${user.image}`} alt="" className="photo" />
+                            </div>
+                            <h4>{user?.fullname}</h4>
+                            <div className="desc">
+                                <h4>Description</h4>
+                                <p>{user?.description}</p>
+                            </div>
+                            <div className="button" >
+                                <Button color="link" className="btn editBio" onClick={toggle} style={{textDecoration: 'none'}}>Edit Profile</Button>
+                                <Modal isOpen={modal} toggle={toggle} className={className}>
+                                    <ModalBody toggle={toggle} close={closeBtn}>
+                                        <h4 className="edit-title" style={{textDecoration: 'none'}}>Edit Profile</h4>
+                                        <br />
+                                        <div>
+                                            <Form onSubmit={handleChangeBio}>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label sm={3}>Email :</Label>
+                                                    <Col sm={8}>
+                                                        <Input
+                                                            type="text"
+                                                            name="email"
+                                                            id="email"
+                                                            placeholder="Enter Your Email Here...." />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label sm={3}>password :</Label>
+                                                    <Col sm={8}>
+                                                        <Input
+                                                            type="password"
+                                                            name="password"
+                                                            id="password"
+                                                            placeholder="Enter Your New Password Here...." />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label sm={3}>passwordConfirmation :</Label>
+                                                    <Col sm={8}>
+                                                        <Input
+                                                            type="password"
+                                                            name="passwordConfirmation"
+                                                            id="passwordConfirmation"
+                                                            placeholder="Confirmation New Password...." />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label sm={3}>Full Name :</Label>
+                                                    <Col sm={8}>
+                                                        <Input
+                                                            type="text"
+                                                            name="fullname"
+                                                            id="fullname"
+                                                            placeholder="Enter Your Name Here...." />
+                                                    </Col>
+                                                </FormGroup>
+                                                <Button color="link" className="edit-button-submit">Submit</Button>
+                                            </Form>
+                                        </div>
+                                    </ModalBody>
+                                </Modal>
+                            </div>
+                        </div>
+                    </aside>
+                    <aside className="rightSide">
+                        <div className="borderHistory">
+                            <StepThree />
+                            <div className="contentBorder">
+                                <h5 className="headerBox">Book History</h5>
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div className="contentCard">
+                                            <h5 className="headerCard">Field Name</h5>
+                                            {/* <h5 className="status"></h5> */}
+                                            <small className="date">2021-01-01</small>
+                                            <Link to='player-list'>
+                                                <button className="btn player">Player List</button>
+                                            </Link>
+                                            <p className="footerCard">Coming Up Match</p>
+                                        </div >
+                                    </div >
+                                </div >
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div className="contentCard">
+                                            <h5 className="headerCard">Field Name 2</h5>
+                                            <h5 className="status">done</h5>
+                                            <small className="date">2021-01-01</small>
+                                            <Link to='player-list'>
+                                                <button className="btn player">Player List</button>
+                                            </Link>
+                                            <p className="footerCard">Give Feedback</p>
+                                        </div>
+=======
             {props.isLogin !== true ? (
                 <div>
                     <Col>
@@ -146,6 +245,7 @@ function Bio(props) {
                                                 </div>
                                             </ModalBody>
                                         </Modal>
+>>>>>>> 9e20525b88c0c566579b390260c3f0641c5b115d
                                     </div>
                                 </div>
                             </aside>
@@ -195,9 +295,17 @@ function Bio(props) {
                                         </div>
                                     </div >
                                 </div>
+<<<<<<< HEAD
+                            </div >
+                        </div>
+                    </aside>
+                </Container>
+            </div>
+=======
                             </aside>
                         </Container>
                     </div>)}
+>>>>>>> 9e20525b88c0c566579b390260c3f0641c5b115d
         </div >
     )
 }

@@ -7,7 +7,11 @@ import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Pagination from './pagination';
+<<<<<<< HEAD
+import Loading from '../../loading/loading';
+=======
 import ButtonAdmin from '../addFields/buttonAdmin';
+>>>>>>> 9e20525b88c0c566579b390260c3f0641c5b115d
 
 
 function CardFields() {
@@ -94,19 +98,19 @@ function CardFields() {
                                 }
                             }).map((field, idx) => (
                                 <div key={idx} class="card" style={{ width: '16rem' }}>
+                                        <Link to={`/field-details/${field._id}`} style={{textDecoration: 'none', color: 'white'}} className='card-fields'>
                                     <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
                                     <div className="card-body">
                                         <h6 className="card-title">{field.fieldName.slice(0, 15)}</h6>
                                         <small className="price">Rp. {field.price.$numberDecimal}.000</small>
                                         <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
-                                        <Link to={`/field-details/${field._id}`}>
-                                            <button className="btn btn-secondary view">View</button>
-                                        </Link>
-                                        <button className="btn book">Book</button>
+                                            {/* <button className="btn btn-secondary view">View</button>
+                                        <button className="btn book">Book</button> */}
                                     </div>
+                                        </Link>
                                 </div>))
                         ) : (
-                                <p>Loading...</p>
+                                <Loading />
                             )}
                     </div>
                 </div>

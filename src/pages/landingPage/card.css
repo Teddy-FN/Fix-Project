@@ -88,6 +88,7 @@ body {
 .main {
     margin: 0 23px;
     clear: both;
+    margin-bottom: 30px !important;
 }
 
 .card {
@@ -119,6 +120,17 @@ body {
     clear: both;
 }
 
+.card-fields:hover {
+    color: #28df99 !important;
+}
+
+.card-fields:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
 .view {
     width: 45%;
 }
@@ -130,7 +142,15 @@ body {
     font-size: 20px;
 }
 
+.goto:hover {
+    color: #28df99 !important;
+}
+
 .right {
     margin-left: 20px;
     color: #fff;
+}
+
+.right:hover {
+    color: #28df99 !important;
 }

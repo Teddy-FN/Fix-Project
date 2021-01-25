@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import React, { Component } from 'react'
 import SetDate from './component/setDate'
 import SetTime from './component/setTime'

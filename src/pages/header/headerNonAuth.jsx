@@ -74,24 +74,24 @@ const HeaderNonAuth = (props, { userLogin }) => {
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: "#222222" }}>
             <Link to="/"><img class="logo" src={Logo}></img></Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto" style={{textDecoration: 'none'}}>
                     <li class="nav-item active">
-                        <Link to="/">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <Link to="/" style={{textDecoration: 'none'}}>
+                            <a class="nav-link" href="#" >Home <span class="sr-only">(current)</span></a>
                         </Link>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
-                        <Link to="/browseFields">
-                            <a class="nav-link" href="#">Browse <span class="sr-only">(current)</span></a>
+                    <li class="nav-item active" >
+                        <Link to="/browseFields" style={{textDecoration: 'none'}}>
+                            <a class="nav-link" href="#" style={{textDecoration: 'none'}}>Browse <span class="sr-only">(current)</span></a>
                         </Link>
                     </li>
                 </ul>
             </div>
             <div>
-                <Button class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleRegist}>Sign Up</Button>
+                <li class="btn-header active" style={{ color: 'white', textDecoration: 'none', listStyle: 'none' }} color="link" onClick={toggleRegist}><a href='#' style={{textDecoration: 'none', color: 'white'}} className='btn-header'>Sign Up</a></li>
                 <Modal isOpen={modalRegist} toggle={toggleRegist}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title"> Sign Up</h4>
@@ -151,7 +151,7 @@ const HeaderNonAuth = (props, { userLogin }) => {
                 </Modal>
             </div>
             <div >
-                <Button class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleLogin}>Log In</Button>
+                <li class="btn-header" style={{ color: 'white', textDecoration: 'none', listStyle: 'none' }} color="link" onClick={toggleLogin}><a href='#' style={{textDecoration: 'none', color: 'white'}} className='btn-header'>Login</a></li>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title">Log In</h4>

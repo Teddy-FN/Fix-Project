@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+/* eslint-disable no-unused-vars */
+import React, { useState, Component } from 'react'
+=======
 import React, { useState } from 'react'
+>>>>>>> 9e20525b88c0c566579b390260c3f0641c5b115d
 import Dialog from '@material-ui/core/Dialog'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -6,6 +11,10 @@ import 'date-fns'
 import Grid from '@material-ui/core/Grid'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers'
+<<<<<<< HEAD
+// import Button from '@material-ui/core/Button'
+=======
+>>>>>>> 9e20525b88c0c566579b390260c3f0641c5b115d
 
 
 function SetDate() {
