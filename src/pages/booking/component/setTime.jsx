@@ -7,3 +7,5 @@ const SetTime = () => {
     </div>
   )
 }
+
+export default SetTime

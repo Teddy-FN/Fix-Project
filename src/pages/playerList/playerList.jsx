@@ -6,22 +6,6 @@ import PlayerCard from './playerCard';
 const PlayerList = (props) => {
     return (
         <>
-        {props.isLogin !== true ? (
-          <div>
-            
-             <Row>
-                
-              </Row>
-              <Col>
-                <h3 style={{ textAlign: "center", marginTop: '150px' }}>
-                  Hello guest, <br />
-                  please log in first <br />
-                  as user!!
-                </h3>
-              </Col>
-          </div>
-        ) : (
-
         <Container>
         <Row>
             <Col sm='6' className='team-name'>
@@ -49,7 +33,7 @@ const PlayerList = (props) => {
                 <PlayerCard name='Pucci' pos='FW'/>
             </Col>
         </Row>
-        </Container>)}
+        </Container>
         </>
     )
 }

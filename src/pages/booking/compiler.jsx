@@ -1,9 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import MultiStep from 'react-multistep'
-import './css/costum.css'
-import './css/normilize.css'
-import './css/skeleton.css'
+/* eslint-disable react/jsx-no-undef */
+import React, { Component } from 'react'
 import SetDate from './component/setDate'
 import SetTime from './component/setTime'
 import SetType from './component/setType'

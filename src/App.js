@@ -9,8 +9,12 @@ import PlayerList from './pages/playerList/playerList'
 import Bio from './pages/Profile/Bio'
 import { Switch, Route } from 'react-router-dom'
 import { handler } from './provider/index'
+import { connect } from 'react-redux'
 
-function App() {
+import SetDate from './pages/booking/component/setDate'
+import SetTime from './pages/booking/component/setTime'
+
+function App({ userLogin }) {
   const [tokens, setTokens] = useState({
     tokenUser: ''
   });
@@ -37,26 +41,30 @@ function App() {
       {
         logged || 'token' in localStorage ? <HeaderAuth /> : <HeaderNonAuth />
       }
+      {/* <HeaderNonAuth token={tokens} logged={logged}/> */}
       <Switch>
         <Route path='/' exact>
           <LandingPage />
         </Route>
         <Route path='/browseFields' exact>
-          <BrowseFields isLogin={isLogin} setIsLogin={setIsLogin}/>
+          <BrowseFields/>
         </Route>
         <Route path='/field-details/:id' exact>
-          <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin}/>
+          <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin} />
         </Route>
         <Route path='/player-list' exact>
-          <PlayerList isLogin={isLogin} setIsLogin={setIsLogin} />
+          <PlayerList  />
         </Route>
         <Route path='/bio' exact>
-          <Bio isLogin={isLogin} setIsLogin={setIsLogin}/>
+          <Bio />
         </Route>
       </Switch>
     </>
   )
 }
+//                                dari action
+const mapStateToProps = state => ({ userLogin: state.user })
 
-export default App;
+
+export default connect(mapStateToProps)(App);
 

@@ -15,10 +15,12 @@ import { Link, useParams } from 'react-router-dom';
 import { Card, CardBody } from 'reactstrap';
 import { Rating } from '@material-ui/lab';
 import axios from 'axios';
+import Loading from '../loading/loading';
+import ModalBooking from './modalBooking';
 
 
 
-const FieldDetail = () => {
+const FieldDetail = (props) => {
 
 const params =useParams();
 const [fields, setFields] = useState([]);
@@ -116,7 +118,7 @@ useEffect(() => {
                             className="col-3 img-sm"
                         />
                     </div>
-                    ):(<p>Loading...</p>)}
+                    ):(<Loading />)}
                 </div>
                 </>
                 <Col className='detail-text'>
@@ -140,11 +142,15 @@ useEffect(() => {
                                 See Player List
                             </Button>
                         </Link>
-                        <Link to='/compiler'>
+                        {/* <Link to='/compiler'>
                             <Button className='col-12 mb-3 btn-book'>
                                 Book Now
                             </Button>
-                        </Link>
+                        </Link> */}
+                        <ModalBooking 
+                            isLogin={props.isLogin}
+                            setIsLogin={props.setIsLogin}
+                        />
                     </div>
                 </Col>
             </Row>
