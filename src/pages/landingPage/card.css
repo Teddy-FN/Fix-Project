@@ -85,7 +85,7 @@ body {
     justify-content: center;
 }
 
-.main {
+.main-home {
     margin: 0 23px;
     clear: both;
 }
@@ -133,4 +133,17 @@ body {
 .right {
     margin-left: 20px;
     color: #fff;
+}
+
+/* Ipad */
+@media (max-width: 768px){
+    
+}
+
+/* Iphone */
+@media (max-width:375px){
+
+    .main{
+        margin-right: 23px;
+    }
 }

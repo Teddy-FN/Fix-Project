@@ -1,35 +1,11 @@
-import React, { Component } from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import React from 'react'
 
-export class Success extends Component {
-  continue = e => {
-    e.preventDefault();
-    // PROCESS FORM //
-    this.props.nextStep();
-  };
-
-  back = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
-
-  render() {
+const Success = () => {
     return (
-      <MuiThemeProvider>
-        <>
-          <Dialog
-            open
-            fullWidth
-            maxWidth='sm'
-          >
-            <h1>Thank You For Your Submission</h1>
-            <p>You will get an email with further instructions.</p>
-          </Dialog>
-        </>
-      </MuiThemeProvider>
-    );
-  }
+        <div>
+            <h3> We already receive your data, please wait for the email confirmation</h3>
+        </div>
+    )
 }
 
-export default Success;
+export default Success 

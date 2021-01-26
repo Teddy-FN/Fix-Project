@@ -1,71 +1,37 @@
-import React, { Component } from 'react'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import MultiStep from 'react-multistep'
+import './css/costum.css'
+import './css/normilize.css'
+import './css/skeleton.css'
 import SetDate from './component/setDate'
 import SetTime from './component/setTime'
+import SetType from './component/setType'
+import UserInfo from './component/userInfo'
+import ChooseTeam from './component/chooseTeam'
+import FillPosition from './component/fillPosition'
 
-export class Booking extends Component {
-    state = {
-      step: 1,
-      selectedDate: '',
-      selectedTime: '',
-      //ini nanti tambahin ya and diganti sesuai kebutuhan
-    //   email: '',
-    //   occupation: '',
-    //   city: '',
-    //   bio: ''
-    };
+const steps = [
+  { component: <SetDate /> },
+  { component: <SetTime /> },
+  { component: <SetType /> },
+  { component: <UserInfo /> },
+  { component: <ChooseTeam /> },
+  { component: <FillPosition /> },
   
-    // Proceed to next step
-    nextStep = () => {
-      const { step } = this.state;
-      this.setState({
-        step: step + 1
-      });
-    };
-  
-    // Go back to prev step
-    prevStep = () => {
-      const { step } = this.state;
-      this.setState({
-        step: step - 1
-      });
-    };
-  
-    // Handle fields change
-    handleChange = input => e => {
-      this.setState({ [input]: e.target.value });
-    };
-  
-    render() {
-      const { step } = this.state;
-      const { selectedDate, selectedTime } = this.state;
-      const values = { selectedDate, selectedTime };
-  
-      switch (step) {
-        case 1:
-          return (
-            <SetDate
-              nextStep={this.nextStep}
-              handleChange={this.handleChange}
-              values={values}
-            />
-          );
-        case 2:
-          return (
-            <SetTime
-              nextStep={this.nextStep}
-              prevStep={this.prevStep}
-              handleChange={this.handleChange}
-              values={values}
-            />
-          );
-        //nanti dilanjutin disini jangan lupa angka case di success nya digantiwww
-        case 4:
-          return <Success />;
-        default:
-          (console.log('This is a multi-step form built with React.'))
-      }
-    }
-  }
-  
-  export default Booking;
-  
+]
+
+const prevStyle = {'background': '#33c3f0', 'border-width': '2px'}
+const nextStyle = {'background': '#33c3f0',  'border-width': '2px'}
+
+const App = () => (
+  <div className='container'>
+    <MultiStep steps={steps} prevStyle={prevStyle} nextStyle={nextStyle}/>
+    <div className='container app-footer'>
+      <h6>Press 'Enter' or click on progress bar for next step.</h6>
+      Code is on{' '}
+    </div>
+  </div>
+)
+
+ReactDOM.render(<App />, document.getElementById('app'))

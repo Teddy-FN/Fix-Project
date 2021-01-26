@@ -10,9 +10,6 @@ import Bio from './pages/Profile/Bio'
 import { Switch, Route } from 'react-router-dom'
 import { handler } from './provider/index'
 
-import SetDate from './pages/booking/component/setDate'
-import SetTime from './pages/booking/component/setTime'
-
 function App() {
   const [tokens, setTokens] = useState({
     tokenUser: ''

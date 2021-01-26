@@ -84,3 +84,32 @@
 .dropdown-menu-header {
     margin-right: 200px !important;
 }
+
+
+/* iPad */
+@media (max-width: 768px){
+    
+    .btn-header {
+        margin-left: 60px;
+    }
+
+    .google-button {
+        width: 465px;
+        height: 40px;
+    }
+
+}
+
+/* iPhone */
+@media (max-width: 375px) {
+
+    .submit-button {
+        width: 325px;
+        height: 38px;
+    }
+
+    .google-button {
+        width: 325px;
+        height: 38px;
+    }
+}
