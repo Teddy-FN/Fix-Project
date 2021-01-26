@@ -7,11 +7,7 @@ import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Pagination from './pagination';
-<<<<<<< HEAD
 import Loading from '../../loading/loading';
-=======
-import ButtonAdmin from '../addFields/buttonAdmin';
->>>>>>> 9e20525b88c0c566579b390260c3f0641c5b115d
 
 
 function CardFields() {
