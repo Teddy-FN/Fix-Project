@@ -101,7 +101,6 @@ body {
 
 .card-body {
     margin-top: -15px;
-    height: 200px;
 }
 
 .card-title{
@@ -137,7 +136,7 @@ body {
     width: 45%;
 }
 .goto {
-    margin-top: 30px;
+    margin-top: 38px;
     color: #fff;   
     float: right;
     margin-right: 56px;
