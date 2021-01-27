@@ -41,15 +41,15 @@ console.log(fields)
         backgroundColor: '#313131', margin: 'none'
       }}>
       <div className="landingPageCards">
-        <h3 className="feature-title">Feature Field</h3>
+        <p className="feature-title">Feature Field</p>
         <Link to='/browseFields' style={{textDecoration: 'none'}}>
-          <a className="btn goto" style={{color: 'white'}} href='?#'>Browse Field <FontAwesomeIcon icon={faArrowRight} class="map right" /></a>
+          <a className="goto" style={{color: 'white', textDecoration: 'none'}} href='?#'>Browse Field <FontAwesomeIcon icon={faArrowRight} class="map right" /></a>
         </Link>
         <br />
         <br />
         <div className="main home">
           <div className="content">
-            {fields && loading ? (fields.slice(0, 4).map((field) => (<div class="card home" style={{ width: '18rem' }}>
+            {fields && loading ? (fields.slice(1, 5).map((field) => (<div class="card home" style={{ width: '18rem' }}>
                 <Link to={`field-details/${field.id}`} style={{textDecoration: 'none', color: 'white'}} >
               <div className='card-fields'>
               <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
