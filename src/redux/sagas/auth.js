@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { takeLatest, put } from 'redux-saga/effects'
 import {
     USER_LOG_IN,

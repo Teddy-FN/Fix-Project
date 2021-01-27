@@ -39,6 +39,59 @@ function CardFields() {
             });
     }, [])
 
+    const sortByNameAsc = (e) => {
+        e.preventDefault();
+        axios
+          .get(`https://soka.kuyrek.com:3001/field/?sortByField=asc`)
+          .then((res) => {
+            setFields(res.data.data);
+            setLoading(true);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+
+      const sortByNameDesc = (e) => {
+        e.preventDefault();
+        axios
+          .get(`https://soka.kuyrek.com:3001/field/?sortByField=desc`)
+          .then((res) => {
+            setFields(res.data.data);
+            setLoading(true);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+
+      const sortByPriceAsc = (e) => {
+        e.preventDefault();
+        axios
+          .get(`https://soka.kuyrek.com:3001/field/?sortByPrice=asc`)
+          .then((res) => {
+            setFields(res.data.data);
+            setLoading(true);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+
+      const sortByPriceDesc = (e) => {
+        e.preventDefault();
+        axios
+          .get(`https://soka.kuyrek.com:3001/field/?sortByPrice=desc`)
+          .then((res) => {
+            setFields(res.data.data);
+            console.log('data sort', res.data.data);
+            setLoading(true);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+
     // Get current posts
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
@@ -67,19 +120,22 @@ function CardFields() {
                             <small className="dropdown-toggle"></small>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <p>Name</p>
+                            <p className='dropdown-item' onClick={sortByNameAsc}>Filter By Name (A-Z)</p>
+                            <p className='dropdown-item' onClick={sortByNameDesc}>Filter By Name (Z-A)</p>
                         </div>
                     </div>
                     <div class="dropdown sort">
                         <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <small className="nameFitur">Sort</small>
+                            <small className="dropdown-toggle"></small>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
+                            <p className='dropdown-item' onClick={sortByPriceAsc}>Sort By Price (Low-High)</p>
+                            <p className='dropdown-item' onClick={sortByPriceDesc}>Sort By Price (High-Low)</p>
                         </div>
                     </div>
                 </div>
-                <ButtonAdmin />
+                {/* <ButtonAdmin /> */}
                 <div className="main">
                     <div className="content">
                         {fields && loading ? (

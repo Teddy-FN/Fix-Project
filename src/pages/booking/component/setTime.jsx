@@ -4,10 +4,6 @@ import React, { Component } from 'react'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
-<<<<<<< HEAD
-
-=======
->>>>>>> 9e20525b88c0c566579b390260c3f0641c5b115d
 
 export class SetTime extends Component {
   continue = e => {
