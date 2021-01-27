@@ -11,8 +11,6 @@ const Provider = (props) => {
         <handler.Provider value={{ logged, setLogged, modalLoginUser, setModalLoginUser, modalSignUpUser, setModalSignUpUser }}>
             {props.children}
         </handler.Provider>
-
-
     );
 };
 
