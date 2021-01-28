@@ -21,26 +21,23 @@ function Bio(props) {
     console.log('Id User', id)
 
     // Get data user    
-    const user = useSelector((state) => state.getProfile);
+    const user = useSelector((state) => state.profileUser.data);
+    console.log('Ini USer BROOOOO', user)
 
 
     // data patch profile
-    const dataPatch = useSelector(state => state.UpdateProfile);
     const dispatch = useDispatch()
+    const [picture, setPicture] = useState({
+        profilePic: null
+    })
     const [input, setInput] = useState({
         fullname: '',
-        email: '',
         description: '',
         phone: '',
     });
-    const [picture, setPicture] = useState({
-        picture: null
-    });
-
     let formData = new FormData();
-    formData.append("picture", picture.picture);
+    formData.append("profilePic", picture.profilePic);
     formData.append("fullname", input.fullname);
-    formData.append("email", input.email);
     formData.append("description", input.description);
     formData.append("phone", input.phone);
 
@@ -54,24 +51,17 @@ function Bio(props) {
 
     const handlePicture = (e) => {
         setPicture({
-            picture: e.target.files[0]
+            profilePic: e.target.files[0]
+            // Kalau gambar dari 1 perlu di mapping di bagian belakang -> e.target.files.map(data => { setPicture ({profilepic: data})
         });
     };
-    if (picture.picture) {
-        dispatch(UpdateProfile(formData, JSON.parse(atob(localStorage.getItem("token").split(".")[1])).user.id));
-        setPicture({
-            picture: null
-        })
-    }
 
     const [submitted, setSubmited] = useState(false);
     const HandleChangeProfile = (e) => {
         e.preventDefault();
-        dispatch(UpdateProfile(formData, JSON.parse(atob(localStorage.getItem("token").split(".")[1])).user.id));
+        dispatch(UpdateProfile(formData))
         setSubmited(!submitted);
-    }
-    if (dataPatch) {
-        window.location.reload();
+        setModal(false)
     }
 
     useEffect(() => {
@@ -86,7 +76,7 @@ function Bio(props) {
                     <aside className="leftSide">
                         <div>
                             <div className="profile">
-                                <img src={User} alt="" className="photo" />
+                                <img src={`https://soka.kuyrek.com:3005/${user.profilePic}`} alt="" className="photo" />
                             </div>
                             <h4>{user?.fullname}</h4>
                             <div className="desc">
@@ -108,7 +98,6 @@ function Bio(props) {
                                                             type="file"
                                                             name="profilePic"
                                                             id="profilePic"
-                                                            placeholder="Enter Your Number Here...."
                                                             onChange={handlePicture}
                                                         />
                                                     </Col>

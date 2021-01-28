@@ -10,12 +10,14 @@ const initialState = {
         email: '',
         phone: '',
         description: '',
-        profilePic: ''
+        profilePic: '',
+        phone: '',
+        id: ''
     }
 }
 
-export default function profileUSer(state = initialState, action) {
-    switch (type.action) {
+export default function profileUser(state = initialState, action) {
+    switch (action.type) {
         case GET_PROFILE_SUCCESS: {
             return {
                 ...state,
@@ -23,11 +25,6 @@ export default function profileUSer(state = initialState, action) {
                 data: action.payload,
             }
         }
-    }
-}
-
-export default function UpdateProfile(state = initialState, action) {
-    switch (type.action) {
         case UPDATE_PROFILE_SUCCESS: {
             return {
                 ...state,
@@ -35,5 +32,7 @@ export default function UpdateProfile(state = initialState, action) {
                 data: action.payload,
             }
         }
+        default:
+            return { ...state }
     }
 }

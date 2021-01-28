@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
 import Profile from '../../assets/img/profile.jpg'
@@ -11,6 +11,7 @@ import '../header/header.css'
 import { handler } from '../../provider/index'
 import { login, SignUp, logoutUser } from '../../redux/actions/auth'
 import { useSelector, useDispatch } from 'react-redux'
+import { GetProfile } from '../../redux/actions/profile'
 
 const HeaderAuth = () => {
     const dispatch = useDispatch()
@@ -19,7 +20,10 @@ const HeaderAuth = () => {
             localStorage.removeItem('token')
         ))
     }
-
+    const user = useSelector((state) => state.profileUser.data);
+    useEffect(() => {
+        dispatch(GetProfile());
+    }, []);
 
     return (
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px black' }}>
@@ -43,7 +47,7 @@ const HeaderAuth = () => {
             </div>
             <div>
                 <div class="dropdown">
-                    <img src={Profile} class="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
+                    <img src={`https://soka.kuyrek.com:3005/${user.profilePic}`} class="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <Link to="/bio" style={{ textDecoration: 'none' }}>
                             <a class="dropdown-item" href="#">Profile</a>
