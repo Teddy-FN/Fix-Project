@@ -20,7 +20,7 @@ const HeaderAuth = () => {
     }
 
     return (
-        <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '3px 3px 5px #222222' }}>
+        <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px black' }}>
             <Link to="/"><img class="logo" src={Logo}></img></Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto" >

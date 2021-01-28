@@ -115,7 +115,7 @@ function CardFields() {
                 </div>
                 <div className="sorter">
                     <div class="dropdown filter">
-                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{backgroundColor: '#545454'}}>
                             <small className="nameFitur">Filter</small>
                             <small className="dropdown-toggle"></small>
                         </button>
@@ -125,7 +125,7 @@ function CardFields() {
                         </div>
                     </div>
                     <div class="dropdown sort">
-                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{backgroundColor: '#545454'}}>
                             <small className="nameFitur">Sort</small>
                             <small className="dropdown-toggle"></small>
                         </button>
