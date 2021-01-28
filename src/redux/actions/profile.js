@@ -1,5 +1,6 @@
 import {
     GET_PROFILE_SUCCESS,
+    UPDATE_PROFILE_SUCCESS
 } from './types'
 import axios from 'axios'
 const API = 'https://soka.kuyrek.com:3005'
@@ -22,7 +23,8 @@ export const GetProfile = () => {
                 type: GET_PROFILE_SUCCESS,
                 payload: res.data.data
             });
-            return res.data.data
+            console.log('DAta User', res.data.data)
+            return res.data
         } catch (error) {
             console.log("error login ", error);
             return '';
@@ -30,17 +32,10 @@ export const GetProfile = () => {
     };
 };
 
-
-// Get Profile??
-export const UpdateProfile = ({ fullname, description, phone, profilePic }) => {
+export const UpdateProfile = (data) => {
     return async (dispatch) => {
         try {
-            const res = await axios.put(API + `/user/edit`, {
-                fullname: fullname,
-                description: description,
-                phone: phone,
-                profilePic: profilePic
-            },
+            const res = await axios.put(API + `/user/edit`, data,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -51,7 +46,7 @@ export const UpdateProfile = ({ fullname, description, phone, profilePic }) => {
             );
             console.log('Ini Res', res)
             dispatch({
-                type: GET_PROFILE_SUCCESS,
+                type: UPDATE_PROFILE_SUCCESS,
                 payload: res.data.data
             });
             return res.data.data

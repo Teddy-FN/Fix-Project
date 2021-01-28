@@ -19,6 +19,7 @@ function App(state) {
   const [tokens, setTokens] = useState({
     tokenUser: ''
   });
+  const token = localStorage.getItem('token')
   const [isLogin, setIsLogin] = useState(false);
   const loginUser = useSelector((state) => state.AuthReducer.isLoggedIn)
   console.log('Ini IsLogin', loginUser)
@@ -34,7 +35,7 @@ function App(state) {
   return (
     <>
       {
-        loginUser ? <HeaderAuth /> : <HeaderNonAuth isLogin={isLogin} />
+        token ? <HeaderAuth /> : <HeaderNonAuth isLogin={isLogin} />
       }
       <Switch>
         <Route path='/' exact>

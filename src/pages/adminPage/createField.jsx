@@ -102,8 +102,12 @@ const CreateField = () => {
                                 Enter Price
                             </h3>
                         </div>
-                        <button type="button" class="btn btn-danger btn-lg">Cancel</button>
-                        <button type="button" class="btn btn-warning btn-lg">Create Field</button>
+                        <div className="btnWidth">
+                            <button type="button" class="btn btn-warning">Create Field</button>
+                        </div>
+                        <div className="btnWidth">
+                            <button type="button" class="btn btn-danger cancel">Cancel</button>
+                        </div>
                     </Col>
                 </Row>
             </Container>
