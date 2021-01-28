@@ -32,23 +32,10 @@ export const GetProfile = () => {
 
 
 // Get Profile??
-export const loadProfile = () => async (dispatch) => {
-    const response = await axios.get(API + '/user/profile',
-        {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        });
-
-    return dispatch(UpdateProfile(response.data.data));
-};
-
 export const UpdateProfile = ({ fullname, description, phone, profilePic }) => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(API + `/user/edit`, {
+            const res = await axios.put(API + `/user/edit`, {
                 fullname: fullname,
                 description: description,
                 phone: phone,

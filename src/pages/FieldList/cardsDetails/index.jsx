@@ -7,7 +7,7 @@ import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Pagination from './pagination';
-import ButtonAdmin from '../addFields/buttonAdmin';
+import Loading from '../../loading/loading';
 
 
 function CardFields() {
@@ -39,6 +39,59 @@ function CardFields() {
             });
     }, [])
 
+    const sortByNameAsc = (e) => {
+        e.preventDefault();
+        axios
+            .get(`https://soka.kuyrek.com:3001/field/?sortByField=asc`)
+            .then((res) => {
+                setFields(res.data.data);
+                setLoading(true);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const sortByNameDesc = (e) => {
+        e.preventDefault();
+        axios
+            .get(`https://soka.kuyrek.com:3001/field/?sortByField=desc`)
+            .then((res) => {
+                setFields(res.data.data);
+                setLoading(true);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const sortByPriceAsc = (e) => {
+        e.preventDefault();
+        axios
+            .get(`https://soka.kuyrek.com:3001/field/?sortByPrice=asc`)
+            .then((res) => {
+                setFields(res.data.data);
+                setLoading(true);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const sortByPriceDesc = (e) => {
+        e.preventDefault();
+        axios
+            .get(`https://soka.kuyrek.com:3001/field/?sortByPrice=desc`)
+            .then((res) => {
+                setFields(res.data.data);
+                console.log('data sort', res.data.data);
+                setLoading(true);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     // Get current posts
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
@@ -62,25 +115,28 @@ function CardFields() {
                 </div>
                 <div className="sorter">
                     <div class="dropdown filter">
-                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
                             <small className="nameFitur">Filter</small>
                             <small className="dropdown-toggle"></small>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <p>Name</p>
+                            <p className='dropdown-item' onClick={sortByNameAsc}>Filter By Name (A-Z)</p>
+                            <p className='dropdown-item' onClick={sortByNameDesc}>Filter By Name (Z-A)</p>
                         </div>
                     </div>
                     <div class="dropdown sort">
-                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
                             <small className="nameFitur">Sort</small>
+                            <small className="dropdown-toggle"></small>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
+                            <p className='dropdown-item' onClick={sortByPriceAsc}>Sort By Price (Low-High)</p>
+                            <p className='dropdown-item' onClick={sortByPriceDesc}>Sort By Price (High-Low)</p>
                         </div>
                     </div>
                 </div>
-                <Link to="/createField">
-                    <ButtonAdmin />
+                <Link to='/createField'>
+                    <button className="btn btn-warning createField">Create Field</button>
                 </Link>
                 <div className="main">
                     <div className="content">
@@ -96,19 +152,19 @@ function CardFields() {
                                 }
                             }).map((field, idx) => (
                                 <div key={idx} class="card" style={{ width: '16rem' }}>
-                                    <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
-                                    <div className="card-body">
-                                        <h6 className="card-title">{field.fieldName.slice(0, 15)}</h6>
-                                        <small className="price">Rp. {field.price.$numberDecimal}.000</small>
-                                        <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
-                                        <Link to={`/field-details/${field._id}`}>
-                                            <button className="btn btn-secondary view">View</button>
-                                        </Link>
-                                        <button className="btn book">Book</button>
-                                    </div>
+                                    <Link to={`/field-details/${field._id}`} style={{ textDecoration: 'none', color: 'white' }} className='card-fields'>
+                                        <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
+                                        <div className="card-body">
+                                            <h6 className="card-title">{field.fieldName.slice(0, 15)}</h6>
+                                            <small className="price">Rp. {field.price.$numberDecimal}.000</small>
+                                            <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
+                                            {/* <button className="btn btn-secondary view">View</button>
+                                        <button className="btn book">Book</button> */}
+                                        </div>
+                                    </Link>
                                 </div>))
                         ) : (
-                                <p>Loading...</p>
+                                <Loading />
                             )}
                     </div>
                 </div>

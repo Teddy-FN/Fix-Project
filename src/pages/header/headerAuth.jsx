@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
 import Profile from '../../assets/img/profile.jpg'
 import LandingPage from '../landingPage/landingPage'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import '../header/header.css'
 import { handler } from '../../provider/index'
 import { login, SignUp, logoutUser } from '../../redux/actions/auth'
@@ -22,20 +22,20 @@ const HeaderAuth = () => {
 
 
     return (
-        <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: "#222222" }}>
+        <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px black' }}>
             <Link to="/"><img class="logo" src={Logo}></img></Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto" >
                     <li class="nav-item active">
-                        <Link to="/">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <Link to="/" style={{ textDecoration: 'none' }}>
+                            <a class="nav-link" href="#" style={{ textDecoration: 'none' }}>Home <span class="sr-only">(current)</span></a>
                         </Link>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <Link to="/browseFields">
+                        <Link to="/browseFields" style={{ textDecoration: 'none' }}>
                             <a class="nav-link" href="#">Browse <span class="sr-only">(current)</span></a>
                         </Link>
                     </li>
@@ -45,7 +45,7 @@ const HeaderAuth = () => {
                 <div class="dropdown">
                     <img src={Profile} class="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <Link to="/bio">
+                        <Link to="/bio" style={{ textDecoration: 'none' }}>
                             <a class="dropdown-item" href="#">Profile</a>
                         </Link>
                         <a class="dropdown-item" href="#">Setting</a>

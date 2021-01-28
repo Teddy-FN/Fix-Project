@@ -66,11 +66,12 @@ body {
 
 /* New */
 .feature-title {
-    margin-left: 32px;
+    padding-left: 60px !important;
     color: white;
-    font-weight: 800;
+    font-weight: bold;
     padding-top: 30px;
     float: left;
+    font-size: 24px;
 }
 
 .landingPageCards {
@@ -88,6 +89,7 @@ body {
 .main {
     margin: 0 23px;
     clear: both;
+    margin-bottom: 30px !important;
 }
 
 .card {
@@ -119,18 +121,39 @@ body {
     clear: both;
 }
 
+.card-fields:hover {
+    color: #28df99 !important;
+}
+
+.card-fields:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
 .view {
     width: 45%;
 }
 .goto {
-    margin-top: 30px;
+    margin-top: 38px;
     color: #fff;   
     float: right;
-    margin-right: 26px;
-    font-size: 20px;
+    margin-right: 56px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.goto:hover {
+    color: #28df99 !important;
 }
 
 .right {
-    margin-left: 20px;
+    padding-left: 5px !important;
+    padding-bottom: 3px;
     color: #fff;
+}
+
+.right:hover {
+    color: #28df99 !important;
 }

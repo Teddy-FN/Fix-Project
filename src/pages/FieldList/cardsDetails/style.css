@@ -20,6 +20,10 @@ body {
     margin: 5px;
 }
 
+.card:hover {
+    border: 1px solid #28df99;
+}
+
 .card-body {
     margin-top: -15px;
 }
@@ -30,6 +34,10 @@ body {
 
 .card-title{
     float: left;
+}
+
+.card-fields:hover {
+    color: #28df99 !important;
 }
 
 .map {
@@ -86,7 +94,12 @@ body {
     justify-content: center !important;
     margin-left: 45%;
     color: black !important;
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+.createField {
+    margin-left: 30px;
+    width: 255px;
 }
 
 

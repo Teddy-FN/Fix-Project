@@ -6,16 +6,29 @@
     height: 75px;
     width: 150px;
     margin-left: 5%;
+    margin-right: 30px;
 }
 
 .nav-link {
-    margin-left: 20px;
+    margin-left: 30px;
     color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color:#28df99
 }
 
 .btn-header {
-    margin-right: 50px !important;
+    margin-right: 30px !important;
     color: white !important;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.btn-header:hover {
+    color: #28df99 !important;
 }
 
 .img-button {
@@ -85,23 +98,7 @@
     margin-right: 200px !important;
 }
 
-
-.passwordToogle {
-    position: absolute;
-    top: 290px;
-    right: 30px;
-    z-index: 1000;
-    cursor: pointer;
-}
-
-.passwordConfirmationToogle {
-    right: 30px;   
-    position: absolute;
-    top: 375px;
-}
-
-.passwordLogInToogle {
-    position: absolute;
-    right: 30px;  
-    top: 180px;
+.dropdown-item:hover {
+    color: #28df99 !important;
+    background-color: #545454 !important;
 }

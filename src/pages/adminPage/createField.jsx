@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './style.css'
 import {
     Container,
     Row,
     Col,
     Carousel,
-    Button,
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faFutbol } from '@fortawesome/free-solid-svg-icons';
@@ -104,10 +102,10 @@ const CreateField = () => {
                                 Enter Price
                             </h3>
                         </div>
+                        <button type="button" class="btn btn-danger btn-lg">Cancel</button>
+                        <button type="button" class="btn btn-warning btn-lg">Create Field</button>
                     </Col>
                 </Row>
-                <button type="button" class="btn btn-danger btn-lg">Cancel</button>
-                <button type="button" class="btn btn-warning btn-lg">Create Field</button>
             </Container>
         </div>
     )
