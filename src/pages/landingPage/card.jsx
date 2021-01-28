@@ -12,29 +12,29 @@ import Loading from '../loading/loading';
 const Cards = () => {
 
   const [fields, setFields] = useState([]);
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
-    // const url = 'http://54.251.238.126:3001/field/'
-    const url = 'https://soka.kuyrek.com:3001/field/'
+  // const url = 'http://54.251.238.126:3001/field/'
+  const url = 'https://soka.kuyrek.com:3001/field/'
 
 
-    useEffect(() => {
-        axios
-          .get(url)
-          .then((res) => {
-            setFields(res.data.data);
-            // console.log(fields);
-            setLoading(true);
-          })
-          .catch((err) => {
-            console.log(err);
-            
-          });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
-console.log(fields)
-// const img = fields.image[0].slice(7)
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((res) => {
+        setFields(res.data.data);
+        // console.log(fields);
+        setLoading(true);
+      })
+      .catch((err) => {
+        console.log(err);
+
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  console.log(fields)
+  // const img = fields.image[0].slice(7)
   return (
     <div
       style={{
@@ -42,31 +42,31 @@ console.log(fields)
       }}>
       <div className="landingPageCards">
         <p className="feature-title">Feature Field</p>
-        <Link to='/browseFields' style={{textDecoration: 'none'}}>
-          <a className="goto" style={{color: 'white', textDecoration: 'none'}} href='?#'>Browse Field <FontAwesomeIcon icon={faArrowRight} class="map right" /></a>
+        <Link to='/browseFields' style={{ textDecoration: 'none' }}>
+          <a className="goto" style={{ color: 'white', textDecoration: 'none' }} href='?#'>Browse Field <FontAwesomeIcon icon={faArrowRight} class="map right" /></a>
         </Link>
         <br />
         <br />
         <div className="main home">
           <div className="content">
             {fields && loading ? (fields.slice(1, 5).map((field) => (<div class="card home" style={{ width: '18rem' }}>
-                <Link to={`field-details/${field.id}`} style={{textDecoration: 'none', color: 'white'}} >
-              <div className='card-fields'>
-              <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
-              <div class="card-body">
-                <h5 class="card-title">{field.fieldName.slice(0, 15)}</h5>
-                <small class="price">Rp. {field.price.$numberDecimal}.000</small>
-                <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
-                  {/* <button className="btn btn-secondary view">View</button>
+              <Link to={`field-details/${field.id}`} style={{ textDecoration: 'none', color: 'white' }} >
+                <div className='card-fields'>
+                  <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
+                  <div class="card-body">
+                    <h5 class="card-title">{field.fieldName.slice(0, 15)}</h5>
+                    <small class="price">Rp. {field.price.$numberDecimal}.000</small>
+                    <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
+                    {/* <button className="btn btn-secondary view">View</button>
                 <button className="btn book">Book</button> */}
-              </div>
-              </div>
-                  </Link>
+                  </div>
+                </div>
+              </Link>
             </div>
-            ))) : ( <Loading />)}
+            ))) : (<Loading />)}
           </div>
+        </div>
       </div>
-    </div>
     </div>
   )
 }

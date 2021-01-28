@@ -1,10 +1,6 @@
 import {
-    GET_PROFILE,
     GET_PROFILE_SUCCESS,
-    GET_PROFILE_FAILURE,
-    UPDATE_PROFILE,
     UPDATE_PROFILE_SUCCESS,
-    UPDATE_PROFILE_FAILURE,
 } from '../actions/types'
 
 const initialState = {
@@ -20,13 +16,19 @@ const initialState = {
 
 export default function profileUSer(state = initialState, action) {
     switch (type.action) {
-        case GET_PROFILE: {
+        case GET_PROFILE_SUCCESS: {
             return {
                 ...state,
-                loading: true
+                isLoading: false,
+                data: action.payload,
             }
         }
-        case GET_PROFILE_SUCCESS: {
+    }
+}
+
+export default function UpdateProfile(state = initialState, action) {
+    switch (type.action) {
+        case UPDATE_PROFILE_SUCCESS: {
             return {
                 ...state,
                 isLoading: false,

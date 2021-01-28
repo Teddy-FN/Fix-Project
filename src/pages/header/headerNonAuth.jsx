@@ -8,12 +8,16 @@ import Logo from '../../assets/img/logo.png'
 import '../header/header.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Form } from 'reactstrap'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import { handler } from '../../provider'
+import { Link, Router, Switch, Route } from 'react-router-dom'
+// Icon Show password
 import ShowPasswordToogle from './showPasswordToogle/showPasswordToogle'
+// redux Saga
 import { USER_LOG_IN, USER_SIGNUP } from '../../redux/actions/types'
+import { handler } from '../../provider'
+import HeaderAuth from './headerAuth'
+import { login, SignUp } from '../../redux/actions/auth'
 
-const HeaderNonAuth = (props, { userLogin }) => {
+const HeaderNonAuth = (props) => {
     const {
         className
     } = props;
@@ -25,58 +29,76 @@ const HeaderNonAuth = (props, { userLogin }) => {
         setModalSignUpUser(true)
         setModalRegist(!modalRegist)
     };
+    const [tokenLogin, setTokenLogin] = useState(localStorage.getItem('token'))
 
     const [modalLogin, setModalLogin] = useState(false);
     const toggleLogin = () => { setModalLogin(!modalLogin); setModalRegist(!modalRegist) };
 
     const [token] = useState('');
-
-    let auth = localStorage.getItem("token");
-    console.log('auth', auth);
-
     const [passwordInputType, ToogleIcon] = ShowPasswordToogle()
 
-    // Logic Register And Login 
-    // Set State
-    // const [regist, setRegist] = useState('')
+    // Register
+    const handleOnSubmitSignUp = async (event) => {
+        event.preventDefault()
+        // dispatch({ type: USER_LOG_IN, payload: userLogin })
+        setLoading(true)
+        await dispatch(SignUp({
+            email: event.target.email.value,
+            fullname: event.target.fullname.value,
+            password: event.target.password.value,
+            passwordConfirmation: event.target.passwordConfirmation.value
+        }))
+        console.log('Ini Event', event)
+    };
+    // const handleOnSubmitSignUp = async (e) => {
+    //     e.preventDefault();
+    //     await dispatch(SignUp({
+    //         email: e.target.email.value,
+    //         fullname: e.target.fullname.value,
+    //         password: e.target.password.value,
+    //         passwordConfirmation: e.target.passwordConfirmation.value
+    //     }));
+    //     console.log("token", e);
+    // }
 
-
-    // const signUpBtn = useSelector(state => state)
-    // useEffect(() => {
-
-    // })
-
-    const handleOnSubmitSignUp = (e) => {
-        e.preventDefault();
-
-        const userRegister = {
-            email: e.target.email.value,
-            fullname: e.target.fullname.value,
-            password: e.target.password.value,
-            passwordConfirmation: e.target.passwordConfirmation.value
-        };
-        dispatch({ type: USER_SIGNUP, payload: userRegister })
-    }
 
     // LOGIN
-    const [login, setLogin] = useState('')
-    const handleSubmitLogin = (event) => {
+    const [loading, setLoading] = useState(false)
+    const dataLogin = useSelector(state => state)
+    const handleSubmitLogin = async (event) => {
         event.preventDefault()
-        const userLogin = {
+        // dispatch({ type: USER_LOG_IN, payload: userLogin })
+        setLoading(true)
+        await dispatch(login({
             email: event.target.email.value,
             password: event.target.password.value
-        }
-        dispatch({ type: USER_LOG_IN, payload: userLogin })
+        }))
+            .then((e) => {
+                if (e !== '') {
+                    localStorage.setItem('token', e)
+                    alert('Success')
+                    setLoading(false)
+                } else {
+                    alert('Fail')
+                    setLoading(false)
+                }
+            })
     };
     console.log("token", token);
+
+    // if (loading) {
+    //     return (
+    //         <p>Text Loading</p>
+    //     )
+    // }
 
     return (
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px #222222' }}>
             <Link to="/"><img class="logo" src={Logo}></img></Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto" style={{textDecoration: 'none'}}>
+                <ul class="navbar-nav mr-auto" style={{ textDecoration: 'none' }}>
                     <li class="nav-item active">
-                        <Link to="/" style={{textDecoration: 'none'}}>
+                        <Link to="/" style={{ textDecoration: 'none' }}>
                             <a class="nav-link" href="#" >Home <span class="sr-only">(current)</span></a>
                         </Link>
                     </li>
@@ -84,14 +106,14 @@ const HeaderNonAuth = (props, { userLogin }) => {
                         <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active" >
-                        <Link to="/browseFields" style={{textDecoration: 'none'}}>
-                            <a class="nav-link" href="#" style={{textDecoration: 'none'}}>Browse <span class="sr-only">(current)</span></a>
+                        <Link to="/browseFields" style={{ textDecoration: 'none' }}>
+                            <a class="nav-link" href="#" style={{ textDecoration: 'none' }}>Browse <span class="sr-only">(current)</span></a>
                         </Link>
                     </li>
                 </ul>
             </div>
             <div>
-                <li class="btn-header active" style={{ color: 'white', textDecoration: 'none', listStyle: 'none' }} color="link" onClick={toggleRegist}><a href='#' style={{textDecoration: 'none', color: 'white'}} className='btn-header'>Sign Up</a></li>
+                <li class="btn-header active" style={{ color: 'white', textDecoration: 'none', listStyle: 'none' }} color="link" onClick={toggleRegist}><a href='#' style={{ textDecoration: 'none', color: 'white' }} className='btn-header'>Sign Up</a></li>
                 <Modal isOpen={modalRegist} toggle={toggleRegist}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title"> Sign Up</h4>
@@ -151,7 +173,12 @@ const HeaderNonAuth = (props, { userLogin }) => {
                 </Modal>
             </div>
             <div >
-                <li class="btn-header" style={{ color: 'white', textDecoration: 'none', listStyle: 'none' }} color="link" onClick={toggleLogin}><a href='#' style={{textDecoration: 'none', color: 'white'}} className='btn-header'>Login</a></li>
+                {
+                    token ?
+                        <div>nama</div> :
+                        null
+                }
+                <Button class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleLogin}>Log In</Button>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title">Log In</h4>
