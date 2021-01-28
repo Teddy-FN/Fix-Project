@@ -8,12 +8,16 @@ import Logo from '../../assets/img/logo.png'
 import '../header/header.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Form } from 'reactstrap'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import { handler } from '../../provider'
+import { Link, Router, Switch, Route } from 'react-router-dom'
+// Icon Show password
 import ShowPasswordToogle from './showPasswordToogle/showPasswordToogle'
+// redux Saga
 import { USER_LOG_IN, USER_SIGNUP } from '../../redux/actions/types'
+import { handler } from '../../provider'
+import HeaderAuth from './headerAuth'
+import { login, SignUp } from '../../redux/actions/auth'
 
-const HeaderNonAuth = (props, { userLogin }) => {
+const HeaderNonAuth = (props) => {
     const {
         className
     } = props;
@@ -25,50 +29,68 @@ const HeaderNonAuth = (props, { userLogin }) => {
         setModalSignUpUser(true)
         setModalRegist(!modalRegist)
     };
+    const [tokenLogin, setTokenLogin] = useState(localStorage.getItem('token'))
 
     const [modalLogin, setModalLogin] = useState(false);
     const toggleLogin = () => { setModalLogin(!modalLogin); setModalRegist(!modalRegist) };
 
     const [token] = useState('');
-
-    let auth = localStorage.getItem("token");
-    console.log('auth', auth);
-
     const [passwordInputType, ToogleIcon] = ShowPasswordToogle()
 
-    // Logic Register And Login 
-    // Set State
-    // const [regist, setRegist] = useState('')
+    // Register
+    const handleOnSubmitSignUp = async (event) => {
+        event.preventDefault()
+        // dispatch({ type: USER_LOG_IN, payload: userLogin })
+        setLoading(true)
+        await dispatch(SignUp({
+            email: event.target.email.value,
+            fullname: event.target.fullname.value,
+            password: event.target.password.value,
+            passwordConfirmation: event.target.passwordConfirmation.value
+        }))
+        console.log('Ini Event', event)
+    };
+    // const handleOnSubmitSignUp = async (e) => {
+    //     e.preventDefault();
+    //     await dispatch(SignUp({
+    //         email: e.target.email.value,
+    //         fullname: e.target.fullname.value,
+    //         password: e.target.password.value,
+    //         passwordConfirmation: e.target.passwordConfirmation.value
+    //     }));
+    //     console.log("token", e);
+    // }
 
-
-    // const signUpBtn = useSelector(state => state)
-    // useEffect(() => {
-
-    // })
-
-    const handleOnSubmitSignUp = (e) => {
-        e.preventDefault();
-
-        const userRegister = {
-            email: e.target.email.value,
-            fullname: e.target.fullname.value,
-            password: e.target.password.value,
-            passwordConfirmation: e.target.passwordConfirmation.value
-        };
-        dispatch({ type: USER_SIGNUP, payload: userRegister })
-    }
 
     // LOGIN
-    const [login, setLogin] = useState('')
-    const handleSubmitLogin = (event) => {
+    const [loading, setLoading] = useState(false)
+    const dataLogin = useSelector(state => state)
+    const handleSubmitLogin = async (event) => {
         event.preventDefault()
-        const userLogin = {
+        // dispatch({ type: USER_LOG_IN, payload: userLogin })
+        setLoading(true)
+        await dispatch(login({
             email: event.target.email.value,
             password: event.target.password.value
-        }
-        dispatch({ type: USER_LOG_IN, payload: userLogin })
+        }))
+            .then((e) => {
+                if (e !== '') {
+                    localStorage.setItem('token', e)
+                    alert('Success')
+                    setLoading(false)
+                } else {
+                    alert('Fail')
+                    setLoading(false)
+                }
+            })
     };
     console.log("token", token);
+
+    // if (loading) {
+    //     return (
+    //         <p>Text Loading</p>
+    //     )
+    // }
 
     return (
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: "#222222" }}>
@@ -151,6 +173,11 @@ const HeaderNonAuth = (props, { userLogin }) => {
                 </Modal>
             </div>
             <div >
+                {
+                    token ?
+                        <div>nama</div> :
+                        null
+                }
                 <Button class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleLogin}>Log In</Button>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
                     <ModalBody className="modal-body">

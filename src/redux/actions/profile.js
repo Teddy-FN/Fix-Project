@@ -1,51 +1,76 @@
 import {
-    GET_PROFILE,
     GET_PROFILE_SUCCESS,
-    GET_PROFILE_FAILURE,
-    UPDATE_PROFILE,
-    UPDATE_PROFILE_SUCCESS,
-    UPDATE_PROFILE_FAILURE,
 } from './types'
+import axios from 'axios'
+const API = 'https://soka.kuyrek.com:3005'
+const token = localStorage.getItem('token')
+
+export const GetProfile = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(API + `/user/profile`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+            console.log('Ini Res', res)
+            dispatch({
+                type: GET_PROFILE_SUCCESS,
+                payload: res.data.data
+            });
+            return res.data.data
+        } catch (error) {
+            console.log("error login ", error);
+            return '';
+        }
+    };
+};
 
 
-export const getProfileUser = payload => {
-    return {
-        type: GET_PROFILE,
-        payload
-    }
-}
+// Get Profile??
+export const loadProfile = () => async (dispatch) => {
+    const response = await axios.get(API + '/user/profile',
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
 
-export const getProfileUserSuccess = payload => {
-    return {
-        type: GET_PROFILE_SUCCESS,
-        payload
-    }
-}
+    return dispatch(UpdateProfile(response.data.data));
+};
 
-export const getProfileUserFailure = error => {
-    return {
-        type: GET_PROFILE_FAILURE,
-        error
-    }
-}
-
-export const updateProfile = payload => {
-    return {
-        type: UPDATE_PROFILE,
-        payload
-    }
-}
-
-export const updateProfileSuccess = payload => {
-    return {
-        type: UPDATE_PROFILE_SUCCESS,
-        payload
-    }
-}
-
-export const updateProfileFailure = error => {
-    return {
-        type: UPDATE_PROFILE_FAILURE,
-        error
-    }
-}
+export const UpdateProfile = ({ fullname, description, phone, profilePic }) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(API + `/user/edit`, {
+                fullname: fullname,
+                description: description,
+                phone: phone,
+                profilePic: profilePic
+            },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+            console.log('Ini Res', res)
+            dispatch({
+                type: GET_PROFILE_SUCCESS,
+                payload: res.data.data
+            });
+            return res.data.data
+        } catch (error) {
+            console.log("error login ", error);
+            return '';
+        }
+    };
+};

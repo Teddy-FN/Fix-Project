@@ -9,13 +9,17 @@ import LandingPage from '../landingPage/landingPage'
 import { Link } from 'react-router-dom'
 import '../header/header.css'
 import { handler } from '../../provider/index'
+import { login, SignUp, logoutUser } from '../../redux/actions/auth'
+import { useSelector, useDispatch } from 'react-redux'
 
 const HeaderAuth = () => {
-    const { logged, setLogged } = useContext(handler)
-    const logOut = () => {
-        localStorage.removeItem('token')
-        setLogged(false)
+    const dispatch = useDispatch()
+    const logOut = async () => {
+        await dispatch(logoutUser(
+            localStorage.removeItem('token')
+        ))
     }
+
 
     return (
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: "#222222" }}>
@@ -45,7 +49,7 @@ const HeaderAuth = () => {
                             <a class="dropdown-item" href="#">Profile</a>
                         </Link>
                         <a class="dropdown-item" href="#">Setting</a>
-                        <a class="dropdown-item" href="#" onClick={() => logOut()}>Log Out</a>
+                        <a class="dropdown-item" href="#" onClick={logOut}>Log Out</a>
                     </div>
                 </div>
             </div>

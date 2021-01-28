@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody } from 'reactstrap';
 import './style.css'
+import { useSelector, useDispatch } from 'react-redux'
 import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
 // import { useSelector, useDispatch } from "react-redux";
 // import StepThree from '../../booking/stepThree/'
 
@@ -26,47 +28,75 @@ function Bio(props) {
 
     // Edit Profile User
     const [editUser, setEditUser] = useState([])
-
+    const dispatch = useDispatch()
     // const [loading, setLoading] = useState(false)
-    const url = `https://soka.kuyrek.com:3005/user/profile`;
-    useEffect(() => {
-        axios.get(url
-            , {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+    // useEffect(() => {
+    //     const handleSubmitLogin = async (event) => {
+    //         event.preventDefault()
+    //         // dispatch({ type: USER_LOG_IN, payload: userLogin })
+    //         setLoading(true)
+    //         await dispatch(login({
+    //             email: event.target.email.value,
+    //             password: event.target.password.value
+    //         }))
+    //             .then((e) => {
+    //                 if (e !== '') {
+    //                     localStorage.setItem('token', e)
+    //                     alert('Success')
+    //                     setLoading(false)
+    //                 } else {
+    //                     alert('Fail')
+    //                     setLoading(false)
+    //                 }
+    //             })
+    //     };
+    // })
+
+    const [loading, setLoading] = useState(false)
+    const dataLogin = useSelector(state => state)
+    const HandleChangeProfile = async (event) => {
+        event.preventDefault()
+        // dispatch({ type: USER_LOG_IN, payload: userLogin })
+        setLoading(true)
+        await dispatch(UpdateProfile({
+            fullname: event.target.fullname.value,
+            email: event.target.email.value,
+            password: event.target.password.value,
+            passwordConfirmation: event.target.passwordConfirmation.value,
+            phone: event.target.phone.value,
+            profilePic: event.target.profilePic.value,
+        }))
+            .then((e) => {
+                if (e !== '') {
+                    localStorage.setItem('token', e)
+                    alert('Edit Profile Success')
+                    setLoading(false)
+                } else {
+                    alert('Edit Profile Fail')
+                    setLoading(false)
                 }
-            }
-        ).then((res) => {
-            // console.log("Response", res)
-            // setLoading(true);
-            setUser(res.data.data);
-        })
-            .catch(error => {
-                console.log(error)
             })
-    })
+    };
 
 
-    console.log('User Info', editUser) // Line 29
-    // Edit User Profile 
-    const handleChangeBio = e => {
-        e.preventDefault()
-        console.log('Change Profile', e.currentTarget.value);
-        editUser(e.currentTarget.value);
-        axios.put(`https://soka.kuyrek.com:3005/user/edit`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((userProfile) => {
-                console.log(userProfile)
-                setEditUser(userProfile)
-            })
-    }
+    // console.log('User Info', editUser) // Line 29
+    // // Edit User Profile 
+    // const handleChangeBio = e => {
+    //     e.preventDefault()
+    //     console.log('Change Profile', e.currentTarget.value);
+    //     editUser(e.currentTarget.value);
+    //     axios.put(`https://soka.kuyrek.com:3005/user/edit`, {
+    //         headers: {
+    //             Authorization: `Bearer ${token}`,
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //         .then((userProfile) => {
+    //             console.log(userProfile)
+    //             setEditUser(userProfile)
+    //         })
+    // }
 
     return (
         <div>
@@ -100,7 +130,17 @@ function Bio(props) {
                                                 <h4 className="edit-title">Edit Profile</h4>
                                                 <br />
                                                 <div>
-                                                    <Form onSubmit={handleChangeBio}>
+                                                    <Form onSubmit={HandleChangeProfile}>
+                                                        <FormGroup row className="edit-form-name">
+                                                            <Label sm={3}>Img :</Label>
+                                                            <Col sm={8}>
+                                                                <Input
+                                                                    type="file"
+                                                                    name="profilePic"
+                                                                    id="profilePic"
+                                                                    placeholder="Enter Your Number Here...." />
+                                                            </Col>
+                                                        </FormGroup>
                                                         <FormGroup row className="edit-form-name">
                                                             <Label sm={3}>Email :</Label>
                                                             <Col sm={8}>
@@ -109,6 +149,16 @@ function Bio(props) {
                                                                     name="email"
                                                                     id="email"
                                                                     placeholder="Enter Your Email Here...." />
+                                                            </Col>
+                                                        </FormGroup>
+                                                        <FormGroup row className="edit-form-name">
+                                                            <Label sm={3}>phone :</Label>
+                                                            <Col sm={8}>
+                                                                <Input
+                                                                    type="text"
+                                                                    name="phone"
+                                                                    id="phone"
+                                                                    placeholder="Enter Your Number Here...." />
                                                             </Col>
                                                         </FormGroup>
                                                         <FormGroup row className="edit-form-name">

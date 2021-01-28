@@ -79,7 +79,9 @@ function CardFields() {
                         </div>
                     </div>
                 </div>
-                <ButtonAdmin />
+                <Link to="/createField">
+                    <ButtonAdmin />
+                </Link>
                 <div className="main">
                     <div className="content">
                         {fields && loading ? (

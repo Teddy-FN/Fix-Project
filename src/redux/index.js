@@ -1,16 +1,16 @@
 import { createStore, applyMiddleware } from 'redux'
-import createSagaMiddleWare from 'redux-saga'
+import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from './reducers'
-import Sagas from './sagas/auth'
+// import Sagas from './sagas/auth'
 
-const sagaMiddleWare = createSagaMiddleWare()
+// const sagaMiddleWare = createSagaMiddleWare()
 
 const store = createStore(
     rootReducer,
     {},
-    composeWithDevTools(applyMiddleware(sagaMiddleWare)) // Connect to extension browser
+    composeWithDevTools(applyMiddleware(ReduxThunk)) // Connect to extension browser
 )
-sagaMiddleWare.run(Sagas)
+// sagaMiddleWare.run(Sagas)
 
 export default store;
