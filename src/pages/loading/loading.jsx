@@ -11,7 +11,7 @@ const Loading = () => {
           />
         </div>
         <br />
-        <h3 style={{ textAlign: "center" }}>Please Wait</h3>
+        <h3 style={{ textAlign: "center" }}>Please Wait...</h3>
     </Container>
   );
 };
