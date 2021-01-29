@@ -11,8 +11,6 @@ import Bio from './pages/Profile/Bio'
 import CreateField from './pages/adminPage/createField'
 import { Switch, Route } from 'react-router-dom'
 import { connect, useSelector } from 'react-redux'
-import SetDate from './pages/booking/component/setDate'
-import SetTime from './pages/booking/component/setTime'
 
 
 function App(state) {

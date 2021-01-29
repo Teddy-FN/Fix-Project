@@ -17,13 +17,44 @@
     margin-top: 3%;
 }
 
-.btn1 {
+.btn-jumb {
     margin-left: 43%;
     background-color: #28df99 !important;
     color: #313131 !important;
     font-weight: bold !important;
-    width: 220px;
-    height: 60px;
-    font-size: 24px !important;
+    width: 170px;
+    height: 50px;
+    font-size: 24px;
     margin-top: 30px;
+}
+
+/* Ipad */
+@media (max-width: 768px){
+    
+    .title {
+        font-size: 70px;
+    }
+
+    .btn-jumb {
+        margin-left: 43%;
+        font-size: 18px;
+        width: 140px;
+    }
+}
+
+/* Iphone */
+@media (max-width:375px){
+
+    .title {
+        font-size: 40px;
+        margin-top: 20%;
+    }
+
+    .btn-jumb {
+        margin-left: 34%;
+        width: 130px;
+        height: 40px;
+        size: 10%;
+
+    }
 }

@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
 import '../header/header.css'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Form } from 'reactstrap'
+import { Button, Modal, ModalBody, Label, Input, FormGroup, Form } from 'reactstrap'
 import axios from 'axios'
 import { Link, Router, Switch, Route } from 'react-router-dom'
 // Icon Show password
@@ -126,7 +126,6 @@ const HeaderNonAuth = (props) => {
                                     name="email"
                                     id="email"
                                     placeholder="Write your email here"
-
                                 />
                             </FormGroup>
                             <FormGroup >
@@ -136,7 +135,6 @@ const HeaderNonAuth = (props) => {
                                     name="fullname"
                                     id="fullname"
                                     placeholder="Write your full name here"
-
                                 />
                             </FormGroup>
                             <FormGroup>
@@ -146,7 +144,6 @@ const HeaderNonAuth = (props) => {
                                     name="password"
                                     id="password"
                                     placeholder="Write your password here"
-
                                 />
                                 <span className="passwordToogle">{ToogleIcon}</span>
                             </FormGroup>
@@ -160,16 +157,15 @@ const HeaderNonAuth = (props) => {
                                 />
                                 <span className="passwordConfirmationToogle">{ToogleIcon}</span>
                             </FormGroup>
+                            <br />
                             <Button type="submit" className="submit-button" style={{ backgroundColor: '#28df99' }}>Sign Up</Button>
                             <br />
                             <br />
                             <p class="para" >Or</p>
-                            <Button className="facebook-button" style={{ backgroundColor: '#3b5998' }}>Sign Up with Facebook</Button>
+                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }}>Sign Up with Facebook</Button>
                         </Form>
-                    </ModalBody>
-                    <ModalFooter className="modal-foter">
                         <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99' }} onClick={toggleLogin}>Log In</Button></span>
-                    </ModalFooter>
+                    </ModalBody>
                 </Modal>
             </div>
             <div >
@@ -205,12 +201,10 @@ const HeaderNonAuth = (props) => {
                             <br />
                             <br />
                             <p class="para">Or</p>
-                            <Button className="facebook-button" style={{ backgroundColor: '#3b5998' }} onClick={toggleLogin}>Log In with Facebook</Button>
+                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }} onClick={toggleLogin}>Log In with Facebook</Button>
                         </Form>
-                    </ModalBody>
-                    <ModalFooter className="modal-footer">
                         <span class="statement">Don't have an account? <Button className="crosing-button" style={{ color: '#28df99' }} color="link" onClick={toggleRegist}>Sign Up</Button></span>
-                    </ModalFooter>
+                    </ModalBody>
                 </Modal>
             </div>
         </nav>

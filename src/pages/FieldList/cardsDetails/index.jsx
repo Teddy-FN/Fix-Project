@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Pagination from './pagination';
 import Loading from '../../loading/loading';
+<<<<<<< HEAD
+import ButtonAdmin from '../addFields/buttonAdmin';
+=======
+>>>>>>> 6afbef21c27a2e26489d9ada48fd93adb3db5473
 
 
 function CardFields() {
