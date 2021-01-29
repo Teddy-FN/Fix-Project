@@ -102,37 +102,37 @@ function CardFields() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     console.log(fields)
     return (
-        <div>
-            <Container>
+        <div >
+            <Container className='container'>
                 <div className="searchButton">
-                    <form class="form-inline my-0 my-lg-0">
-                        <input class="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
+                    <form className="form-inline my-0 my-lg-0">
+                        <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
                             setSearch(event.target.value)
                         }} />
-                        <button type="button" class="btn btn-success buttonSearch">
+                        <button type="button" className="btn btn-success buttonSearch">
                             <FontAwesomeIcon icon={faSearch} />
                         </button>
                     </form>
                 </div>
                 <div className="sorter">
-                    <div class="dropdown filter">
-                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
+                    <div className="dropdown filter">
+                        <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
                             <small className="nameFitur">Filter</small>
                             <small className="dropdown-toggle"></small>
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <p className='dropdown-item' onClick={sortByNameAsc}>Filter By Name (A-Z)</p>
-                            <p className='dropdown-item' onClick={sortByNameDesc}>Filter By Name (Z-A)</p>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{backgroundColor: '#545454', color: 'white'}}>
+                            <p className='dropdown-item' onClick={sortByNameAsc} style={{cursor: 'pointer', backgroundColor: '#545454'}}>Filter By Name (A-Z)</p>
+                            <p className='dropdown-item' onClick={sortByNameDesc} style={{cursor: 'pointer', backgroundColor: '#545454'}}>Filter By Name (Z-A)</p>
                         </div>
                     </div>
-                    <div class="dropdown sort">
-                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
+                    <div className="dropdown sort">
+                        <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
                             <small className="nameFitur">Sort</small>
                             <small className="dropdown-toggle"></small>
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <p className='dropdown-item' onClick={sortByPriceAsc}>Sort By Price (Low-High)</p>
-                            <p className='dropdown-item' onClick={sortByPriceDesc}>Sort By Price (High-Low)</p>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{backgroundColor: '#545454', color: 'white'}}>
+                            <p className='dropdown-item' onClick={sortByPriceAsc} style={{cursor: 'pointer', backgroundColor: '#545454'}}>Sort By Price (Low-High)</p>
+                            <p className='dropdown-item' onClick={sortByPriceDesc} style={{cursor: 'pointer', backgroundColor: '#545454'}}>Sort By Price (High-Low)</p>
                         </div>
                     </div>
                 </div>
@@ -152,13 +152,13 @@ function CardFields() {
                                     return val
                                 }
                             }).map((field, idx) => (
-                                <div key={idx} class="card" style={{ width: '16rem' }}>
+                                <div key={idx} className="card" style={{ width: '16rem' }}>
                                     <Link to={`/field-details/${field._id}`} style={{ textDecoration: 'none', color: 'white' }} className='card-fields'>
                                         <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
                                         <div className="card-body">
                                             <h6 className="card-title">{field.fieldName.slice(0, 15)}</h6>
                                             <small className="price">Rp. {field.price.$numberDecimal}.000</small>
-                                            <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
+                                            <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} className="map" />{field.location}</p>
                                             {/* <button className="btn btn-secondary view">View</button>
                                         <button className="btn book">Book</button> */}
                                         </div>
