@@ -23,37 +23,39 @@ const HeaderAuth = () => {
     const user = useSelector((state) => state.profileUser.data);
     useEffect(() => {
         dispatch(GetProfile());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px black' }}>
-            <Link to="/"><img class="logo" src={Logo}></img></Link>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto" >
-                    <li class="nav-item active">
+        
+        <nav className="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px black' }}>
+            <Link to="/"><img className="logo" src={Logo}></img></Link>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav mr-auto" >
+                    <li className="nav-item active">
                         <Link to="/" style={{ textDecoration: 'none' }}>
-                            <a class="nav-link" href="#" style={{ textDecoration: 'none' }}>Home <span class="sr-only">(current)</span></a>
+                            <a className="nav-link" href="#" style={{ textDecoration: 'none' }}>Home <span className="sr-only">(current)</span></a>
                         </Link>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+                    <li className="nav-item active">
+                        <a className="nav-link" href="#">About <span className="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
+                    <li className="nav-item active">
                         <Link to="/browseFields" style={{ textDecoration: 'none' }}>
-                            <a class="nav-link" href="#">Browse <span class="sr-only">(current)</span></a>
+                            <a className="nav-link" href="#">Browse <span className="sr-only">(current)</span></a>
                         </Link>
                     </li>
                 </ul>
             </div>
             <div>
-                <div class="dropdown">
-                    <img src={`https://soka.kuyrek.com:3005/${user.profilePic}`} class="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <div className="dropdown">
+                    <img src={user.profilePic === null ? Profile : `https://soka.kuyrek.com:3005/${user?.profilePic}`} className="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <Link to="/bio" style={{ textDecoration: 'none' }}>
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a className="dropdown-item" href="#">Profile</a>
                         </Link>
-                        <a class="dropdown-item" href="#">Setting</a>
-                        <a class="dropdown-item" href="#" onClick={logOut}>Log Out</a>
+                        <a className="dropdown-item" href="#">Setting</a>
+                       <Link to='/'> <a className="dropdown-item" href="#" onClick={logOut}>Log Out</a></Link>
                     </div>
                 </div>
             </div>

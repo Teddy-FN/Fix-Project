@@ -3,6 +3,10 @@ body {
     margin-top: 100px;
 }
 
+.container {
+    margin-top: 130px !important;
+}
+
 .content {
     display: flex;
     flex-wrap: wrap;
@@ -69,6 +73,10 @@ body {
 }
 .dropdown-toggle {
     margin-left: 64px;
+}
+
+.dropdown-title {
+    color: white;
 }
 
 .sorting {
