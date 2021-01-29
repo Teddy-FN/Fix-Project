@@ -43,20 +43,20 @@ const Cards = () => {
       <div className="landingPageCards">
         <p className="feature-title">Feature Field</p>
         <Link to='/browseFields' style={{ textDecoration: 'none' }}>
-          <a className="goto" style={{ color: 'white', textDecoration: 'none' }} href='?#'>Browse Field <FontAwesomeIcon icon={faArrowRight} class="map right" /></a>
+          <a className="goto" style={{ color: 'white', textDecoration: 'none' }} href='?#'>Browse Field &#10140;</a>
         </Link>
         <br />
         <br />
         <div className="main-home">
           <div className="content">
-            {fields && loading ? (fields.slice(1, 5).map((field) => (<div class="card home" style={{ width: '18rem' }}>
+            {fields && loading ? (fields.slice(1, 5).map((field) => (<div className="card home" style={{ width: '18rem' }}>
               <Link to={`field-details/${field.id}`} style={{ textDecoration: 'none', color: 'white' }} >
                 <div className='card-fields'>
                   <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
-                  <div class="card-body">
-                    <h5 class="card-title">{field.fieldName.slice(0, 15)}</h5>
-                    <small class="price">Rp. {field.price.$numberDecimal}.000</small>
-                    <p class="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} class="map" />{field.location}</p>
+                  <div className="card-body">
+                    <h5 className="card-title">{field.fieldName.slice(0, 15)}</h5>
+                    <small className="price">Rp. {field.price.$numberDecimal}.000</small>
+                    <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} className="map" />{field.location}</p>
                     {/* <button className="btn btn-secondary view">View</button>
                 <button className="btn book">Book</button> */}
                   </div>
