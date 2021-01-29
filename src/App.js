@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
+// import { useDispatch, useSelector } from "react-redux";
 import HeaderNonAuth from './pages/header/headerNonAuth'
 import HeaderAuth from './pages/header/headerAuth'
 import LandingPage from '../src/pages/landingPage/landingPage'
@@ -7,63 +8,55 @@ import FieldDetails from './pages/fieldDetail/fieldDetail'
 import BrowseFields from './pages/FieldList/BrowseFields'
 import PlayerList from './pages/playerList/playerList'
 import Bio from './pages/Profile/Bio'
+import CreateField from './pages/adminPage/createField'
 import { Switch, Route } from 'react-router-dom'
-import { handler } from './provider/index'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 
-import SetDate from '../src/pages/booking/component/setDate'
 
-function App({ userLogin }) {
+function App(state) {
   const [tokens, setTokens] = useState({
     tokenUser: ''
   });
-  const [isLogin, setIsLogin] = useState(true);
-  const { logged, setLogged } = useContext(handler)
-  console.log(logged, 'ini Logic');
+  const token = localStorage.getItem('token')
+  const [isLogin, setIsLogin] = useState(false);
+  const loginUser = useSelector((state) => state.AuthReducer.isLoggedIn)
+  console.log('Ini IsLogin', loginUser)
+
   useEffect(() => {
     // tokenUser();
     if ("token" in localStorage) {
       setTokens(true)
       setIsLogin(true)
     }
-  }, [logged])
-
-  const tokenUser = () => {
-    const token = 'tokenUser'
-    console.log(token);
-    tokens.tokenUser = token;
-    console.log(tokens.tokenUser);
-  }
+  }, [loginUser])
 
   return (
     <>
       {
-        logged || 'token' in localStorage ? <HeaderAuth /> : <HeaderNonAuth />
+        token ? <HeaderAuth /> : <HeaderNonAuth isLogin={isLogin} />
       }
-      {/* <HeaderNonAuth token={tokens} logged={logged}/> */}
       <Switch>
         <Route path='/' exact>
           <LandingPage />
         </Route>
         <Route path='/browseFields' exact>
-          <BrowseFields/>
+          <BrowseFields />
         </Route>
         <Route path='/field-details/:id' exact>
           <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin} />
         </Route>
         <Route path='/player-list' exact>
-          <PlayerList  />
+          <PlayerList />
         </Route>
         <Route path='/bio' exact>
           <Bio />
+        </Route>
+        <Route path='/createField' exact>
+          <CreateField isLogin={isLogin} setIsLogin={setIsLogin} />
         </Route>
       </Switch>
     </>
   )
 }
-//                                dari action
-const mapStateToProps = state => ({ userLogin: state.user })
-
-
-export default connect(mapStateToProps)(App);
+export default App;
 

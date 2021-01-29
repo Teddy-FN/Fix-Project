@@ -6,11 +6,14 @@
     height: 75px;
     width: 150px;
     margin-left: 5%;
+    margin-right: 30px;
 }
 
 .nav-link {
-    margin-left: 20px;
+    margin-left: 30px;
     color: white;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .nav-link:hover {
@@ -20,6 +23,8 @@
 .btn-header {
     margin-right: 30px !important;
     color: white !important;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .btn-header:hover {
@@ -96,6 +101,7 @@
 .dropdown-item:hover {
     color: #28df99 !important;
     background-color: #545454 !important;
+<<<<<<< HEAD
 }
 
 .passwordToogle {
@@ -164,4 +170,6 @@
         margin-right: 0px !important;
         align-content: flex-end;
     }
+=======
+>>>>>>> 6afbef21c27a2e26489d9ada48fd93adb3db5473
 }

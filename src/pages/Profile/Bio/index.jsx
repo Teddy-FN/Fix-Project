@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody } from 'reactstrap';
 import './style.css'
+import { useSelector, useDispatch } from 'react-redux'
 import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-// import { useSelector, useDispatch } from "react-redux";
-// import StepThree from '../../booking/stepThree/'
+import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
 
 function Bio(props) {
     const {
@@ -22,54 +21,57 @@ function Bio(props) {
     console.log('Id User', id)
 
     // Get data user    
-    const [user, setUser] = useState([])
+    const user = useSelector((state) => state.profileUser.data);
+    console.log('Ini USer BROOOOO', user)
 
-    // Edit Profile User
-    const [editUser, setEditUser] = useState([])
 
-    // const [loading, setLoading] = useState(false)
-    const url = `https://soka.kuyrek.com:3005/user/profile`;
-    useEffect(() => {
-        axios.get(url
-            , {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            }
-        ).then((res) => {
-            // console.log("Response", res)
-            // setLoading(true);
-            setUser(res.data.data);
-        })
-            .catch(error => {
-                console.log(error)
-            })
+    // data patch profile
+    const dispatch = useDispatch()
+    const [picture, setPicture] = useState({
+        profilePic: null
     })
+    const [input, setInput] = useState({
+        fullname: '',
+        description: '',
+        phone: '',
+    });
+    let formData = new FormData();
+    formData.append("profilePic", picture.profilePic);
+    formData.append("fullname", input.fullname);
+    formData.append("description", input.description);
+    formData.append("phone", input.phone);
 
 
-    console.log('User Info', editUser) // Line 29
-    // Edit User Profile 
-    const handleChangeBio = e => {
-        e.preventDefault()
-        console.log('Change Profile', e.currentTarget.value);
-        editUser(e.currentTarget.value);
-        axios.put(`https://soka.kuyrek.com:3005/user/edit`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((userProfile) => {
-                console.log(userProfile)
-                setEditUser(userProfile)
-            })
+    const handleChange = (name, value) => {
+        setInput({
+            ...input,
+            [name]: value,
+        });
+    };
+
+    const handlePicture = (e) => {
+        setPicture({
+            profilePic: e.target.files[0]
+            // Kalau gambar dari 1 perlu di mapping di bagian belakang -> e.target.files.map(data => { setPicture ({profilepic: data})
+        });
+    };
+
+    const [submitted, setSubmited] = useState(false);
+    const HandleChangeProfile = (e) => {
+        e.preventDefault();
+        dispatch(UpdateProfile(formData))
+        setSubmited(!submitted);
+        setModal(false)
     }
+
+    useEffect(() => {
+        dispatch(GetProfile());
+    }, [submitted]);
+
 
     return (
         <div>
+<<<<<<< HEAD
             {props.isLogin !== true ? (
                 <div>
                     <Col>
@@ -146,58 +148,142 @@ function Bio(props) {
                                                 </div>
                                             </ModalBody>
                                         </Modal>
+=======
+            <div className="subMenu">
+                <Container>
+                    <aside className="leftSide">
+                        <div>
+                            <div className="profile">
+                                <img src={`https://soka.kuyrek.com:3005/${user.profilePic}`} alt="" className="photo" />
+                            </div>
+                            <h4>{user?.fullname}</h4>
+                            <div className="desc">
+                                <h4>Description</h4>
+                                <p>{user?.description}</p>
+                            </div>
+                            <div className="button">
+                                <Button color="link" className="btn editBio" onClick={toggle}>Edit Profile</Button>
+                                <Modal isOpen={modal} toggle={toggle} className={className}>
+                                    <ModalBody toggle={toggle} close={closeBtn}>
+                                        <h4 className="edit-title">Edit Profile</h4>
+                                        <br />
+                                        <div>
+                                            <Form onSubmit={HandleChangeProfile}>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label sm={3}>Img :</Label>
+                                                    <Col sm={8}>
+                                                        <Input
+                                                            type="file"
+                                                            name="profilePic"
+                                                            id="profilePic"
+                                                            onChange={handlePicture}
+                                                        />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label sm={3}>Email :</Label>
+                                                    <Col sm={8}>
+                                                        <Input
+                                                            type="text"
+                                                            name="email"
+                                                            id="email"
+                                                            placeholder="Enter Your Email Here...."
+                                                            value={input.email}
+                                                            onChange={(e) => handleChange("email", e.target.value)}
+                                                        />
+
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label sm={3}>phone :</Label>
+                                                    <Col sm={8}>
+                                                        <Input
+                                                            type="text"
+                                                            name="phone"
+                                                            id="phone"
+                                                            placeholder="Enter Your Number Here...."
+                                                            value={input.phone}
+                                                            onChange={(e) => handleChange("phone", e.target.value)}
+                                                        />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label sm={3}>Full Name :</Label>
+                                                    <Col sm={8}>
+                                                        <Input
+                                                            type="text"
+                                                            name="fullname"
+                                                            id="fullname"
+                                                            placeholder="Enter Your Name Here...."
+                                                            value={input.fullname}
+                                                            onChange={(e) => handleChange("fullname", e.target.value)}
+                                                        />
+                                                    </Col>
+                                                </FormGroup>
+                                                <Button color="link" className="edit-button-submit">Submit</Button>
+                                            </Form>
+                                        </div>
+                                    </ModalBody>
+                                </Modal>
+                            </div>
+                        </div>
+                    </aside>
+                    <aside className="rightSide">
+                        <div className="borderHistory">
+                            {/* <StepThree /> */}
+                            <div className="contentBorder">
+                                <h5 className="headerBox">Book History</h5>
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div className="contentCard">
+                                            <h5 className="headerCard">Field Name</h5>
+                                            {/* <h5 className="status"></h5> */}
+                                            <small className="date">2021-01-01</small>
+                                            <Link to='player-list'>
+                                                <button className="btn player">Player List</button>
+                                            </Link>
+                                            <p className="footerCard">Coming Up Match</p>
+                                        </div >
+                                    </div >
+                                </div >
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div className="contentCard">
+                                            <h5 className="headerCard">Field Name 2</h5>
+                                            <h5 className="status">done</h5>
+                                            <small className="date">2021-01-01</small>
+                                            <Link to='player-list'>
+                                                <button className="btn player">Player List</button>
+                                            </Link>
+                                            <p className="footerCard">Give Feedback</p>
+                                        </div>
+>>>>>>> 6afbef21c27a2e26489d9ada48fd93adb3db5473
                                     </div>
                                 </div>
-                            </aside>
-                            <aside className="rightSide">
-                                <div className="borderHistory">
-                                    {/* <StepThree /> */}
-                                    <div className="contentBorder">
-                                        <h5 className="headerBox">Book History</h5>
-                                        <div class="card text-center">
-                                            <div class="card-body">
-                                                <div className="contentCard">
-                                                    <h5 className="headerCard">Field Name</h5>
-                                                    {/* <h5 className="status"></h5> */}
-                                                    <small className="date">2021-01-01</small>
-                                                    <Link to='player-list'>
-                                                        <button className="btn player">Player List</button>
-                                                    </Link>
-                                                    <p className="footerCard">Coming Up Match</p>
-                                                </div >
-                                            </div >
-                                        </div >
-                                        <div class="card text-center">
-                                            <div class="card-body">
-                                                <div className="contentCard">
-                                                    <h5 className="headerCard">Field Name 2</h5>
-                                                    <h5 className="status">done</h5>
-                                                    <small className="date">2021-01-01</small>
-                                                    <Link to='player-list'>
-                                                        <button className="btn player">Player List</button>
-                                                    </Link>
-                                                    <p className="footerCard">Give Feedback</p>
-                                                </div>
-                                            </div>
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div className="contentCard">
+                                            <h5 className="headerCard">Field Name 3</h5>
+                                            <h5 className="status">done</h5>
+                                            <small className="date">2021-01-01</small>
+                                            <Link to='player-list'>
+                                                <button className="btn player">Player List</button>
+                                            </Link>
+                                            <p className="footerCard">Give Feedback</p>
                                         </div>
-                                        <div class="card text-center">
-                                            <div class="card-body">
-                                                <div className="contentCard">
-                                                    <h5 className="headerCard">Field Name 3</h5>
-                                                    <h5 className="status">done</h5>
-                                                    <small className="date">2021-01-01</small>
-                                                    <Link to='player-list'>
-                                                        <button className="btn player">Player List</button>
-                                                    </Link>
-                                                    <p className="footerCard">Give Feedback</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div >
+                                    </div>
                                 </div>
+<<<<<<< HEAD
                             </aside>
                         </Container>
                     </div>)}
+=======
+                            </div >
+                        </div>
+                    </aside>
+                </Container>
+            </div>
+>>>>>>> 6afbef21c27a2e26489d9ada48fd93adb3db5473
         </div >
     )
 }
