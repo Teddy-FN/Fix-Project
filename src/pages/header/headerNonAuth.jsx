@@ -174,7 +174,7 @@ const HeaderNonAuth = (props) => {
                         <div>nama</div> :
                         null
                 }
-                <Button class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleLogin}>Log In</Button>
+                <Button class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleLogin} className='btn-header'>Log In</Button>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title">Log In</h4>
