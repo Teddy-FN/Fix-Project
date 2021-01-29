@@ -8,7 +8,7 @@ import Logo from '../../assets/img/logo.png'
 import '../header/header.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Form } from 'reactstrap'
 import axios from 'axios'
-import { Link, Router, Switch, Route } from 'react-router-dom'
+import { Link, Router, Switch, Route, useHistory } from 'react-router-dom'
 // Icon Show password
 import ShowPasswordToogle from './showPasswordToogle/showPasswordToogle'
 // redux Saga
@@ -16,6 +16,7 @@ import { USER_LOG_IN, USER_SIGNUP } from '../../redux/actions/types'
 import { handler } from '../../provider'
 import HeaderAuth from './headerAuth'
 import { login, SignUp } from '../../redux/actions/auth'
+import swal from 'sweetalert'
 
 const HeaderNonAuth = (props) => {
     const {
@@ -48,6 +49,17 @@ const HeaderNonAuth = (props) => {
             password: event.target.password.value,
             passwordConfirmation: event.target.passwordConfirmation.value
         }))
+        .then(
+            setModalRegist(false),
+            swal({
+                icon: "success",
+                title: "Register Succes",
+                text: "you can log in now",
+                type: "success",
+                buttons: false,
+                timer: 2000,
+              })
+        )
         console.log('Ini Event', event)
     };
     // const handleOnSubmitSignUp = async (e) => {
@@ -65,6 +77,7 @@ const HeaderNonAuth = (props) => {
     // LOGIN
     const [loading, setLoading] = useState(false)
     const dataLogin = useSelector(state => state)
+    const history = useHistory()
     const handleSubmitLogin = async (event) => {
         event.preventDefault()
         // dispatch({ type: USER_LOG_IN, payload: userLogin })
@@ -76,10 +89,24 @@ const HeaderNonAuth = (props) => {
             .then((e) => {
                 if (e !== '') {
                     localStorage.setItem('token', e)
-                    alert('Success')
+                    swal({
+                        icon: "success",
+                        title: "Success Login",
+                        text: "let's book a field",
+                        type: "success",
+                        buttons: false,
+                        timer: 3000,
+                      });
                     setLoading(false)
                 } else {
-                    alert('Fail')
+                    swal({
+                        icon: "error",
+                        title: "Wrong email or password",
+                        text: "please try again",
+                        type: "warning",
+                        buttons: false,
+                        timer: 2000,
+                      });
                     setLoading(false)
                 }
             })
@@ -178,10 +205,11 @@ const HeaderNonAuth = (props) => {
                         <div>nama</div> :
                         null
                 }
-                <Button class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleLogin}>Log In</Button>
+                <h4 class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleLogin}>Log In</h4>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title">Log In</h4>
+                        <br></br>
                         <Form onSubmit={handleSubmitLogin}>
                             <FormGroup>
                                 <Label for="emailUser">Email</Label>

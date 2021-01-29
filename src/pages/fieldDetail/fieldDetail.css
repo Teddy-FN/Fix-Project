@@ -152,3 +152,46 @@ body {
 .marker {
     padding-right: 10px;
 }
+
+
+/* tabet view */
+@media (max-width: 768px) {
+    .field-img-big {
+        height: 300px !important;
+    }
+
+    .desc-field{
+        min-height: 390px;
+    }
+    
+    .field-name{
+        font-weight: 700;
+        font-size: calc(10px + 3vmin);
+        text-align: left;
+        margin-left: -4px !important;
+    }
+    
+    .field-loc{
+        font-size: calc(8px + 1vmin);
+        text-align: left;
+    }
+    
+    .description-title {
+        font-weight: 700!important;
+        font-size: calc(10px + 1vmin);
+        color: #F4F4F4;
+        text-align: left;
+    }
+    
+    .description-p {
+        font-size: calc(8px + 1vmin);
+        color: #F4F4F4;
+        text-align: left;
+    }
+}
+
+
+/* Phone view */
+@media (min-width: 576px) { 
+
+ }

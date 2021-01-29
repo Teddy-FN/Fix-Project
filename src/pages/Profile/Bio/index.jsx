@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody } from 'reactstrap';
 import './style.css'
 import { useSelector, useDispatch } from 'react-redux'
-import User from '../../../assets/img/user.png'
+// import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
 import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
+import swal from 'sweetalert'
 
 function Bio(props) {
     const {
@@ -62,10 +63,19 @@ function Bio(props) {
         dispatch(UpdateProfile(formData))
         setSubmited(!submitted);
         setModal(false)
+        swal({
+            icon: "success",
+            title: "Your Profile has been updated",
+            text: "reaload the page to see changed",
+            type: "success",
+            buttons: false,
+            timer: 3000,
+          })
     }
 
     useEffect(() => {
         dispatch(GetProfile());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submitted]);
 
 
@@ -102,7 +112,7 @@ function Bio(props) {
                                                         />
                                                     </Col>
                                                 </FormGroup>
-                                                <FormGroup row className="edit-form-name">
+                                                {/* <FormGroup row className="edit-form-name">
                                                     <Label sm={3}>Email :</Label>
                                                     <Col sm={8}>
                                                         <Input
@@ -115,7 +125,7 @@ function Bio(props) {
                                                         />
 
                                                     </Col>
-                                                </FormGroup>
+                                                </FormGroup> */}
                                                 <FormGroup row className="edit-form-name">
                                                     <Label sm={3}>phone :</Label>
                                                     <Col sm={8}>
@@ -140,6 +150,20 @@ function Bio(props) {
                                                             value={input.fullname}
                                                             onChange={(e) => handleChange("fullname", e.target.value)}
                                                         />
+                                                    </Col>
+                                                </FormGroup>
+                                                <FormGroup row className="edit-form-name">
+                                                    <Label sm={3}>Description :</Label>
+                                                    <Col sm={8}>
+                                                        <Input
+                                                            type="text"
+                                                            name="desc"
+                                                            id="desc"
+                                                            placeholder="Enter Your Email Here...."
+                                                            value={input.description}
+                                                            onChange={(e) => handleChange("description", e.target.value)}
+                                                        />
+
                                                     </Col>
                                                 </FormGroup>
                                                 <Button color="link" className="edit-button-submit">Submit</Button>
