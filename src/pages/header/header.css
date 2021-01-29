@@ -118,6 +118,11 @@
     top: 180px;
 }
 
+.google-button {
+    width: 465px;
+    height: 40px;
+}
+
 /* iPad */
 @media (max-width: 768px){
     
@@ -130,10 +135,20 @@
         height: 40px;
     }
 
+    .btn-header {
+        margin-left: 0px;
+    }
+
 }
 
 /* iPhone */
 @media (max-width: 375px) {
+
+    .logo {
+        width: 40%;
+        height: 40%;
+        margin-left: 5px;
+    }
 
     .submit-button {
         width: 325px;
@@ -143,5 +158,10 @@
     .google-button {
         width: 325px;
         height: 38px;
+    }
+
+    .btn-header {
+        margin-right: 0px !important;
+        align-content: flex-end;
     }
 }

@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
-import { Modal, ModalBody, Button, Row, Col } from "reactstrap";
-// import Booking from '../booking/compiler';
+import React, { useState } from 'react'
+import { Modal, ModalBody, Button, Row, Col } from 'reactstrap'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { Container } from 'react-bootstrap'
 
 const ModalBooking = (props) => {
     const [modalBooking, setModalBooking] = useState(false);
     const toggleBooking = () => setModalBooking(!modalBooking);
 
+    const [selectedDate, setSelectedDate] = useState(null)
+
     return (
             <div>
-            <Button className='col-12 mb-3 btn-book' onClick={toggleBooking}>
-                Book Now
+            <Button className='col-12 mb-3 btn-book' onClick={toggleBooking} target="#modal-book1" >
+                Book
             </Button>
             <Modal
                 isOpen={modalBooking}
                 toggle={toggleBooking}
-                id="modal-book"
             >
                 {props.isLogin !== true ? (
                 <div>
+                <Modal>
                     <ModalBody>
                     <Row>
                         <Col>
@@ -43,11 +47,23 @@ const ModalBooking = (props) => {
                         </h4>
                     </Col>
                     </ModalBody>
+                </Modal>
                 </div>
                 ) : (
                     <ModalBody>
-                        {/* <Booking /> */}
-                        mulistep here
+                        <div>
+                            <h5 class="choose-title">Choose your date:</h5>
+                            <DatePicker className="calendar"
+                              selected={selectedDate}
+                              onChange={date => setSelectedDate(date)}
+                              dateFormat='dd/MM/yyyy'
+                              minDate={new Date()}
+                            />
+                        </div>
+                        <div>
+                            <h5 class="choose-title">Choose your timeslot:</h5>
+                        </div>
+                        <a className="button-next" href="#" class="next round">&#8250;</a>
                     </ModalBody>
                 )}
             </Modal>

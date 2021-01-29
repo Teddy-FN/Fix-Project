@@ -11,14 +11,13 @@ import { Switch, Route } from 'react-router-dom'
 import { handler } from './provider/index'
 import { connect } from 'react-redux'
 
-import SetDate from './pages/booking/component/setDate'
-import SetTime from './pages/booking/component/setTime'
+import SetDate from '../src/pages/booking/component/setDate'
 
 function App({ userLogin }) {
   const [tokens, setTokens] = useState({
     tokenUser: ''
   });
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const { logged, setLogged } = useContext(handler)
   console.log(logged, 'ini Logic');
   useEffect(() => {
