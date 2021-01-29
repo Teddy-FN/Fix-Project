@@ -101,7 +101,6 @@
 .dropdown-item:hover {
     color: #28df99 !important;
     background-color: #545454 !important;
-<<<<<<< HEAD
 }
 
 .passwordToogle {
@@ -170,6 +169,4 @@
         margin-right: 0px !important;
         align-content: flex-end;
     }
-=======
->>>>>>> 6afbef21c27a2e26489d9ada48fd93adb3db5473
 }

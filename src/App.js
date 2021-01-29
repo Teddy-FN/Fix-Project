@@ -11,6 +11,7 @@ import Bio from './pages/Profile/Bio'
 import CreateField from './pages/adminPage/createField'
 import { Switch, Route } from 'react-router-dom'
 import { connect, useSelector } from 'react-redux'
+import Confirm from '../src/pages/booking/component/confirm'
 
 
 function App(state) {
@@ -53,6 +54,9 @@ function App(state) {
         </Route>
         <Route path='/createField' exact>
           <CreateField isLogin={isLogin} setIsLogin={setIsLogin} />
+        </Route>
+        <Route path='/confirm'>
+          <Confirm />
         </Route>
       </Switch>
     </>
