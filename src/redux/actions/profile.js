@@ -9,7 +9,7 @@ const token = localStorage.getItem('token')
 export const GetProfile = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(API + `/user/profile`,
+            const res = await axios.get(`https://soka.kuyrek.com:3005/user/profile`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -24,7 +24,7 @@ export const GetProfile = () => {
                 payload: res.data.data
             });
             console.log('DAta User', res.data.data)
-            return res.data
+            return res.data.data
         } catch (error) {
             console.log("error login ", error);
             return '';

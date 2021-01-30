@@ -2,10 +2,12 @@ import { combineReducers } from 'redux'
 import { USER_LOG_OUT_SUCCESS } from '../actions/types'
 import AuthReducer from './auth'
 import profileUser from './User'
+import AdminReducer from './Admin'
 
 const combinedReducer = combineReducers({
     AuthReducer,
-    profileUser
+    profileUser,
+    AdminReducer
 });
 
 const rootReducer = (state, action) => {

@@ -20,10 +20,12 @@ const HeaderAuth = () => {
             localStorage.removeItem('token')
         ))
     }
+
     const user = useSelector((state) => state.profileUser.data);
+    console.log('Ini Header Auth', user)
     useEffect(() => {
         dispatch(GetProfile());
-    }, []);
+    });
 
     return (
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px black' }}>

@@ -9,18 +9,15 @@ import '../header/header.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Form } from 'reactstrap'
 import axios from 'axios'
 import { Link, Router, Switch, Route } from 'react-router-dom'
+import { toast } from 'react-toastify'
 // Icon Show password
 import ShowPasswordToogle from './showPasswordToogle/showPasswordToogle'
 // redux Saga
-import { USER_LOG_IN, USER_SIGNUP } from '../../redux/actions/types'
 import { handler } from '../../provider'
-import HeaderAuth from './headerAuth'
 import { login, SignUp } from '../../redux/actions/auth'
 
-const HeaderNonAuth = (props) => {
-    const {
-        className
-    } = props;
+const HeaderNonAuth = () => {
+
     const { logged, setLogged, modalLoginUser, setModalLoginUser, modalSignUpUser, setModalSignUpUser } = useContext(handler)
     const dispatch = useDispatch()
 
@@ -40,7 +37,6 @@ const HeaderNonAuth = (props) => {
     // Register
     const handleOnSubmitSignUp = async (event) => {
         event.preventDefault()
-        // dispatch({ type: USER_LOG_IN, payload: userLogin })
         setLoading(true)
         await dispatch(SignUp({
             email: event.target.email.value,
@@ -50,24 +46,12 @@ const HeaderNonAuth = (props) => {
         }))
         console.log('Ini Event', event)
     };
-    // const handleOnSubmitSignUp = async (e) => {
-    //     e.preventDefault();
-    //     await dispatch(SignUp({
-    //         email: e.target.email.value,
-    //         fullname: e.target.fullname.value,
-    //         password: e.target.password.value,
-    //         passwordConfirmation: e.target.passwordConfirmation.value
-    //     }));
-    //     console.log("token", e);
-    // }
-
 
     // LOGIN
     const [loading, setLoading] = useState(false)
     const dataLogin = useSelector(state => state)
     const handleSubmitLogin = async (event) => {
         event.preventDefault()
-        // dispatch({ type: USER_LOG_IN, payload: userLogin })
         setLoading(true)
         await dispatch(login({
             email: event.target.email.value,
@@ -76,7 +60,9 @@ const HeaderNonAuth = (props) => {
             .then((e) => {
                 if (e !== '') {
                     localStorage.setItem('token', e)
-                    alert('Success')
+                    toast.success('Berhasil Masuk')
+                    // toas('Success')
+                    window.payload()
                     setLoading(false)
                 } else {
                     alert('Fail')
@@ -85,12 +71,6 @@ const HeaderNonAuth = (props) => {
             })
     };
     console.log("token", token);
-
-    // if (loading) {
-    //     return (
-    //         <p>Text Loading</p>
-    //     )
-    // }
 
     return (
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px #222222' }}>

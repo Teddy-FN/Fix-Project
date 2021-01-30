@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody } from 'reactstrap';
 import './style.css'
 import { useSelector, useDispatch } from 'react-redux'
-import User from '../../../assets/img/user.png'
+// import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
 import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
 

@@ -11,7 +11,6 @@ const initialState = {
         phone: '',
         description: '',
         profilePic: '',
-        phone: '',
         id: ''
     }
 }

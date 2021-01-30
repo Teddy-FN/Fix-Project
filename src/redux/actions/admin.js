@@ -1,74 +1,58 @@
 import {
-    CREATE_FIELD,
     CREATE_FIELD_SUCCESS,
-    CREATE_FIELD_FAILURE,
-    UPDATE_FIELD,
-    UPDATE_FIELD_SUCCESS,
-    UPDATE_FIELD_FAILURE,
-    DELETE_FIELD,
-    DELETE_FIELD_SUCCESS,
-    DELETE_FIELD_FAILURE,
+    UPDATE_FIELD_SUCCESS
 } from './types'
+import axios from 'axios'
+const API = 'https://soka.kuyrek.com:3001'
+const token = localStorage.getItem('token')
 
-export const CreateField = payload => {
-    return {
-        type: CREATE_FIELD,
-        payload
-    }
-}
+export const CreateField = () => {
+    return async (dispatch) => {
+        try {
+            const CreateField = await axios.post(API + '/field/create',
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+            console.log('Tambah Lapangan', CreateField)
+            dispatch({
+                type: CREATE_FIELD_SUCCESS,
+                payload: CreateField.data.data
+            })
+            console.log('Admin Tambah Lapangan', CreateField.data.data)
+            return CreateField.data.data
+        } catch (error) {
+            console.log(error)
+            return ''
+        }
+    };
+};
 
-export const CreateFieldSuccess = payload => {
-    return {
-        type: CREATE_FIELD_SUCCESS,
-        payload
-    }
-}
-
-export const CreateFieldFailure = error => {
-    return {
-        type: CREATE_FIELD_FAILURE,
-        error
-    }
-}
-
-export const UpdateField = payload => {
-    return {
-        type: UPDATE_FIELD,
-        payload
-    }
-}
-
-export const UpdateFieldSuccess = payload => {
-    return {
-        type: UPDATE_FIELD_SUCCESS,
-        payload
-    }
-}
-
-export const UpdateFieldFailuer = error => {
-    return {
-        type: UPDATE_FIELD_FAILURE,
-        error
-    }
-}
-
-export const DeleteField = payload => {
-    return {
-        type: DELETE_FIELD,
-        payload
-    }
-}
-
-export const DeleteFieldSuccess = payload => {
-    return {
-        type: DELETE_FIELD_SUCCESS,
-        payload
-    }
-}
-
-export const DeleteFieldFailure = error => {
-    return {
-        type: DELETE_FIELD_FAILURE,
-        error
-    }
-}
+export const UpdateField = () => {
+    return async (dispatch) => {
+        try {
+            const UpdateField = await axios.put(API + `/field/update/id`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
+            console.log('Ini Action Update Lapangan', UpdateField)
+            dispatch({
+                type: UPDATE_FIELD_SUCCESS,
+                payload: UpdateField.data.data
+            })
+            console.log('Hasil Complete dari Update Fiedl', UpdateField.data.data)
+            return UpdateField.data.data
+        } catch (error) {
+            console.log('Ini Error', error)
+            return ''
+        }
+    };
+};
