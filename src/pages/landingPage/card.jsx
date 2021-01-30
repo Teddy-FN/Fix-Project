@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import './card.css';
 import axios from 'axios';
 import Loading from '../loading/loading';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Cards = () => {
 
@@ -32,6 +34,9 @@ const Cards = () => {
 
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // Animation
+    AOS.init({ duration: 2000 });
   }, [])
   console.log(fields)
   // const img = fields.image[0].slice(7)
@@ -48,7 +53,7 @@ const Cards = () => {
         <br />
         <br />
         <div className="main-home">
-          <div className="content">
+          <div className="content" data-aos="fade-up">
             {fields && loading ? (fields.slice(1, 5).map((field) => (<div className="card home" style={{ width: '18rem' }}>
               <Link to={`field-details/${field.id}`} style={{ textDecoration: 'none', color: 'white' }} >
                 <div className='card-fields'>

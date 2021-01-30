@@ -17,6 +17,8 @@ import { handler } from '../../provider'
 import HeaderAuth from './headerAuth'
 import { login, SignUp } from '../../redux/actions/auth'
 import swal from 'sweetalert'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const HeaderNonAuth = (props) => {
     const {
@@ -33,7 +35,7 @@ const HeaderNonAuth = (props) => {
     const [tokenLogin, setTokenLogin] = useState(localStorage.getItem('token'))
 
     const [modalLogin, setModalLogin] = useState(false);
-    const toggleLogin = () => { setModalLogin(!modalLogin); setModalRegist(!modalRegist) };
+    const toggleLogin = () => { setModalLogin(!modalLogin) };
 
     const [token] = useState('');
     const [passwordInputType, ToogleIcon] = ShowPasswordToogle()
@@ -49,17 +51,17 @@ const HeaderNonAuth = (props) => {
             password: event.target.password.value,
             passwordConfirmation: event.target.passwordConfirmation.value
         }))
-        .then(
-            setModalRegist(false),
-            swal({
-                icon: "success",
-                title: "Register Succes",
-                text: "you can log in now",
-                type: "success",
-                buttons: false,
-                timer: 2000,
-              })
-        )
+            .then(
+                setModalRegist(false),
+                swal({
+                    icon: "success",
+                    title: "Register Succes",
+                    text: "you can log in now",
+                    type: "success",
+                    buttons: false,
+                    timer: 2000,
+                })
+            )
         console.log('Ini Event', event)
     };
     // const handleOnSubmitSignUp = async (e) => {
@@ -96,7 +98,7 @@ const HeaderNonAuth = (props) => {
                         type: "success",
                         buttons: false,
                         timer: 3000,
-                      });
+                    });
                     setLoading(false)
                 } else {
                     swal({
@@ -106,7 +108,7 @@ const HeaderNonAuth = (props) => {
                         type: "warning",
                         buttons: false,
                         timer: 2000,
-                      });
+                    });
                     setLoading(false)
                 }
             })
@@ -118,6 +120,13 @@ const HeaderNonAuth = (props) => {
     //         <p>Text Loading</p>
     //     )
     // }
+
+    useEffect(() => {
+        // Antimation 
+        AOS.init({
+            duration: 5000
+        })
+    })
 
     return (
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px #222222' }}>
@@ -139,7 +148,7 @@ const HeaderNonAuth = (props) => {
                     </li>
                 </ul>
             </div>
-            <div>
+            <div data-aos="fade-left">
                 <li class="btn-header active" style={{ color: 'white', textDecoration: 'none', listStyle: 'none' }} color="link" onClick={toggleRegist}><a href='#' style={{ textDecoration: 'none', color: 'white' }} className='btn-header'>Sign Up</a></li>
                 <Modal isOpen={modalRegist} toggle={toggleRegist}>
                     <ModalBody className="modal-body">
@@ -201,7 +210,7 @@ const HeaderNonAuth = (props) => {
                         <div>nama</div> :
                         null
                 }
-                <h4 class="btn-header" style={{ color: 'white' }} color="link" onClick={toggleLogin}>Log In</h4>
+                <h4 class="btn-header logIn" style={{ color: 'white' }} color="link" onClick={toggleLogin} data-aos="fade-left">Log In</h4>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title">Log In</h4>

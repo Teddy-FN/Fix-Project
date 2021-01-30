@@ -15,6 +15,7 @@
         "@testing-library/jest-dom": "^5.11.8",
         "@testing-library/react": "^11.2.2",
         "@testing-library/user-event": "^12.6.0",
+        "aos": "^2.3.4",
         "axios": "^0.21.1",
         "bootstrap": "^4.5.3",
         "date-fns": "^2.0.0-beta.5",
@@ -39,6 +40,7 @@
         "redux-thunk": "^2.3.0",
         "styled-components": "^5.2.1",
         "sweetalert": "^2.1.2",
+        "uncontrollable": "^7.2.1",
         "web-vitals": "^0.2.4"
     },
     "scripts": {
