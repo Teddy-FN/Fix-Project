@@ -62,7 +62,6 @@ const HeaderNonAuth = () => {
                     localStorage.setItem('token', e)
                     toast.success('Berhasil Masuk')
                     // toas('Success')
-                    window.payload()
                     setLoading(false)
                 } else {
                     alert('Fail')
