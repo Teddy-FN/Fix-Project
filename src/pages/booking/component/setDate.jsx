@@ -18,7 +18,7 @@ function SetDate () {
         <div>
             <h4>Choose your timeslot:</h4>
         </div>
-        <a href="#" class="next round">&#8250;</a>
+        <a href="?#" class="next round">&#8250;</a>
         </>
     )
 }

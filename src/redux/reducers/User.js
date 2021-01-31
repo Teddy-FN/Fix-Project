@@ -12,7 +12,7 @@ const initialState = {
         description: '',
         profilePic: '',
         // eslint-disable-next-line no-dupe-keys
-        phone: '',
+        // phone: '',
         id: ''
     }
 }

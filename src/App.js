@@ -37,6 +37,7 @@ function App(state) {
         token ? <HeaderAuth /> : <HeaderNonAuth isLogin={isLogin} />
       }
       <Switch>
+    <React.StrictMode>
         <Route path='/' exact>
           <LandingPage />
         </Route>
@@ -58,6 +59,7 @@ function App(state) {
         <Route path='/confirm'>
           <Confirm />
         </Route>
+        </React.StrictMode>
       </Switch>
     </>
   )

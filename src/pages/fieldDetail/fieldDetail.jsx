@@ -17,115 +17,76 @@ import { Rating } from '@material-ui/lab';
 import axios from 'axios';
 import Loading from '../loading/loading';
 import ModalBooking from './modalBooking';
-
-
+import swal from 'sweetalert';
 
 const FieldDetail = (props) => {
 
 const params =useParams();
 const [fields, setFields] = useState([]);
 const [loading, setLoading] = useState(false);
-// const [images, setImages] = useState([]);
-// const url = `http://54.251.238.126:3001/field/${params.id}`
 const url = `https://soka.kuyrek.com:3001/field/${params.id}`
-
 
 useEffect(() => {
     axios
       .get(url)
       .then((res) => {
-        setFields(res.data.data);
-        setLoading(true);
-        // setImages(res.data.data.image);
+          setFields(res.data.data);
+          setLoading(true);
         console.log(fields);
-        // console.log(images)
-        // setLoading(true);
       })
       .catch((err) => {
-        console.log(err);
-        
+		  console.log(err);
+			swal({
+				icon: "warning",
+				title: "Failed to get data",
+				text: "Please wait",
+				type: "warning",
+				buttons: false,
+				timer: 3000,
+			});
       });
-  }, )
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
     return (
         <>
         <Container>
-            
             <Row className='detail-top'>
-                <>
                 <div className='col-12 col-sm-4 col-md-8 field-img'>
-                    <div>
                 {fields && loading ? (
+                    <>
                         <Carousel>
-                            <Carousel.Item>
-                                <img
-                                className="d-block w-100 field-img-big"
-                                src={`http://54.251.238.126:3001/${fields?.image[0]}`}
-                                alt="First slide"
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                className="d-block w-100 field-img-big"
-                                src={`http://54.251.238.126:3001/${fields?.image[1]}`}
-                                alt="Third slide"
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                className="d-block w-100 field-img-big"
-                                src={`http://54.251.238.126:3001/${fields?.image[2]}`}
-                                alt="Third slide"
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                className="d-block w-100 field-img-big"
-                                src={`http://54.251.238.126:3001/${fields?.image[3]}`}
-                                alt="Third slide"
-                                />
-                            </Carousel.Item>
+                            {fields.image.map((image, idx) => (
+                                <Carousel.Item key={idx}>
+                                    <img
+                                    className="d-block w-100 field-img-big"
+                                    src={`https://soka.kuyrek.com:3001/${image}`}
+                                    alt="First slide"
+                                    />
+                                </Carousel.Item>
+                            ))}
                         </Carousel>
-    ):(<p>Loading...</p>)}
+                        <div>
+                        <div className="position-relative overflow-hidden">
+                            {fields.image.map((image, idx) => (
+                                <img
+                                    key={idx}
+                                    src={`https://soka.kuyrek.com:3001/${image}`}
+                                    alt="field small"
+                                    md={6}
+                                    xs={12}
+                                    className="col-3 img-sm"
+                                />
+                            ))}
+                        </div>
                     </div>
-                    {fields && loading ? (
-                    <div className="position-relative overflow-hidden">
-                        <img
-                            src={`http://54.251.238.126:3001/${fields?.image[0]}`}
-                            alt="field small"
-                            md={6}
-                            xs={12}
-                            className="col-3 img-sm"
-                        />
-                        <img
-                            src={`http://54.251.238.126:3001/${fields?.image[1]}`}
-                            alt="field small"
-                            md={6}
-                            xs={12}
-                            className="col-3 img-sm"
-                        />
-                        <img
-                            src={`http://54.251.238.126:3001/${fields?.image[2]}`}
-                            alt="field small"
-                            md={6}
-                            xs={12}
-                            className="col-3 img-sm"
-                        />
-                        <img
-                            src={`http://54.251.238.126:3001/${fields?.image[3]}`}
-                            alt="field small"
-                            md={6}
-                            xs={12}
-                            className="col-3 img-sm"
-                        />
-                    </div>
-                    ):(<Loading />)}
+                    </>
+                     ):(<Loading />)} 
                 </div>
-                </>
                 <Col className='detail-text'>
                     <div className='desc-field sm-3'>
                         <h2 className='field-name'>{fields.fieldName}</h2>
                         <p className='field-loc'>
-                        {/* <i class="fas fa-map-marker-alt"></i> */}
                         <i className='marker'><FontAwesomeIcon icon={faMapMarkerAlt} /></i>
                         {fields.location} 
                         </p>
@@ -142,19 +103,12 @@ useEffect(() => {
                                 See Player List
                             </Button>
                         </Link>
-                        {/* <Link to='/compiler'>
-                            <Button className='col-12 mb-3 btn-book'>
-                                Book Now
-                            </Button>
-                        </Link> */}
                         <ModalBooking 
                             isLogin={props.isLogin}
-                            setIsLogin={props.setIsLogin}
-                        />
+                        /> 
                     </div>
                 </Col>
             </Row>
-
             <Row>
                 <Col sm='4' className='review-title mt-3 mb-3'>
                     <h2>Feedback and Review</h2>
@@ -198,7 +152,6 @@ useEffect(() => {
                             <p className='review-p'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui aspernatur maxime possimus cum fuga! Autem odio temporibus voluptatum deleniti distinctio illum excepturi, cumque laboriosam perspiciatis esse placeat a inventore consequuntur.</p>
                         </CardBody>
                     </Card>
-
                     <Card className='col-sm-12 mb-3 card-review'>
                         <CardBody>
                             <h4 className='review-title'>
@@ -217,9 +170,7 @@ useEffect(() => {
                         </CardBody>
                     </Card>
                 </Col>
-                <Col sm='4'>
-
-                </Col>
+                <Col sm='4'></Col>
             </Row>
         </Container>
         </>

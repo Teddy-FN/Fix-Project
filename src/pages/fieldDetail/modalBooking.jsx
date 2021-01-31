@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Modal, ModalBody, Button, Row, Col } from 'react-bootstrap'
+import { Modal, ModalBody, Button, Col } from 'react-bootstrap'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { Link } from 'react-router-dom'
 import MultiSelect from 'react-multi-select-component'
 
 const ModalBooking = (props) => {
@@ -18,7 +17,7 @@ const ModalBooking = (props) => {
     const handleClose = () => setShow(false);
     const handleClose1 = () => setShow1(false);
     const handleClose2 = () => setShow2(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => setShow(true); 
     const handleShow1 = () => setShow1(true);
     const handleShow2 = () => setShow2(true);
 

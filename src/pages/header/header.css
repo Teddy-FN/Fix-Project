@@ -94,6 +94,10 @@
     margin-left: 19%;
 }
 
+.dropdown-menu {
+    background-color: #7B7B7B !important;
+}
+
 .dropdown-menu-header {
     margin-right: 200px !important;
 }
