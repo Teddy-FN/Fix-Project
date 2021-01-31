@@ -11,8 +11,6 @@ const initialState = {
         phone: '',
         description: '',
         profilePic: '',
-        // eslint-disable-next-line no-dupe-keys
-        phone: '',
         id: ''
     }
 }
