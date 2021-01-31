@@ -1,5 +1,5 @@
 // import React, { useState } from 'react'
-import './style.css'
+// import './style.css'
 // import { useDispatch } from 'react-redux'
 // import {
 //     Container,
@@ -25,7 +25,7 @@ import './style.css'
 //         location: '',
 //         price: '',
 //         description: '',
-//         image: ''
+//         image: []
 //     })
 //     let formCreateField = new FormData()
 //     formCreateField.append('fieldName', input.fieldName)
@@ -127,52 +127,5 @@ import './style.css'
 //     )
 // }
 
+
 // export default AddCreateField;
-
-import React from 'react'
-
-class CreateField extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { file: '', imagePreviewUrl: '' };
-    }
-
-    _handleImageChange(e) {
-        e.preventDefault();
-
-        let reader = new FileReader();
-        let file = e.target.files[0];
-
-        reader.onloadend = () => {
-            this.setState({
-                file: file,
-                imagePreviewUrl: reader.result
-            });
-        }
-
-        reader.readAsDataURL(file)
-    }
-
-    render() {
-        let { imagePreviewUrl } = this.state;
-        let $imagePreview = null;
-        if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} />);
-        } else {
-            $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-        }
-        return (
-            <div className="previewComponent">
-                <form onSubmit={(e) => this._handleSubmit(e)}>
-                    <input className="fileInput"
-                        type="file"
-                        onChange={(e) => this._handleImageChange(e)} />
-                    <div className="imgPreview">
-                        {$imagePreview}
-                    </div>
-                </form>
-            </div>
-        )
-    }
-}
-export default CreateField
