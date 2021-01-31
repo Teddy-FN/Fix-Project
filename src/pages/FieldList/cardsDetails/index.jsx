@@ -148,7 +148,7 @@ function CardFields() {
                 {/* <Link to='/createField'>
                     <button className="btn btn-warning createField">Create Field</button>
                 </Link> */}
-                <div className="main" data-aos="zoom-out" >
+                <div className="main">
                     <div className="content">
                         {fields && loading ? (
                             // eslint-disable-next-line array-callback-return

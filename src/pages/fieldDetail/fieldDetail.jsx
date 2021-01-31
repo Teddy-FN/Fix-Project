@@ -18,81 +18,88 @@ import axios from 'axios';
 import Loading from '../loading/loading';
 import ModalBooking from './modalBooking';
 import swal from 'sweetalert';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const FieldDetail = (props) => {
 
-const params =useParams();
-const [fields, setFields] = useState([]);
-const [loading, setLoading] = useState(false);
-const url = `https://soka.kuyrek.com:3001/field/${params.id}`
+    const params = useParams();
+    const [fields, setFields] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const url = `https://soka.kuyrek.com:3001/field/${params.id}`
 
-useEffect(() => {
-    axios
-      .get(url)
-      .then((res) => {
-          setFields(res.data.data);
-          setLoading(true);
-        console.log(fields);
-      })
-      .catch((err) => {
-		  console.log(err);
-			swal({
-				icon: "warning",
-				title: "Failed to get data",
-				text: "Please wait",
-				type: "warning",
-				buttons: false,
-				timer: 3000,
-			});
-      });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    useEffect(() => {
+        axios
+            .get(url)
+            .then((res) => {
+                setFields(res.data.data);
+                setLoading(true);
+                console.log(fields);
+            })
+            .catch((err) => {
+                console.log(err);
+                swal({
+                    icon: "warning",
+                    title: "Failed to get data",
+                    text: "Please wait",
+                    type: "warning",
+                    buttons: false,
+                    timer: 3000,
+                });
+            });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+
+        // Animation 
+        AOS.init({
+            duration: 4000
+        })
+    })
 
     return (
         <>
-        <Container>
-            <Row className='detail-top'>
-                <div className='col-12 col-sm-4 col-md-8 field-img'>
-                {fields && loading ? (
-                    <>
-                        <Carousel>
-                            {fields.image.map((image, idx) => (
-                                <Carousel.Item key={idx}>
-                                    <img
-                                    className="d-block w-100 field-img-big"
-                                    src={`https://soka.kuyrek.com:3001/${image}`}
-                                    alt="First slide"
-                                    />
-                                </Carousel.Item>
-                            ))}
-                        </Carousel>
-                        <div>
-                        <div className="position-relative overflow-hidden">
-                            {fields.image.map((image, idx) => (
-                                <img
-                                    key={idx}
-                                    src={`https://soka.kuyrek.com:3001/${image}`}
-                                    alt="field small"
-                                    md={6}
-                                    xs={12}
-                                    className="col-3 img-sm"
-                                />
-                            ))}
+            <Container>
+                <Row className='detail-top'>
+                    <div className='col-12 col-sm-4 col-md-8 field-img'>
+                        {fields && loading ? (
+                            <>
+                                <Carousel>
+                                    {fields.image.map((image, idx) => (
+                                        <Carousel.Item key={idx}>
+                                            <img
+                                                className="d-block w-100 field-img-big"
+                                                src={`https://soka.kuyrek.com:3001/${image}`}
+                                                alt="First slide"
+                                            />
+                                        </Carousel.Item>
+                                    ))}
+                                </Carousel>
+                                <div>
+                                    <div className="position-relative overflow-hidden">
+                                        {fields.image.map((image, idx) => (
+                                            <img
+                                                key={idx}
+                                                src={`https://soka.kuyrek.com:3001/${image}`}
+                                                alt="field small"
+                                                md={6}
+                                                xs={12}
+                                                className="col-3 img-sm"
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            </>
+                        ) : (<Loading />)}
+                    </div>
+                    <Col className='detail-text' data-aos="fade-left">
+                        <div className='desc-field sm-3'>
+                            <h2 className='field-name'>{fields.fieldName}</h2>
+                            <p className='field-loc'>
+                                <i className='marker'><FontAwesomeIcon icon={faMapMarkerAlt} /></i>
+                                {fields.location}
+                            </p>
+                            <h1 className='description-title'>Description</h1>
+                            <p className='description-p'>{fields.description}</p>
                         </div>
-                    </div>
-                    </>
-                     ):(<Loading />)} 
-                </div>
-                <Col className='detail-text'>
-                    <div className='desc-field sm-3'>
-                        <h2 className='field-name'>{fields.fieldName}</h2>
-                        <p className='field-loc'>
-                        <i className='marker'><FontAwesomeIcon icon={faMapMarkerAlt} /></i>
-                        {fields.location} 
-                        </p>
-                        <h1 className='description-title'>Description</h1>
-                        <p className='description-p'>{fields.description}</p>
-                    </div>
 
                         <div className='action-book'>
                             <h3 className='price-field'>
@@ -102,18 +109,18 @@ useEffect(() => {
                                 <Button className='col-12 mb-3 btn-player'>
                                     See Player List
                             </Button>
-                        </Link>
-                        <ModalBooking 
-                            isLogin={props.isLogin}
-                        /> 
-                    </div>
-                </Col>
-            </Row>
-            <Row>
-                <Col sm='4' className='review-title mt-3 mb-3'>
-                    <h2>Feedback and Review</h2>
-                </Col>
-                {/* <span>
+                            </Link>
+                            <ModalBooking
+                                isLogin={props.isLogin}
+                            />
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm='4' className='review-title mt-3 mb-3'>
+                        <h2>Feedback and Review</h2>
+                    </Col>
+                    {/* <span>
                         <Rating 
                             name='half-rating-read'
                             defaultValue='1'
