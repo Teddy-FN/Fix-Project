@@ -1,17 +1,20 @@
 import React from 'react'
-import { Modal } from 'reactstrap'
 // import { Link } from 'react-router-dom'
 
-const Confirm = () => {
+function Confirm(props) {
     return (
+        <>
         <div>
-            <Modal>
-            <h6>Name: </h6>
-            <h6>Field: </h6>
-            <h6>Choosen date:</h6>
-            <h6>CHoosen time:</h6>
-            </Modal>
+            <p>Name: {props.state.name}</p>
+            <p>Phone Number:  {props.state.phoneNumber}</p>
+            <p>Choosen date:</p>
+            <p>Choosen time:</p>
         </div>
+        <div>
+            {props.hasPrev() && <button onClick={props.prev}>Previous</button>}
+            {props.hasNext() && <button onClick={props.next}>Next</button>}
+        </div>
+        </>
     )
 }
 

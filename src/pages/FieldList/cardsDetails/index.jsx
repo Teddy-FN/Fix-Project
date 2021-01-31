@@ -9,6 +9,8 @@ import axios from 'axios';
 import Pagination from './pagination';
 import Loading from '../../loading/loading';
 // import ButtonAdmin from '../addFields/buttonAdmin';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 function CardFields() {
@@ -38,6 +40,11 @@ function CardFields() {
                 console.log(err);
 
             });
+
+        // Animation 
+        AOS.init({
+            duration: 2000
+        })
     }, [])
 
     const sortByNameAsc = (e) => {
@@ -104,42 +111,44 @@ function CardFields() {
     return (
         <div >
             <Container className='container'>
-                <div className="searchButton">
-                    <form className="form-inline my-0 my-lg-0">
-                        <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
-                            setSearch(event.target.value)
-                        }} />
-                        <button type="button" className="btn btn-success buttonSearch">
-                            <FontAwesomeIcon icon={faSearch} />
-                        </button>
-                    </form>
-                </div>
-                <div className="sorter">
-                    <div className="dropdown filter">
-                        <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
-                            <small className="nameFitur">Filter</small>
-                            <small className="dropdown-toggle"></small>
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{backgroundColor: '#7B7B7B', color: 'white'}}>
-                            <p className='dropdown-item' onClick={sortByNameAsc} style={{cursor: 'pointer'}}>Filter By Name (A-Z)</p>
-                            <p className='dropdown-item' onClick={sortByNameDesc} style={{cursor: 'pointer'}}>Filter By Name (Z-A)</p>
+                <div data-aos="fade-left">
+                    <div className="searchButton">
+                        <form className="form-inline my-0 my-lg-0">
+                            <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
+                                setSearch(event.target.value)
+                            }} />
+                            <button type="button" className="btn btn-success buttonSearch">
+                                <FontAwesomeIcon icon={faSearch} />
+                            </button>
+                        </form>
+                    </div>
+                    <div className="sorter">
+                        <div className="dropdown filter">
+                            <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
+                                <small className="nameFitur">Filter</small>
+                                <small className="dropdown-toggle"></small>
+                            </button>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ backgroundColor: '#545454', color: 'white' }}>
+                                <p className='dropdown-item' onClick={sortByNameAsc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Filter By Name (A-Z)</p>
+                                <p className='dropdown-item' onClick={sortByNameDesc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Filter By Name (Z-A)</p>
+                            </div>
+                        </div>
+                        <div className="dropdown sort">
+                            <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
+                                <small className="nameFitur">Sort</small>
+                                <small className="dropdown-toggle"></small>
+                            </button>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ backgroundColor: '#545454', color: 'white' }}>
+                                <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Sort By Price (Low-High)</p>
+                                <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Sort By Price (High-Low)</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="dropdown sort">
-                        <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
-                            <small className="nameFitur">Sort</small>
-                            <small className="dropdown-toggle"></small>
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{backgroundColor: '#7B7B7B', color: 'white'}}>
-                            <p className='dropdown-item' onClick={sortByPriceAsc} style={{cursor: 'pointer'}}>Sort By Price (Low-High)</p>
-                            <p className='dropdown-item' onClick={sortByPriceDesc} style={{cursor: 'pointer'}}>Sort By Price (High-Low)</p>
-                        </div>
-                    </div>
                 </div>
-                <Link to='/createField'>
+                {/* <Link to='/createField'>
                     <button className="btn btn-warning createField">Create Field</button>
-                </Link>
-                <div className="main">
+                </Link> */}
+                <div className="main" data-aos="zoom-out" >
                     <div className="content">
                         {fields && loading ? (
                             // eslint-disable-next-line array-callback-return

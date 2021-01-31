@@ -19,7 +19,7 @@ function App(state) {
     tokenUser: ''
   });
   const token = localStorage.getItem('token')
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const loginUser = useSelector((state) => state.AuthReducer.isLoggedIn)
   console.log('Ini IsLogin', loginUser)
 

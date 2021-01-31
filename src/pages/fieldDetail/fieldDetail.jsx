@@ -94,13 +94,13 @@ useEffect(() => {
                         <p className='description-p'>{fields.description}</p>
                     </div>
 
-                    <div className='action-book'>
-                        <h3 className='price-field'>
-                            Rp. {fields?.price?.$numberDecimal}.000
+                        <div className='action-book'>
+                            <h3 className='price-field'>
+                                Rp. {fields?.price?.$numberDecimal}.000
                         </h3>
-                        <Link to='/player-list'>
-                            <Button className='col-12 mb-3 btn-player'>
-                                See Player List
+                            <Link to='/player-list'>
+                                <Button className='col-12 mb-3 btn-player'>
+                                    See Player List
                             </Button>
                         </Link>
                         <ModalBooking 
@@ -122,57 +122,60 @@ useEffect(() => {
                             readOnly
                         />
                         </span> */}
-                <Col sm='4' className='num-rating mt-3 mb-3'>
+                    <Col sm='4' className='num-rating mt-3 mb-3'>
                         <span>
-                        <h3 className='ml-auto mr-2' style={{ color: '#e5e5e5' }}>
-                            4.7 /{' '}
-                            <span style={{ color: '#e5e5e5' }}>5</span>
-                        </h3>
+                            <h3 className='ml-auto mr-2' style={{ color: '#e5e5e5' }}>
+                                4.7 /{' '}
+                                <span style={{ color: '#e5e5e5' }}>5</span>
+                            </h3>
                         </span>
-                </Col>
-                <Col sm='4'></Col>
-            </Row>
+                    </Col>
+                    <Col sm='4'></Col>
+                </Row>
 
-            <Row className='review-user' >
-                <Col sm='8' className='comment'>
-                    <Card className='col-sm-12 mb-3 card-review'>
-                        <CardBody>
-                            <h4 className='review-title'>
-                                <b>Speedwagon</b>
-                            </h4>
-                            <div className='rating'>
-                                <Rating 
-                                    name='half-rating-read'
-                                    defaultValue={5}
-                                    precision={0.2}
-                                    max={5}
-                                    readOnly
-                                />
-                            </div>
-                            <p className='review-p'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui aspernatur maxime possimus cum fuga! Autem odio temporibus voluptatum deleniti distinctio illum excepturi, cumque laboriosam perspiciatis esse placeat a inventore consequuntur.</p>
-                        </CardBody>
-                    </Card>
-                    <Card className='col-sm-12 mb-3 card-review'>
-                        <CardBody>
-                            <h4 className='review-title'>
-                                <b>Dio Brando</b>
-                            </h4>
-                            <div className='rating'>
-                                <Rating 
-                                    name='half-rating-read'
-                                    defaultValue={1}
-                                    precision={0.2}
-                                    max={5}
-                                    readOnly
-                                />
-                            </div>
-                            <p className='review-p'>This place stinks</p>
-                        </CardBody>
-                    </Card>
-                </Col>
-                <Col sm='4'></Col>
-            </Row>
-        </Container>
+                <Row className='review-user' data-aos="fade-right">
+                    <Col sm='8' className='comment'>
+                        <Card className='col-sm-12 mb-3 card-review'>
+                            <CardBody>
+                                <h4 className='review-title'>
+                                    <b>Speedwagon</b>
+                                </h4>
+                                <div className='rating'>
+                                    <Rating
+                                        name='half-rating-read'
+                                        defaultValue={5}
+                                        precision={0.2}
+                                        max={5}
+                                        readOnly
+                                    />
+                                </div>
+                                <p className='review-p'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui aspernatur maxime possimus cum fuga! Autem odio temporibus voluptatum deleniti distinctio illum excepturi, cumque laboriosam perspiciatis esse placeat a inventore consequuntur.</p>
+                            </CardBody>
+                        </Card>
+
+                        <Card className='col-sm-12 mb-3 card-review'>
+                            <CardBody>
+                                <h4 className='review-title'>
+                                    <b>Dio Brando</b>
+                                </h4>
+                                <div className='rating'>
+                                    <Rating
+                                        name='half-rating-read'
+                                        defaultValue={1}
+                                        precision={0.2}
+                                        max={5}
+                                        readOnly
+                                    />
+                                </div>
+                                <p className='review-p'>This place stinks</p>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                    <Col sm='4'>
+
+                    </Col>
+                </Row>
+            </Container>
         </>
     );
 }
