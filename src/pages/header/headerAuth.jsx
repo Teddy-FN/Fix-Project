@@ -15,18 +15,20 @@ import { GetProfile } from '../../redux/actions/profile'
 
 
 const HeaderAuth = () => {
+    let token = localStorage.getItem('token2')
     const dispatch = useDispatch()
-    const logOut = async () => {
-        await dispatch(logoutUser(
-            localStorage.removeItem('token')
-        ))
+    const logOut = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('token2')
+        window.location.reload()
     }
+
     const user = useSelector((state) => state.profileUser.data);
+    console.log('Ini Header Auth', user)
     useEffect(() => {
         dispatch(GetProfile());
         // eslint-disable-next-line react-hooks/exhaustive-deps
-
-    }, [user]);
+    }, []);
 
     return (
 
@@ -51,8 +53,8 @@ const HeaderAuth = () => {
             </div>
             <div>
                 <div className="dropdown">
-                    {/* <img src={user.profilePic === null ? Profile : `https://soka.kuyrek.com:3005/${user.profilePic}`} className="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" /> */}
-                    <img src={Profile} className="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
+                    <img src={user.profilePic === null ? Profile : `https://soka.kuyrek.com:3005/${user.profilePic}`} className="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
+                    {/* <img src={Profile} className="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" /> */}
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <Link to="/bio" style={{ textDecoration: 'none' }}>
                             <a className="dropdown-item" href="#">Profile</a>

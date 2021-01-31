@@ -50,7 +50,9 @@ export const login = ({ email, password }) => {
                     },
                 }
             );
-            console.log('Ini Res', res)
+            console.log('Ini Res LOGIN', res)
+            localStorage.setItem('token2', res.data.token)
+            console.log(res.data.token)
             dispatch({
                 type: USER_LOG_IN_SUCCESS,
                 payload: res.data.token

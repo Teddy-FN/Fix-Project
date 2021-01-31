@@ -86,8 +86,8 @@ function Bio(props) {
                     <aside className="leftSide">
                         <div>
                             <div className="profile">
-                                {/* <img src={`https://soka.kuyrek.com:3005/${user.profilePic}`} alt="" className="photo" /> */}
-                                <img src={User} alt="" className="photo" />
+                                <img src={`https://soka.kuyrek.com:3005/${user.profilePic}`} alt="" className="photo" />
+                                {/* <img src={User} alt="" className="photo" /> */}
                             </div>
                             <h4>{user?.fullname}</h4>
                             <div className="desc">

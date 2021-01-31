@@ -9,7 +9,7 @@ import {
 const initialState = {
     isLoading: false,
     isLoggedIn: false,
-    token: ''
+    token: '',
 }
 
 // Reducer 
@@ -25,14 +25,14 @@ export default function reducerAuth(state = initialState, action) {
         case USER_SIGNUP_SUCCESS:
             return {
                 ...state,
-
+                token: action.payload,
                 isLoggedIn: false,
                 isLoading: false
             }
         case USER_LOG_OUT_SUCCESS:
             return {
                 ...state,
-
+                token: action.payload,
                 isLoggedIn: false,
                 isLoading: false,
             }

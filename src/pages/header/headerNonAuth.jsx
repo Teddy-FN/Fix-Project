@@ -12,18 +12,14 @@ import { Link, Router, Switch, Route, useHistory } from 'react-router-dom'
 // Icon Show password
 import ShowPasswordToogle from './showPasswordToogle/showPasswordToogle'
 // redux Saga
-import { USER_LOG_IN, USER_SIGNUP } from '../../redux/actions/types'
 import { handler } from '../../provider'
-import HeaderAuth from './headerAuth'
 import { login, SignUp } from '../../redux/actions/auth'
 import swal from 'sweetalert'
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const HeaderNonAuth = (props) => {
-    const {
-        className
-    } = props;
+const HeaderNonAuth = () => {
+
     const { logged, setLogged, modalLoginUser, setModalLoginUser, modalSignUpUser, setModalSignUpUser } = useContext(handler)
     const dispatch = useDispatch()
 
@@ -43,7 +39,6 @@ const HeaderNonAuth = (props) => {
     // Register
     const handleOnSubmitSignUp = async (event) => {
         event.preventDefault()
-        // dispatch({ type: USER_LOG_IN, payload: userLogin })
         setLoading(true)
         await dispatch(SignUp({
             email: event.target.email.value,
@@ -64,17 +59,6 @@ const HeaderNonAuth = (props) => {
             )
         console.log('Ini Event', event)
     };
-    // const handleOnSubmitSignUp = async (e) => {
-    //     e.preventDefault();
-    //     await dispatch(SignUp({
-    //         email: e.target.email.value,
-    //         fullname: e.target.fullname.value,
-    //         password: e.target.password.value,
-    //         passwordConfirmation: e.target.passwordConfirmation.value
-    //     }));
-    //     console.log("token", e);
-    // }
-
 
     // LOGIN
     const [loading, setLoading] = useState(false)
@@ -82,7 +66,6 @@ const HeaderNonAuth = (props) => {
     const history = useHistory()
     const handleSubmitLogin = async (event) => {
         event.preventDefault()
-        // dispatch({ type: USER_LOG_IN, payload: userLogin })
         setLoading(true)
         await dispatch(login({
             email: event.target.email.value,
@@ -100,6 +83,7 @@ const HeaderNonAuth = (props) => {
                         timer: 3000,
                     });
                     setLoading(false)
+                    window.location.reload()
                 } else {
                     swal({
                         icon: "error",
