@@ -91,6 +91,8 @@ function Bio(props) {
                             </div>
                             <h4>{user?.fullname}</h4>
                             <div className="desc">
+                                <h4>Phone</h4>
+                                <p>{user?.phone}</p>
                                 <h4>Description</h4>
                                 <p>{user?.description}</p>
                             </div>

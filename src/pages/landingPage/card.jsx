@@ -53,8 +53,8 @@ const Cards = () => {
         <br />
         <br />
         <div className="main-home">
-          <div className="content" data-aos="fade-up">
-            {fields && loading ? (fields.slice(1, 5).map((field) => (<div className="card home" style={{ width: '18rem' }}>
+          <div className="content">
+            {fields && loading ? (fields.slice(6).map((field) => (<div className="card home" style={{ width: '18rem' }}>
               <Link to={`field-details/${field.id}`} style={{ textDecoration: 'none', color: 'white' }} >
                 <div className='card-fields'>
                   <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
