@@ -4,11 +4,14 @@ import {
 } from './types'
 import axios from 'axios'
 const API = 'https://soka.kuyrek.com:3005'
-const token = localStorage.getItem('token')
+
 
 export const GetProfile = () => {
+
     return async (dispatch) => {
+        const token = localStorage.getItem('token2')
         try {
+            console.log('TOKEN USER', token)
             const res = await axios.get(API + `/user/profile`,
                 {
                     headers: {
@@ -32,8 +35,10 @@ export const GetProfile = () => {
     };
 };
 
+
 export const UpdateProfile = (data) => {
     return async (dispatch) => {
+        const token = localStorage.getItem('token2')
         try {
             const res = await axios.put(API + `/user/edit`, data,
                 {
