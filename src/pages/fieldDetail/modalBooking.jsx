@@ -5,6 +5,7 @@ import UserInfo from '../booking/component/userInfo'
 import SetDateTime from '../booking/component/setDateTime'
 import Confirm from '../booking/component/confirm'
 import Success from '../booking/component/success'
+import './modalBooking.css'
 
 const ModalBooking = (props) => {
     const [show, setShow] = useState(false);
@@ -13,7 +14,7 @@ const ModalBooking = (props) => {
 
     return (
             <div>
-            <Button className='col-12 mb-3 btn-book' onClick={handleShow}>
+            <Button className='col-12 mb-3 book-field-button' variant="link" onClick={handleShow}>
                 Book
             </Button>
             <Modal

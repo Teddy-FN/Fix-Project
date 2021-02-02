@@ -137,11 +137,11 @@ useEffect(() => {
                         <h3 className='price-field'>
                             Rp. {fields?.price?.$numberDecimal}.000
                         </h3>
-                        <Link to='/player-list'>
+                        {/* <Link to='/player-list'>
                             <Button className='col-12 mb-3 btn-player'>
                                 See Player List
                             </Button>
-                        </Link>
+                        </Link> */}
                         {/* <Link to='/compiler'>
                             <Button className='col-12 mb-3 btn-book'>
                                 Book Now

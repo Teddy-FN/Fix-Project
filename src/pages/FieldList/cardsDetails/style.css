@@ -83,6 +83,15 @@ body {
     width: 122px;
 }
 
+.filter-sort-button {
+    border-color: white;
+}
+
+.filter-sort-button:hover {
+    border-color: #29dd99;
+    color: #29dd99 !important;
+}
+
 .sort {
     float: right;
 }

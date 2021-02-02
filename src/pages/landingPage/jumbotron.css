@@ -19,13 +19,20 @@
 
 .btn-jumb {
     margin-left: 43%;
-    background-color: #28df99 !important;
-    color: #313131 !important;
+    background-color: none !important;
+    border-color: #28df99 !important;
+    color: #28df99 !important;
     font-weight: bold !important;
     width: 170px;
     height: 50px;
     font-size: 24px;
     margin-top: 30px;
+}
+
+.btn-jumb:hover {
+    background-color: none !important;
+    border-color: white!important;
+    color: white !important;
 }
 
 /* Ipad */

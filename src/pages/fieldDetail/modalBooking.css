@@ -1,3 +1,19 @@
+.book-field-button {
+    background-color: none !important;
+    border-color: #28df99 !important;
+    color: #28df99 !important;
+    font-weight: 700 !important;
+    height: 50px !important;
+}
+
+.book-field-button:hover {
+    background-color: none !important;
+    border-color: white!important;
+    color: white !important;
+    font-weight: 700 !important;
+    height: 50px !important;
+}
+
 .multi-option {
-    background-color: black;
+    color: black;
 }
