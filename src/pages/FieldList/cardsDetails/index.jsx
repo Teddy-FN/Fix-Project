@@ -126,9 +126,9 @@ function CardFields() {
                                 <small className="nameFitur">Filter</small>
                                 <small className="dropdown-toggle"></small>
                             </button>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ backgroundColor: '#545454', color: 'white' }}>
-                                <p className='dropdown-item' onClick={sortByNameAsc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Filter By Name (A-Z)</p>
-                                <p className='dropdown-item' onClick={sortByNameDesc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Filter By Name (Z-A)</p>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
+                                <p className='dropdown-item' onClick={sortByNameAsc} style={{ cursor: 'pointer' }}>Filter By Name (A-Z)</p>
+                                <p className='dropdown-item' onClick={sortByNameDesc} style={{ cursor: 'pointer' }}>Filter By Name (Z-A)</p>
                             </div>
                         </div>
                         <div className="dropdown sort">
@@ -136,9 +136,9 @@ function CardFields() {
                                 <small className="nameFitur">Sort</small>
                                 <small className="dropdown-toggle"></small>
                             </button>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ backgroundColor: '#545454', color: 'white' }}>
-                                <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Sort By Price (Low-High)</p>
-                                <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Sort By Price (High-Low)</p>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
+                                <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer' }}>Sort By Price (Low-High)</p>
+                                <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer' }}>Sort By Price (High-Low)</p>
                             </div>
                         </div>
                     </div>
