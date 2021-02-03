@@ -16,5 +16,7 @@
 
 .modal-booking {
     border-radius: 10%;
-    height: 1000px;
+    width: 1400px;
+    margin-top: 200px;
+    border-color: 5px, #28df99;
 }

@@ -1,14 +1,43 @@
-.button-modalbooking {
+.button-modalbooking1 {
  align-items: flex-end;
  justify-content: flex-end;
  border-color: #29dd99;
  color: #29dd99;
  border-radius: 5%;
+ margin-left: 43%;
 }
 
-.button-modalbooking:hover {
+.button-modalbooking1:hover {
     border-color: white;
     color: white;
+}
+
+.button-modalbooking2 {
+    align-items: flex-end;
+    justify-content: flex-end;
+    border-color: #29dd99;
+    color: #29dd99;
+    border-radius: 5%;
+    margin-left: 32%;
+}
+   
+.button-modalbooking2:hover {
+       border-color: white;
+       color: white;
+}
+
+.button-modalbooking3 {
+    align-items: flex-end;
+    justify-content: flex-end;
+    border-color: #29dd99;
+    color: #29dd99;
+    border-radius: 5%;
+    margin-left: 5px;
+}
+   
+.button-modalbooking3:hover {
+       border-color: white;
+       color: white;
 }
 
 .date.picker {
@@ -17,4 +46,9 @@
 }
 .multi-option {
     color: black;
+}
+
+.success {
+    text-align: center;
+
 }
