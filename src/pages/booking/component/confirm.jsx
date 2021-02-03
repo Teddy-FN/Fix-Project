@@ -1,18 +1,21 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
+import './style.css'
+
 
 function Confirm(props) {
     return (
         <>
         <div>
-            <p>Name: {props.state.name}</p>
-            <p>Phone Number:  {props.state.phoneNumber}</p>
+            {/* <p>Name: {props.state.name}</p>
+            <p>Phone Number:  {props.state.phoneNumber}</p> */}
             <p>Choosen date:</p>
             <p>Choosen time:</p>
         </div>
+        <br/>
         <div>
-            {props.hasPrev() && <button onClick={props.prev}>Previous</button>}
-            {props.hasNext() && <button onClick={props.next}>Next</button>}
+            {props.hasPrev() && <Button variant="link" className="button-modalbooking" onClick={props.prev}>Previous</Button>}
+            {props.hasNext() && <Button variant="link" className="button-modalbooking" onClick={props.next}>Next</Button>}
         </div>
         </>
     )

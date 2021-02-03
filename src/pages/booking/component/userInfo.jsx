@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from 'react-bootstrap'
 
 function UserInfo(props) {
   return (
@@ -8,8 +9,8 @@ function UserInfo(props) {
       <p>Phone Number: <input name="phoneNumber" value={props.getState('phoneNumber')} onChange={props.handleChange} /></p>
     </div>
     <div>
-    <button disabled={props.isFirst()} onClick={props.prev}>Previous</button>
-    {props.hasNext() && <button onClick={props.next}>Next</button>}
+    <Button variant="link" disabled={props.isFirst()} onClick={props.prev}>Previous</Button>
+    {props.hasNext() && <Button variant="link" onClick={props.next}>Next</Button>}
     </div>
     </>
   );

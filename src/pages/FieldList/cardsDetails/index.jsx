@@ -42,9 +42,7 @@ function CardFields() {
             });
 
         // Animation 
-        AOS.init({
-            duration: 2000
-        })
+        AOS.init({duration: 2000})
     }, [])
 
     const sortByNameAsc = (e) => {
@@ -111,38 +109,7 @@ function CardFields() {
     return (
         <div >
             <Container className='container'>
-<<<<<<< HEAD
-                <div className="searchButton">
-                    <form className="form-inline my-0 my-lg-0">
-                        <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
-                            setSearch(event.target.value)
-                        }} />
-                        <button type="button" className="btn btn-success buttonSearch">
-                            <FontAwesomeIcon icon={faSearch} />
-                        </button>
-                    </form>
-                </div>
-                <div className="sorter">
-                    <div className="dropdown filter">
-                        <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
-                            <small className="nameFitur">Filter</small>
-                            <small className="dropdown-toggle"></small>
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{backgroundColor: '#545454', color: 'white'}}>
-                            <p className='dropdown-item' onClick={sortByNameAsc} style={{cursor: 'pointer', backgroundColor: '#545454'}}>Filter By Name (A-Z)</p>
-                            <p className='dropdown-item' onClick={sortByNameDesc} style={{cursor: 'pointer', backgroundColor: '#545454'}}>Filter By Name (Z-A)</p>
-                        </div>
-                    </div>
-                    <div className="dropdown sort">
-                        <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
-                            <small className="nameFitur">Sort</small>
-                            <small className="dropdown-toggle"></small>
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{backgroundColor: '#545454', color: 'white'}}>
-                            <p className='dropdown-item' onClick={sortByPriceAsc} style={{cursor: 'pointer', backgroundColor: '#545454'}}>Sort By Price (Low-High)</p>
-                            <p className='dropdown-item' onClick={sortByPriceDesc} style={{cursor: 'pointer', backgroundColor: '#545454'}}>Sort By Price (High-Low)</p>
-=======
-                <div data-aos="fade-left">
+                {/* <div data-aos="fade-left"> */}
                     <div className="searchButton">
                         <form className="form-inline my-0 my-lg-0">
                             <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
@@ -155,7 +122,7 @@ function CardFields() {
                     </div>
                     <div className="sorter">
                         <div className="dropdown filter">
-                            <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
+                            <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
                                 <small className="nameFitur">Filter</small>
                                 <small className="dropdown-toggle"></small>
                             </button>
@@ -165,7 +132,7 @@ function CardFields() {
                             </div>
                         </div>
                         <div className="dropdown sort">
-                            <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
+                            <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
                                 <small className="nameFitur">Sort</small>
                                 <small className="dropdown-toggle"></small>
                             </button>
@@ -173,15 +140,14 @@ function CardFields() {
                                 <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Sort By Price (Low-High)</p>
                                 <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Sort By Price (High-Low)</p>
                             </div>
->>>>>>> 54c802cac7ea77fa9399321e102d4c44dbc312bb
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
                 {/* <Link to='/createField'>
                     <button className="btn btn-warning createField">Create Field</button>
                 </Link> */}
-                <div className="main" data-aos="zoom-out" >
-                    <div className="content">
+                <div className="main">
+                    <div className="content-browse">
                         {fields && loading ? (
                             // eslint-disable-next-line array-callback-return
                             currentPosts.filter((val) => {
@@ -193,7 +159,7 @@ function CardFields() {
                                     return val
                                 }
                             }).map((field, idx) => (
-                                <div key={idx} className="card" style={{ width: '16rem' }}>
+                                <div key={idx} className="card" style={{ width: '17rem' }}>
                                     <Link to={`/field-details/${field._id}`} style={{ textDecoration: 'none', color: 'white' }} className='card-fields'>
                                         <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
                                         <div className="card-body">

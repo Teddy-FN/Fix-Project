@@ -7,8 +7,8 @@ const Jumbotron = () => {
     return (
         <div class="bckgrnd">
             <div class="jumbotron jumbotron-fluid">
-                <h6 class="title">Alive and Kickin'</h6>
-                <Link to='/browseFields'><button type="button" class="btn-jumb btn btn-link" >Book Now</button></Link>
+                <h6 class="title">Game, Set, Match!</h6>
+                <Link to='/browseFields'><button type="button" class="btn-jumb btn btn-link">Book Now</button></Link>
             </div>
         </div>
     )

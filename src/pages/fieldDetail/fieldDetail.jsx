@@ -98,24 +98,11 @@ useEffect(() => {
                             <h3 className='price-field'>
                                 Rp. {fields?.price?.$numberDecimal}.000
                         </h3>
-<<<<<<< HEAD
-                        {/* <Link to='/player-list'>
-                            <Button className='col-12 mb-3 btn-player'>
-                                See Player List
-                            </Button>
-                        </Link> */}
-                        {/* <Link to='/compiler'>
-                            <Button className='col-12 mb-3 btn-book'>
-                                Book Now
-                            </Button>
-                        </Link> */}
-=======
-                            <Link to='/player-list'>
+                            {/* <Link to='/player-list'>
                                 <Button className='col-12 mb-3 btn-player'>
                                     See Player List
                             </Button>
-                        </Link>
->>>>>>> 54c802cac7ea77fa9399321e102d4c44dbc312bb
+                        </Link> */}
                         <ModalBooking 
                             isLogin={props.isLogin}
                         /> 
@@ -146,7 +133,7 @@ useEffect(() => {
                     <Col sm='4'></Col>
                 </Row>
 
-                <Row className='review-user' data-aos="fade-right">
+                <Row className='review-user'>
                     <Col sm='8' className='comment'>
                         <Card className='col-sm-12 mb-3 card-review'>
                             <CardBody>

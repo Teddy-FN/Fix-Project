@@ -1,0 +1,20 @@
+.button-modalbooking {
+ align-items: flex-end;
+ justify-content: flex-end;
+ border-color: #29dd99;
+ color: #29dd99;
+ border-radius: 5%;
+}
+
+.button-modalbooking:hover {
+    border-color: white;
+    color: white;
+}
+
+.date.picker {
+    width: 464px;
+    height: 38px;
+}
+.multi-option {
+    color: black;
+}
