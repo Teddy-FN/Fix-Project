@@ -49,7 +49,7 @@ function SetDateTime(props) {
         </div>
         <br/>
             {props.hasPrev() && <Button className="button-modalbooking" variant="link" onClick={props.prev}>Previous</Button>}
-            {props.hasNext() && <Button className="button-modalbooking" variant="link" onClick={props.next}>Next</Button>}
+            {props.hasNext() && <Button className="button-modalbooking1" variant="link" onClick={props.next}>Next</Button>}
         
         </>
     )
