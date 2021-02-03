@@ -3,6 +3,7 @@ import MultiSelect from 'react-multi-select-component'
 
 
 function SetTime(props) {
+  // eslint-disable-next-line no-undef
   const [selectedTime, setSelectedTime] = useState([]);
   const options = [
     { label: "09.00-10.00", value: "09.00-10.00" },

@@ -12,7 +12,7 @@ function Confirm(props) {
         </div>
         <div>
             {props.hasPrev() && <button onClick={props.prev}>Previous</button>}
-            {props.hasNext() && <button onClick={props.next}>Next</button>}
+            {props.hasNext() && <button onClick={props.next}>Submit</button>}
         </div>
         </>
     )

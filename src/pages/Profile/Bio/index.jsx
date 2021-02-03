@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody } from 'reactstrap';
 import './style.css'
 import { useSelector, useDispatch } from 'react-redux'
-import User from '../../../assets/img/user.png'
 import { Link } from 'react-router-dom'
 import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
 import swal from 'sweetalert'
@@ -97,10 +96,10 @@ function Bio(props) {
                                 <p>{user?.description}</p>
                             </div>
                             <div className="button">
-                                <Button color="link" className="btn editBio" onClick={toggle}>Edit Profile</Button>
+                                <Button color="link" className="btn editBio" onClick={toggle} style={{textDecoration: 'none'}}>Edit Profile</Button>
                                 <Modal isOpen={modal} toggle={toggle} className={className}>
                                     <ModalBody toggle={toggle} close={closeBtn}>
-                                        <h4 className="edit-title">Edit Profile</h4>
+                                        <h4 className="edit-title" >Edit Profile</h4>
                                         <br />
                                         <div>
                                             <Form onSubmit={HandleChangeProfile}>

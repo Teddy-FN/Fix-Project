@@ -92,7 +92,6 @@ function CardFields() {
             .get(`https://soka.kuyrek.com:3001/field/?sortByPrice=desc`)
             .then((res) => {
                 setFields(res.data.data);
-                console.log('data sort', res.data.data);
                 setLoading(true);
             })
             .catch((err) => {
@@ -111,7 +110,7 @@ function CardFields() {
     return (
         <div >
             <Container className='container'>
-                <div data-aos="fade-left">
+                {/* <div data-aos="fade-left"> */}
                     <div className="searchButton">
                         <form className="form-inline my-0 my-lg-0">
                             <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
@@ -129,8 +128,8 @@ function CardFields() {
                                 <small className="dropdown-toggle"></small>
                             </button>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ backgroundColor: '#545454', color: 'white' }}>
-                                <p className='dropdown-item' onClick={sortByNameAsc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Filter By Name (A-Z)</p>
-                                <p className='dropdown-item' onClick={sortByNameDesc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Filter By Name (Z-A)</p>
+                                <p className='dropdown-item' onClick={sortByNameAsc} style={{ cursor: 'pointer' }}>Filter By Name (A-Z)</p>
+                                <p className='dropdown-item' onClick={sortByNameDesc} style={{ cursor: 'pointer' }}>Filter By Name (Z-A)</p>
                             </div>
                         </div>
                         <div className="dropdown sort">
@@ -139,12 +138,12 @@ function CardFields() {
                                 <small className="dropdown-toggle"></small>
                             </button>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ backgroundColor: '#545454', color: 'white' }}>
-                                <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Sort By Price (Low-High)</p>
-                                <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer', backgroundColor: '#545454' }}>Sort By Price (High-Low)</p>
+                                <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer'}}>Sort By Price (Low-High)</p>
+                                <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer'}}>Sort By Price (High-Low)</p>
                             </div>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
                 {/* <Link to='/createField'>
                     <button className="btn btn-warning createField">Create Field</button>
                 </Link> */}
@@ -161,7 +160,7 @@ function CardFields() {
                                     return val
                                 }
                             }).map((field, idx) => (
-                                <div key={idx} className="card" style={{ width: '16rem' }}>
+                                <div key={idx} className="card" style={{ width: '16rem'}}>
                                     <Link to={`/field-details/${field._id}`} style={{ textDecoration: 'none', color: 'white' }} className='card-fields'>
                                         <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
                                         <div className="card-body">

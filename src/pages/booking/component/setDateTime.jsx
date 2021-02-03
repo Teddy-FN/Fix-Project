@@ -42,6 +42,7 @@ function SetDateTime(props) {
              value={selectedTime}
              onChange={setSelectedTime}
              labelledBy={"Select"}
+             style={{backgroudColor: 'black'}}
             />
         </div>
             {props.hasPrev() && <button onClick={props.prev}>Previous</button>}

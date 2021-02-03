@@ -17,25 +17,35 @@ import { Rating } from '@material-ui/lab';
 import axios from 'axios';
 import Loading from '../loading/loading';
 import ModalBooking from './modalBooking';
+import ModalBookingCopy from './modalBookingCopy';
 import swal from 'sweetalert';
 
 const FieldDetail = (props) => {
 
 const params =useParams();
 const [fields, setFields] = useState([]);
+const [feedbacks, setFeedbacks] = useState([]);
 const [loading, setLoading] = useState(false);
-const url = `https://soka.kuyrek.com:3001/field/${params.id}`
+const url = `https://soka.kuyrek.com:3001/field/${params.id}`;
 
-useEffect(() => {
+const urlFeedbacks = `https://soka.kuyrek.com:3002/feedback/${params.id}`;
+
+const token = localStorage.getItem("token");
+
+let config = {
+    headers: {
+        Authorization: `Bearer ${token}`,
+    }
+  };
+
+const getFields = () => {
     axios
       .get(url)
       .then((res) => {
           setFields(res.data.data);
           setLoading(true);
-        console.log(fields);
       })
       .catch((err) => {
-		  console.log(err);
 			swal({
 				icon: "warning",
 				title: "Failed to get data",
@@ -45,6 +55,23 @@ useEffect(() => {
 				timer: 3000,
 			});
       });
+}
+
+const getFeedbacks = () => {
+    axios
+    .get(urlFeedbacks, config)
+    .then((res) => {
+        console.log('data feedbacks: ', res)
+        setFeedbacks(res.data)
+    })
+    .catch((err) => {
+        console.log('error feedbacks: ', err)
+    })
+}
+
+useEffect(() => {
+        getFields()
+        getFeedbacks();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -61,7 +88,7 @@ useEffect(() => {
                                     <img
                                     className="d-block w-100 field-img-big"
                                     src={`https://soka.kuyrek.com:3001/${image}`}
-                                    alt="First slide"
+                                    alt={image}
                                     />
                                 </Carousel.Item>
                             ))}
@@ -72,7 +99,7 @@ useEffect(() => {
                                 <img
                                     key={idx}
                                     src={`https://soka.kuyrek.com:3001/${image}`}
-                                    alt="field small"
+                                    alt={image}
                                     md={6}
                                     xs={12}
                                     className="col-3 img-sm"
@@ -98,14 +125,17 @@ useEffect(() => {
                             <h3 className='price-field'>
                                 Rp. {fields?.price?.$numberDecimal}.000
                         </h3>
-                            <Link to='/player-list'>
+                            {/* <Link to='/player-list'> */}
                                 <Button className='col-12 mb-3 btn-player'>
                                     See Player List
                             </Button>
-                        </Link>
+                        {/* </Link> */}
                         <ModalBooking 
                             isLogin={props.isLogin}
                         /> 
+                        {/* <ModalBookingCopy 
+                            isLogin={props.isLogin}
+                        /> */}
                     </div>
                 </Col>
             </Row>

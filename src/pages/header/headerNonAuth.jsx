@@ -106,6 +106,17 @@ const HeaderNonAuth = () => {
     //     )
     // }
 
+    const handleSumbmitFacebook = () => {
+        swal({
+            icon: "error",
+            title: "Sign Up With Another Option",
+            text: "please register again",
+            type: "warning",
+            buttons: false,
+            timer: 2000,
+        });
+        setLoading(false)
+    }
     useEffect(() => {
         // Antimation 
         AOS.init({
@@ -183,7 +194,7 @@ const HeaderNonAuth = () => {
                             <br />
                             <br />
                             <p class="para" >Or</p>
-                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }}>Sign Up with Facebook</Button>
+                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }} onClick ={handleSumbmitFacebook}>Sign Up with Facebook</Button>
                         </Form>
                         <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99' }} onClick={toggleLogin}>Log In</Button></span>
                     </ModalBody>
@@ -195,7 +206,7 @@ const HeaderNonAuth = () => {
                         <div>nama</div> :
                         null
                 }
-                <h4 class="btn-header" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleLogin}>Log In</h4>
+                <h4 class="btn-login" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleLogin}>Log In</h4>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title">Log In</h4>

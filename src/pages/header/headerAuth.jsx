@@ -60,7 +60,7 @@ const HeaderAuth = () => {
                             <a className="dropdown-item" href="#">Profile</a>
                         </Link>
                         <a className="dropdown-item" href="#">Setting</a>
-                        <Link to='/'> <a className="dropdown-item" href="#" onClick={logOut}>Log Out</a></Link>
+                        <Link to='/' style={{ textDecoration: 'none' }}> <a className="dropdown-item" href="#" onClick={logOut}>Log Out</a></Link>
                     </div>
                 </div>
             </div>
