@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import MultiSelect from 'react-multi-select-component'
+import { Button } from 'react-bootstrap'
+import './style.css'
 
 function SetDateTime(props) {
     const [selectedDate, setSelectedDate] = useState(null)
@@ -28,13 +30,14 @@ function SetDateTime(props) {
         <>
         <div>
             <h5>Choose your date:</h5>
-            <DatePicker
+            <DatePicker className="date-picker"
                 selected={selectedDate}
                 onChange={date => setSelectedDate(date)}
                 dateFormat='dd/MM/yyyy'
                 minDate={new Date()}
             />
         </div>
+        <br/>
         <div>
             <h5>Choose your timeslot:</h5>
             <MultiSelect className="multi-option"
@@ -44,8 +47,9 @@ function SetDateTime(props) {
              labelledBy={"Select"}
             />
         </div>
-            {props.hasPrev() && <button onClick={props.prev}>Previous</button>}
-            {props.hasNext() && <button onClick={props.next}>Next</button>}
+        <br/>
+            {props.hasPrev() && <Button className="button-modalbooking" variant="link" onClick={props.prev}>Previous</Button>}
+            {props.hasNext() && <Button className="button-modalbooking" variant="link" onClick={props.next}>Next</Button>}
         
         </>
     )

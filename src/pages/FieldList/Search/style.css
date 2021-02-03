@@ -25,10 +25,17 @@
 
 .sort {
     float: right;
+
 }
 
 .searching {
     background-color: #545454;
+    border-color: white;
+}
+
+.searching:hover {
+    background-color: #545454;
+    border-color: #28df99;
 }
 
 .searchButton {
@@ -38,6 +45,14 @@
     margin-bottom: 15px;
 }
 
-.buttonSearch {
-    background-color: #28df99;
+.buttonSearch{
+    border-color: white;
+    background-color: #545454
 }
+
+.buttonSearch:hover {
+    border-color: #28df99;
+    background-color: #545454
+}
+
+
