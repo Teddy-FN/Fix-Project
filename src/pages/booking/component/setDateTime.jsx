@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import MultiSelect from 'react-multi-select-component'
+import { Button } from 'react-bootstrap'
+import './style.css'
 
-// DISPATCH
-import { useDispatch, useSelector } from 'react-redux'
-// Import from action
-import { BookedTimeSlotField } from '../../../redux/actions/booking'
+// // DISPATCH
+// import { useDispatch, useSelector } from 'react-redux'
+// // Import from action
+// import { BookedTimeSlotField } from '../../../redux/actions/booking'
 
 
 function SetDateTime(props) {
@@ -34,31 +36,32 @@ function SetDateTime(props) {
     // const params = useParams()
 
     // GET TIMESLOT FROM BACKEND
-    const dispatch = useDispatch()
-    const dataTime = useSelector(state => state.BookedTimeSlot.data)
-    const [time, setDate] = useState(null)
-    const postTime = async (e) => {
-        await dispatch(BookedTimeSlotField({
-            setDate: e
-        }))
-    }
-    // UseEffect
-    useEffect(() => {
+    // const dispatch = useDispatch()
+    // const dataTime = useSelector(state => state.BookedTimeSlot.data)
+    // const [time, setDate] = useState(null)
+    // const postTime = async (e) => {
+    //     await dispatch(BookedTimeSlotField({
+    //         setDate: e
+    //     }))
+    // }
+    // // UseEffect
+    // useEffect(() => {
 
-    }, [dataTime])
+    // }, [dataTime])
 
 
     return (
         <>
             <div>
                 <h5>Choose your date:</h5>
-                <DatePicker
+                <DatePicker className="date-picker"
                     selected={selectedDate}
                     onChange={date => setSelectedDate(date)}
                     dateFormat='dd/MM/yyyy'
                     minDate={new Date()}
                 />
             </div>
+            <br />
             <div>
                 <h5>Choose your timeslot:</h5>
                 <MultiSelect className="multi-option"
@@ -68,9 +71,9 @@ function SetDateTime(props) {
                     labelledBy={"Select"}
                 />
             </div>
-            {props.hasPrev() && <button onClick={props.prev}>Previous</button>}
-            {props.hasNext() && <button onClick={props.next}>Next</button>}
-
+            <br />
+            {props.hasPrev() && <Button className="button-modalbooking" variant="link" onClick={props.prev}>Previous</Button>}
+            {props.hasNext() && <Button className="button-modalbooking1" variant="link" onClick={props.next}>Next</Button>}
 
         </>
     )

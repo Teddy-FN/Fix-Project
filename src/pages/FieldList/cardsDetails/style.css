@@ -5,12 +5,17 @@ body {
 
 .container {
     margin-top: 130px !important;
+    margin-left: 8% !important;
+    clear: both;
 }
 
-.content {
+.content-browse {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
+    clear: both;
+    width: 1200px;
+    margin-top: 500px !important;
+    
 }
 
 .main {
@@ -22,6 +27,7 @@ body {
     background-color: #545454;
     color: #fff;
     margin: 5px;
+    height: 358px;
 }
 
 .card:hover {
@@ -33,7 +39,7 @@ body {
 }
 
 .card-image {
-    height: 150px !important;
+    height: 180px !important;
 }
 
 .card-title{
@@ -75,12 +81,26 @@ body {
     margin-left: 64px;
 }
 
-.dropdown-title {
+.dropdown-item {
     color: white;
+    background-color: none;
+}
+
+.dropdown-item:hover {
+    color: #29dd99;
 }
 
 .sorting {
     width: 122px;
+}
+
+.filter-sort-button {
+    border-color: white;
+}
+
+.filter-sort-button:hover {
+    border-color: #29dd99;
+    color: #29dd99 !important;
 }
 
 .sort {

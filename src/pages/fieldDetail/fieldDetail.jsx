@@ -53,7 +53,7 @@ const FieldDetail = (props) => {
         AOS.init({
             duration: 4000
         })
-    }, [])
+    })
 
     return (
         <>
@@ -105,11 +105,11 @@ const FieldDetail = (props) => {
                             <h3 className='price-field'>
                                 Rp. {fields?.price?.$numberDecimal}.000
                         </h3>
-                            <Link to='/player-list'>
+                            {/* <Link to='/player-list'>
                                 <Button className='col-12 mb-3 btn-player'>
                                     See Player List
                             </Button>
-                            </Link>
+                        </Link> */}
                             <ModalBooking
                                 isLogin={props.isLogin}
                             />
@@ -140,7 +140,7 @@ const FieldDetail = (props) => {
                     <Col sm='4'></Col>
                 </Row>
 
-                <Row className='review-user' data-aos="fade-right">
+                <Row className='review-user'>
                     <Col sm='8' className='comment'>
                         <Card className='col-sm-12 mb-3 card-review'>
                             <CardBody>

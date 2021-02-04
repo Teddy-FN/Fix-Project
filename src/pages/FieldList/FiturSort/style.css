@@ -1,0 +1,20 @@
+.sort-button {
+    border-color: white;
+    background-color: #545454
+}
+
+.sort-button:hover {
+    border-color: #29df99;
+    background-color: #545454
+}
+
+
+.filter-button {
+    border-color: white;
+    background-color: #545454
+}
+
+.filter-button:hover {
+    border-color: #29df99;
+    background-color: #545454
+}

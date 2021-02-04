@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Modal, ModalBody, Button, Col } from 'react-bootstrap'
+import { Modal, Button, Col } from 'react-bootstrap'
 import { Steps, Step } from "react-step-builder"
-import UserInfo from '../booking/component/userInfo'
+// import UserInfo from '../booking/component/userInfo'
 import SetDateTime from '../booking/component/setDateTime'
 import Confirm from '../booking/component/confirm'
 import Success from '../booking/component/success'
+import './modalBooking.css'
 
 
 const ModalBooking = (props) => {
@@ -15,19 +16,18 @@ const ModalBooking = (props) => {
 
 
     // Bikin method di dlm method dispatch
-
     return (
         <div>
-            <Button className='col-12 mb-3 btn-book' onClick={handleShow}>
+            <Button className='col-12 mb-3 book-field-button' variant="link" onClick={handleShow}>
                 Book
             </Button>
             <Modal
+                className="modal-booking"
                 show={show}
-                onHide={handleClose}
-            >
+                onHide={handleClose} >
                 {props.isLogin !== true ? (
                     <div>
-                        <ModalBody>
+                        <Modal.Body>
                             <Col>
                                 <h3 style={{ textAlign: "center", padding: '30px 30px' }}>
                                     Hello guest, <br />
@@ -38,25 +38,23 @@ const ModalBooking = (props) => {
                                     if you want booking a field
                         </h4>
                             </Col>
-                        </ModalBody>
+                        </Modal.Body>
                     </div>
                 ) : (
-                        <ModalBody>
+                        <Modal.Body>
                             <div className="multistep">
                                 <Steps>
-                                    <Step component={UserInfo} />
+                                    {/* <Step component={UserInfo} /> */}
                                     <Step component={SetDateTime} />
                                     <Step component={Confirm} />
                                     <Step component={Success} />
                                 </Steps>
                             </div>
-                        </ModalBody>
+                        </Modal.Body>
                     )}
             </Modal>
-
         </div>
     )
-
 }
 
 export default ModalBooking;

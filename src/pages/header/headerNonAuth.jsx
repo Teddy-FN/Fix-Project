@@ -140,8 +140,8 @@ const HeaderNonAuth = () => {
                     </li>
                 </ul>
             </div>
-            <div data-aos="fade-left">
-                <li class="btn-header active" style={{ color: 'white', textDecoration: 'none', listStyle: 'none' }} color="link" onClick={toggleRegist}><a href='#' style={{ textDecoration: 'none', color: 'white' }} className='btn-header'>Sign Up</a></li>
+            {/* <div data-aos="fade-left"> */}
+            <h4 class="btn-header" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleRegist}>Sign Up</h4>
                 <Modal isOpen={modalRegist} toggle={toggleRegist}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title"> Sign Up</h4>
@@ -195,7 +195,7 @@ const HeaderNonAuth = () => {
                         <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99' }} onClick={toggleLogin}>Log In</Button></span>
                     </ModalBody>
                 </Modal>
-            </div>
+            {/* </div> */}
             <div >
                 {
                     token ?
