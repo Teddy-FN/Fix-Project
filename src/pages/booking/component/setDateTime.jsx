@@ -1,12 +1,50 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import MultiSelect from 'react-multi-select-component'
+import { Button } from 'react-bootstrap'
+import './style.css'
+import axios from 'axios'
 
 function SetDateTime(props) {
-    const [selectedDate, setSelectedDate] = useState(null)
 
+    // eslint-disable-next-line no-unused-vars
+    const [selectedDate, setSelectedDate] = useState(null)
+    const [date, setDate] = useState(new Date());
     const [selectedTime, setSelectedTime] = useState([]);
+
+    const url = `https://soka.kuyrek.com:3003/booking/${props.id}/bookedfield`;
+
+    const token = localStorage.getItem('token');
+
+    const data = {
+        data: {
+            date : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+        }
+    }
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    }
+
+    const getTime = () => {
+        axios
+            .post(url, data, config)
+            .then((res) => {
+                console.log('ini ress time slot: ', res)
+            })
+            .catch((err) => {
+                console.log('ini error timeslot: ', err)
+            })
+    }
+
+    useEffect(() => {
+        getTime()
+    })
+
+
     const options = [
         { label: "09.00-10.00", value: "09.00-10.00" },
         { label: "10.00-11.00", value: "10.00-11.00" },
@@ -27,14 +65,15 @@ function SetDateTime(props) {
     return (
         <>
         <div>
-            <h5>Choose your date:</h5>
-            <DatePicker
-                selected={selectedDate}
-                onChange={date => setSelectedDate(date)}
-                dateFormat='dd/MM/yyyy'
-                minDate={new Date()}
+            <h5>Choose your dateFormat:</h5>
+            <DatePicker className="dateFormat-picker"
+                selected={date}
+                onChange={date => setDate(date)}
+                dateFormat='yyyy-MM-dd'
+                minDate={date}
             />
         </div>
+        <br/>
         <div>
             <h5>Choose your timeslot:</h5>
             <MultiSelect className="multi-option"
@@ -45,8 +84,9 @@ function SetDateTime(props) {
              style={{backgroudColor: 'black'}}
             />
         </div>
-            {props.hasPrev() && <button onClick={props.prev}>Previous</button>}
-            {props.hasNext() && <button onClick={props.next}>Next</button>}
+        <br/>
+            {props.hasPrev() && <Button className="button-modalbooking" variant="link" onClick={props.prev} style={{textDecoration: 'none'}}>Previous</Button>}
+            {props.hasNext() && <Button className="button-modalbooking" variant="link" onClick={props.next} style={{textDecoration: 'none'}}>Next</Button>}
         
         </>
     )

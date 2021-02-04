@@ -157,7 +157,7 @@ class CreateField extends React.Component {
         let { imagePreviewUrl } = this.state;
         let $imagePreview = null;
         if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} />);
+            $imagePreview = (<img src={imagePreviewUrl} alt=''/>);
         } else {
             $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
         }

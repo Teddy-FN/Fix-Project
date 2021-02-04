@@ -26,6 +26,7 @@ const params =useParams();
 const [fields, setFields] = useState([]);
 const [feedbacks, setFeedbacks] = useState([]);
 const [loading, setLoading] = useState(false);
+const [noReview, setNoReview] = useState(false)
 const url = `https://soka.kuyrek.com:3001/field/${params.id}`;
 
 const urlFeedbacks = `https://soka.kuyrek.com:3002/feedback/${params.id}`;
@@ -61,11 +62,12 @@ const getFeedbacks = () => {
     axios
     .get(urlFeedbacks, config)
     .then((res) => {
-        console.log('data feedbacks: ', res)
-        setFeedbacks(res.data)
+        console.log('data feedbacks: ', res.data.data)
+        setFeedbacks(res.data.data)
     })
     .catch((err) => {
-        console.log('error feedbacks: ', err)
+        console.log('error feedbacks: ', err);
+        setNoReview(true)
     })
 }
 
@@ -125,13 +127,14 @@ useEffect(() => {
                             <h3 className='price-field'>
                                 Rp. {fields?.price?.$numberDecimal}.000
                         </h3>
-                            {/* <Link to='/player-list'> */}
+                            {/* <Link to='/player-list'>
                                 <Button className='col-12 mb-3 btn-player'>
                                     See Player List
                             </Button>
-                        {/* </Link> */}
+                        </Link> */}
                         <ModalBooking 
                             isLogin={props.isLogin}
+                            id={params.id}
                         /> 
                         {/* <ModalBookingCopy 
                             isLogin={props.isLogin}
@@ -153,37 +156,50 @@ useEffect(() => {
                         />
                         </span> */}
                     <Col sm='4' className='num-rating mt-3 mb-3'>
-                        <span>
+                        {/* <span>
                             <h3 className='ml-auto mr-2' style={{ color: '#e5e5e5' }}>
                                 4.7 /{' '}
                                 <span style={{ color: '#e5e5e5' }}>5</span>
                             </h3>
-                        </span>
+                        </span> */}
                     </Col>
                     <Col sm='4'></Col>
                 </Row>
 
-                <Row className='review-user' data-aos="fade-right">
+                <Row className='review-user'>
                     <Col sm='8' className='comment'>
-                        <Card className='col-sm-12 mb-3 card-review'>
+                        
+                        {noReview === true ? (
+                            <p
+                                style={{
+                                    textAlign: 'center',
+                                    fontSize: '30px',
+                                    fontWeight: 'bold',
+                                    paddingTop: '20px'
+                                }}
+                            >No Feedbacks Yet</p>
+                        ) : (
+                        feedbacks?.map((feedback, idx) => (
+                        <Card className='col-sm-12 mb-3 card-review' key={idx}>
                             <CardBody>
                                 <h4 className='review-title'>
-                                    <b>Speedwagon</b>
+                                    <b>{feedback.username}</b>
                                 </h4>
                                 <div className='rating'>
                                     <Rating
                                         name='half-rating-read'
-                                        defaultValue={5}
+                                        defaultValue={feedback.rating}
                                         precision={0.2}
                                         max={5}
                                         readOnly
                                     />
                                 </div>
-                                <p className='review-p'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui aspernatur maxime possimus cum fuga! Autem odio temporibus voluptatum deleniti distinctio illum excepturi, cumque laboriosam perspiciatis esse placeat a inventore consequuntur.</p>
+                                <p className='review-p'>{feedback.review}</p>
                             </CardBody>
                         </Card>
-
-                        <Card className='col-sm-12 mb-3 card-review'>
+                        ))
+                        )}
+                        {/* <Card className='col-sm-12 mb-3 card-review'>
                             <CardBody>
                                 <h4 className='review-title'>
                                     <b>Dio Brando</b>
@@ -199,7 +215,7 @@ useEffect(() => {
                                 </div>
                                 <p className='review-p'>This place stinks</p>
                             </CardBody>
-                        </Card>
+                        </Card> */}
                     </Col>
                     <Col sm='4'>
 

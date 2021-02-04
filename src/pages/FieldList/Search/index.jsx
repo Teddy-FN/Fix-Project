@@ -19,7 +19,7 @@ function Feature() {
                         <input class="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
                             setSearch(event.target.value)
                         }} />
-                        <button type="button" class="btn btn-success buttonSearch">
+                        <button type="button" class="buttonSearch btn btn-link">
                             <FontAwesomeIcon icon={faSearch} />
                         </button>
                     </form>

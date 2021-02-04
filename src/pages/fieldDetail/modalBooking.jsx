@@ -1,28 +1,31 @@
 import React, { useState } from 'react'
-import { Modal, ModalBody, Button, Col } from 'react-bootstrap'
+import { Modal, Button, Col } from 'react-bootstrap'
 import { Steps, Step } from "react-step-builder"
-import UserInfo from '../booking/component/userInfo'
+// import UserInfo from '../booking/component/userInfo'
 import SetDateTime from '../booking/component/setDateTime'
 import Confirm from '../booking/component/confirm'
 import Success from '../booking/component/success'
+import './modalBooking.css'
 
 const ModalBooking = (props) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    console.log('props modal booking: ',props.id)
 
     return (
             <div>
-            <Button className='col-12 mb-3 btn-book' onClick={handleShow}>
+            <Button className='col-12 mb-3 book-field-button' variant="link" onClick={handleShow} style={{textDecoration: 'none'}}>
                 Book
             </Button>
             <Modal
+                className="modal-booking"
                 show={show}
                 onHide={handleClose}
             >
                 {props.isLogin !== true ? (
                 <div>
-                    <ModalBody>
+                    <Modal.Body>
                     <Col>
                         <h3 style={{ textAlign: "center", padding: '30px 30px' }}>
                         Hello guest, <br />
@@ -33,19 +36,19 @@ const ModalBooking = (props) => {
                         if you want booking a field
                         </h4>
                     </Col>
-                    </ModalBody>
+                    </Modal.Body>
                 </div>
                 ) : (
-                    <ModalBody>
+                    <Modal.Body>
                         <div className="multistep">
                             <Steps>
-                                <Step component={UserInfo} />
-                                <Step component={SetDateTime} />
+                                {/* <Step component={UserInfo} /> */}
+                                <Step component={SetDateTime} id={props.id}/>
                                 <Step component={Confirm} />
                                 <Step component={Success} />
                             </Steps>
                         </div>
-                    </ModalBody>
+                    </Modal.Body>
                 )}
             </Modal>
             

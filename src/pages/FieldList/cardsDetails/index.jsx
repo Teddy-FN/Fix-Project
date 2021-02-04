@@ -6,7 +6,7 @@ import './style.css';
 import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Pagination from './pagination';
+// import Pagination from './pagination';
 import Loading from '../../loading/loading';
 // import ButtonAdmin from '../addFields/buttonAdmin';
 import AOS from "aos";
@@ -19,8 +19,8 @@ function CardFields() {
     const [loading, setLoading] = useState(false);
     // eslint-disable-next-line no-unused-vars
     const [search, setSearch] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage] = useState(8);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [postPerPage] = useState(8);
 
     const url = 'https://soka.kuyrek.com:3001/field'
 
@@ -42,9 +42,7 @@ function CardFields() {
             });
 
         // Animation 
-        AOS.init({
-            duration: 2000
-        })
+        AOS.init({duration: 2000})
     }, [])
 
     const sortByNameAsc = (e) => {
@@ -100,17 +98,18 @@ function CardFields() {
     };
 
     // Get current posts
-    const indexOfLastPost = currentPage * postPerPage;
-    const indexOfFirstPost = indexOfLastPost - postPerPage;
-    const currentPosts = fields.slice(indexOfFirstPost, indexOfLastPost);
+    // const indexOfLastPost = currentPage * postPerPage;
+    // const indexOfFirstPost = indexOfLastPost - postPerPage;
+    // const currentPosts = fields.slice(indexOfFirstPost, indexOfLastPost);
 
     // ubah page
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-    console.log(fields)
+    // const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    // console.log(fields)
     return (
         <div >
             <Container className='container'>
                 {/* <div data-aos="fade-left"> */}
+                    <div className='header-card' style={{marginLeft: '100px'}}>
                     <div className="searchButton">
                         <form className="form-inline my-0 my-lg-0">
                             <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
@@ -123,7 +122,7 @@ function CardFields() {
                     </div>
                     <div className="sorter">
                         <div className="dropdown filter">
-                            <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
+                            <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
                                 <small className="nameFitur">Filter</small>
                                 <small className="dropdown-toggle"></small>
                             </button>
@@ -133,7 +132,7 @@ function CardFields() {
                             </div>
                         </div>
                         <div className="dropdown sort">
-                            <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
+                            <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
                                 <small className="nameFitur">Sort</small>
                                 <small className="dropdown-toggle"></small>
                             </button>
@@ -143,15 +142,16 @@ function CardFields() {
                             </div>
                         </div>
                     </div>
+                    </div>
                 {/* </div> */}
                 {/* <Link to='/createField'>
                     <button className="btn btn-warning createField">Create Field</button>
                 </Link> */}
-                <div className="main" data-aos="zoom-out" >
-                    <div className="content">
+                <div className="main">
+                    <div className="content-browse">
                         {fields && loading ? (
                             // eslint-disable-next-line array-callback-return
-                            currentPosts.filter((val) => {
+                            fields.filter((val) => {
                                 if (setSearch === '') {
                                     return val
                                 } else if (val.fieldName.toLowerCase().includes(search.toLowerCase())) {
@@ -160,7 +160,7 @@ function CardFields() {
                                     return val
                                 }
                             }).map((field, idx) => (
-                                <div key={idx} className="card" style={{ width: '16rem'}}>
+                                <div key={idx} className="card" style={{ width: '17rem' }}>
                                     <Link to={`/field-details/${field._id}`} style={{ textDecoration: 'none', color: 'white' }} className='card-fields'>
                                         <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
                                         <div className="card-body">
@@ -178,13 +178,13 @@ function CardFields() {
                     </div>
                 </div>
             </Container>
-            <div className='page'>
+            {/* <div className='page'>
                 <Pagination
                     postsPerPage={postPerPage}
                     totalPosts={fields.length}
                     paginate={paginate}
                 />
-            </div>
+            </div> */}
         </div >
     )
 }

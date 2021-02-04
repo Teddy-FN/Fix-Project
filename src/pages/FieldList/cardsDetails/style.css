@@ -5,23 +5,31 @@ body {
 
 .container {
     margin-top: 130px !important;
+    margin-left: 4% !important;
+    clear: both;
 }
 
-.content {
+.content-browse {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
+    clear: both;
+    width: 1200px;
+    margin-top: 500px !important;
+    
 }
 
 .main {
     margin: 0px 23px;
     clear: both;
+    justify-content: center !important;
 }
 
 .card {
     background-color: #545454;
     color: #fff;
     margin: 5px;
+    height: 358px;
+    justify-content: center;
 }
 
 .card:hover {
@@ -33,7 +41,7 @@ body {
 }
 
 .card-image {
-    height: 150px !important;
+    height: 180px !important;
 }
 
 .card-title{
@@ -83,6 +91,15 @@ body {
     width: 122px;
 }
 
+.filter-sort-button {
+    border-color: white;
+}
+
+.filter-sort-button:hover {
+    border-color: #29dd99;
+    color: #29dd99 !important;
+}
+
 .sort {
     float: right;
 }
@@ -94,7 +111,7 @@ body {
 .searchButton {
     float: right;
     margin-left: 27px;
-    margin-right: 27px;
+    margin-right: -27px;
     margin-bottom: 15px;
 }
 

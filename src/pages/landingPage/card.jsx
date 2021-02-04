@@ -35,7 +35,7 @@ const Cards = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     // Animation
-    AOS.init({ duration: 2000 });
+    // AOS.init({ duration: 2000 });
   }, [])
   console.log(fields)
   // const img = fields.image[0].slice(7)
@@ -53,7 +53,7 @@ const Cards = () => {
         <br />
         <div className="main-home">
           <div className="content">
-            {fields && loading ? (fields.slice(6).map((field, idx) => (<div className="card home" style={{ width: '18rem' }}>
+            {fields && loading ? (fields.slice(6).map((field, idx) => (<div className="card home" style={{ width: '18rem', height: '358px'}}>
               <Link to={`field-details/${field.id}`} style={{ textDecoration: 'none', color: 'white' }} >
                 <div className='card-fields' key={idx}>
                   <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />

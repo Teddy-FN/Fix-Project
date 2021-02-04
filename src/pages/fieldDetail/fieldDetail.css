@@ -86,20 +86,20 @@ body {
     border: 2px solid #545454 !important;
 }
 
-.btn-book{
+/* .btn-book{
     color: #545454 !important;
     background-color: #28df99 !important;
     font-weight: 700 !important;
     height: 50px !important;
-}
+} */
 
-.btn-book:hover{
+/* .btn-book:hover{
     color: #545454  !important;
     background-color: #28df99 !important;
     font-weight: 700 !important;
     height: 50px !important;
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.3));
-}
+} */
 
 .img-sm{
     border-radius: 10px;
@@ -136,6 +136,7 @@ body {
 .card-review {
     background-color: #545454 !important;
     border: none !important;
+    height: auto !important;
 }
 
 .star-rating {
