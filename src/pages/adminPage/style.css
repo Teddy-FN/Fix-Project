@@ -135,3 +135,15 @@ img {
   text-align: center;
   width: 500px;
 }
+
+
+/* Upload Image */
+.backgroundUploadImage {
+    /* background-color: #28df99; */
+    display: flex;
+    flex-wrap: wrap;
+}
+.previewComponent{
+    /* background-color: #28df99; */
+    margin: 20px;
+}

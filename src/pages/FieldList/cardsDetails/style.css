@@ -83,8 +83,13 @@ body {
     margin-left: 64px;
 }
 
-.dropdown-title {
+.dropdown-item {
     color: white;
+    background-color: none;
+}
+
+.dropdown-item:hover {
+    color: #29dd99;
 }
 
 .sorting {

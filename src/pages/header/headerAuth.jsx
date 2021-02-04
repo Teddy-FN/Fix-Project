@@ -54,7 +54,6 @@ const HeaderAuth = () => {
             <div>
                 <div className="dropdown">
                     <img src={user.profilePic === null ? Profile : `https://soka.kuyrek.com:3005/${user.profilePic}`} className="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
-                    {/* <img src={Profile} className="img-button dropdown-toggle" color="link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" /> */}
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <Link to="/bio" style={{ textDecoration: 'none' }}>
                             <a className="dropdown-item" href="#">Profile</a>

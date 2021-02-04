@@ -149,6 +149,11 @@
     margin-top: 10px;
 }
 
+.googleAuth{
+    width: 100%;
+    align-items: center;
+}
+
 /* iPad */
 @media (max-width: 768px){
     
