@@ -179,7 +179,6 @@ const FieldDetail = (props) => {
                         </Card>
                     </Col>
                     <Col sm='4'>
-
                     </Col>
                 </Row>
             </Container>
