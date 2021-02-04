@@ -145,9 +145,9 @@ function CardFields() {
                         </div>
                     </div>
                 </div>
-                {/* <Link to='/createField'>
+                <Link to='/createField'>
                     <button className="btn btn-warning createField">Create Field</button>
-                </Link> */}
+                </Link>
                 <div className="main">
                     <div className="content">
                         {fields && loading ? (
@@ -166,7 +166,7 @@ function CardFields() {
                                         <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
                                         <div className="card-body">
                                             <h6 className="card-title">{field.fieldName.slice(0, 15)}</h6>
-                                            <small className="price">Rp. {field.price.$numberDecimal}.000</small>
+                                            <small className="price">Rp. {field.price.$numberDecimal} K</small>
                                             <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} className="map" />{field.location}</p>
                                             {/* <button className="btn btn-secondary view">View</button>
                                         <button className="btn book">Book</button> */}

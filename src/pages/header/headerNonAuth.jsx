@@ -13,10 +13,14 @@ import { Link, Router, Switch, Route, useHistory } from 'react-router-dom'
 import ShowPasswordToogle from './showPasswordToogle/showPasswordToogle'
 // redux Saga
 import { handler } from '../../provider'
-import { login, SignUp } from '../../redux/actions/auth'
+import { login, SignUp, loginGoogle } from '../../redux/actions/auth'
 import swal from 'sweetalert'
+// Animation
 import AOS from "aos";
 import "aos/dist/aos.css";
+// Google 
+import { GoogleLogin } from 'react-google-login'
+
 
 const HeaderNonAuth = () => {
 
@@ -35,6 +39,14 @@ const HeaderNonAuth = () => {
 
     const [token] = useState('');
     const [passwordInputType, ToogleIcon] = ShowPasswordToogle()
+
+    // Animation 
+    useEffect(() => {
+        // Antimation 
+        AOS.init({
+            duration: 4000
+        })
+    })
 
     // Register
     const handleOnSubmitSignUp = async (event) => {
@@ -100,18 +112,13 @@ const HeaderNonAuth = () => {
     };
     console.log("token", token);
 
-    // if (loading) {
-    //     return (
-    //         <p>Text Loading</p>
-    //     )
-    // }
+    // Login Google
+    const handleGoogleLogin = async (e) => {
+        console.log("HANDLE LOGIN", e)
+        await dispatch(loginGoogle(e))
+        setLoading(true)
+    }
 
-    useEffect(() => {
-        // Antimation 
-        AOS.init({
-            duration: 4000
-        })
-    })
 
     return (
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px #222222' }}>
@@ -224,7 +231,15 @@ const HeaderNonAuth = () => {
                             <br />
                             <br />
                             <p class="para">Or</p>
-                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }} onClick={toggleLogin}>Log In with Facebook</Button>
+                            <GoogleLogin
+                                clientId="548645407023-l8n4p4pia7mclrheramf7knu2f5b6cve.apps.googleusercontent.com"
+                                buttonText="Login"
+                                onSuccess={handleGoogleLogin}
+                                onFailure={handleGoogleLogin}
+                                cookiePolicy={'single_host_origin'}
+                                className="googleAuth"
+                            />
+                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }} >Log In with Facebook</Button>
                         </Form>
                         <span class="statement">Don't have an account? <Button className="crosing-button" style={{ color: '#28df99' }} color="link" onClick={toggleRegist}>Sign Up</Button></span>
                     </ModalBody>

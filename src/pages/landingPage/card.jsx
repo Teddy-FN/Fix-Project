@@ -60,7 +60,7 @@ const Cards = () => {
                   <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
                   <div className="card-body">
                     <h5 className="card-title">{field.fieldName.slice(0, 15)}</h5>
-                    <small className="price">Rp. {field.price.$numberDecimal}.000</small>
+                    <small className="price">Rp. {field.price.$numberDecimal} K</small>
                     <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} className="map" />{field.location}</p>
                     {/* <button className="btn btn-secondary view">View</button>
                 <button className="btn book">Book</button> */}

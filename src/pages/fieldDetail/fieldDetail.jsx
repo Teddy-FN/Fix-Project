@@ -53,7 +53,7 @@ const FieldDetail = (props) => {
         AOS.init({
             duration: 4000
         })
-    })
+    }, [])
 
     return (
         <>
