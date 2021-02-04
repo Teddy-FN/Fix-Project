@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
@@ -190,7 +192,8 @@ const HeaderNonAuth = () => {
                             <br />
                             <br />
                             <p class="para" >Or</p>
-                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }}>Sign Up with Facebook</Button>
+                            // eslint-disable-next-line no-undef
+                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }} onClick ={handleSumbmitFacebook}>Sign Up with Facebook</Button>
                         </Form>
                         <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99' }} onClick={toggleLogin}>Log In</Button></span>
                     </ModalBody>

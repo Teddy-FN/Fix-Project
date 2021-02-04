@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
     BOOKED_FIELD,
     BOOKED_TIMESLOT,
@@ -10,17 +11,20 @@ const API = 'https://soka.kuyrek.com:3003/booking'
 // Booked as Field
 export const BookedAsField = (props) => {
     console.log('INI PROPS BOOK WOII', props)
+    let data = {
+        date: props.date,
+        id_timeslot: props.id_timeslot
+    }
+    const token = localStorage.getItem('token')
+    let config = {
+        header: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     return async (dispatch) => {
-        const token = localStorage.getItem('token')
         try {
             console.log('%cToken User Booked%c', token, 'color: black')
-            const res = await axios.post(API + `/${props.id}/create/bookedfield`, {
-                header: {
-                    Authorization: `Bearer ${token}`,
-                    'Accept': 'application/json',
-                    'Content-type': 'application/json'
-                }
-            })
+            const res = await axios.post(API + `/${props.id}/create/bookedfield`, data, config)
             console.log('%cINI RES BOOKING%c', res, 'color: skylightBlue')
             dispatch({
                 type: BOOKED_FIELD,

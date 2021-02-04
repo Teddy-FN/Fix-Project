@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import './style.css'
 import { useDispatch } from 'react-redux'

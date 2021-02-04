@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
     USER_LOG_IN_SUCCESS,
     USER_SIGNUP_SUCCESS,

@@ -53,7 +53,8 @@ const FieldDetail = (props) => {
         AOS.init({
             duration: 4000
         })
-    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <>
@@ -112,6 +113,7 @@ const FieldDetail = (props) => {
                         </Link> */}
                             <ModalBooking
                                 isLogin={props.isLogin}
+                                id={params.id}
                             />
                         </div>
                     </Col>
