@@ -5,7 +5,14 @@ import MultiSelect from 'react-multi-select-component'
 import { Button } from 'react-bootstrap'
 import './style.css'
 
+// // DISPATCH
+// import { useDispatch, useSelector } from 'react-redux'
+// // Import from action
+// import { BookedTimeSlotField } from '../../../redux/actions/booking'
+
+
 function SetDateTime(props) {
+    console.log('INI SET DATE TIME', props)
     const [selectedDate, setSelectedDate] = useState(null)
 
     const [selectedTime, setSelectedTime] = useState([]);
@@ -26,31 +33,48 @@ function SetDateTime(props) {
         { label: "22.00-23.00", value: "22.00-23.00" },
         { label: "23.00-00.00", value: "23.00-00.00" },
     ];
+    // const params = useParams()
+
+    // GET TIMESLOT FROM BACKEND
+    // const dispatch = useDispatch()
+    // const dataTime = useSelector(state => state.BookedTimeSlot.data)
+    // const [time, setDate] = useState(null)
+    // const postTime = async (e) => {
+    //     await dispatch(BookedTimeSlotField({
+    //         setDate: e
+    //     }))
+    // }
+    // // UseEffect
+    // useEffect(() => {
+
+    // }, [dataTime])
+
+
     return (
         <>
-        <div>
-            <h5>Choose your date:</h5>
-            <DatePicker className="date-picker"
-                selected={selectedDate}
-                onChange={date => setSelectedDate(date)}
-                dateFormat='dd/MM/yyyy'
-                minDate={new Date()}
-            />
-        </div>
-        <br/>
-        <div>
-            <h5>Choose your timeslot:</h5>
-            <MultiSelect className="multi-option"
-             options={options}
-             value={selectedTime}
-             onChange={setSelectedTime}
-             labelledBy={"Select"}
-            />
-        </div>
-        <br/>
+            <div>
+                <h5>Choose your date:</h5>
+                <DatePicker className="date-picker"
+                    selected={selectedDate}
+                    onChange={date => setSelectedDate(date)}
+                    dateFormat='dd/MM/yyyy'
+                    minDate={new Date()}
+                />
+            </div>
+            <br />
+            <div>
+                <h5>Choose your timeslot:</h5>
+                <MultiSelect className="multi-option"
+                    options={options}
+                    value={selectedTime}
+                    onChange={setSelectedTime}
+                    labelledBy={"Select"}
+                />
+            </div>
+            <br />
             {props.hasPrev() && <Button className="button-modalbooking" variant="link" onClick={props.prev}>Previous</Button>}
             {props.hasNext() && <Button className="button-modalbooking1" variant="link" onClick={props.next}>Next</Button>}
-        
+
         </>
     )
 }

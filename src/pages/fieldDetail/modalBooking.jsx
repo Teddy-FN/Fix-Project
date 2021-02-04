@@ -7,53 +7,54 @@ import Confirm from '../booking/component/confirm'
 import Success from '../booking/component/success'
 import './modalBooking.css'
 
+
 const ModalBooking = (props) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+
+
+    // Bikin method di dlm method dispatch
     return (
-            <div>
+        <div>
             <Button className='col-12 mb-3 book-field-button' variant="link" onClick={handleShow}>
                 Book
             </Button>
             <Modal
                 className="modal-booking"
                 show={show}
-                onHide={handleClose}
-            >
+                onHide={handleClose} >
                 {props.isLogin !== true ? (
-                <div>
-                    <Modal.Body>
-                    <Col>
-                        <h3 style={{ textAlign: "center", padding: '30px 30px' }}>
-                        Hello guest, <br />
+                    <div>
+                        <Modal.Body>
+                            <Col>
+                                <h3 style={{ textAlign: "center", padding: '30px 30px' }}>
+                                    Hello guest, <br />
                         please log in first <br />
                         as user!!
                         </h3>
-                        <h4 style={{ textAlign: "center", paddingBottom: '30px' }}>
-                        if you want booking a field
+                                <h4 style={{ textAlign: "center", paddingBottom: '30px' }}>
+                                    if you want booking a field
                         </h4>
-                    </Col>
-                    </Modal.Body>
-                </div>
+                            </Col>
+                        </Modal.Body>
+                    </div>
                 ) : (
-                    <Modal.Body>
-                        <div className="multistep">
-                            <Steps>
-                                {/* <Step component={UserInfo} /> */}
-                                <Step component={SetDateTime} />
-                                <Step component={Confirm} />
-                                <Step component={Success} />
-                            </Steps>
-                        </div>
-                    </Modal.Body>
-                )}
+                        <Modal.Body>
+                            <div className="multistep">
+                                <Steps>
+                                    {/* <Step component={UserInfo} /> */}
+                                    <Step component={SetDateTime} />
+                                    <Step component={Confirm} />
+                                    <Step component={Success} />
+                                </Steps>
+                            </div>
+                        </Modal.Body>
+                    )}
             </Modal>
-            
-            </div>
+        </div>
     )
-
 }
 
 export default ModalBooking;

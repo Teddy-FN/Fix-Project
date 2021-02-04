@@ -4,12 +4,20 @@ import {
 } from './types'
 import axios from 'axios'
 const API = 'https://soka.kuyrek.com:3001'
-const token = localStorage.getItem('token')
 
-export const CreateField = () => {
+
+export const CreateField = ({ fieldName, location, price, description, image }) => {
     return async (dispatch) => {
+        const token = localStorage.getItem('token2')
         try {
-            const CreateField = await axios.post(API + '/field/create',
+            const CreateField = await axios.post('https://soka.kuyrek.com:3001/field/create',
+                {
+                    fieldName: fieldName,
+                    location: location,
+                    price: price,
+                    description: description,
+                    image: image
+                },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -21,10 +29,10 @@ export const CreateField = () => {
             console.log('Tambah Lapangan', CreateField)
             dispatch({
                 type: CREATE_FIELD_SUCCESS,
-                payload: CreateField.data.data
+                payload: CreateField.data
             })
-            console.log('Admin Tambah Lapangan', CreateField.data.data)
-            return CreateField.data.data
+            console.log('Admin Tambah Lapangan', CreateField.data)
+            return CreateField.data
         } catch (error) {
             console.log(error)
             return ''
@@ -34,6 +42,7 @@ export const CreateField = () => {
 
 export const UpdateField = () => {
     return async (dispatch) => {
+        const token = localStorage.getItem('token2')
         try {
             const UpdateField = await axios.put(API + `/field/update/id`,
                 {
