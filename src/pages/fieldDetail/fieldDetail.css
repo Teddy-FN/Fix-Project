@@ -136,6 +136,7 @@ body {
 .card-review {
     background-color: #545454 !important;
     border: none !important;
+    height: auto !important;
 }
 
 .star-rating {
@@ -192,6 +193,27 @@ body {
 
 
 /* Phone view */
-@media (min-width: 576px) { 
+@media (max-width: 375px) { 
+    
+    .card {
+        margin: 0px !important;
+    }
 
+    .price-field {
+        margin-top: -150px;
+    }
+
+    .carousel {
+        margin-top: -27px;
+    }
+    
+    .review-title-big {
+        margin-top: -50px;
+        margin-bottom: 0px;
+       font-size: 30px !important;
+    }
+
+    .ml-auto {
+        margin-top: -20px;
+    }
  }

@@ -89,7 +89,7 @@ const HeaderNonAuth = () => {
                     swal({
                         icon: "error",
                         title: "Wrong email or password",
-                        text: "please try again",
+                        text: "Please try again",
                         type: "warning",
                         buttons: false,
                         timer: 2000,
@@ -134,7 +134,7 @@ const HeaderNonAuth = () => {
                 </ul>
             </div>
             {/* <div data-aos="fade-left"> */}
-            <h4 class="btn-header" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleRegist}>Sign Up</h4>
+            <h4 class="btn-header1" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleRegist}>Sign Up</h4>
                 <Modal isOpen={modalRegist} toggle={toggleRegist}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title"> Sign Up</h4>
@@ -183,7 +183,7 @@ const HeaderNonAuth = () => {
                             <br />
                             <br />
                             <p class="para" >Or</p>
-                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }}>Sign Up with Facebook</Button>
+                            <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }}>Sign Up with Google</Button>
                         </Form>
                         <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99' }} onClick={toggleLogin}>Log In</Button></span>
                     </ModalBody>
@@ -195,7 +195,7 @@ const HeaderNonAuth = () => {
                         <div>nama</div> :
                         null
                 }
-                <h4 class="btn-header" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleLogin}>Log In</h4>
+                <h4 class="btn-header2" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleLogin}>Log In</h4>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title">Log In</h4>
@@ -223,7 +223,7 @@ const HeaderNonAuth = () => {
                             <br />
                             <br />
                             <p class="para">Or</p>
-                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }} onClick={toggleLogin}>Log In with Facebook</Button>
+                            <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }} onClick={toggleLogin}>Log In with Google</Button>
                         </Form>
                         <span class="statement">Don't have an account? <Button className="crosing-button" style={{ color: '#28df99' }} color="link" onClick={toggleRegist}>Sign Up</Button></span>
                     </ModalBody>

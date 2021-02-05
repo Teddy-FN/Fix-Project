@@ -36,7 +36,6 @@
 }
 
 .btn-jumb:hover {
-    background-color: none !important;
     border-color: white!important;
     color: white !important;
 }
@@ -53,14 +52,23 @@
         font-size: 18px;
         width: 140px;
     }
+
+    .btn-jumb:hover {
+        border-color: white!important;
+        color: white !important;
+    }
 }
 
 /* Iphone */
 @media (max-width:375px){
 
     .title {
-        font-size: 40px;
-        margin-top: 20%;
+        font-size: 30px;
+        margin-top: 4%;
+    }
+
+    .jumbotron {
+        height: 200px;
     }
 
     .btn-jumb {
@@ -68,6 +76,10 @@
         width: 130px;
         height: 40px;
         size: 10%;
+    }
 
+    .btn-jumb:hover {
+        border-color: white!important;
+        color: white !important;
     }
 }

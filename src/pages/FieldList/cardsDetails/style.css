@@ -132,17 +132,22 @@ body {
 
 
 /* Media Query */
-@media (max-width: 1024px) { 
-    body {
-        background-color: blue;
-    }
-    .main {
-        margin-left: 70px;
+@media (max-width: 768px) { 
+
+    .content-browse {
+        width: 730px;
+        padding-left: 0% !important; 
     }
  }
 
-@media (max-width: 500px) {
-    .main {
-        margin-left: 60px;
+@media (max-width: 375px) {
+
+    .content-browse {
+        width: 300px;
+        padding-left: 0% !important; 
+    }
+
+    .container {
+        margin-left: 2% !important;
     }
 }

@@ -110,7 +110,7 @@ useEffect(() => {
                 </Col>
             </Row>
             <Row>
-                <Col sm='4' className='review-title mt-3 mb-3'>
+                <Col sm='4' className='review-title-big mt-3 mb-3'>
                     <h2>Feedback and Review</h2>
                 </Col>
                 {/* <span>
