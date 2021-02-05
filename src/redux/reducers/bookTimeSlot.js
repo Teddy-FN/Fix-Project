@@ -21,7 +21,7 @@ export default function BookedTimeSlot(state = initialState, action) {
         case BOOKED_TIMESLOT:
             return {
                 ...state,
-                isLoading: true,
+                isLoading: false,
                 error: false,
                 data: action.payload
             }

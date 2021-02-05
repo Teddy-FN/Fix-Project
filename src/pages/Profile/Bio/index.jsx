@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
 import swal from 'sweetalert'
+import axios from 'axios'
 
 function Bio(props) {
     const {
@@ -72,10 +73,25 @@ function Bio(props) {
             timer: 3000,
         })
     }
-
+    // Const state 
+    const [historyBooked, setHistoryBooked] = useState([])
     useEffect(() => {
+        // History Book
+        axios.get('https://soka.kuyrek.com:3003/booking/history', {
+            header: {
+                Auhorization: `bearer : ${token}`
+            }
+        })
+            .then(res => {
+                console.log('INI HISTORY BOOKING YA', res)
+                setHistoryBooked(res.data)
+            })
+            .catch(error => console.log(error))
+
+
         dispatch(GetProfile());
         // eslint-disable-next-line react-hooks/exhaustive-deps
+
     }, [submitted]);
 
 
@@ -97,7 +113,7 @@ function Bio(props) {
                                 <p>{user?.description}</p>
                             </div>
                             <div className="button">
-                                <Button color="link" className="btn editBio" onClick={toggle} style={{textDecoration: 'none'}}>Edit Profile</Button>
+                                <Button color="link" className="btn editBio" onClick={toggle} style={{ textDecoration: 'none' }}>Edit Profile</Button>
                                 <Modal isOpen={modal} toggle={toggle} className={className}>
                                     <ModalBody toggle={toggle} close={closeBtn}>
                                         <h4 className="edit-title" >Edit Profile</h4>
@@ -183,44 +199,26 @@ function Bio(props) {
                             <div className="contentBorder">
                                 <h5 className="headerBox">Book History</h5>
                                 <div class="card text-center">
-                                    <div class="card-body">
-                                        <div className="contentCard">
-                                            <h5 className="headerCard">Field Name</h5>
-                                            {/* <h5 className="status"></h5> */}
-                                            <small className="date">2021-01-01</small>
-                                            <Link to='player-list'>
-                                                <button className="btn player">Player List</button>
-                                            </Link>
-                                            <p className="footerCard">Coming Up Match</p>
-                                        </div >
-                                    </div >
+                                    {
+                                        historyBooked.map((result, idx) => {
+                                            return (
+                                                <div key={idx}>
+                                                    <div class="card-body">
+                                                        <div className="contentCard">
+                                                            <h5 className="headerCard">{result.fieldName}</h5>
+                                                            {/* <h5 className="status"></h5> */}
+                                                            <small className="date">2021-01-01</small>
+                                                            <Link to='player-list'>
+                                                                <button className="btn player">Player List</button>
+                                                            </Link>
+                                                            <p className="footerCard">Coming Up Match</p>
+                                                        </div >
+                                                    </div >
+                                                </div>
+                                            );
+                                        })
+                                    }
                                 </div >
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div className="contentCard">
-                                            <h5 className="headerCard">Field Name 2</h5>
-                                            <h5 className="status">done</h5>
-                                            <small className="date">2021-01-01</small>
-                                            <Link to='player-list'>
-                                                <button className="btn player">Player List</button>
-                                            </Link>
-                                            <p className="footerCard">Give Feedback</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div className="contentCard">
-                                            <h5 className="headerCard">Field Name 3</h5>
-                                            <h5 className="status">done</h5>
-                                            <small className="date">2021-01-01</small>
-                                            <Link to='player-list'>
-                                                <button className="btn player">Player List</button>
-                                            </Link>
-                                            <p className="footerCard">Give Feedback</p>
-                                        </div>
-                                    </div>
-                                </div>
                             </div >
                         </div>
                     </aside>

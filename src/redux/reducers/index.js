@@ -6,6 +6,7 @@ import AdminReducer from './admin'
 import BookingReducer from './booking'
 import GoogleLogin from './googleLogin'
 import BookedTimeSlot from './bookTimeSlot'
+import getBookedTimeSlot from './getBookedTimeSlot'
 
 const combinedReducer = combineReducers({
     AuthReducer,
@@ -13,7 +14,8 @@ const combinedReducer = combineReducers({
     AdminReducer,
     BookingReducer,
     GoogleLogin,
-    BookedTimeSlot
+    BookedTimeSlot,
+    getBookedTimeSlot
 });
 
 const rootReducer = (state, action) => {
