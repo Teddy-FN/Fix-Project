@@ -75,24 +75,26 @@ function Bio(props) {
     }
     // Const state 
     const [historyBooked, setHistoryBooked] = useState([])
+    console.log('INI HISTORY BOOKING YA', historyBooked)
     useEffect(() => {
         // History Book
-        axios.get('https://soka.kuyrek.com:3003/booking/history', {
-            header: {
-                Auhorization: `bearer : ${token}`
+        axios.get(`https://soka.kuyrek.com:3003/booking/history`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
             }
         })
             .then(res => {
-                console.log('INI HISTORY BOOKING YA', res)
-                setHistoryBooked(res.data)
+                console.log('INI RES BOOKING', res.data.data)
+                setHistoryBooked(res.data.data)
             })
             .catch(error => console.log(error))
-
 
         dispatch(GetProfile());
         // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    }, [submitted]);
+    }, [dispatch, submitted, token]);
 
 
     return (
@@ -198,27 +200,26 @@ function Bio(props) {
                             {/* <StepThree /> */}
                             <div className="contentBorder">
                                 <h5 className="headerBox">Book History</h5>
-                                <div class="card text-center">
-                                    {
-                                        historyBooked.map((result, idx) => {
-                                            return (
-                                                <div key={idx}>
-                                                    <div class="card-body">
-                                                        <div className="contentCard">
-                                                            <h5 className="headerCard">{result.fieldName}</h5>
-                                                            {/* <h5 className="status"></h5> */}
-                                                            <small className="date">2021-01-01</small>
-                                                            <Link to='player-list'>
-                                                                <button className="btn player">Player List</button>
-                                                            </Link>
-                                                            <p className="footerCard">Coming Up Match</p>
-                                                        </div >
+                                {
+                                    historyBooked.slice(historyBooked.length - 4, historyBooked.length - 1).map((result, idx) => {
+                                        return (
+                                            <div class="card text-center" key={idx}>
+                                                <div class="card-body">
+                                                    <div className="contentCard">
+                                                        <h5 className="headerCard">{result.field}</h5>
+                                                        {/* <h5 className="status"></h5> */}
+                                                        <small className="date">{result.date.slice(0, 10)}</small>
+                                                        <Link to='player-list'>
+                                                            <button className="btn player">Player List</button>
+                                                        </Link>
+                                                        <p className="footerCard">Coming Up Match</p>
                                                     </div >
-                                                </div>
-                                            );
-                                        })
-                                    }
-                                </div >
+
+                                                </div >
+                                            </div >
+                                        );
+                                    })
+                                }
                             </div >
                         </div>
                     </aside>

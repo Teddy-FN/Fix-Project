@@ -23,7 +23,7 @@ function Confirm(props) {
             setDate(),
             setTime()
         ))
-    })
+    }, [dispatch])
     return (
         <>
             <div>

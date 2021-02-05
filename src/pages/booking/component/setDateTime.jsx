@@ -47,7 +47,7 @@ function SetDateTime(props) {
         // eslint-disable-next-line no-undef
         // getTime()
         dispatch(BookedTimeSlotField())
-    }, [])
+    }, [dispatch])
 
 
     const options = [
