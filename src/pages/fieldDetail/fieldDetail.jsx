@@ -18,8 +18,6 @@ import axios from 'axios';
 import Loading from '../loading/loading';
 import ModalBooking from './modalBooking';
 import swal from 'sweetalert';
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const FieldDetail = (props) => {
 
@@ -48,12 +46,7 @@ const FieldDetail = (props) => {
                 });
             });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-
-        // Animation 
-        AOS.init({
-            duration: 4000
-        })
-    })
+    }, [])
 
     return (
         <>
@@ -90,7 +83,7 @@ const FieldDetail = (props) => {
                             </>
                         ) : (<Loading />)}
                     </div>
-                    <Col className='detail-text' data-aos="fade-left">
+                    <Col className='detail-text'>
                         <div className='desc-field sm-3'>
                             <h2 className='field-name'>{fields.fieldName}</h2>
                             <p className='field-loc'>
@@ -105,11 +98,11 @@ const FieldDetail = (props) => {
                             <h3 className='price-field'>
                                 Rp. {fields?.price?.$numberDecimal}.000
                         </h3>
-                            {/* <Link to='/player-list'>
+                            <Link to='/player-list'>
                                 <Button className='col-12 mb-3 btn-player'>
                                     See Player List
                             </Button>
-                        </Link> */}
+                            </Link>
                             <ModalBooking
                                 isLogin={props.isLogin}
                             />
@@ -140,7 +133,7 @@ const FieldDetail = (props) => {
                     <Col sm='4'></Col>
                 </Row>
 
-                <Row className='review-user'>
+                <Row className='review-user' data-aos="fade-right">
                     <Col sm='8' className='comment'>
                         <Card className='col-sm-12 mb-3 card-review'>
                             <CardBody>
@@ -179,6 +172,7 @@ const FieldDetail = (props) => {
                         </Card>
                     </Col>
                     <Col sm='4'>
+
                     </Col>
                 </Row>
             </Container>
