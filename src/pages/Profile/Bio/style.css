@@ -80,7 +80,7 @@ body {
 
 .contentBorder {
     border: 1px solid #fff;
-    height: 500px;
+    height: auto;
     padding: 10px;
     border-radius: 5px;
 }
@@ -139,4 +139,8 @@ body {
 
 .card .footerCard:hover {
     color: #FFCB74;   
+}
+
+.edit-title {
+    box-shadow: 3px 3px 3px black !important;
 }
