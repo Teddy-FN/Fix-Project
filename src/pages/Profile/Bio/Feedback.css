@@ -50,3 +50,19 @@ body {
     width: 100%;
     color: #fff;
 }
+
+.player:hover {
+    background-color: #28df99;
+    box-shadow: 3px 3px 3px black;
+}
+
+.player-baru {
+    clear: both;
+    background-color: #7B7B7B;
+    width: 100%;
+    color: #fff;
+}
+
+.player-baru:hover {
+    box-shadow: 3px 3px 3px black;
+}

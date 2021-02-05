@@ -87,7 +87,7 @@ function Bio(props) {
         axios
             .get(urlBookHistory, config)
             .then((res) => {
-                console.log('ini res history Book: ', res.data.data)
+                console.log('ini res history Book: ', res)
                 setBookHistory(res.data.data)
             })
             .catch()
@@ -101,7 +101,7 @@ function Bio(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submitted]);
 
-console.log('book history: ',bookHistory)
+// console.log('book history: ',bookHistory)
 
     return (
         <div>
@@ -186,7 +186,7 @@ console.log('book history: ',bookHistory)
                                                             type="text"
                                                             name="desc"
                                                             id="desc"
-                                                            placeholder="Enter Your Email Here...."
+                                                            placeholder="Enter Your Description Here...."
                                                             value={input.description}
                                                             onChange={(e) => handleChange("description", e.target.value)}
                                                         />
@@ -207,7 +207,7 @@ console.log('book history: ',bookHistory)
                             <div className="contentBorder">
                                 <h5 className="headerBox">Book History</h5>
                                 
-                                {bookHistory.slice(bookHistory.length-3, bookHistory.length).reverse().map((history, idx) => (
+                                {bookHistory.slice(bookHistory.length-4, bookHistory.length).reverse().map((history, idx) => (
                                 <div class="card text-center" key={idx}
                                 style={{marginTop: '28px'}}>
                                     <div class="card-body">
@@ -218,8 +218,11 @@ console.log('book history: ',bookHistory)
                                             {/* <Link >
                                                 <button className="btn player">Give Feedback</button>
                                             </Link> */}
-                                            <Feedback id={history.id}/>
-                                            <p className="footerCard">Coming Up Match</p>
+                                            <Feedback 
+                                            id={history.id}
+                                            done={history.transaction}
+                                            />
+                                            {/* {history.transaction === true ? (<p className="footerCard">Give Feedback</p>) : (<p className="footerCard">Coming Up Match</p>)} */}
                                         </div >
                                     </div >
                                 </div >

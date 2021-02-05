@@ -79,7 +79,7 @@ useEffect(() => {
     getFeedBacks();
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
-
+console.log('rating: ', ratingAvg.ratingAvg)
 return (
     <>
         <Container>
@@ -159,7 +159,7 @@ return (
                     <span>
                         <h3 className='ml-auto mr-2' style={{ color: '#e5e5e5' }}>
                             
-                            {ratingAvg.ratingAvg} /{' '}
+                            {ratingAvg.ratingAvg === undefined ? 0 : Math.ceil(ratingAvg.ratingAvg)} /{' '}
                             <span style={{ color: '#e5e5e5' }}>5</span>
                         </h3>
                     </span>
