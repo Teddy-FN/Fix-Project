@@ -58,7 +58,6 @@ const Feedback = (props) => {
       })
       .catch((err) => {
         console.log('Ini error feedback: ',err);
-        setModalFeedback(false);
         swal({
           icon: "warning",
           title: "You already add the feedback",
@@ -123,6 +122,16 @@ const Feedback = (props) => {
                 />
               </div>
               <br />
+              <div className="form-group">
+                  <Button
+                    type="submit"
+                    className="btn btn-primary btn-block btn-lg"
+                    value="Submit"
+                  >
+                    Submit
+                  </Button>
+                
+              </div>
             </form>
           </div>
         </div>
