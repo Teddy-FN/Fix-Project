@@ -18,8 +18,6 @@ import axios from 'axios';
 import Loading from '../loading/loading';
 import ModalBooking from './modalBooking';
 import swal from 'sweetalert';
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const FieldDetail = (props) => {
 
@@ -74,9 +72,10 @@ useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     // Animation 
-    AOS.init({
-        duration: 4000
-    });
+    // eslint-disable-next-line no-undef
+    // AOS.init({
+    //     duration: 4000
+    // });
     getFeedBacks();
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])

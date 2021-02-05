@@ -93,9 +93,12 @@ function Bio(props) {
             .catch()
     }
     useEffect(() => {
+
+
         dispatch(GetProfile());
         getBookHistory()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submitted]);
 
 console.log('book history: ',bookHistory)
@@ -118,7 +121,7 @@ console.log('book history: ',bookHistory)
                                 <p>{user?.description}</p>
                             </div>
                             <div className="button">
-                                <Button color="link" className="btn editBio" onClick={toggle} style={{textDecoration: 'none'}}>Edit Profile</Button>
+                                <Button color="link" className="btn editBio" onClick={toggle} style={{ textDecoration: 'none' }}>Edit Profile</Button>
                                 <Modal isOpen={modal} toggle={toggle} className={className}>
                                     <ModalBody toggle={toggle} close={closeBtn}>
                                         <h4 className="edit-title" >Edit Profile</h4>
