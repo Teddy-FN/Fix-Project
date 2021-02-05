@@ -29,6 +29,7 @@ export const BookedAsField = (props) => {
             dispatch({
                 type: BOOKED_FIELD,
                 payload: res.result
+                
             })
             console.log('%cRESULT BOOKING%c', res.result, 'color: coral')
             return res

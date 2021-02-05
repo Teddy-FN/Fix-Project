@@ -3,9 +3,10 @@ import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody
 import './style.css'
 import { useSelector, useDispatch } from 'react-redux'
 // import User from '../../../assets/img/user.png'
-import { Link } from 'react-router-dom'
 import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
 import swal from 'sweetalert'
+import axios from 'axios'
+import Feedback from './feedback'
 
 function Bio(props) {
     const {
@@ -73,11 +74,31 @@ function Bio(props) {
         })
     }
 
+    const [bookHistory, setBookHistory] = useState([]);
+    const urlBookHistory = 'https://soka.kuyrek.com:3003/booking/history';
+    const token2 = localStorage.getItem('token');
+    const config = {
+        headers: {
+            Authorization: `bearer ${token2}`
+        }
+    }
+
+    const getBookHistory = () => {
+        axios
+            .get(urlBookHistory, config)
+            .then((res) => {
+                console.log('ini res history Book: ', res.data.data)
+                setBookHistory(res.data.data)
+            })
+            .catch()
+    }
     useEffect(() => {
         dispatch(GetProfile());
+        getBookHistory()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submitted]);
 
+console.log('book history: ',bookHistory)
 
     return (
         <div>
@@ -182,45 +203,24 @@ function Bio(props) {
                             {/* <StepThree /> */}
                             <div className="contentBorder">
                                 <h5 className="headerBox">Book History</h5>
-                                <div class="card text-center">
+                                
+                                {bookHistory.slice(bookHistory.length-3, bookHistory.length).reverse().map((history, idx) => (
+                                <div class="card text-center" key={idx}
+                                style={{marginTop: '28px'}}>
                                     <div class="card-body">
                                         <div className="contentCard">
-                                            <h5 className="headerCard">Field Name</h5>
+                                            <h5 className="headerCard">{history.field}</h5>
                                             {/* <h5 className="status"></h5> */}
-                                            <small className="date">2021-01-01</small>
-                                            <Link to='player-list'>
-                                                <button className="btn player">Player List</button>
-                                            </Link>
+                                            <small className="date">{history.date.slice(0,10)}</small>
+                                            {/* <Link >
+                                                <button className="btn player">Give Feedback</button>
+                                            </Link> */}
+                                            <Feedback id={history.id}/>
                                             <p className="footerCard">Coming Up Match</p>
                                         </div >
                                     </div >
                                 </div >
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div className="contentCard">
-                                            <h5 className="headerCard">Field Name 2</h5>
-                                            <h5 className="status">done</h5>
-                                            <small className="date">2021-01-01</small>
-                                            <Link to='player-list'>
-                                                <button className="btn player">Player List</button>
-                                            </Link>
-                                            <p className="footerCard">Give Feedback</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div className="contentCard">
-                                            <h5 className="headerCard">Field Name 3</h5>
-                                            <h5 className="status">done</h5>
-                                            <small className="date">2021-01-01</small>
-                                            <Link to='player-list'>
-                                                <button className="btn player">Player List</button>
-                                            </Link>
-                                            <p className="footerCard">Give Feedback</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                ))}
                             </div >
                         </div>
                     </aside>

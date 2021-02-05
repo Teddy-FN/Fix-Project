@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 function SetDateTime(props) {
-console.log('props time', props)
+// console.log('props time', props)
     // eslint-disable-next-line no-unused-vars
     const [selectedDate, setSelectedDate] = useState(null)
     const [date, setDate] = useState(new Date());

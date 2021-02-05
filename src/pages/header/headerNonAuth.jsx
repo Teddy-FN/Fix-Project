@@ -193,7 +193,7 @@ const HeaderNonAuth = () => {
                             <br />
                             <p class="para" >Or</p>
                             // eslint-disable-next-line no-undef
-                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }} onClick ={handleSumbmitFacebook}>Sign Up with Facebook</Button>
+                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }} >Sign Up with Facebook</Button>
                         </Form>
                         <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99' }} onClick={toggleLogin}>Log In</Button></span>
                     </ModalBody>
