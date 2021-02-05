@@ -105,6 +105,7 @@ const FieldDetail = (props) => {
                             </Link>
                             <ModalBooking
                                 isLogin={props.isLogin}
+                                id={params.id}
                             />
                         </div>
                     </Col>

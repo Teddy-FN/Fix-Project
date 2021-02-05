@@ -5,7 +5,7 @@ body {
 
 .container {
     margin-top: 130px !important;
-    margin-left: 8% !important;
+    margin-left: 4% !important;
     clear: both;
 }
 
@@ -21,6 +21,7 @@ body {
 .main {
     margin: 0px 23px;
     clear: both;
+    justify-content: center !important;
 }
 
 .card {
@@ -28,6 +29,7 @@ body {
     color: #fff;
     margin: 5px;
     height: 358px;
+    justify-content: center;
 }
 
 .card:hover {
@@ -114,7 +116,7 @@ body {
 .searchButton {
     float: right;
     margin-left: 27px;
-    margin-right: 27px;
+    margin-right: -27px;
     margin-bottom: 15px;
 }
 

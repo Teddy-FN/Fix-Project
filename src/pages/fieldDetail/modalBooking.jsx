@@ -12,13 +12,14 @@ const ModalBooking = (props) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    console.log('props modal booking: ',props.id)
 
 
 
     // Bikin method di dlm method dispatch
     return (
-        <div>
-            <Button className='col-12 mb-3 book-field-button' variant="link" onClick={handleShow}>
+            <div>
+            <Button className='col-12 mb-3 book-field-button' variant="link" onClick={handleShow} style={{textDecoration: 'none'}}>
                 Book
             </Button>
             <Modal
@@ -41,17 +42,17 @@ const ModalBooking = (props) => {
                         </Modal.Body>
                     </div>
                 ) : (
-                        <Modal.Body>
-                            <div className="multistep">
-                                <Steps>
-                                    {/* <Step component={UserInfo} /> */}
-                                    <Step component={SetDateTime} />
-                                    <Step component={Confirm} />
-                                    <Step component={Success} />
-                                </Steps>
-                            </div>
-                        </Modal.Body>
-                    )}
+                    <Modal.Body>
+                        <div className="multistep">
+                            <Steps>
+                                {/* <Step component={UserInfo} /> */}
+                                <Step component={SetDateTime} id={props.id}/>
+                                <Step component={Confirm} />
+                                <Step component={Success} />
+                            </Steps>
+                        </div>
+                    </Modal.Body>
+                )}
             </Modal>
         </div>
     )

@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 import {
     USER_LOG_IN_GOOGLE,
     USER_LOG_IN_GOOGLE_SUCCESS,

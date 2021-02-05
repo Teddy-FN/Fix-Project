@@ -136,6 +136,7 @@ body {
 .card-review {
     background-color: #545454 !important;
     border: none !important;
+    height: auto !important;
 }
 
 .star-rating {
@@ -192,6 +193,12 @@ body {
 
 
 /* Phone view */
-@media (min-width: 576px) { 
-
+@media (max-width: 576px) { 
+    .review-title {
+        font-weight: 700;
+        color: #e5e5e5;
+        padding: 0;
+        text-align: left;
+        font-size: 5px !important;
+    }
  }

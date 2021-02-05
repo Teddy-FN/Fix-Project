@@ -28,6 +28,18 @@
     font-weight: 500;
 }
 
+.btn-login {
+    margin-right: 30px !important;
+    color: white !important;
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 5px;
+}
+
+.btn-login:hover {
+    color: #28df99 !important;
+}
+
 .btn-header:hover {
     color: #28df99 !important;
 }
