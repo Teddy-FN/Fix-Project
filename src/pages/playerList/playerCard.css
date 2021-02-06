@@ -6,7 +6,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 25px;
-    text-align: justify!important;
+    text-align: justify !important;
 }
 
 .player-name {
@@ -27,7 +27,7 @@
 
 .btn-profil {
     margin-left: 20px;
-    background-color: #7B7B7B!important;
+    background-color: #7B7B7B !important;
     border-radius: 5px;
     font-style: normal;
     font-weight: 500;
@@ -35,7 +35,7 @@
     width: 450px;
 }
 
-.btn-profil:hover{
+.btn-profil:hover {
     background-color: #28df99 !important;
     color: black !important;
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.3));
@@ -45,7 +45,7 @@
 @media (max-width: 768px) {
     .btn-profil {
         margin-right: 40px;
-        width: 450px!important;
+        width: 450px !important;
     }
 
     /* .code-pos {

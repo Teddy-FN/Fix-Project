@@ -13,11 +13,13 @@ import { logoutUser } from '../../redux/actions/auth'
 import { useSelector, useDispatch } from 'react-redux'
 import { GetProfile } from '../../redux/actions/profile'
 
-
 const HeaderAuth = () => {
+
+    const history = useHistory();
     let token = localStorage.getItem('token2')
     const dispatch = useDispatch()
     const logOut = () => {
+        history.push('/')
         localStorage.removeItem('token')
         localStorage.removeItem('token2')
         window.location.reload()
