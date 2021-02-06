@@ -173,14 +173,14 @@ return (
                         <p
                             style={{
                                 textAlign: 'center',
-                                fontSize: '50px',
+                                fontSize: '30px',
                                 color: '#28df99',
-                                fontWeight: '300',
+                                fontWeight: 'lighter',
                                 paddingTop: '50px'
                             }}
                         >No Feedbacks Yet</p>
                     ):(
-                    feedbacks.map((feedback, idx) => (
+                    feedbacks.slice(0, feedbacks.length).reverse().map((feedback, idx) => (
                     <Card className='col-sm-12 mb-3 card-review'>
                         <CardBody>
                             <h4 className='review-title'>
