@@ -7,6 +7,7 @@ import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
 import swal from 'sweetalert'
 import axios from 'axios'
 import Feedback from './feedback'
+import { Link } from 'react-router-dom';
 
 function Bio(props) {
     const {
@@ -87,7 +88,7 @@ function Bio(props) {
         axios
             .get(urlBookHistory, config)
             .then((res) => {
-                console.log('ini res history Book: ', res)
+                console.log('ini res history Book: ', res.data.data)
                 setBookHistory(res.data.data)
             })
             .catch()
@@ -207,9 +208,9 @@ function Bio(props) {
                             <div className="contentBorder">
                                 <h5 className="headerBox">Book History</h5>
                                 
-                                {bookHistory.slice(bookHistory.length-4, bookHistory.length).reverse().map((history, idx) => (
+                                {bookHistory.slice(bookHistory.length-3, bookHistory.length).reverse().map((history, idx) => (
                                 <div class="card text-center" key={idx}
-                                style={{marginTop: '28px'}}>
+                                style={{marginTop: '20px'}}>
                                     <div class="card-body">
                                         <div className="contentCard">
                                             <h5 className="headerCard">{history.field}</h5>
@@ -222,6 +223,11 @@ function Bio(props) {
                                             id={history.id}
                                             done={history.transaction}
                                             />
+                                            <Link 
+                                            to={`field-details/${history.id_field}`} 
+                                            style={{ textDecoration: 'none' }}>
+                                            <p className="footerCard">View Field Details</p>
+                                            </Link>
                                             {/* {history.transaction === true ? (<p className="footerCard">Give Feedback</p>) : (<p className="footerCard">Coming Up Match</p>)} */}
                                         </div >
                                     </div >

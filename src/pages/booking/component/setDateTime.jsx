@@ -8,25 +8,15 @@ import './style.css'
 // import { BookedAsField, BookedTimeSlotField } from '../../../redux/actions/booking'
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
-
-// // DISPATCH
-// import { useDispatch, useSelector } from 'react-redux'
-// // Import from action
-// import { BookedTimeSlotField } from '../../../redux/actions/booking'
+import swal from 'sweetalert';
 
 
 function SetDateTime(props) {
-    console.log('props time', props)
-    // eslint-disable-next-line no-unused-vars
-    const [selectedDate, setSelectedDate] = useState(null)
+
     const [date, setDate] = useState(new Date());
     const [selectedTime, setSelectedTime] = useState([]);
-    const dispatch = useDispatch();
     const [timeslot, setTimeslot] = useState([]);
     const [timeslotId, setTimeslotId] = useState([]);
-    const [selectedTimeslotId, setSelectedTimeslotId] = useState([]);
-
-    
     
     let dates = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 
@@ -71,9 +61,25 @@ function SetDateTime(props) {
         .post(urlBooking, dataBooking, config)
         .then((res) => {
             console.log('respon booking: ',res)
+            swal({
+                icon: "success",
+                title: "Your Booking is Succes",
+                text: "Happy Playing",
+                type: "success",
+                buttons: false,
+                timer: 3000,
+              });
         })
         .catch((err) => {
             console.log('error booking: ',err)
+            swal({
+                icon: "warning",
+                title: "Selected time is Conflict",
+                text: "Please try again with another time",
+                type: "warning",
+                buttons: false,
+                timer: 3000,
+              });
         })
     }
 
@@ -85,22 +91,26 @@ function SetDateTime(props) {
 
 console.log('ini selectedTime: ', selectedTime)
 console.log('ini timeslot id: ', timeslotId)
+console.log('ini timeslot: ', timeslot)
     return (
         <>
             <div>
                 <h5>Choose your dateFormat:</h5>
                 <DatePicker className="dateFormat-picker"
                     selected={date}
+                    onClick={getTimeslot}
                     onChange={date => setDate(date)}
                     dateFormat='yyyy-MM-dd'
-                    minDate={date}
+                    minDate={new Date()}
                 />
             </div>
             <br />
             <div>
                 <h5>Choose your timeslot:</h5>
                 <MultiSelect className="multi-option"
-                    options={timeslot.map((time, idx) => {return ({label: time, value:  time, id: timeslotId[idx]})})}
+                    options={timeslot.map((time, idx) => {
+                        return ({label: time, value:  time, id: timeslotId[idx]})
+                    })}
                     value={selectedTime}
                     onChange={(e) => (setSelectedTime(e))}
                     labelledBy={"Select"}
