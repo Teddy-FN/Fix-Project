@@ -115,7 +115,7 @@ return (
                         </>
                     ) : (<Loading />)}
                 </div>
-                <Col className='detail-text' data-aos="fade-left">
+                <Col className='detail-text'>
                     <div className='desc-field sm-3'>
                         <h2 className='field-name'>{fields.fieldName}</h2>
                         <p className='field-loc'>

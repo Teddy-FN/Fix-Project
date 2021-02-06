@@ -110,6 +110,7 @@ function CardFields() {
         <div >
             <Container className='container'>
                 {/* <div data-aos="fade-left"> */}
+                <div className="feature">
                 <div className="searchButton">
                     <form className="form-inline my-0 my-lg-0">
                         <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
@@ -141,6 +142,7 @@ function CardFields() {
                             <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer' }}>Sort By Price (High-Low)</p>
                         </div>
                     </div>
+                </div>
                 </div>
                 {/* </div> */}
                 {/* <Link to='/createField'>

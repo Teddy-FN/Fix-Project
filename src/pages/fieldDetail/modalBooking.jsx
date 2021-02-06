@@ -73,31 +73,7 @@ return (
                             <Step component={SetDateTime} id={props.id}/>
                             <Step component={Confirm} />
                             <Step component={Success} />
-                        </Steps>
-                            {/* <Row>
-                            <h5>Choose your dateFormat:</h5>
-                            </Row>
-                            <Row>
-                            <DatePicker className="dateFormat-picker"
-                                selected={date}
-                                onChange={date => setDate(date)}
-                                dateFormat='yyyy-MM-dd'
-                                minDate={new Date()}
-                            />
-                            </Row>
-                            <Row>
-                            <h5>Choose your timeslot:</h5>
-                            </Row>
-                            <Row>
-                            <MultiSelect className="multi-option"
-                                options={options}
-                                value={selectedTime}
-                                onChange={setSelectedTime}
-                                labelledBy={"Select"}
-                                style={{backgroudColor: 'black'}}
-                            />
-                            </Row> */}
-                        
+                        </Steps>                        
                     </div>
                 </Modal.Body>
             )}
