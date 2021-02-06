@@ -17,7 +17,6 @@ const Cards = () => {
   const [loading, setLoading] = useState(false);
 
 
-  // const url = 'http://54.251.238.126:3001/field/'
   const url = 'https://soka.kuyrek.com:3001/field/'
 
 
@@ -36,7 +35,7 @@ const Cards = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     // Animation
-    // AOS.init({ duration: 2000 });
+    AOS.init({ duration: 4000 });
   }, [])
   console.log(fields)
   // const img = fields.image[0].slice(7)
@@ -54,13 +53,13 @@ const Cards = () => {
         <br />
         <div className="main-home">
           <div className="content">
-            {fields && loading ? (fields.slice(6).map((field) => (<div className="card home" style={{ width: '18rem', height: '358px'}}>
+            {fields && loading ? (fields.slice(6).map((field, idx) => (<div className="card home" style={{ width: '18rem', height: '358px'}}>
               <Link to={`field-details/${field.id}`} style={{ textDecoration: 'none', color: 'white' }} >
-                <div className='card-fields'>
+                <div className='card-fields' key={idx}>
                   <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
                   <div className="card-body">
                     <h5 className="card-title">{field.fieldName.slice(0, 15)}</h5>
-                    <small className="price">Rp. {field.price.$numberDecimal}.000</small>
+                    <small className="price">Rp. {field.price.$numberDecimal} K</small>
                     <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} className="map" />{field.location}</p>
                     {/* <button className="btn btn-secondary view">View</button>
                 <button className="btn book">Book</button> */}

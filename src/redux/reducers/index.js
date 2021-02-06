@@ -3,11 +3,19 @@ import { USER_LOG_OUT_SUCCESS } from '../actions/types'
 import AuthReducer from './auth'
 import profileUser from './User'
 import AdminReducer from './admin'
+import BookingReducer from './booking'
+import GoogleLogin from './googleLogin'
+import BookedTimeSlot from './bookTimeSlot'
+import getBookedTimeSlot from './getBookedTimeSlot'
 
 const combinedReducer = combineReducers({
     AuthReducer,
     profileUser,
-    AdminReducer
+    AdminReducer,
+    BookingReducer,
+    GoogleLogin,
+    BookedTimeSlot,
+    getBookedTimeSlot
 });
 
 const rootReducer = (state, action) => {

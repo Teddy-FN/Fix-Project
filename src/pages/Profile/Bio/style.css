@@ -73,7 +73,7 @@ body {
 
 .card {
     margin-bottom: 10px;
-    height: auto;
+    height: auto !important;
 }
 
 .borderHistory {
@@ -152,4 +152,12 @@ body {
 .edit-button-submit:hover {
     border-color: white;
     color: white;
+}
+
+.edit-title {
+    box-shadow: 3px 3px 3px black !important;
+}
+
+.edit-title-big {
+    text-align: center;
 }

@@ -149,11 +149,16 @@
     margin-top: 10px;
 }
 
+.googleAuth{
+    width: 100%;
+    align-items: center;
+}
+
 /* iPad */
 @media (max-width: 768px){
     
     .btn-header1 {
-        margin-left: 300px;
+        margin-left: 190px !important;
         margin-right: 0% !important;
     }
 
@@ -164,6 +169,10 @@
     .google-button {
         width: 465px;
         height: 40px;
+    }
+
+    .logo {
+        margin-left: 30px !important;
     }
 
 }

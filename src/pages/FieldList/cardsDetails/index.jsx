@@ -42,7 +42,7 @@ function CardFields() {
             });
 
         // Animation 
-        AOS.init({duration: 2000})
+        AOS.init({ duration: 2000 })
     }, [])
 
     const sortByNameAsc = (e) => {
@@ -110,38 +110,38 @@ function CardFields() {
         <div >
             <Container className='container'>
                 {/* <div data-aos="fade-left"> */}
-                    <div className="searchButton">
-                        <form className="form-inline my-0 my-lg-0">
-                            <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
-                                setSearch(event.target.value)
-                            }} />
-                            <button type="button" className="btn btn-success buttonSearch">
-                                <FontAwesomeIcon icon={faSearch} />
-                            </button>
-                        </form>
-                    </div>
-                    <div className="sorter">
-                        <div className="dropdown filter">
-                            <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
-                                <small className="nameFitur">Filter</small>
-                                <small className="dropdown-toggle"></small>
-                            </button>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
-                                <p className='dropdown-item' onClick={sortByNameAsc} style={{ cursor: 'pointer' }}>Filter By Name (A-Z)</p>
-                                <p className='dropdown-item' onClick={sortByNameDesc} style={{ cursor: 'pointer' }}>Filter By Name (Z-A)</p>
-                            </div>
-                        </div>
-                        <div className="dropdown sort">
-                            <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
-                                <small className="nameFitur">Sort</small>
-                                <small className="dropdown-toggle"></small>
-                            </button>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
-                                <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer' }}>Sort By Price (Low-High)</p>
-                                <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer' }}>Sort By Price (High-Low)</p>
-                            </div>
+                <div className="searchButton">
+                    <form className="form-inline my-0 my-lg-0">
+                        <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
+                            setSearch(event.target.value)
+                        }} />
+                        <button type="button" className="btn btn-success buttonSearch">
+                            <FontAwesomeIcon icon={faSearch} />
+                        </button>
+                    </form>
+                </div>
+                <div className="sorter">
+                    <div className="dropdown filter">
+                        <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
+                            <small className="nameFitur">Filter</small>
+                            <small className="dropdown-toggle"></small>
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
+                            <p className='dropdown-item' onClick={sortByNameAsc} style={{ cursor: 'pointer' }}>Filter By Name (A-Z)</p>
+                            <p className='dropdown-item' onClick={sortByNameDesc} style={{ cursor: 'pointer' }}>Filter By Name (Z-A)</p>
                         </div>
                     </div>
+                    <div className="dropdown sort">
+                        <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
+                            <small className="nameFitur">Sort</small>
+                            <small className="dropdown-toggle"></small>
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
+                            <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer' }}>Sort By Price (Low-High)</p>
+                            <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer' }}>Sort By Price (High-Low)</p>
+                        </div>
+                    </div>
+                </div>
                 {/* </div> */}
                 {/* <Link to='/createField'>
                     <button className="btn btn-warning createField">Create Field</button>
@@ -164,7 +164,7 @@ function CardFields() {
                                         <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top card-image" alt={field.fieldName} />
                                         <div className="card-body">
                                             <h6 className="card-title">{field.fieldName.slice(0, 15)}</h6>
-                                            <small className="price">Rp. {field.price.$numberDecimal}.000</small>
+                                            <small className="price">Rp. {field.price.$numberDecimal} K</small>
                                             <p className="card-text"><FontAwesomeIcon icon={faMapMarkerAlt} className="map" />{field.location}</p>
                                             {/* <button className="btn btn-secondary view">View</button>
                                         <button className="btn book">Book</button> */}

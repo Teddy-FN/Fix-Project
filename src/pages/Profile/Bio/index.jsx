@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody } from 'reactstrap';
 import './style.css'
 import { useSelector, useDispatch } from 'react-redux'
-import User from '../../../assets/img/user.png'
-import { Link } from 'react-router-dom'
+// import User from '../../../assets/img/user.png'
 import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
 import swal from 'sweetalert'
+import axios from 'axios'
+import Feedback from './feedback'
 
 function Bio(props) {
     const {
@@ -73,11 +74,34 @@ function Bio(props) {
         })
     }
 
+    const [bookHistory, setBookHistory] = useState([]);
+    const urlBookHistory = 'https://soka.kuyrek.com:3003/booking/history';
+    const token2 = localStorage.getItem('token');
+    const config = {
+        headers: {
+            Authorization: `bearer ${token2}`
+        }
+    }
+
+    const getBookHistory = () => {
+        axios
+            .get(urlBookHistory, config)
+            .then((res) => {
+                console.log('ini res history Book: ', res)
+                setBookHistory(res.data.data)
+            })
+            .catch()
+    }
     useEffect(() => {
+
+
         dispatch(GetProfile());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        getBookHistory()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submitted]);
 
+// console.log('book history: ',bookHistory)
 
     return (
         <div>
@@ -97,10 +121,10 @@ function Bio(props) {
                                 <p>{user?.description}</p>
                             </div>
                             <div className="button">
-                                <Button color="link" className="btn editBio" onClick={toggle}>Edit Profile</Button>
+                                <Button color="link" className="btn editBio" onClick={toggle} style={{ textDecoration: 'none' }}>Edit Profile</Button>
                                 <Modal isOpen={modal} toggle={toggle} className={className}>
-                                    <ModalBody toggle={toggle} close={closeBtn}>
-                                        <h4 className="edit-title">Edit Profile</h4>
+                                    <ModalBody className="modal-body-edit-profile" toggle={toggle} close={closeBtn}>
+                                        <h4 className="edit-title-big" >Edit Profile</h4>
                                         <br />
                                         <div>
                                             <Form onSubmit={HandleChangeProfile}>
@@ -162,7 +186,7 @@ function Bio(props) {
                                                             type="text"
                                                             name="desc"
                                                             id="desc"
-                                                            placeholder="Enter Your Email Here...."
+                                                            placeholder="Enter Your Description Here...."
                                                             value={input.description}
                                                             onChange={(e) => handleChange("description", e.target.value)}
                                                         />
@@ -182,45 +206,27 @@ function Bio(props) {
                             {/* <StepThree /> */}
                             <div className="contentBorder">
                                 <h5 className="headerBox">Book History</h5>
-                                <div class="card text-center">
+                                
+                                {bookHistory.slice(bookHistory.length-4, bookHistory.length).reverse().map((history, idx) => (
+                                <div class="card text-center" key={idx}
+                                style={{marginTop: '28px'}}>
                                     <div class="card-body">
                                         <div className="contentCard">
-                                            <h5 className="headerCard">Field Name</h5>
+                                            <h5 className="headerCard">{history.field}</h5>
                                             {/* <h5 className="status"></h5> */}
-                                            <small className="date">2021-01-01</small>
-                                            <Link to='player-list'>
-                                                <button className="btn player">Player List</button>
-                                            </Link>
-                                            <p className="footerCard">Coming Up Match</p>
+                                            <small className="date">{history.date.slice(0,10)}</small>
+                                            {/* <Link >
+                                                <button className="btn player">Give Feedback</button>
+                                            </Link> */}
+                                            <Feedback 
+                                            id={history.id}
+                                            done={history.transaction}
+                                            />
+                                            {/* {history.transaction === true ? (<p className="footerCard">Give Feedback</p>) : (<p className="footerCard">Coming Up Match</p>)} */}
                                         </div >
                                     </div >
                                 </div >
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div className="contentCard">
-                                            <h5 className="headerCard">Field Name 2</h5>
-                                            <h5 className="status">done</h5>
-                                            <small className="date">2021-01-01</small>
-                                            <Link to='player-list'>
-                                                <button className="btn player">Player List</button>
-                                            </Link>
-                                            <p className="footerCard">Give Feedback</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div className="contentCard">
-                                            <h5 className="headerCard">Field Name 3</h5>
-                                            <h5 className="status">done</h5>
-                                            <small className="date">2021-01-01</small>
-                                            <Link to='player-list'>
-                                                <button className="btn player">Player List</button>
-                                            </Link>
-                                            <p className="footerCard">Give Feedback</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                ))}
                             </div >
                         </div>
                     </aside>

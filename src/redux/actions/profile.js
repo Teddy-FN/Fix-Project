@@ -4,10 +4,7 @@ import {
 } from './types'
 import axios from 'axios'
 const API = 'https://soka.kuyrek.com:3005'
-
-
 export const GetProfile = () => {
-
     return async (dispatch) => {
         const token = localStorage.getItem('token2')
         try {
