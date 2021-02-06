@@ -64,7 +64,7 @@ function SetDateTime(props) {
             swal({
                 icon: "success",
                 title: "Your Booking is Succes",
-                text: "Happy Playing",
+                text: "Happy playing",
                 type: "success",
                 buttons: false,
                 timer: 3000,
