@@ -118,9 +118,9 @@ console.log('ini timeslot: ', timeslot)
                 />
             </div>
             <br />
-            {props.hasPrev() && <Button className="button-modalbooking" variant="link" onClick={props.prev} style={{ textDecoration: 'none' }}>Previous</Button>}
-            {props.hasNext() && <Button className="button-modalbooking" variant="link" onClick={props.next} style={{ textDecoration: 'none' }}>Next</Button>}
-            <Button  type='submit' onClick={submitBooking}>Submit</Button>
+            {props.hasPrev() && <Button className="button-modalbooking1" variant="link" onClick={props.prev} style={{ textDecoration: 'none' }}>Previous</Button>}
+            {props.hasNext() && <Button className="button-modalbooking2" variant="link" onClick={props.next} style={{ textDecoration: 'none' }}>Next</Button>}
+            <Button className="submit-data"  variant='link' type='submit' onClick={submitBooking}>Submit</Button>
         </>
     )
 }

@@ -36,8 +36,38 @@
 }
    
 .button-modalbooking3:hover {
-       border-color: white;
-       color: white;
+    border-color: white;
+    color: white;
+}
+
+.submit-data {
+    align-items: flex-end;
+    justify-content: flex-end;
+    border-color: #29dd99;
+    color: #29dd99;
+    border-radius: 5%;
+    margin-left: 5px;
+    background-color: none;
+}
+
+.submit-data:hover {
+    border-color: white;
+    color: white;
+}
+
+.submit-data-final {
+    align-items: flex-end;
+    justify-content: flex-end;
+    border-color: #29dd99;
+    color: #29dd99;
+    border-radius: 5%;
+    margin-left: 5px;
+    background-color: none;
+}
+
+.submit-data-final:hover {
+    border-color: white;
+    color: white;
 }
 
 .date.picker {

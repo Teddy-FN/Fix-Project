@@ -37,7 +37,7 @@ function Confirm(props) {
             <br />
             <div>
                 {props.hasPrev() && <Button variant="link" className="button-modalbooking2" onClick={props.prev}>Previous</Button>}
-                <button>Submit</button>
+                <Button className="submit-data-final" variant='link'>Submit</Button>
                 {/* {props.hasNext() && <Button variant="link" className="button-modalbooking3" onClick={props.next}>Next</Button>} */}
             </div>
         </>

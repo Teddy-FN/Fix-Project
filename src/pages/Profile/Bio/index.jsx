@@ -137,13 +137,13 @@ function Bio(props) {
                             <div className="button">
                                 <Button color="link" className="btn editBio" onClick={toggle} style={{ textDecoration: 'none' }}>Edit Profile</Button>
                                 <Modal isOpen={modal} toggle={toggle} className={className}>
-                                    <ModalBody toggle={toggle} close={closeBtn}>
-                                        <h4 className="edit-title" >Edit Profile</h4>
+                                    <ModalBody className="modal-body-edit-profile" toggle={toggle} close={closeBtn}>
+                                        <h4 className="edit-title-big" >Edit Profile</h4>
                                         <br />
                                         <div>
                                             <Form onSubmit={HandleChangeProfile}>
                                                 <FormGroup row className="edit-form-name">
-                                                    <Label sm={3}>Img :</Label>
+                                                    <Label sm={3}>Image: </Label>
                                                     <Col sm={8}>
                                                         <Input
                                                             type="file"
@@ -168,7 +168,7 @@ function Bio(props) {
                                                     </Col>
                                                 </FormGroup> */}
                                                 <FormGroup row className="edit-form-name">
-                                                    <Label sm={3}>phone :</Label>
+                                                    <Label sm={3}>Phone: </Label>
                                                     <Col sm={8}>
                                                         <Input
                                                             type="text"
@@ -181,7 +181,7 @@ function Bio(props) {
                                                     </Col>
                                                 </FormGroup>
                                                 <FormGroup row className="edit-form-name">
-                                                    <Label sm={3}>Full Name :</Label>
+                                                    <Label sm={3}>Full Name: </Label>
                                                     <Col sm={8}>
                                                         <Input
                                                             type="text"
@@ -194,7 +194,7 @@ function Bio(props) {
                                                     </Col>
                                                 </FormGroup>
                                                 <FormGroup row className="edit-form-name">
-                                                    <Label sm={3}>Description :</Label>
+                                                    <Label sm={3}>Description: </Label>
                                                     <Col sm={8}>
                                                         <Input
                                                             type="text"

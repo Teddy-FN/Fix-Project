@@ -69,8 +69,8 @@ return (
                 <Modal.Body>
                     <div className="multistep">
                         <Steps> 
-                            <Step component={UserInfo} /> 
-                            <Step component={SetDateTime} id={props.id} modal={handleClose}/>
+                            {/* <Step component={UserInfo} />  */}
+                            <Step component={SetDateTime} id={props.id}/>
                             <Step component={Confirm} />
                             <Step component={Success} />
                         </Steps>                        

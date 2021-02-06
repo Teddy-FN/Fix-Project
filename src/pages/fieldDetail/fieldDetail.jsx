@@ -115,7 +115,7 @@ return (
                         </>
                     ) : (<Loading />)}
                 </div>
-                <Col className='detail-text' data-aos="fade-left">
+                <Col className='detail-text'>
                     <div className='desc-field sm-3'>
                         <h2 className='field-name'>{fields.fieldName}</h2>
                         <p className='field-loc'>
@@ -143,7 +143,7 @@ return (
                 </Col>
             </Row>
             <Row>
-                <Col sm='4' className='review-title mt-3 mb-3'>
+                <Col sm='4' className='review-title-big mt-3 mb-3'>
                     <h2>Feedback and Review</h2>
                 </Col>
                 {/* <span>

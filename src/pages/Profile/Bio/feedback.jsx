@@ -38,8 +38,8 @@ const Feedback = (props) => {
   const handleUpcomming = () => {
     swal({
       icon: "warning",
-      title: "Can't Give Feedbacks",
-      text: "Try another fields",
+      title: "Cannot Give Feedback",
+      text: "Try another field",
       type: "warning",
       buttons: false,
       timer: 2000,
