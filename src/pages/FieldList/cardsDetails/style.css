@@ -14,8 +14,8 @@ body {
     flex-wrap: wrap;
     clear: both;
     width: 1200px;
+    margin-left: 5% !important;
     margin-top: 500px !important;
-    
 }
 
 .main {
@@ -132,19 +132,36 @@ body {
     width: 255px;
 }
 
+.feature {
+    margin-right: 0% !important;
+}
+
 
 /* Media Query */
-@media (max-width: 1024px) { 
-    body {
-        background-color: blue;
+@media (max-width: 768px) { 
+
+    .content-browse {
+        width: 100%;
+        clear: both;
+        padding-left: 0% !important; 
+        margin-top: 15px;
     }
-    .main {
-        margin-left: 70px;
+
+    .feature {
+        margin-right: 10px !important;
+        margin-left: 0% !important;
     }
+
  }
 
-@media (max-width: 500px) {
-    .main {
-        margin-left: 60px;
+@media (max-width: 375px) {
+
+    .content-browse {
+        width: 300px;
+        padding-left: 0% !important; 
+    }
+
+    .container {
+        margin-left: 0% !important;
     }
 }

@@ -156,7 +156,7 @@ body {
 
 
 /* tabet view */
-@media (max-width: 768px) {
+@media (max-width: 760px) {
     .field-img-big {
         height: 300px !important;
     }
@@ -193,12 +193,27 @@ body {
 
 
 /* Phone view */
-@media (max-width: 576px) { 
-    .review-title {
-        font-weight: 700;
-        color: #e5e5e5;
-        padding: 0;
-        text-align: left;
-        font-size: 5px !important;
+@media (max-width: 375px) { 
+    
+    .card {
+        margin: 0px !important;
+    }
+
+    .price-field {
+        margin-top: -150px;
+    }
+
+    .carousel {
+        margin-top: -27px;
+    }
+    
+    .review-title-big {
+        margin-top: -50px;
+        margin-bottom: 0px;
+       font-size: 30px !important;
+    }
+
+    .ml-auto {
+        margin-top: -20px;
     }
  }
