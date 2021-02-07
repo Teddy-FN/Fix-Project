@@ -3,20 +3,18 @@ import { Container, Form, FormGroup, Label, Col, Input, Button, Modal, ModalBody
 import './style.css'
 import { useSelector, useDispatch } from 'react-redux'
 // import User from '../../../assets/img/user.png'
-import { Link } from 'react-router-dom'
 import { GetProfile, UpdateProfile } from '../../../redux/actions/profile'
 import swal from 'sweetalert'
 import axios from 'axios'
+import Feedback from './feedback'
 
 function Bio(props) {
     const {
         className
     } = props;
-
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
     const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
-
     const token = localStorage.getItem('token')
     console.log(token)
     const id = localStorage.getItem('id')
@@ -25,7 +23,6 @@ function Bio(props) {
     // Get data user    
     const user = useSelector((state) => state.profileUser.data);
     console.log('Ini USer BROOOOO', user)
-
 
     // data patch profile
     const dispatch = useDispatch()
@@ -42,7 +39,6 @@ function Bio(props) {
     formData.append("fullname", input.fullname);
     formData.append("description", input.description);
     formData.append("phone", input.phone);
-
 
     const handleChange = (name, value) => {
         setInput({
@@ -73,29 +69,31 @@ function Bio(props) {
             timer: 3000,
         })
     }
-    // Const state 
-    const [historyBooked, setHistoryBooked] = useState([])
-    console.log('INI HISTORY BOOKING YA', historyBooked)
-    useEffect(() => {
-        // History Book
-        axios.get(`https://soka.kuyrek.com:3003/booking/history`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
-            }
-        })
-            .then(res => {
-                console.log('INI RES BOOKING', res.data.data)
-                setHistoryBooked(res.data.data)
+
+    const [bookHistory, setBookHistory] = useState([]);
+    const urlBookHistory = 'https://soka.kuyrek.com:3003/booking/history';
+    const token2 = localStorage.getItem('token');
+    const config = {
+        headers: {
+            Authorization: `bearer ${token2}`
+        }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const getBookHistory = () => {
+        axios
+            .get(urlBookHistory, config)
+            .then((res) => {
+                console.log('ini res history Book: ', res.data.data)
+                setBookHistory(res.data.data)
             })
-            .catch(error => console.log(error))
-
+            .catch()
+    }
+    useEffect(() => {
         dispatch(GetProfile());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-
-    }, [dispatch, submitted, token]);
-
+        getBookHistory()
+    }, [dispatch, getBookHistory, submitted, token]);
+    console.log('book history: ', bookHistory)
 
     return (
         <div>
@@ -133,20 +131,6 @@ function Bio(props) {
                                                         />
                                                     </Col>
                                                 </FormGroup>
-                                                {/* <FormGroup row className="edit-form-name">
-                                                    <Label sm={3}>Email :</Label>
-                                                    <Col sm={8}>
-                                                        <Input
-                                                            type="text"
-                                                            name="email"
-                                                            id="email"
-                                                            placeholder="Enter Your Email Here...."
-                                                            value={input.email}
-                                                            onChange={(e) => handleChange("email", e.target.value)}
-                                                        />
-
-                                                    </Col>
-                                                </FormGroup> */}
                                                 <FormGroup row className="edit-form-name">
                                                     <Label sm={3}>phone :</Label>
                                                     <Col sm={8}>
@@ -156,8 +140,7 @@ function Bio(props) {
                                                             id="phone"
                                                             placeholder="Enter Your Number Here...."
                                                             value={input.phone}
-                                                            onChange={(e) => handleChange("phone", e.target.value)}
-                                                        />
+                                                            onChange={(e) => handleChange("phone", e.target.value)} />
                                                     </Col>
                                                 </FormGroup>
                                                 <FormGroup row className="edit-form-name">
@@ -169,8 +152,7 @@ function Bio(props) {
                                                             id="fullname"
                                                             placeholder="Enter Your Name Here...."
                                                             value={input.fullname}
-                                                            onChange={(e) => handleChange("fullname", e.target.value)}
-                                                        />
+                                                            onChange={(e) => handleChange("fullname", e.target.value)} />
                                                     </Col>
                                                 </FormGroup>
                                                 <FormGroup row className="edit-form-name">
@@ -182,9 +164,7 @@ function Bio(props) {
                                                             id="desc"
                                                             placeholder="Enter Your Email Here...."
                                                             value={input.description}
-                                                            onChange={(e) => handleChange("description", e.target.value)}
-                                                        />
-
+                                                            onChange={(e) => handleChange("description", e.target.value)} />
                                                     </Col>
                                                 </FormGroup>
                                                 <Button color="link" className="edit-button-submit">Submit</Button>
@@ -200,26 +180,23 @@ function Bio(props) {
                             {/* <StepThree /> */}
                             <div className="contentBorder">
                                 <h5 className="headerBox">Book History</h5>
-                                {
-                                    historyBooked.slice(historyBooked.length - 4, historyBooked.length - 1).map((result, idx) => {
-                                        return (
-                                            <div class="card text-center" key={idx}>
-                                                <div class="card-body">
-                                                    <div className="contentCard">
-                                                        <h5 className="headerCard">{result.field}</h5>
-                                                        {/* <h5 className="status"></h5> */}
-                                                        <small className="date">{result.date.slice(0, 10)}</small>
-                                                        <Link to='player-list'>
-                                                            <button className="btn player">Player List</button>
-                                                        </Link>
-                                                        <p className="footerCard">Coming Up Match</p>
-                                                    </div >
-
-                                                </div >
+                                {bookHistory.slice(bookHistory.length - 3, bookHistory.length).reverse().map((history, idx) => (
+                                    <div class="card text-center" key={idx}
+                                        style={{ marginTop: '28px' }}>
+                                        <div class="card-body">
+                                            <div className="contentCard">
+                                                <h5 className="headerCard">{history.field}</h5>
+                                                {/* <h5 className="status"></h5> */}
+                                                <small className="date">{history.date.slice(0, 10)}</small>
+                                                {/* <Link >
+                                                <button className="btn player">Give Feedback</button>
+                                            </Link> */}
+                                                <Feedback id={history.id} />
+                                                <p className="footerCard">Coming Up Match</p>
                                             </div >
-                                        );
-                                    })
-                                }
+                                        </div >
+                                    </div >
+                                ))}
                             </div >
                         </div>
                     </aside>

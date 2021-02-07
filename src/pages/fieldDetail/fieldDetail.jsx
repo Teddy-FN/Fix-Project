@@ -23,8 +23,32 @@ const FieldDetail = (props) => {
 
     const params = useParams();
     const [fields, setFields] = useState([]);
+    const [feedbacks, setFeedbacks] = useState([]);
+    const [noFeedbacks, setNoFeedbacks] = useState(false);
+    const [ratingAvg, setRatingAvg] = useState([])
     const [loading, setLoading] = useState(false);
-    const url = `https://soka.kuyrek.com:3001/field/${params.id}`
+    const url = `https://soka.kuyrek.com:3001/field/${params.id}`;
+    const urlFeedBacks = `https://soka.kuyrek.com:3002/feedback/${params.id}`;
+    const token = localStorage.getItem('token');
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const getFeedBacks = () => {
+        axios
+            .get(urlFeedBacks, config)
+            .then((res) => {
+                console.log('ini respon feedbacks: ', res.data);
+                setFeedbacks(res.data.data);
+                setRatingAvg(res.data)
+            })
+            .catch((err) => {
+                setNoFeedbacks(true);
+            })
+    }
 
     useEffect(() => {
         axios
@@ -45,6 +69,14 @@ const FieldDetail = (props) => {
                     timer: 3000,
                 });
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+
+        // Animation 
+        // eslint-disable-next-line no-undef
+        // AOS.init({
+        //     duration: 4000
+        // });
+        getFeedBacks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -83,7 +115,7 @@ const FieldDetail = (props) => {
                             </>
                         ) : (<Loading />)}
                     </div>
-                    <Col className='detail-text'>
+                    <Col className='detail-text' data-aos="fade-left">
                         <div className='desc-field sm-3'>
                             <h2 className='field-name'>{fields.fieldName}</h2>
                             <p className='field-loc'>
@@ -97,12 +129,12 @@ const FieldDetail = (props) => {
                         <div className='action-book'>
                             <h3 className='price-field'>
                                 Rp. {fields?.price?.$numberDecimal}.000
-                        </h3>
-                            <Link to='/player-list'>
-                                <Button className='col-12 mb-3 btn-player'>
-                                    See Player List
-                            </Button>
-                            </Link>
+                    </h3>
+                            {/* <Link to='/player-list'>
+                            <Button className='col-12 mb-3 btn-player'>
+                                See Player List
+                        </Button>
+                    </Link> */}
                             <ModalBooking
                                 isLogin={props.isLogin}
                                 id={params.id}
@@ -115,18 +147,19 @@ const FieldDetail = (props) => {
                         <h2>Feedback and Review</h2>
                     </Col>
                     {/* <span>
-                        <Rating 
-                            name='half-rating-read'
-                            defaultValue='1'
-                            precision={1}
-                            max={1}
-                            readOnly
-                        />
-                        </span> */}
+                    <Rating 
+                        name='half-rating-read'
+                        defaultValue='1'
+                        precision={1}
+                        max={1}
+                        readOnly
+                    />
+                    </span> */}
                     <Col sm='4' className='num-rating mt-3 mb-3'>
                         <span>
                             <h3 className='ml-auto mr-2' style={{ color: '#e5e5e5' }}>
-                                4.7 /{' '}
+
+                                {ratingAvg.ratingAvg} /{' '}
                                 <span style={{ color: '#e5e5e5' }}>5</span>
                             </h3>
                         </span>
@@ -134,43 +167,38 @@ const FieldDetail = (props) => {
                     <Col sm='4'></Col>
                 </Row>
 
-                <Row className='review-user' data-aos="fade-right">
+                <Row className='review-user'>
                     <Col sm='8' className='comment'>
-                        <Card className='col-sm-12 mb-3 card-review'>
-                            <CardBody>
-                                <h4 className='review-title'>
-                                    <b>Speedwagon</b>
-                                </h4>
-                                <div className='rating'>
-                                    <Rating
-                                        name='half-rating-read'
-                                        defaultValue={5}
-                                        precision={0.2}
-                                        max={5}
-                                        readOnly
-                                    />
-                                </div>
-                                <p className='review-p'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui aspernatur maxime possimus cum fuga! Autem odio temporibus voluptatum deleniti distinctio illum excepturi, cumque laboriosam perspiciatis esse placeat a inventore consequuntur.</p>
-                            </CardBody>
-                        </Card>
-
-                        <Card className='col-sm-12 mb-3 card-review'>
-                            <CardBody>
-                                <h4 className='review-title'>
-                                    <b>Dio Brando</b>
-                                </h4>
-                                <div className='rating'>
-                                    <Rating
-                                        name='half-rating-read'
-                                        defaultValue={1}
-                                        precision={0.2}
-                                        max={5}
-                                        readOnly
-                                    />
-                                </div>
-                                <p className='review-p'>This place stinks</p>
-                            </CardBody>
-                        </Card>
+                        {noFeedbacks === true ? (
+                            <p
+                                style={{
+                                    textAlign: 'center',
+                                    fontSize: '50px',
+                                    color: '#28df99',
+                                    fontWeight: '300',
+                                    paddingTop: '50px'
+                                }}
+                            >No Feedbacks Yet</p>
+                        ) : (
+                                feedbacks.map((feedback, idx) => (
+                                    <Card className='col-sm-12 mb-3 card-review'>
+                                        <CardBody>
+                                            <h4 className='review-title'>
+                                                <b>{feedback.username}</b>
+                                            </h4>
+                                            <div className='rating'>
+                                                <Rating
+                                                    name='half-rating-read'
+                                                    defaultValue={feedback.rating}
+                                                    precision={0.2}
+                                                    max={5}
+                                                    readOnly
+                                                />
+                                            </div>
+                                            <p className='review-p'>{feedback.review}</p>
+                                        </CardBody>
+                                    </Card>
+                                )))}
                     </Col>
                     <Col sm='4'>
 

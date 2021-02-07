@@ -47,7 +47,8 @@ function SetDateTime(props) {
         // eslint-disable-next-line no-undef
         // getTime()
         dispatch(BookedTimeSlotField())
-    }, [dispatch])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     const options = [
@@ -67,7 +68,7 @@ function SetDateTime(props) {
         { label: "22.00-23.00", value: "22.00-23.00", id: 14 },
         { label: "23.00-00.00", value: "23.00-00.00", id: 15 },
     ];
-
+    // const params = useParams()
 
     // GET TIMESLOT FROM BACKEND
     // const dispatch = useDispatch()

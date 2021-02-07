@@ -18,6 +18,7 @@ function Confirm(props) {
     // }
     const [date, setDate] = useState([])
     const [time, setTime] = useState([])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         dispatch(getTimeSlotBooked(
             setDate(),
