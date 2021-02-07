@@ -24,6 +24,7 @@
         "moment-timezone": "^0.5.32",
         "node-sass": "^5.0.0",
         "react": "^17.0.1",
+        "react-barcode": "^1.4.0",
         "react-bootstrap": "^1.4.3",
         "react-browser-router": "^2.1.2",
         "react-datepicker": "^3.4.1",

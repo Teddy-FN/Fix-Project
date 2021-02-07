@@ -79,7 +79,9 @@ useEffect(() => {
     getFeedBacks();
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
-console.log('rating: ', ratingAvg.ratingAvg)
+// console.log('rating: ', ratingAvg.ratingAvg)
+// let price = fields.price.$numberDecimal
+// console.log('data price fields: ', price)
 return (
     <>
         <Container>

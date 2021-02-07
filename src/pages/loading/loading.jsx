@@ -2,8 +2,8 @@ import React from "react";
 import { Container, Spinner } from "reactstrap";
 const Loading = () => {
   return (
-    <Container style={{ height: "100vh", margin: "10% auto" }}>
-        <div style={{ width: "34px", margin: " auto", color: '#28df99' }}>
+    <Container style={{ height: "300px", margin: "auto" }}>
+        <div style={{ width: "34px", margin: "auto", color: '#28df99' }}>
           <Spinner
             style={{ width: "4rem", height: "4rem" }}
             size="lg"
