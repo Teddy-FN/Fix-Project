@@ -2,3 +2,13 @@
     background-color: #454545 !important;
     color: black !important;
 }
+
+.page-link {
+    border-color: #29dd99;
+    background-color: #313131;
+    color: #29dd99;
+}
+
+.pagination {
+    margin-right: 900px;
+}

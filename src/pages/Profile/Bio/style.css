@@ -51,16 +51,18 @@ body {
 }
 
 .editBio {
-    background-color: #28df99;
+    border-color: #28df99;
+    color: #28df99;
     width: 100%;
-    color: #fff;
     height: 50px;
     margin-top: -50px;
 }
 
 .editBio:hover {
-    color: black;
+    border-color: white;
+    color: white;
 }
+
 
 .rightSide {
     width: 65%;
@@ -80,7 +82,7 @@ body {
 
 .contentBorder {
     border: 1px solid #fff;
-    height: 500px;
+    height: auto;
     padding: 10px;
     border-radius: 5px;
 }
@@ -96,9 +98,9 @@ body {
     display: inline;
 }
 
-.date {
+/* .date {
     margin-left: 300px;
-}
+} */
 
 .headerCard{
     /* background-color: blue; */
@@ -133,10 +135,29 @@ body {
 }
 
 
-.card:hover {
+/* .card:hover {
     color: #FFCB74;
-}
+} */
 
 .card .footerCard:hover {
     color: #FFCB74;   
+}
+
+.edit-button-submit {
+    border-color: #28df99;
+    color: #28df99;
+    margin-left: 40%;
+}
+
+.edit-button-submit:hover {
+    border-color: white;
+    color: white;
+}
+
+.edit-title {
+    box-shadow: 3px 3px 3px black !important;
+}
+
+.edit-title-big {
+    text-align: center;
 }

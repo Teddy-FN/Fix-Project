@@ -79,7 +79,7 @@ const FieldDetail = (props) => {
         getFeedBacks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
+    console.log('rating: ', ratingAvg.ratingAvg)
     return (
         <>
             <Container>
@@ -115,7 +115,7 @@ const FieldDetail = (props) => {
                             </>
                         ) : (<Loading />)}
                     </div>
-                    <Col className='detail-text' data-aos="fade-left">
+                    <Col className='detail-text'>
                         <div className='desc-field sm-3'>
                             <h2 className='field-name'>{fields.fieldName}</h2>
                             <p className='field-loc'>
@@ -143,7 +143,7 @@ const FieldDetail = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col sm='4' className='review-title mt-3 mb-3'>
+                    <Col sm='4' className='review-title-big mt-3 mb-3'>
                         <h2>Feedback and Review</h2>
                     </Col>
                     {/* <span>
@@ -159,7 +159,7 @@ const FieldDetail = (props) => {
                         <span>
                             <h3 className='ml-auto mr-2' style={{ color: '#e5e5e5' }}>
 
-                                {ratingAvg.ratingAvg} /{' '}
+                                {ratingAvg.ratingAvg === undefined ? 0 : Math.ceil(ratingAvg.ratingAvg)} /{' '}
                                 <span style={{ color: '#e5e5e5' }}>5</span>
                             </h3>
                         </span>

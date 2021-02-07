@@ -103,7 +103,7 @@ const HeaderNonAuth = () => {
                     swal({
                         icon: "error",
                         title: "Wrong email or password",
-                        text: "please try again",
+                        text: "Please try again",
                         type: "warning",
                         buttons: false,
                         timer: 2000,
@@ -123,7 +123,7 @@ const HeaderNonAuth = () => {
 
 
     return (
-        <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px #222222' }}>
+        <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px black' }}>
             <Link to="/"><img class="logo" src={Logo}></img></Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto" style={{ textDecoration: 'none' }}>
@@ -143,61 +143,60 @@ const HeaderNonAuth = () => {
                 </ul>
             </div>
             {/* <div data-aos="fade-left"> */}
-            <h4 class="btn-header" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleRegist}>Sign Up</h4>
-            <Modal isOpen={modalRegist} toggle={toggleRegist}>
-                <ModalBody className="modal-body">
-                    <h4 class="modal-title"> Sign Up</h4>
-                    <br />
-                    <Form onSubmit={handleOnSubmitSignUp}>
-                        <FormGroup>
-                            <Label for="email">Email</Label>
-                            <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
-                                type="email"
-                                name="email"
-                                id="email"
-                                placeholder="Write your email here"
-                            />
-                        </FormGroup>
-                        <FormGroup >
-                            <Label className="label" for="fullname">Full Name</Label>
-                            <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
-                                type="text"
-                                name="fullname"
-                                id="fullname"
-                                placeholder="Write your full name here"
-                            />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="password">Password</Label>
-                            <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
-                                type={passwordInputType}
-                                name="password"
-                                id="password"
-                                placeholder="Write your password here"
-                            />
-                            <span className="passwordToogle">{ToogleIcon}</span>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="passwordConfirmation">Confirm Password</Label>
-                            <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
-                                type={passwordInputType}
-                                name="passwordConfirmation"
-                                id="passwordConfirmation"
-                                placeholder="Verify your password"
-                            />
-                            <span className="passwordConfirmationToogle">{ToogleIcon}</span>
-                        </FormGroup>
+            <h4 class="btn-header1" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleRegist}>Sign Up</h4>
+                <Modal isOpen={modalRegist} toggle={toggleRegist}>
+                    <ModalBody className="modal-body">
+                        <h4 class="modal-title"> Sign Up</h4>
                         <br />
-                        <Button type="submit" className="submit-button" style={{ backgroundColor: '#28df99' }}>Sign Up</Button>
-                        <br />
-                        <br />
-                        <p class="para" >Or</p>
-                            // eslint-disable-next-line no-undef
-                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }}>Sign Up with Facebook</Button>
-                    </Form>
-                    <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99' }} onClick={toggleLogin}>Log In</Button></span>
-                </ModalBody>
-            </Modal>
+                        <Form onSubmit={handleOnSubmitSignUp}>
+                            <FormGroup>
+                                <Label for="email">Email</Label>
+                                <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    placeholder="Write your email here"
+                                />
+                            </FormGroup>
+                            <FormGroup >
+                                <Label className="label" for="fullname">Full Name</Label>
+                                <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
+                                    type="text"
+                                    name="fullname"
+                                    id="fullname"
+                                    placeholder="Write your full name here"
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="password">Password</Label>
+                                <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
+                                    type={passwordInputType}
+                                    name="password"
+                                    id="password"
+                                    placeholder="Write your password here"
+                                />
+                                <span className="passwordToogle">{ToogleIcon}</span>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="passwordConfirmation">Confirm Password</Label>
+                                <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
+                                    type={passwordInputType}
+                                    name="passwordConfirmation"
+                                    id="passwordConfirmation"
+                                    placeholder="Verify your password"
+                                />
+                                <span className="passwordConfirmationToogle">{ToogleIcon}</span>
+                            </FormGroup>
+                            <br />
+                            <Button type="submit" className="submit-button" style={{ backgroundColor: '#28df99' }}>Sign Up</Button>
+                            <br />
+                            <br />
+                            <p class="para" >Or</p>
+                            <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }}>Sign Up with Google</Button>
+                        </Form>
+                        <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99' }} onClick={toggleLogin}>Log In</Button></span>
+                    </ModalBody>
+                </Modal>
             {/* </div> */}
             <div >
                 {
@@ -205,8 +204,7 @@ const HeaderNonAuth = () => {
                         <div>nama</div> :
                         null
                 }
-                <h4 class="btn-header" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleLogin}
-                    data-aos="fade-left">Log In</h4>
+                <h4 class="btn-header2" style={{ color: 'white', cursor: 'pointer' }} color="link" onClick={toggleLogin}>Log In</h4>
                 <Modal isOpen={modalLogin} toggle={toggleLogin}>
                     <ModalBody className="modal-body">
                         <h4 class="modal-title">Log In</h4>
@@ -234,15 +232,16 @@ const HeaderNonAuth = () => {
                             <br />
                             <br />
                             <p class="para">Or</p>
-                            <GoogleLogin
+                            <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }} onClick={toggleLogin}>Log In with Google</Button>
+                            {/* <GoogleLogin
                                 clientId="548645407023-l8n4p4pia7mclrheramf7knu2f5b6cve.apps.googleusercontent.com"
                                 buttonText="Login"
                                 onSuccess={handleGoogleLogin}
                                 onFailure={handleGoogleLogin}
                                 cookiePolicy={'single_host_origin'}
                                 className="googleAuth"
-                            />
-                            <Button className="google-button" style={{ backgroundColor: '#3b5998' }} >Log In with Facebook</Button>
+                            /> */}
+                            {/* <Button className="google-button" style={{ backgroundColor: '#3b5998' }} >Log In with Facebook</Button> */}
                         </Form>
                         <span class="statement">Don't have an account? <Button className="crosing-button" style={{ color: '#28df99' }} color="link" onClick={toggleRegist}>Sign Up</Button></span>
                     </ModalBody>

@@ -35,6 +35,17 @@ const Feedback = (props) => {
     },
   };
 
+  const handleUpcomming = () => {
+    swal({
+      icon: "warning",
+      title: "Cannot Give Feedback",
+      text: "Try another field",
+      type: "warning",
+      buttons: false,
+      timer: 2000,
+    });
+  }
+
   const submitFeedback = (e) => {
     e.preventDefault();
     const data = {
@@ -58,6 +69,7 @@ const Feedback = (props) => {
       })
       .catch((err) => {
         console.log('Ini error feedback: ', err);
+        setModalFeedback(false);
         swal({
           icon: "warning",
           title: "You already add the feedback",
@@ -71,7 +83,7 @@ const Feedback = (props) => {
 
   return (
     <>
-      <button className="btn player" onClick={toggleFeedback}>Give Feedback</button>
+      {props.done === false ? (<button className="btn player-baru" onClick={handleUpcomming}>Coming up match</button>) : (<button className="btn player" onClick={toggleFeedback}>Give Feedback</button>)}
       <Modal
         isOpen={modalFeedback}
         toggle={toggleFeedback}

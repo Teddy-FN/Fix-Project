@@ -15,8 +15,18 @@
 }
 
 .modal-booking {
-    border-radius: 10%;
+    border-radius: 10px !important;
     width: 1400px;
-    margin-top: 200px;
+    margin-top: 100px;
     border-color: 5px, #28df99;
+}
+
+.modal-content {
+    background-color: none !important;
+}
+
+@media (max-width: 768px) {
+    .modal-booking {
+        width: 800px;
+    }
 }

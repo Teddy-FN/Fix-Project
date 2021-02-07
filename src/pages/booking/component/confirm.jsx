@@ -29,14 +29,14 @@ function Confirm(props) {
         <>
             <div>
                 {/* <p>Name: {props.state.name}</p>
-            <p>Phone Number:  {props.state.phoneNumber}</p> */}
+                <p>Phone Number:  {props.state.phoneNumber}</p> */}
                 <p>Choosen date: {date}</p>
                 <p>Choosen time: {time}</p>
             </div>
             <br />
             <div>
                 {props.hasPrev() && <Button variant="link" className="button-modalbooking2" onClick={props.prev}>Previous</Button>}
-                <button>Submit</button>
+                <Button className="submit-data-final" variant='link'>Submit</Button>
                 {/* {props.hasNext() && <Button variant="link" className="button-modalbooking3" onClick={props.next}>Next</Button>} */}
             </div>
         </>
