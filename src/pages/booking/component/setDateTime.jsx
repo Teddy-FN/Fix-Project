@@ -1,12 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-import MultiSelect from 'react-multi-select-component'
-import { Button } from 'react-bootstrap'
-import './style.css'
-// import { BookedAsField, BookedTimeSlotField } from '../../../redux/actions/booking'
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import MultiSelect from 'react-multi-select-component';
+import { Button } from 'react-bootstrap';
+import './style.css';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -17,6 +15,7 @@ function SetDateTime(props) {
     const [selectedTime, setSelectedTime] = useState([]);
     const [timeslot, setTimeslot] = useState([]);
     const [timeslotId, setTimeslotId] = useState([]);
+    const [showTiket, setShowTiket] = useState(false);
     
     let dates = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 
@@ -25,17 +24,17 @@ function SetDateTime(props) {
     const urlTimeslot = `https://soka.kuyrek.com:3003/booking/${props.id}/bookedfield`
     const urlBooking = `https://soka.kuyrek.com:3003/booking/${props.id}/create/bookedfield`
 
+    
     const config ={
         headers: {
             Authorization: `bearer ${token}`
         }
     }
-
-    const data = {
-        date: dates
-    }
-
+    
     const getTimeslot = () => {
+        const data = {
+            date: dates
+        }
         axios
         .post(urlTimeslot, data, config)
         .then((res) => {
@@ -51,12 +50,13 @@ function SetDateTime(props) {
     const idTimeslot = selectedTime.map((id => (id.id)))
     const dataIdTime = idTimeslot.join()
     console.log('id timeslot: ', dataIdTime)
-    const dataBooking = {
-        date: dates,
-        id_timeslot: dataIdTime
-    }
-
-    const submitBooking = () => {
+    
+    const submitBooking = (e) => {
+        e.preventDefault();
+        const dataBooking = {
+            date: dates,
+            id_timeslot: dataIdTime
+        }
         axios
         .post(urlBooking, dataBooking, config)
         .then((res) => {
@@ -69,6 +69,7 @@ function SetDateTime(props) {
                 buttons: false,
                 timer: 3000,
               });
+            // setShowTiket(true);
         })
         .catch((err) => {
             console.log('error booking: ',err)
@@ -86,12 +87,9 @@ function SetDateTime(props) {
     useEffect(() => {
        getTimeslot()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [timeslot])
 
 
-console.log('ini selectedTime: ', selectedTime)
-console.log('ini timeslot id: ', timeslotId)
-console.log('ini timeslot: ', timeslot)
     return (
         <>
             <div>
@@ -99,7 +97,7 @@ console.log('ini timeslot: ', timeslot)
                 <DatePicker className="dateFormat-picker"
                     selected={date}
                     onClick={getTimeslot}
-                    onChange={date => setDate(date)}
+                    onChange={(e) => setDate(e) && getTimeslot}
                     dateFormat='yyyy-MM-dd'
                     minDate={new Date()}
                 />
@@ -119,8 +117,9 @@ console.log('ini timeslot: ', timeslot)
             </div>
             <br />
             {props.hasPrev() && <Button className="button-modalbooking1" variant="link" onClick={props.prev} style={{ textDecoration: 'none' }}>Previous</Button>}
-            {props.hasNext() && <Button className="button-modalbooking2" variant="link" onClick={props.next} style={{ textDecoration: 'none' }}>Next</Button>}
-            <Button className="submit-data"  variant='link' type='submit' onClick={submitBooking}>Submit</Button>
+            {/* {props.hasNext() && <Button className="button-modalbooking2" variant="link" onClick={props.next} style={{ textDecoration: 'none' }}>Next</Button>} */}
+            <Button className="submit-data"  variant='link' type='submit' onClick={submitBooking} style={{ textDecoration: 'none' }}>Submit</Button>
+            
         </>
     )
 }

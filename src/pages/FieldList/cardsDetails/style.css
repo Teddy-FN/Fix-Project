@@ -14,7 +14,7 @@ body {
     flex-wrap: wrap;
     clear: both;
     width: 1200px;
-    margin-left: 5% !important;
+    /* margin-left: 5% !important; */
     margin-top: 500px !important;
 }
 

@@ -91,7 +91,7 @@ function Bio(props) {
         axios
             .get(urlBookHistory, config)
             .then((res) => {
-                console.log('ini res history Book: ', res.data.data)
+                console.log('ini res history Book: ', res.data)
                 setBookHistory(res.data.data)
                 setLoading(true)
             })
@@ -119,7 +119,7 @@ function Bio(props) {
 
     return (
         <div>
-            <div className="subMenu">
+            <div className="subMenu" style={{width: '100%'}}>
                 <Container>
                     <aside className="leftSide">
                         <div>
@@ -207,7 +207,7 @@ function Bio(props) {
 
                                                     </Col>
                                                 </FormGroup>
-                                                <Button color="link" className="edit-button-submit">Submit</Button>
+                                                <Button color="link" className="edit-button-submit" style={{textDecoration: 'none'}}>Submit</Button>
                                             </Form>
                                         </div>
                                     </ModalBody>

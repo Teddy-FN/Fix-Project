@@ -79,7 +79,9 @@ useEffect(() => {
     getFeedBacks();
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
-console.log('rating: ', ratingAvg.ratingAvg)
+// console.log('rating: ', ratingAvg.ratingAvg)
+// let price = fields.price.$numberDecimal
+// console.log('data price fields: ', price)
 return (
     <>
         <Container>
@@ -173,14 +175,14 @@ return (
                         <p
                             style={{
                                 textAlign: 'center',
-                                fontSize: '50px',
+                                fontSize: '30px',
                                 color: '#28df99',
-                                fontWeight: '300',
+                                fontWeight: 'lighter',
                                 paddingTop: '50px'
                             }}
                         >No Feedbacks Yet</p>
                     ):(
-                    feedbacks.map((feedback, idx) => (
+                    feedbacks.slice(0, feedbacks.length).reverse().map((feedback, idx) => (
                     <Card className='col-sm-12 mb-3 card-review'>
                         <CardBody>
                             <h4 className='review-title'>
