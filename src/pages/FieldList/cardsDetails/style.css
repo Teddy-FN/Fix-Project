@@ -7,13 +7,14 @@ body {
     margin-top: 130px !important;
     margin-left: 4% !important;
     clear: both;
+    margin: none;
 }
 
 .content-browse {
     display: flex;
     flex-wrap: wrap;
     clear: both;
-    width: 1200px;
+    width: 115%;
     /* margin-left: 5% !important; */
     margin-top: 500px !important;
 }

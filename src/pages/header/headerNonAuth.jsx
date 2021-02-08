@@ -193,7 +193,7 @@ const HeaderNonAuth = () => {
                         <p class="para" >Or</p>
                         <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }}>Sign Up with Google</Button>
                     </Form>
-                    <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99' }} onClick={toggleLogin}>Log In</Button></span>
+                    <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99', textDecoration: 'none' }} onClick={toggleLogin}>Log In</Button></span>
                 </ModalBody>
             </Modal>
             {/* </div> */}
@@ -227,7 +227,7 @@ const HeaderNonAuth = () => {
                                 <span className="passwordLogInToogle">{ToogleIcon}</span>
                             </FormGroup>
                             <br />
-                            <Button type="submit" className="submit-button" style={{ backgroundColor: '#28df99' }} onClick={toggleLogin}>Log In</Button>
+                            <Button type="submit" className="submit-button" style={{ backgroundColor: '#28df99', textDecoration: 'none', cursor: 'pointer' }} onClick={toggleLogin}>Log In</Button>
                             <br />
                             <br />
                             <p class="para">Or</p>

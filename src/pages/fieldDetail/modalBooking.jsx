@@ -98,7 +98,7 @@ const ModalBooking = (props) => {
                     text: "Happy playing",
                     type: "success",
                     buttons: false,
-                    timer: 3000,
+                    timer: 1000,
                 });
                 setDataBooking(res.data.result);
                 setShowTiketModal(true);
@@ -122,7 +122,6 @@ const ModalBooking = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timeslot])
 
-    // let datePlay = `${dataBooking.date.getFullYear()}-${dataBooking.date.getMonth() + 1}-${dataBooking.date.getDate()}`
 
     // Bikin method di dlm method dispatch
     return (
@@ -196,10 +195,12 @@ const ModalBooking = (props) => {
 
             {/* Modal eTiket */}
             {/* =================================================================================================== */}
-            <div className='modal-tiket'>
+            <div >
                 <Modal
                     show={showTiket}
-                    onHide={handleCloseTiket}>
+                    onHide={handleCloseTiket}
+                    className='modal-tiket'
+                >
                     <Modal.Body>
                         <Success
                             id={dataBooking?.id}

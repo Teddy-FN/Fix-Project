@@ -86,6 +86,22 @@ body {
     border: 2px solid #545454 !important;
 }
 
+.button-load-more:hover {
+    background-color: none !important;
+    border-color: #28df99 !important;
+    color: #28df99 !important;
+    font-weight: 700 !important;
+    height: 50px !important;
+}
+
+.button-load-more {
+    background-color: none !important;
+    border-color: white!important;
+    color: white !important;
+    font-weight: 700 !important;
+    height: 50px !important;
+}
+
 /* .btn-book{
     color: #545454 !important;
     background-color: #28df99 !important;
