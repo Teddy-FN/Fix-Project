@@ -196,10 +196,12 @@ const ModalBooking = (props) => {
 
             {/* Modal eTiket */}
             {/* =================================================================================================== */}
-            <div className='modal-tiket'>
+            <div >
                 <Modal
                     show={showTiket}
-                    onHide={handleCloseTiket}>
+                    onHide={handleCloseTiket}
+                    className='modal-tiket'
+                    >
                     <Modal.Body>
                         <Success
                             id={dataBooking?.id}

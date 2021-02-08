@@ -37,7 +37,10 @@ const HeaderNonAuth = () => {
     const [tokenLogin, setTokenLogin] = useState(localStorage.getItem('token'))
 
     const [modalLogin, setModalLogin] = useState(false);
-    const toggleLogin = () => { setModalLogin(!modalLogin) };
+    const toggleLogin = () => { 
+        setModalLogin(!modalLogin);
+        setModalRegist(false)
+     };
 
     const [token] = useState('');
     const [passwordInputType, ToogleIcon] = ShowPasswordToogle()
