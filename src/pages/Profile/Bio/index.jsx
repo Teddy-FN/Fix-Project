@@ -27,7 +27,9 @@ function Bio(props) {
     // Get data user    
     const user = useSelector((state) => state.profileUser.data);
     console.log('Ini USer BROOOOO', user)
-
+    // Get Data User Google 
+    const profileUserGoogle = localStorage.getItem('GoogleAuth')
+    console.log(profileUserGoogle)
 
     // data patch profile
     const dispatch = useDispatch()
