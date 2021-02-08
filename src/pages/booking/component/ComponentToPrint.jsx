@@ -59,7 +59,7 @@ class ComponentToPrint extends React.PureComponent {
                                     <Row>{this.state.fullname}</Row>
                                     <Row>{this.state.field}</Row>
                                     <Row>{this.state.date.slice(0, 10)} </Row>
-                                    <Row>{this.state.timeslot}</Row>
+                                    <Row>{this.state.timeslot.join()}</Row>
                                     <Row>Rp. {this.state.price * this.state.timeslot.length}.000</Row>
                                 </Col>
                             </Row>

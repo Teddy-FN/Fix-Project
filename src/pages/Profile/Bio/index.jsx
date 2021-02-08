@@ -113,7 +113,7 @@ function Bio(props) {
         getBookHistory()
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [submitted]);
+    }, [bookHistory]);
 
     // console.log('book history: ',bookHistory)
 
