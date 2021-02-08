@@ -108,7 +108,7 @@ function CardFields() {
     console.log(fields)
     return (
         <div >
-            <Container className='container'>
+            <Container className='container fluid' >
                 {/* <div data-aos="fade-left"> */}
                 <div className="feature">
                 <div className="searchButton">

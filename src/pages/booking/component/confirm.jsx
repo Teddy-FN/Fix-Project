@@ -1,14 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import './style.css'
 
 // Import Action Get 
-import { getTimeSlotBooked } from '../../../redux/actions/booking'
+// import { getTimeSlotBooked } from '../../../redux/actions/booking'
 // Import React Redux 
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 
 function Confirm(props) {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     // const [handleNext, setHandleNext] = useState(false)
     // const handleBook = async (props) => {
     //     await dispatch(BookedAsField({
@@ -16,22 +17,22 @@ function Confirm(props) {
     //     }))
     //     setHandleNext(true)
     // }
-    const [date, setDate] = useState([])
-    const [time, setTime] = useState([])
+    // const [date, setDate] = useState([])
+    // const [time, setTime] = useState([])
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => {
-        dispatch(getTimeSlotBooked(
-            setDate(),
-            setTime()
-        ))
-    }, [dispatch])
+    // useEffect(() => {
+    //     // dispatch(getTimeSlotBooked(
+    //         setDate(),
+    //         setTime()
+    //     ))
+    // })
     return (
         <>
             <div>
                 {/* <p>Name: {props.state.name}</p>
-                <p>Phone Number:  {props.state.phoneNumber}</p> */}
-                <p>Choosen date: {date}</p>
-                <p>Choosen time: {time}</p>
+            <p>Phone Number:  {props.state.phoneNumber}</p> */}
+                <p>Choosen date: </p>
+                <p>Choosen time: { }</p>
             </div>
             <br />
             <div>
