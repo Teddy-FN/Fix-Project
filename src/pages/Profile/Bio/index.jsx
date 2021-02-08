@@ -87,6 +87,13 @@ function Bio(props) {
         }
     }
 
+    const [loadMore, setLoadMore] = useState(3);
+
+    const handleLoadMore = () => {
+        let load = loadMore + 1;
+        setLoadMore(load)
+    }
+
     const getBookHistory = () => {
         axios
             .get(urlBookHistory, config)
@@ -222,7 +229,8 @@ function Bio(props) {
                                 <h5 className="headerBox">Book History</h5>
                                 {bookHistory && loading ? (
                                     bookHistory.length === 0 ? (<p style={{ paddingTop: '50px', textAlign: 'center', fontSize: '20px', fontWeight: 'lighter' }}>No Booking History</p>) : (
-                                        bookHistory.slice(0, 3).map((history, idx) => (
+                                        bookHistory.slice(0, loadMore).map((history, idx) => (
+                                            <>
                                             <div class="card text-center" key={idx}
                                                 style={{ marginTop: '20px' }}>
                                                 <div class="card-body">
@@ -246,7 +254,12 @@ function Bio(props) {
                                                     </div >
                                                 </div >
                                             </div >
-                                        )))) : (<Loading />)}
+                                        </>
+                                        ))
+                                        )) : (<Loading />)}
+                                        {bookHistory?.length > 3 ? (
+                                        <Button onClick={handleLoadMore} color="link" className="edit-button-submit" style={{ textDecoration: 'none' }}>Load More</Button>
+                                        ) : (<p></p>)}
                             </div >
                         </div>
                     </aside>
