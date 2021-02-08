@@ -21,7 +21,7 @@ import swal from 'sweetalert'
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Google 
+// Google
 // import LoginUsingGoogle from './LoginUsingGoogle'
 
 
