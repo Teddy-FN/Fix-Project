@@ -16,7 +16,7 @@ function SetDateTime(props) {
     const [timeslot, setTimeslot] = useState([]);
     const [timeslotId, setTimeslotId] = useState([]);
     const [showTiket, setShowTiket] = useState(false);
-    
+
     let dates = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 
     const token = localStorage.getItem('token');
@@ -24,33 +24,33 @@ function SetDateTime(props) {
     const urlTimeslot = `https://soka.kuyrek.com:3003/booking/${props.id}/bookedfield`
     const urlBooking = `https://soka.kuyrek.com:3003/booking/${props.id}/create/bookedfield`
 
-    
-    const config ={
+
+    const config = {
         headers: {
             Authorization: `bearer ${token}`
         }
     }
-    
+
     const getTimeslot = () => {
         const data = {
             date: dates
         }
         axios
-        .post(urlTimeslot, data, config)
-        .then((res) => {
-            console.log('respon timeslot: ',res)
-            setTimeslot(res.data.available_timeslot)
-            setTimeslotId(res.data.id_timeslot)
-        })
-        .catch((err) => {
-            console.log('error timeslot: ',err)
-        })
+            .post(urlTimeslot, data, config)
+            .then((res) => {
+                console.log('respon timeslot: ', res)
+                setTimeslot(res.data.available_timeslot)
+                setTimeslotId(res.data.id_timeslot)
+            })
+            .catch((err) => {
+                console.log('error timeslot: ', err)
+            })
     }
-    
+
     const idTimeslot = selectedTime.map((id => (id.id)))
     const dataIdTime = idTimeslot.join()
     console.log('id timeslot: ', dataIdTime)
-    
+
     const submitBooking = (e) => {
         e.preventDefault();
         const dataBooking = {
@@ -58,35 +58,35 @@ function SetDateTime(props) {
             id_timeslot: dataIdTime
         }
         axios
-        .post(urlBooking, dataBooking, config)
-        .then((res) => {
-            console.log('respon booking: ',res)
-            swal({
-                icon: "success",
-                title: "Your Booking is Succes",
-                text: "Happy playing",
-                type: "success",
-                buttons: false,
-                timer: 3000,
-              });
-            // setShowTiket(true);
-        })
-        .catch((err) => {
-            console.log('error booking: ',err)
-            swal({
-                icon: "warning",
-                title: "Selected time is Conflict",
-                text: "Please try again with another time",
-                type: "warning",
-                buttons: false,
-                timer: 3000,
-              });
-        })
+            .post(urlBooking, dataBooking, config)
+            .then((res) => {
+                console.log('respon booking: ', res)
+                swal({
+                    icon: "success",
+                    title: "Your Booking is Succes",
+                    text: "Happy playing",
+                    type: "success",
+                    buttons: false,
+                    timer: 3000,
+                });
+                // setShowTiket(true);
+            })
+            .catch((err) => {
+                console.log('error booking: ', err)
+                swal({
+                    icon: "warning",
+                    title: "Selected time is Conflict",
+                    text: "Please try again with another time",
+                    type: "warning",
+                    buttons: false,
+                    timer: 3000,
+                });
+            })
     }
 
     useEffect(() => {
-       getTimeslot()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        getTimeslot()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timeslot])
 
 
@@ -107,7 +107,7 @@ function SetDateTime(props) {
                 <h5>Choose your timeslot:</h5>
                 <MultiSelect className="multi-option"
                     options={timeslot.map((time, idx) => {
-                        return ({label: time, value:  time, id: timeslotId[idx]})
+                        return ({ label: time, value: time, id: timeslotId[idx] })
                     })}
                     value={selectedTime}
                     onChange={(e) => (setSelectedTime(e))}
@@ -118,8 +118,7 @@ function SetDateTime(props) {
             <br />
             {props.hasPrev() && <Button className="button-modalbooking1" variant="link" onClick={props.prev} style={{ textDecoration: 'none' }}>Previous</Button>}
             {/* {props.hasNext() && <Button className="button-modalbooking2" variant="link" onClick={props.next} style={{ textDecoration: 'none' }}>Next</Button>} */}
-            <Button className="submit-data"  variant='link' type='submit' onClick={submitBooking} style={{ textDecoration: 'none' }}>Submit</Button>
-            
+            <Button className="submit-data" variant='link' type='submit' onClick={submitBooking} style={{ textDecoration: 'none' }}>Submit</Button>
         </>
     )
 }

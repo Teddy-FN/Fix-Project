@@ -32,7 +32,7 @@ function Confirm(props) {
                 {/* <p>Name: {props.state.name}</p>
             <p>Phone Number:  {props.state.phoneNumber}</p> */}
                 <p>Choosen date: </p>
-                <p>Choosen time: {}</p>
+                <p>Choosen time: { }</p>
             </div>
             <br />
             <div>
