@@ -1,5 +1,5 @@
-import {React, useState} from 'react';
-import { Modal, Button} from 'react-bootstrap'
+import { React, useState } from 'react';
+import { Modal, Button } from 'react-bootstrap'
 
 const ModalTiket = (props) => {
 
@@ -10,16 +10,14 @@ const ModalTiket = (props) => {
 
     return (
         <>
-            <Button className="submit-data"  variant='link' type='submit' onClick={toggleSHow()} style={{ textDecoration: 'none' }}>See eTiket</Button>
+            <Button className="submit-data" variant='link' type='submit' onClick={toggleSHow()} style={{ textDecoration: 'none' }}>See eTiket</Button>
             <Modal
                 show={show}
-                onHide={toggleHide}
-            >
+                onHide={toggleHide}>
                 <Modal.Body>
                     <p>etiekt d sini</p>
                 </Modal.Body>
             </Modal>
-
         </>
     )
 }
