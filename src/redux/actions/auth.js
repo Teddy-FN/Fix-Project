@@ -72,16 +72,16 @@ export const loginGoogle = () => {
         try {
             const result = await axios.get('https://soka.kuyrek.com:3005/auth/google', {
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json",
+                    'X-Requested-With': 'XMLHttpRequest'
                 }
             })
-            console.log("AUTH GOOGLE", result)
-            localStorage.setItem('token2', result.data.token)
+            console.log("AUTH GOOGLE", result.tokenObj.id_token)
             dispatch({
                 type: USER_LOG_IN_GOOGLE_SUCCESS,
-                payload: result.data
+                payload: result.tokenObj.id_token
             })
-            return result.data
+            return result.tokenObj.id_token
         } catch (error) {
             dispatch({
                 type: USER_LOG_IN_GOOGLE_FAILURE,
@@ -91,7 +91,27 @@ export const loginGoogle = () => {
         }
     }
 }
-
+// export const loginGoogle = () => {
+//     return async (dispatch) => {
+//         try {
+//             var url = 'https://soka.kuyrek.com:3005/auth/google';
+//             fetch(url, {
+//                 method: 'GET',
+//                 headers: {
+//                     'X-Requested-With': 'XMLHttpRequest'
+//                 }
+//             }).then(res => res.json())
+//                 .then(response => console.log('Success:', response))
+//                 .catch(error => console.error('Error:', error));
+//         } catch (error) {
+//             dispatch({
+//                 type: USER_LOG_IN_GOOGLE_FAILURE,
+//                 error: error
+//             })
+//             console.error(error);
+//         }
+//     }
+// }
 export const logoutUser = () => {
     return dispatch => {
         dispatch({ type: USER_LOG_OUT_SUCCESS })

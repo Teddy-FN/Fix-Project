@@ -25,6 +25,19 @@
     background-color: none !important;
 }
 
+.modal-logo img {
+    margin-bottom: 5px;
+}
+
+.border-tiket {
+    color: white !important;
+}
+
+#barcode {
+    width: 460px !important;
+}
+
+
 @media (max-width: 768px) {
     .modal-booking {
         width: 800px;

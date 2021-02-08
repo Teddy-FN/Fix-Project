@@ -1,85 +1,220 @@
-import React, { useState } from 'react'
-import { Modal, Button, Col} from 'react-bootstrap'
-import { Steps, Step } from "react-step-builder"
-import UserInfo from '../booking/component/userInfo'
-import SetDateTime from '../booking/component/setDateTime'
-import Confirm from '../booking/component/confirm'
-import Success from '../booking/component/success'
+import React, { useState, useEffect } from 'react'
+import { Modal, Button, Col } from 'react-bootstrap'
+// import { Steps, Step } from "react-step-builder"
+// import SetDateTime from '../booking/component/setDateTime'
+// import Confirm from '../booking/component/confirm'
+// import Success from '../booking/component/success'
 import './modalBooking.css'
 // import DatePicker from 'react-datepicker'
 // import MultiSelect from 'react-multi-select-component'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import MultiSelect from 'react-multi-select-component';
+import '../booking/component/style.css';
+import axios from 'axios';
+import swal from 'sweetalert'
+
+
+// Icon 
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faPrint } from '@fortawesome/free-solid-svg-icons';
+// // Print To PDF
+// import { useReactToPrint } from 'react-to-print';
+import Success from '../booking/component/success';
 
 
 
 
 
 const ModalBooking = (props) => {
-    // const [selectedTime, setSelectedTime] = useState([]);
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    // const [date, setDate] = useState(new Date())
-    console.log('props modal booking: ',props.id)
+    const [showTiket, setShowTiket] = useState(false);
+    const handleCloseTiket = () => setShowTiket(false);
+    const handleShowTiket = () => {
+        setShowTiket(true);
+        setShow(false)
+    }
+    const [dataBooking, setDataBooking] = useState([]);
+    // console.log('props modal booking: ',props.id)
+    // let price = props.price
+    console.log('data price: ', props)
+    const [date, setDate] = useState(new Date());
+    const [selectedTime, setSelectedTime] = useState([]);
+    const [timeslot, setTimeslot] = useState([]);
+    const [timeslotId, setTimeslotId] = useState([]);
+    // const [showTiket, setShowTiket] = useState(false);
+    const [showTiketModal, setShowTiketModal] = useState(false)
 
-// const options = [
-//     { label: "09.00-10.00", value: "09.00-10.00" , id: 1},
-//     { label: "10.00-11.00", value: "10.00-11.00" , id: 2},
-//     { label: "11.00-12.00", value: "11.00-12.00" , id: 3},
-//     { label: "12.00-13.00", value: "12.00-13.00" , id: 4},
-//     { label: "13.00-14.00", value: "13.00-14.00" , id: 5},
-//     { label: "14.00-15.00", value: "14.00-15.00" , id: 6},
-//     { label: "15.00-16.00", value: "15.00-16.00" , id: 7},
-//     { label: "16.00-17.00", value: "16.00-17.00" , id: 8},
-//     { label: "17.00-18.00", value: "17.00-18.00" , id: 9},
-//     { label: "18.00-19.00", value: "18.00-19.00" , id: 10},
-//     { label: "19.00-20.00", value: "19.00-20.00" , id: 11},
-//     { label: "20.00-21.00", value: "20.00-21.00" , id: 12},
-//     { label: "21.00-22.00", value: "21.00-22.00" , id: 13},
-//     { label: "22.00-23.00", value: "22.00-23.00" , id: 14},
-//     { label: "23.00-00.00", value: "23.00-00.00" , id: 15},
-// ];
+    let dates = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+
+    const token = localStorage.getItem('token');
+
+    const urlTimeslot = `https://soka.kuyrek.com:3003/booking/${props.id}/bookedfield`
+    const urlBooking = `https://soka.kuyrek.com:3003/booking/${props.id}/create/bookedfield`
 
 
-// Bikin method di dlm method dispatch
-return (
+    const config = {
+        headers: {
+            Authorization: `bearer ${token}`
+        }
+    }
+
+    const getTimeslot = () => {
+        const data = {
+            date: dates
+        }
+        axios
+            .post(urlTimeslot, data, config)
+            .then((res) => {
+                console.log('respon timeslot: ', res)
+                setTimeslot(res.data.available_timeslot)
+                setTimeslotId(res.data.id_timeslot)
+            })
+            .catch((err) => {
+                console.log('error timeslot: ', err)
+            })
+    }
+
+    const idTimeslot = selectedTime.map((id => (id.id)))
+    const dataIdTime = idTimeslot.join()
+    // console.log('id timeslot: ', dataIdTime)
+
+    const submitBooking = (e) => {
+        e.preventDefault();
+        const dataBooking = {
+            date: dates,
+            id_timeslot: dataIdTime
+        }
+        axios
+            .post(urlBooking, dataBooking, config)
+            .then((res) => {
+                console.log('respon booking: ', res)
+                swal({
+                    icon: "success",
+                    title: "Your Booking is Succes",
+                    text: "Happy playing",
+                    type: "success",
+                    buttons: false,
+                    timer: 1000,
+                });
+                setDataBooking(res.data.result);
+                setShowTiketModal(true);
+                // setShowTiket(true);
+            })
+            .catch((err) => {
+                console.log('error booking: ', err)
+                swal({
+                    icon: "warning",
+                    title: "Selected time is Conflict",
+                    text: "Please try again with another time",
+                    type: "warning",
+                    buttons: false,
+                    timer: 3000,
+                });
+            })
+    }
+
+    useEffect(() => {
+        getTimeslot()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [timeslot])
+
+
+    // Bikin method di dlm method dispatch
+    return (
         <div>
-        <Button className='col-12 mb-3 book-field-button' variant="link" onClick={handleShow} style={{textDecoration: 'none'}}>
-            Book
+            <Button className='col-12 mb-3 book-field-button' variant="link" onClick={handleShow} style={{ textDecoration: 'none' }}>
+                Book
         </Button>
-        <Modal
-            className="modal-booking"
-            show={show}
-            onHide={handleClose} >
-            {props.isLogin !== true ? (
-                <div>
-                    <Modal.Body>
-                        <Col>
-                            <h3 style={{ textAlign: "center", padding: '30px 30px' }}>
-                                Hello guest, <br />
+            <Modal
+                className="modal-booking"
+                show={show}
+                onHide={handleClose} >
+                {props.isLogin !== true ? (
+                    <div>
+                        <Modal.Body>
+                            <Col>
+                                <h3 style={{ textAlign: "center", padding: '30px 30px' }}>
+                                    Hello guest, <br />
                     please log in first <br />
                     as user!!
                     </h3>
-                            <h4 style={{ textAlign: "center", paddingBottom: '30px' }}>
-                                if you want booking a field
+                                <h4 style={{ textAlign: "center", paddingBottom: '30px' }}>
+                                    if you want booking a field
                     </h4>
-                        </Col>
-                    </Modal.Body>
-                </div>
-            ) : (
-                <Modal.Body>
-                    <div className="multistep">
-                        <Steps> 
-                            {/* <Step component={UserInfo} />  */}
-                            <Step component={SetDateTime} id={props.id}/>
-                            <Step component={Confirm} />
-                            <Step component={Success} />
-                        </Steps>                        
+                            </Col>
+                        </Modal.Body>
                     </div>
-                </Modal.Body>
-            )}
-        </Modal>
-    </div>
-)
+                ) : (
+                        <Modal.Body>
+                            {/* <div className="multistep"> */}
+                            {/* <Steps>  */}
+                            {/* <Step component={UserInfo} />  */}
+                            {/* <Step component={SetDateTime} id={props.id}/>
+                            <Step component={Confirm} />
+                            <Step component={Success} /> */}
+                            {/* </Steps>                         */}
+                            {/* </div> */}
+                            <div>
+                                <h5>Choose your dateFormat:</h5>
+                                <DatePicker className="dateFormat-picker"
+                                    selected={date}
+                                    onClick={getTimeslot}
+                                    onChange={(e) => setDate(e) && getTimeslot}
+                                    dateFormat='yyyy-MM-dd'
+                                    minDate={new Date()}
+                                />
+                            </div>
+                            <br />
+                            <div>
+                                <h5>Choose your timeslot:</h5>
+                                <MultiSelect className="multi-option"
+                                    options={timeslot.map((time, idx) => {
+                                        return ({ label: time, value: time, id: timeslotId[idx] })
+                                    })}
+                                    value={selectedTime}
+                                    onChange={(e) => (setSelectedTime(e))}
+                                    labelledBy={"Select"}
+                                    style={{ backgroudColor: 'black' }}
+                                />
+                            </div>
+                            <br />
+                            {/* {props.hasPrev() && <Button className="button-modalbooking1" variant="link" onClick={props.prev} style={{ textDecoration: 'none' }}>Previous</Button>} */}
+                            {/* {props.hasNext() && <Button className="button-modalbooking2" variant="link" onClick={props.next} style={{ textDecoration: 'none' }}>Next</Button>} */}
+                            <Button className="submit-data" variant='link' type='submit' onClick={submitBooking} style={{ textDecoration: 'none' }}>Submit</Button>
+                            {showTiketModal === true ? (
+                                <Button className="submit-data" variant='link' type='submit' onClick={handleShowTiket} style={{ textDecoration: 'none' }}>See e-Tiket</Button>
+                            ) : (<p></p>)}
+
+                        </Modal.Body>
+                    )}
+            </Modal>
+
+            {/* Modal eTiket */}
+            {/* =================================================================================================== */}
+            <div >
+                <Modal
+                    show={showTiket}
+                    onHide={handleCloseTiket}
+                    className='modal-tiket'
+                >
+                    <Modal.Body>
+                        <Success
+                            id={dataBooking?.id}
+                            fullname={dataBooking?.fullname}
+                            field={dataBooking?.field}
+                            date={dataBooking?.date}
+                            timeslot={dataBooking?.timeslot}
+                            price={props.price}
+                        />
+                    </Modal.Body>
+                </Modal>
+            </div>
+        </div >
+    )
 }
 
-export default ModalBooking;
+export default ModalBooking

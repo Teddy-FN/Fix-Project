@@ -1,39 +1,16 @@
 .button-modalbooking1 {
- align-items: flex-end;
- justify-content: flex-end;
- border-color: #29dd99;
- color: #29dd99;
- border-radius: 5%;
- margin-left: 43%;
-}
-
-.button-modalbooking1:hover {
-    border-color: white;
-    color: white;
-}
-
-.button-modalbooking2 {
     align-items: flex-end;
     justify-content: flex-end;
     border-color: #29dd99;
     color: #29dd99;
     border-radius: 5%;
-    margin-left: 32%;
-}
+    margin-left: 43%;
+   }
    
-.button-modalbooking2:hover {
+   .button-modalbooking1:hover {
        border-color: white;
        color: white;
-}
-
-.button-modalbooking3 {
-    align-items: flex-end;
-    justify-content: flex-end;
-    border-color: #29dd99;
-    color: #29dd99;
-    border-radius: 5%;
-    margin-left: 5px;
-}
+   }
    
 .button-modalbooking3:hover {
     border-color: white;
@@ -80,5 +57,16 @@
 
 .success {
     text-align: center;
-
 }
+
+.print-button {
+    border-color: #29dd99;
+    color: #29dd99;
+    margin-left: 35%;
+}
+
+.print-button:hover {
+    border-color: white;
+    color: white;
+}
+

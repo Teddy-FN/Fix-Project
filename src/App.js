@@ -13,7 +13,8 @@ import CreateField from './pages/adminPage/createField'
 import { Switch, Route } from 'react-router-dom'
 import { connect, useSelector } from 'react-redux'
 import Confirm from '../src/pages/booking/component/confirm'
-
+import LoginUsingGoogle from '../src/pages/header/LoginUsingGoogle'
+import logoutGoogle from '../src/pages/header/logoutGoogle'
 
 function App(state) {
   const [tokens, setTokens] = useState({
@@ -24,18 +25,28 @@ function App(state) {
   const loginUser = useSelector((state) => state.AuthReducer.isLoggedIn)
   console.log('Ini IsLogin', loginUser)
 
+  // Google 
+  const tokenAuth = localStorage.getItem('GoogleAuth')
+  const [loginGooleLog, setLoginGooleLog] = useState(false)
+
   useEffect(() => {
+    if ('GoogleAuth' in localStorage) {
+      setLoginGooleLog(true)
+    }
     // tokenUser();
     if ("token" in localStorage) {
       setTokens(true)
       setIsLogin(true)
     }
-  }, [loginUser])
+  }, [loginUser, loginGooleLog])
+
+
+
 
   return (
     <>
       {
-        token ? <HeaderAuth /> : <HeaderNonAuth isLogin={isLogin} />
+        token || tokenAuth ? <HeaderAuth /> : <HeaderNonAuth isLogin={isLogin} loginGooleLog={loginGooleLog} />
       }
       <Switch>
     <React.StrictMode>

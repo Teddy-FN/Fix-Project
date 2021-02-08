@@ -68,7 +68,7 @@ const Feedback = (props) => {
         });
       })
       .catch((err) => {
-        console.log('Ini error feedback: ',err);
+        console.log('Ini error feedback: ', err);
         setModalFeedback(false);
         swal({
           icon: "warning",
@@ -100,10 +100,10 @@ const Feedback = (props) => {
                 </Button>
               </Col>
             </Row>
-          <h3 className="modal-title" style={{ textAlign: "center" }}>
-            Leave your Feedback
+            <h3 className="modal-title" style={{ textAlign: "center" }}>
+              Leave your Feedback
           </h3>
-          <br/>
+            <br />
             <form onSubmit={submitFeedback}>
               <div className="form-group">
                 <Label className="label">Select Rating</Label>
@@ -113,7 +113,7 @@ const Feedback = (props) => {
                   size={50}
                   activeColor="#FFCB74"
                 />
-                
+
               </div>
               {/* <div className="form-group">
                 <Label className="label">Your Name</Label>
@@ -135,14 +135,14 @@ const Feedback = (props) => {
               </div>
               <br />
               <div className="form-group">
-                  <Button
-                    type="submit"
-                    className="btn btn-primary btn-block btn-lg"
-                    value="Submit"
-                  >
-                    Submit
+                <Button
+                  type="submit"
+                  className="btn btn-primary btn-block btn-lg"
+                  value="Submit"
+                >
+                  Submit
                   </Button>
-                
+
               </div>
             </form>
           </div>
