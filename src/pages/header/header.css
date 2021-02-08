@@ -154,10 +154,6 @@
     align-items: center;
 }
 
-.feature {
-    margin-left: 50%;
-}
-
 /* iPad */
 @media (max-width: 768px){
     

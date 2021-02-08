@@ -1,0 +1,33 @@
+.about-title {
+    text-align: center;
+    font-size: 400%;
+    color: #29dd99;
+}
+
+.about-subtitle {
+    text-align: center;
+    font-size: 170%;
+}
+
+.dev-profile {
+    height: 40%;
+    width: 40%;
+    border-radius: 50%;
+    margin-left: 55%;
+    align-self: center;
+    border-color: #29dd99;
+}
+
+/* iPad */
+@media (max-width: 768px) {
+    
+    .about-title {
+        font-size: 300%;
+    }
+
+    .dev-profile {
+        height: 50%;
+        width: 50%;
+        margin-left: 51%;
+    }
+}

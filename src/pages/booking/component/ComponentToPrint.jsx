@@ -6,6 +6,7 @@ import {
     Col,
     Row,
 } from 'react-bootstrap'
+import './style.css'
 
 class ComponentToPrint extends React.PureComponent {
     constructor(props) {
@@ -41,7 +42,7 @@ class ComponentToPrint extends React.PureComponent {
                             fontSize: '30px',
                             textAlign: 'center'
                         }}
-                    >Game, Set , Match</p>
+                    >Game, Set, Match!</p>
                     <hr className='border-tiket'></hr>
                     <div>
                         <div style={{ paddingLeft: '5px' }}>

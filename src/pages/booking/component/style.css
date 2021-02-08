@@ -57,5 +57,16 @@
 
 .success {
     text-align: center;
-
 }
+
+.print-button {
+    border-color: #29dd99;
+    color: #29dd99;
+    margin-left: 35%;
+}
+
+.print-button:hover {
+    border-color: white;
+    color: white;
+}
+

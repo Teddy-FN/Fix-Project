@@ -186,7 +186,7 @@ const ModalBooking = (props) => {
                             {/* {props.hasNext() && <Button className="button-modalbooking2" variant="link" onClick={props.next} style={{ textDecoration: 'none' }}>Next</Button>} */}
                             <Button className="submit-data" variant='link' type='submit' onClick={submitBooking} style={{ textDecoration: 'none' }}>Submit</Button>
                             {showTiketModal === true ? (
-                                <Button className="submit-data" variant='link' type='submit' onClick={handleShowTiket} style={{ textDecoration: 'none' }}>See eTiket</Button>
+                                <Button className="submit-data" variant='link' type='submit' onClick={handleShowTiket} style={{ textDecoration: 'none' }}>See e-Tiket</Button>
                             ) : (<p></p>)}
 
                         </Modal.Body>

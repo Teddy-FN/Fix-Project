@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from "react-redux";
 import HeaderNonAuth from './pages/header/headerNonAuth'
 import HeaderAuth from './pages/header/headerAuth'
+import AboutPage from './pages/about/aboutPage'
 import LandingPage from '../src/pages/landingPage/landingPage'
 import FieldDetails from './pages/fieldDetail/fieldDetail'
 import BrowseFields from './pages/FieldList/BrowseFields'
@@ -48,28 +49,31 @@ function App(state) {
         token || tokenAuth ? <HeaderAuth /> : <HeaderNonAuth isLogin={isLogin} loginGooleLog={loginGooleLog} />
       }
       <Switch>
-        <React.StrictMode>
-          <Route path='/' exact>
-            <LandingPage />
-          </Route>
-          <Route path='/browseFields' exact>
-            <BrowseFields />
-          </Route>
-          <Route path='/field-details/:id' exact>
-            <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin} />
-          </Route>
-          <Route path='/player-list' exact>
-            <PlayerList />
-          </Route>
-          <Route path='/bio' exact>
-            <Bio />
-          </Route>
-          <Route path='/createField' exact>
-            <CreateField isLogin={isLogin} setIsLogin={setIsLogin} />
-          </Route>
-          <Route path='/confirm'>
-            <Confirm />
-          </Route>
+    <React.StrictMode>
+        <Route path='/' exact>
+          <LandingPage />
+        </Route>
+        <Route path='/aboutPage' exact>
+          <AboutPage />
+        </Route>
+        <Route path='/browseFields' exact>
+          <BrowseFields />
+        </Route>
+        <Route path='/field-details/:id' exact>
+          <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin} />
+        </Route>
+        <Route path='/player-list' exact>
+          <PlayerList />
+        </Route>
+        <Route path='/bio' exact>
+          <Bio />
+        </Route>
+        <Route path='/createField' exact>
+          <CreateField isLogin={isLogin} setIsLogin={setIsLogin} />
+        </Route>
+        <Route path='/confirm'>
+          <Confirm />
+        </Route>
         </React.StrictMode>
       </Switch>
     </>

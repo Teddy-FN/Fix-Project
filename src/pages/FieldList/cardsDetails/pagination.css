@@ -8,6 +8,11 @@
     background-color: #313131;
     color: #29dd99;
 }
+.page-link:hover {
+    border-color: white;
+    background-color: #313131;
+    color: white;
+}
 
 .pagination {
     margin-right: 900px;

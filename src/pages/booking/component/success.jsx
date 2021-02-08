@@ -6,6 +6,7 @@ import { faPrint } from '@fortawesome/free-solid-svg-icons';
 import { useReactToPrint } from 'react-to-print';
 import ComponentToPrint from './ComponentToPrint'
 // import ModalBooking from '../../fieldDetail/modalBooking'
+import './style.css'
 
 const Success = (props) => {
     const componentRef = useRef();
@@ -23,7 +24,9 @@ const Success = (props) => {
                 timeslot={props.timeslot}
                 price={props.price}
             />
-            <button onClick={handlePrint} className="btn btn-success">Print this out! <FontAwesomeIcon icon={faPrint} /></button>
+            <br/>
+            <br/>
+            <button onClick={handlePrint} className="print-button btn btn-link">Print this out! <FontAwesomeIcon icon={faPrint} /></button>
         </div>
     );
 };
