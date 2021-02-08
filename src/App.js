@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from "react-redux";
 import HeaderNonAuth from './pages/header/headerNonAuth'
 import HeaderAuth from './pages/header/headerAuth'
+import AboutPage from './pages/about/aboutPage'
 import LandingPage from '../src/pages/landingPage/landingPage'
 import FieldDetails from './pages/fieldDetail/fieldDetail'
 import BrowseFields from './pages/FieldList/BrowseFields'
@@ -40,6 +41,9 @@ function App(state) {
     <React.StrictMode>
         <Route path='/' exact>
           <LandingPage />
+        </Route>
+        <Route path='/aboutPage' exact>
+          <AboutPage />
         </Route>
         <Route path='/browseFields' exact>
           <BrowseFields />

@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
 import Profile from '../../assets/img/profile.jpg'
 import LandingPage from '../landingPage/landingPage'
-import { Link, useHistory } from 'react-router-dom'
+import { Link , useHistory } from 'react-router-dom'
 import '../header/header.css'
 import { handler } from '../../provider/index'
 import { logoutUser } from '../../redux/actions/auth'
@@ -44,7 +44,9 @@ const HeaderAuth = () => {
                         </Link>
                     </li>
                     <li className="nav-item active">
-                        <a className="nav-link" href="#">About <span className="sr-only">(current)</span></a>
+                        <Link to="/aboutPage">
+                            <a className="nav-link" href="#">About <span className="sr-only">(current)</span></a>
+                        </Link>
                     </li>
                     <li className="nav-item active">
                         <Link to="/browseFields" style={{ textDecoration: 'none' }}>
