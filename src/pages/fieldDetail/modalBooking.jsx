@@ -200,7 +200,7 @@ const ModalBooking = (props) => {
                     show={showTiket}
                     onHide={handleCloseTiket}
                     className='modal-tiket'
-                    >
+                >
                     <Modal.Body>
                         <Success
                             id={dataBooking?.id}

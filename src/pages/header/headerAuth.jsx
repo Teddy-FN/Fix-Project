@@ -12,6 +12,9 @@ import { handler } from '../../provider/index'
 import { logoutUser } from '../../redux/actions/auth'
 import { useSelector, useDispatch } from 'react-redux'
 import { GetProfile } from '../../redux/actions/profile'
+import LogoutGoogle from './logoutGoogle'
+
+
 
 const HeaderAuth = () => {
 
@@ -31,6 +34,8 @@ const HeaderAuth = () => {
         dispatch(GetProfile());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+
 
     return (
 
@@ -62,6 +67,9 @@ const HeaderAuth = () => {
                         </Link>
                         <a className="dropdown-item" href="#">Setting</a>
                         <Link to='/' style={{ textDecoration: 'none' }}> <a className="dropdown-item" href="#" onClick={logOut}>Log Out</a></Link>
+                        {/* <Link to='/' style={{ textDecoration: 'none' }}>
+                            <LogoutGoogle />
+                        </Link> */}
                     </div>
                 </div>
             </div>

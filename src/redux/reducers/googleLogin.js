@@ -9,7 +9,7 @@ const initialState = {
     isLoading: false,
     isLogged: false,
     error: false,
-    token: ''
+    data: []
 }
 
 export default function GoogleLogin(state = initialState, action) {
@@ -20,7 +20,7 @@ export default function GoogleLogin(state = initialState, action) {
                 isLoading: true,
                 isLoggedIn: true,
                 error: false,
-                token: action.payload
+                data: action.payload
             }
         case USER_LOG_IN_GOOGLE_SUCCESS:
             return {
@@ -28,7 +28,7 @@ export default function GoogleLogin(state = initialState, action) {
                 isLoading: false,
                 isLoggedIn: true,
                 error: false,
-                token: action.payload
+                data: action.payload
             }
         case USER_LOG_IN_GOOGLE_FAILURE: {
             return {

@@ -208,11 +208,11 @@ const FieldDetail = (props) => {
                                         </CardBody>
                                     </Card>
                                 )))}
-                                {feedbacks?.length > 3 ? (
-                                    <div className="button-load-more" style={{ textDecoration: 'none', backgroundColor: 'none' }}>
-                                        <Button onClick={handleLoadMore} color="link"  >Load More</Button>
-                                    </div>
-                                ) : (<p></p>)}
+                        {feedbacks?.length > 3 ? (
+                            <div className="button-load-more" style={{ textDecoration: 'none', backgroundColor: 'none' }}>
+                                <Button onClick={handleLoadMore} color="link"  >Load More</Button>
+                            </div>
+                        ) : (<p></p>)}
                     </Col>
                     <Col sm='4'>
 

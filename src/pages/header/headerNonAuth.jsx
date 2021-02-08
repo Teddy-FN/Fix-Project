@@ -20,8 +20,9 @@ import swal from 'sweetalert'
 // Animation
 import AOS from "aos";
 import "aos/dist/aos.css";
-// Google 
-import { GoogleLogin } from 'react-google-login'
+
+// Google
+// import LoginUsingGoogle from './LoginUsingGoogle'
 
 
 const HeaderNonAuth = () => {
@@ -117,12 +118,7 @@ const HeaderNonAuth = () => {
     };
     console.log("token", token);
 
-    // Login Google
-    const handleGoogleLogin = async (e) => {
-        console.log("HANDLE LOGIN", e)
-        await dispatch(loginGoogle(e))
-        setLoading(true)
-    }
+
 
 
     return (
@@ -235,15 +231,8 @@ const HeaderNonAuth = () => {
                             <br />
                             <br />
                             <p class="para">Or</p>
-                            <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }} onClick={toggleLogin} >Log In with Google</Button>
-                            {/* <GoogleLogin
-                                clientId="548645407023-l8n4p4pia7mclrheramf7knu2f5b6cve.apps.googleusercontent.com"
-                                buttonText="Login"
-                                onSuccess={handleGoogleLogin}
-                                onFailure={handleGoogleLogin}
-                                cookiePolicy={'single_host_origin'}
-                                className="googleAuth"
-                            /> */}
+                            {/* <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }} onClick={handleGoogleLogin} >Log In with Google</Button> */}
+                            {/* <LoginUsingGoogle /> */}
                             {/* <Button className="google-button" style={{ backgroundColor: '#3b5998' }} >Log In with Facebook</Button> */}
                         </Form>
                         <span class="statement">Don't have an account? <Button className="crosing-button" style={{ color: '#28df99' }} color="link" onClick={toggleRegist}>Sign Up</Button></span>
