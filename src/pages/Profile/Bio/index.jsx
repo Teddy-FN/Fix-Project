@@ -119,7 +119,7 @@ function Bio(props) {
 
     return (
         <div>
-            <div className="subMenu" style={{width: '100%'}}>
+            <div className="subMenu" style={{ width: '100%' }}>
                 <Container>
                     <aside className="leftSide">
                         <div>
@@ -207,7 +207,7 @@ function Bio(props) {
 
                                                     </Col>
                                                 </FormGroup>
-                                                <Button color="link" className="edit-button-submit" style={{textDecoration: 'none'}}>Submit</Button>
+                                                <Button color="link" className="edit-button-submit" style={{ textDecoration: 'none' }}>Submit</Button>
                                             </Form>
                                         </div>
                                     </ModalBody>
@@ -222,7 +222,7 @@ function Bio(props) {
                                 <h5 className="headerBox">Book History</h5>
                                 {bookHistory && loading ? (
                                     bookHistory.length === 0 ? (<p style={{ paddingTop: '50px', textAlign: 'center', fontSize: '20px', fontWeight: 'lighter' }}>No Booking History</p>) : (
-                                        bookHistory.slice(bookHistory.length - 3, bookHistory.length).reverse().map((history, idx) => (
+                                        bookHistory.slice(0, 3).map((history, idx) => (
                                             <div class="card text-center" key={idx}
                                                 style={{ marginTop: '20px' }}>
                                                 <div class="card-body">
