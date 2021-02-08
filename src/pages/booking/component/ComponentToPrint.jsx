@@ -69,9 +69,7 @@ class ComponentToPrint extends React.PureComponent {
                             <Col></Col>
                         </Row>
                         <div style={{ textAlign: 'center' }}>
-                            <small style={{ fontSize: '10px' }}>
-                                <Barcode value={this.state.id} />
-                            </small>
+                            <Barcode value={this.state.id} />
                         </div>
                     </div>
                 </div>
