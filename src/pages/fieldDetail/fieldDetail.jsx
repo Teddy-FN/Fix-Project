@@ -30,6 +30,12 @@ const FieldDetail = (props) => {
     const url = `https://soka.kuyrek.com:3001/field/${params.id}`;
     const urlFeedBacks = `https://soka.kuyrek.com:3002/feedback/${params.id}`;
     const token = localStorage.getItem('token');
+    const [loadMore, setLoadMore] = useState(3);
+
+    const handleLoadMore = () => {
+        let load = loadMore + 1;
+        setLoadMore(load)
+    }
 
     const config = {
         headers: {
@@ -130,7 +136,7 @@ const FieldDetail = (props) => {
 
                         <div className='action-book'>
                             <h3 className='price-field'>
-                                Rp. {fields?.price?.$numberDecimal}.000
+                                Rp. {fields?.price?.$numberDecimal}.000 / Hour
                     </h3>
                             {/* <Link to='/player-list'>
                             <Button className='col-12 mb-3 btn-player'>
@@ -183,7 +189,7 @@ const FieldDetail = (props) => {
                                 }}
                             >No Feedbacks Yet</p>
                         ) : (
-                                feedbacks.slice(0, feedbacks.length).reverse().map((feedback, idx) => (
+                                feedbacks.slice(0, loadMore).reverse().map((feedback, idx) => (
                                     <Card className='col-sm-12 mb-3 card-review'>
                                         <CardBody>
                                             <h4 className='review-title'>
@@ -202,6 +208,11 @@ const FieldDetail = (props) => {
                                         </CardBody>
                                     </Card>
                                 )))}
+                                {feedbacks?.length > 3 ? (
+                                    <div className="button-load-more" style={{ textDecoration: 'none', backgroundColor: 'none' }}>
+                                        <Button onClick={handleLoadMore} color="link"  >Load More</Button>
+                                    </div>
+                                ) : (<p></p>)}
                     </Col>
                     <Col sm='4'>
 
