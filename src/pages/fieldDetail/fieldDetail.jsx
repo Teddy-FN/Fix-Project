@@ -140,12 +140,13 @@ return (
                         <ModalBooking
                             isLogin={props.isLogin}
                             id={params.id}
+                            price={fields?.price?.$numberDecimal}
                         />
                     </div>
                 </Col>
             </Row>
             <Row>
-                <Col sm='4' className='review-title-big mt-3 mb-3'>
+                <Col sm='6' className='review-title-big mt-3 mb-3'>
                     <h2>Feedback and Review</h2>
                 </Col>
                 {/* <span>
@@ -157,7 +158,7 @@ return (
                         readOnly
                     />
                     </span> */}
-                <Col sm='4' className='num-rating mt-3 mb-3'>
+                <Col sm='2' className='num-rating mt-3 mb-3'>
                     <span>
                         <h3 className='ml-auto mr-2' style={{ color: '#e5e5e5' }}>
                             

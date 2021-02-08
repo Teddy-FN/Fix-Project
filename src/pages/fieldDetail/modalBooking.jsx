@@ -28,7 +28,11 @@ const ModalBooking = (props) => {
     const handleShow = () => setShow(true);
     const [showTiket, setShowTiket] = useState(false);
     const handleCloseTiket = () => setShowTiket(false);
-    const handleShowTiket = () => setShowTiket(true);
+    const handleShowTiket = () => {
+        setShowTiket(true);
+        setShow(false)
+    }
+
     const [dataBooking, setDataBooking] = useState([]);
     // console.log('props modal booking: ',props.id)
     // let price = props.price
@@ -90,7 +94,7 @@ const ModalBooking = (props) => {
                 text: "Happy playing",
                 type: "success",
                 buttons: false,
-                timer: 3000,
+                timer: 2000,
               });
             setDataBooking(res.data.result);
             setShowTiketModal(true);
@@ -112,7 +116,7 @@ const ModalBooking = (props) => {
     useEffect(() => {
        getTimeslot()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [timeslot])
+    }, [])
 
     // let datePlay = `${dataBooking.date.getFullYear()}-${dataBooking.date.getMonth() + 1}-${dataBooking.date.getDate()}`
 
@@ -177,7 +181,7 @@ return (
             <br />
             {/* {props.hasPrev() && <Button className="button-modalbooking1" variant="link" onClick={props.prev} style={{ textDecoration: 'none' }}>Previous</Button>} */}
             {/* {props.hasNext() && <Button className="button-modalbooking2" variant="link" onClick={props.next} style={{ textDecoration: 'none' }}>Next</Button>} */}
-            <Button className="submit-data"  variant='link' type='submit' onClick={submitBooking} style={{ textDecoration: 'none' }}>Submit</Button>
+            <Button className="submit-data"  variant='link' type='submit' onClick={submitBooking} style={{ textDecoration: 'none' }}>Book</Button>
             {showTiketModal === true ? (
                 <Button className="submit-data"  variant='link' type='submit' onClick={handleShowTiket} style={{ textDecoration: 'none' }}>See eTiket</Button>
             ) : (<p></p>)}
@@ -224,18 +228,18 @@ return (
                             <Row>{dataBooking.id} </Row>
                             <Row>{dataBooking.fullname}</Row>
                             <Row>{dataBooking.field}</Row>
-                            <Row>{dataBooking.date} </Row>
-                            <Row>{dataBooking.timeslot}</Row>
+                            <Row>{dataBooking?.date?.slice(0,10)} </Row>
+                            <Row>{dataBooking?.timeslot?.join()}</Row>
                         </Col>
                     </Row>
                     </div>
                     <hr></hr>
                     <Row>
                         <Col></Col>
-                        {/* <Col>Total Price: Rp {price.price.$numberDecimal}.000</Col> */}
+                        <Col>Total Price: Rp {props.price * dataBooking?.timeslot?.length}.000</Col>
                     </Row>
-                    <div style={{textAlign: 'center'}}>
-                        <Barcode value='{dataBooking.id}' />
+                    <div style={{textAlign: 'center'}} >
+                        <Barcode value={dataBooking.id} id='barcode'/>
                     </div>
                 </div>
             </Modal.Body>

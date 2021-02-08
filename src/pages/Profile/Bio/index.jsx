@@ -222,14 +222,14 @@ function Bio(props) {
                                 <h5 className="headerBox">Book History</h5>
                                 {bookHistory && loading ? (
                                 bookHistory.length === 0 ? (<p style={{paddingTop: '50px', textAlign: 'center', fontSize: '20px', fontWeight: 'lighter'}}>No Booking History</p>) : (
-                                bookHistory.slice(bookHistory.length-3, bookHistory.length).reverse().map((history, idx) => (
+                                bookHistory.slice(0, 3).map((history, idx) => (
                                 <div class="card text-center" key={idx}
                                 style={{marginTop: '20px'}}>
                                     <div class="card-body">
                                         <div className="contentCard">
                                             <h5 className="headerCard">{history.field}</h5>
                                             {/* <h5 className="status"></h5> */}
-                                            <small className="date">{history.date.slice(0,10)}</small>
+                                            <small className="date">{history?.date?.slice(0,10)}</small>
                                             {/* <Link >
                                                 <button className="btn player">Give Feedback</button>
                                             </Link> */}
