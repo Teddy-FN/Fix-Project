@@ -94,14 +94,24 @@ body {
 }
 
 .sorting {
-    width: 122px;
+    width: 145px;
 }
 
-.filter-sort-button {
+.filter-sort-buttonFilter {
     border-color: white;
 }
 
-.filter-sort-button:hover {
+.filter-sort-buttonFilter:hover {
+    border-color: #29dd99;
+    color: #29dd99 !important;
+}
+
+.filter-sort-buttonSort {
+    border-color: white;
+    width: 130px
+}
+
+.filter-sort-buttonSort:hover {
     border-color: #29dd99;
     color: #29dd99 !important;
 }
@@ -110,14 +120,18 @@ body {
     float: right;
 }
 
+.sorter {
+    margin-right: 30px;
+}
+
 .searching {
     background-color: #545454;
 }
 
 .searchButton {
     float: right;
-    margin-left: 27px;
-    margin-right: -27px;
+    margin-left: 40px;
+    margin-right: -87px;
     margin-bottom: 15px;
 }
 
