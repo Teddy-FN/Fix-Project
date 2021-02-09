@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Logo from '../../assets/img/logo.png'
 import Profile from '../../assets/img/profile.jpg'
 import LandingPage from '../landingPage/landingPage'
-import { Link , useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import '../header/header.css'
 import { handler } from '../../provider/index'
 import { logoutUser } from '../../redux/actions/auth'
@@ -29,7 +29,6 @@ const HeaderAuth = () => {
     }
 
     const user = useSelector((state) => state.profileUser.data);
-    console.log('Ini Header Auth', user)
     useEffect(() => {
         dispatch(GetProfile());
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -25,19 +25,15 @@ const Cards = () => {
       .get(url)
       .then((res) => {
         setFields(res.data.data);
-        // console.log(fields);
+
         setLoading(true);
       })
-      .catch((err) => {
-        console.log(err);
-
-      });
+      .catch((err) => err);
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     // Animation
     AOS.init({ duration: 4000 });
   }, [])
-  console.log(fields)
   // const img = fields.image[0].slice(7)
   return (
     <div
@@ -53,7 +49,7 @@ const Cards = () => {
         <br />
         <div className="main-home">
           <div className="content">
-            {fields && loading ? (fields.slice(6).map((field, idx) => (<div className="card home" style={{ width: '18rem', height: '358px'}}>
+            {fields && loading ? (fields.slice(6).map((field, idx) => (<div className="card home" style={{ width: '18rem', height: '358px' }}>
               <Link to={`field-details/${field.id}`} style={{ textDecoration: 'none', color: 'white' }} >
                 <div className='card-fields' key={idx}>
                   <img src={`https://soka.kuyrek.com:3001/${field.image[0]}`} className="card-img-top image" alt={field.fieldName} />
