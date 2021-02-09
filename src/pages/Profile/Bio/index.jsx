@@ -133,7 +133,7 @@ function Bio(props) {
                                 <img src={`https://soka.kuyrek.com:3005/${user.profilePic}`} alt="" className="photo" />
                                 {/* <img src={User} alt="" className="photo" /> */}
                             </div>
-                            <h4>{user?.fullname}</h4>
+                            <h4 className="fullname">{user?.fullname}</h4>
                             <div className="desc">
                                 <h4>Phone</h4>
                                 <p>{user?.phone}</p>

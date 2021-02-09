@@ -142,7 +142,7 @@ const ModalBooking = (props) => {
                         </Modal.Body>
                     </div>
                 ) : (
-                        <Modal.Body>
+                        <Modal.Body className="booking-step-pesan">
                             {/* <div className="multistep"> */}
                             {/* <Steps>  */}
                             {/* <Step component={UserInfo} />  */}
@@ -152,7 +152,7 @@ const ModalBooking = (props) => {
                             {/* </Steps>                         */}
                             {/* </div> */}
                             <div>
-                                <h5>Choose your dateFormat:</h5>
+                                <h5 className='subtitle-book'>Choose your dateFormat:</h5>
                                 <DatePicker className="dateFormat-picker"
                                     selected={date}
                                     onClick={getTimeslot}
@@ -163,7 +163,7 @@ const ModalBooking = (props) => {
                             </div>
                             <br />
                             <div>
-                                <h5>Choose your timeslot:</h5>
+                                <h5 className='subtitle-book'>Choose your timeslot:</h5>
                                 <MultiSelect className="multi-option"
                                     options={timeslot.map((time, idx) => {
                                         return ({ label: time, value: time, id: timeslotId[idx] })
@@ -179,7 +179,7 @@ const ModalBooking = (props) => {
                             {/* {props.hasNext() && <Button className="button-modalbooking2" variant="link" onClick={props.next} style={{ textDecoration: 'none' }}>Next</Button>} */}
                             <Button className="submit-data" variant='link' type='submit' onClick={submitBooking} style={{ textDecoration: 'none' }}>Submit</Button>
                             {showTiketModal === true ? (
-                                <Button className="submit-data" variant='link' type='submit' onClick={handleShowTiket} style={{ textDecoration: 'none' }}>See e-Tiket</Button>
+                                <Button className="submit-data2" variant='link' type='submit' onClick={handleShowTiket} style={{ textDecoration: 'none' }}>See e-Tiket</Button>
                             ) : (<p></p>)}
 
                         </Modal.Body>
