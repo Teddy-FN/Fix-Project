@@ -23,11 +23,26 @@
     border-color: #29dd99;
     color: #29dd99;
     border-radius: 5%;
-    margin-left: 5px;
+    margin-left: 33%;
     background-color: none;
 }
 
 .submit-data:hover {
+    border-color: white;
+    color: white;
+}
+
+.submit-data2 {
+    align-items: flex-end;
+    justify-content: flex-end;
+    border-color: #29dd99;
+    color: #29dd99;
+    border-radius: 5%;
+    margin-left:10px;
+    background-color: none;
+}
+
+.submit-data2:hover {
     border-color: white;
     color: white;
 }
@@ -70,3 +85,7 @@
     color: white;
 }
 
+.modal-tiket {
+    width: 630px !important;
+    margin-left: 360px;
+}

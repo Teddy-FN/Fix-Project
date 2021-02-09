@@ -48,7 +48,7 @@ const HeaderAuth = () => {
                         </Link>
                     </li>
                     <li className="nav-item active">
-                        <Link to="/aboutPage">
+                        <Link to="/aboutPage" style={{ textDecoration: 'none' }}>
                             <a className="nav-link" href="#">About <span className="sr-only">(current)</span></a>
                         </Link>
                     </li>

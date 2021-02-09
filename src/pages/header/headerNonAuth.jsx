@@ -127,7 +127,7 @@ const HeaderNonAuth = () => {
                         </Link>
                     </li>
                     <li class="nav-item active">
-                        <Link to="/aboutPage">
+                        <Link to="/aboutPage" style={{ textDecoration: 'none' }}>
                             <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
                         </Link>
                     </li>
