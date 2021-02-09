@@ -11,7 +11,6 @@ const API = 'https://soka.kuyrek.com:3003/booking'
 
 // Booked as Field
 export const BookedAsField = (props) => {
-    console.log('INI PROPS BOOK WOII', props)
     let data = {
         date: props.date,
         id_timeslot: props.id_timeslot
@@ -24,28 +23,22 @@ export const BookedAsField = (props) => {
     }
     return async (dispatch) => {
         try {
-            console.log('%cToken User Booked%c', token, 'color: black')
             const res = await axios.post(API + `/${props.id}/create/bookedfield`, data, config)
-            console.log('%cINI RES BOOKING%c', res, 'color: skylightBlue')
             dispatch({
                 type: BOOKED_FIELD,
                 payload: res.data.data
             })
-            console.log('%cRESULT BOOKING%c', res.data.data, 'color: coral')
             return res.data.data
         } catch (error) {
-            console.log('%cINI ERROR%c', error, 'color : red')
             return ''
         }
     }
 }
 
 export const BookedTimeSlotField = (props) => {
-    console.log('INI CONSOLE BOOKEDTIMESLOT', props)
     return async (dispatch) => {
         const token = localStorage.getItem('token')
         try {
-            console.log('TOKEN USER TIME SLOT', token)
             const res = await axios.post(`https://soka.kuyrek.com:3003/booking/${props.id}/bookedfield`, {
                 header: {
                     Authorization: `Bearer ${token}`,
@@ -57,17 +50,15 @@ export const BookedTimeSlotField = (props) => {
                 type: BOOKED_TIMESLOT,
                 payload: res
             })
-            console.log("INI RES BOOOOOOOOKKKKKK", res)
             return res
         } catch (error) {
-            console.log(error)
+            return ''
         }
     }
 }
 
 
 export const getTimeSlotBooked = props => {
-    console.log('INI TIME SLOT BOOKING WOY', props)
     return async (dispatch) => {
         const token = localStorage('token')
         try {
@@ -84,7 +75,7 @@ export const getTimeSlotBooked = props => {
             })
             return result.data
         } catch (error) {
-            console.log(error)
+            return ''
         }
     }
 }

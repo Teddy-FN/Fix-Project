@@ -26,15 +26,12 @@ export const CreateField = ({ fieldName, location, price, description, image }) 
                     }
                 }
             );
-            console.log('Tambah Lapangan', CreateField)
             dispatch({
                 type: CREATE_FIELD_SUCCESS,
                 payload: CreateField.data
             })
-            console.log('Admin Tambah Lapangan', CreateField.data)
             return CreateField.data
         } catch (error) {
-            console.log(error)
             return ''
         }
     };
@@ -52,15 +49,12 @@ export const UpdateField = () => {
                         'Content-Type': 'application/json'
                     }
                 })
-            console.log('Ini Action Update Lapangan', UpdateField)
             dispatch({
                 type: UPDATE_FIELD_SUCCESS,
                 payload: UpdateField.data.data
             })
-            console.log('Hasil Complete dari Update Fiedl', UpdateField.data.data)
             return UpdateField.data.data
         } catch (error) {
-            console.log('Ini Error', error)
             return ''
         }
     };

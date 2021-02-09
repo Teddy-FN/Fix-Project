@@ -38,9 +38,7 @@ const ModalBooking = (props) => {
         setShow(false)
     }
     const [dataBooking, setDataBooking] = useState([]);
-    // console.log('props modal booking: ',props.id)
     // let price = props.price
-    console.log('data price: ', props)
     const [date, setDate] = useState(new Date());
     const [selectedTime, setSelectedTime] = useState([]);
     const [timeslot, setTimeslot] = useState([]);
@@ -69,18 +67,15 @@ const ModalBooking = (props) => {
         axios
             .post(urlTimeslot, data, config)
             .then((res) => {
-                console.log('respon timeslot: ', res)
                 setTimeslot(res.data.available_timeslot)
                 setTimeslotId(res.data.id_timeslot)
             })
             .catch((err) => {
-                console.log('error timeslot: ', err)
             })
     }
 
     const idTimeslot = selectedTime.map((id => (id.id)))
     const dataIdTime = idTimeslot.join()
-    // console.log('id timeslot: ', dataIdTime)
 
     const submitBooking = (e) => {
         e.preventDefault();
@@ -91,7 +86,6 @@ const ModalBooking = (props) => {
         axios
             .post(urlBooking, dataBooking, config)
             .then((res) => {
-                console.log('respon booking: ', res)
                 swal({
                     icon: "success",
                     title: "Your Booking is Succes",
@@ -105,7 +99,6 @@ const ModalBooking = (props) => {
                 // setShowTiket(true);
             })
             .catch((err) => {
-                console.log('error booking: ', err)
                 swal({
                     icon: "warning",
                     title: "Selected time is Conflict",

@@ -56,7 +56,6 @@ const AddCreateField = () => {
 
     const [submitted, setSubmited] = useState(false);
     const handleAddNewField = e => {
-        console.log('HAndle Field', e)
         e.preventDefault();
         dispatch(CreateField(formCreateField))
         setSubmited(!submitted)
@@ -196,7 +195,6 @@ export default AddCreateField;
 //     _handleSubmit(e) {
 //         e.preventDefault();
 //         // TODO: do something with -> this.state.file
-//         console.log('handle uploading-', this.state.file);
 //     }
 
 //     _handleImageChange(e) {

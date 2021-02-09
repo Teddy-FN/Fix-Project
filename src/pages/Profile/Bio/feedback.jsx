@@ -25,7 +25,6 @@ const Feedback = (props) => {
 
   const ratingChange = (newRating) => {
     setRating(newRating);
-    console.log(rating);
   };
 
   var config = {
@@ -56,7 +55,6 @@ const Feedback = (props) => {
     axios
       .post(baseUrl, data, config)
       .then((res) => {
-        console.log(res);
         setModalFeedback(false);
         swal({
           icon: "success",
@@ -68,7 +66,6 @@ const Feedback = (props) => {
         });
       })
       .catch((err) => {
-        console.log('Ini error feedback: ', err);
         setModalFeedback(false);
         swal({
           icon: "warning",

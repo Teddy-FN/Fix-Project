@@ -4,13 +4,11 @@ import refreshTokenSetup from './refreshTokenUser'
 const LoginUsingGoogle = () => {
     // Login Google
     const onSuccessLogin = res => {
-        console.log('[Login Success] CureentUser : ', res.profileObj)
         localStorage.setItem('GoogleAuth', res.googleId)
         refreshTokenSetup(res)
     }
-    const onFailureLogin = res => {
-        console.log('[Login Failed] res :', res)
-    }
+    const onFailureLogin = res => (res)
+
     return (
         <div>
             <GoogleLogin

@@ -25,14 +25,12 @@ export const SignUp = ({ fullname, email, password, passwordConfirmation }) => {
                     },
                 }
             );
-            console.log('Ini Res', payload)
             dispatch({
                 type: USER_SIGNUP_SUCCESS,
                 payload: payload
             });
             return payload
         } catch (error) {
-            console.log("error login ", error);
             return '';
         }
     };
@@ -52,16 +50,13 @@ export const login = ({ email, password }) => {
                     },
                 }
             );
-            console.log('Ini Res LOGIN', res)
             localStorage.setItem('token2', res.data.token)
-            console.log(res.data.token)
             dispatch({
                 type: USER_LOG_IN_SUCCESS,
                 payload: res.data.token
             });
             return res.data.token
         } catch (error) {
-            console.log("error login ", error);
             return '';
         }
     };
@@ -76,7 +71,6 @@ export const loginGoogle = () => {
                     'X-Requested-With': 'XMLHttpRequest'
                 }
             })
-            console.log("AUTH GOOGLE", result.tokenObj.id_token)
             dispatch({
                 type: USER_LOG_IN_GOOGLE_SUCCESS,
                 payload: result.tokenObj.id_token
@@ -101,7 +95,6 @@ export const loginGoogle = () => {
 //                     'X-Requested-With': 'XMLHttpRequest'
 //                 }
 //             }).then(res => res.json())
-//                 .then(response => console.log('Success:', response))
 //                 .catch(error => console.error('Error:', error));
 //         } catch (error) {
 //             dispatch({

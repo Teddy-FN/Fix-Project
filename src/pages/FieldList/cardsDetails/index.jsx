@@ -33,13 +33,9 @@ function CardFields() {
             })
             .then((res) => {
                 setFields(res.data.data);
-                // console.log(fields);
                 setLoading(true);
             })
-            .catch((err) => {
-                console.log(err);
-
-            });
+            .catch((err) => err);
 
         // Animation 
         AOS.init({ duration: 2000 })
@@ -53,9 +49,7 @@ function CardFields() {
                 setFields(res.data.data);
                 setLoading(true);
             })
-            .catch((err) => {
-                console.log(err);
-            });
+            .catch((err) => err);
     };
 
     const sortByNameDesc = (e) => {
@@ -66,9 +60,7 @@ function CardFields() {
                 setFields(res.data.data);
                 setLoading(true);
             })
-            .catch((err) => {
-                console.log(err);
-            });
+            .catch((err) => err);
     };
 
     const sortByPriceAsc = (e) => {
@@ -79,9 +71,7 @@ function CardFields() {
                 setFields(res.data.data);
                 setLoading(true);
             })
-            .catch((err) => {
-                console.log(err);
-            });
+            .catch((err) => err);
     };
 
     const sortByPriceDesc = (e) => {
@@ -90,12 +80,9 @@ function CardFields() {
             .get(`https://soka.kuyrek.com:3001/field/?sortByPrice=desc`)
             .then((res) => {
                 setFields(res.data.data);
-                console.log('data sort', res.data.data);
                 setLoading(true);
             })
-            .catch((err) => {
-                console.log(err);
-            });
+            .catch((err) => err);
     };
 
     // Get current posts
@@ -105,44 +92,43 @@ function CardFields() {
 
     // ubah page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-    console.log(fields)
     return (
         <div >
             <Container className='container fluid' >
                 {/* <div data-aos="fade-left"> */}
                 <div className="feature">
-                <div className="searchButton">
-                    <form className="form-inline my-0 my-lg-0">
-                        <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
-                            setSearch(event.target.value)
-                        }} />
-                        <button type="button" className="btn btn-success buttonSearch">
-                            <FontAwesomeIcon icon={faSearch} />
-                        </button>
-                    </form>
-                </div>
-                <div className="sorter">
-                    <div className="dropdown filter">
-                        <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
-                            <small className="nameFitur">Filter</small>
-                            <small className="dropdown-toggle"></small>
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
-                            <p className='dropdown-item' onClick={sortByNameAsc} style={{ cursor: 'pointer' }}>Filter By Name (A-Z)</p>
-                            <p className='dropdown-item' onClick={sortByNameDesc} style={{ cursor: 'pointer' }}>Filter By Name (Z-A)</p>
+                    <div className="searchButton">
+                        <form className="form-inline my-0 my-lg-0">
+                            <input className="form-control mr-sm-1 searching" type="search" placeholder="Search" aria-label="Search....." onChange={(event) => {
+                                setSearch(event.target.value)
+                            }} />
+                            <button type="button" className="btn btn-success buttonSearch">
+                                <FontAwesomeIcon icon={faSearch} />
+                            </button>
+                        </form>
+                    </div>
+                    <div className="sorter">
+                        <div className="dropdown filter">
+                            <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454' }}>
+                                <small className="nameFitur">Filter</small>
+                                <small className="dropdown-toggle"></small>
+                            </button>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
+                                <p className='dropdown-item' onClick={sortByNameAsc} style={{ cursor: 'pointer' }}>Filter By Name (A-Z)</p>
+                                <p className='dropdown-item' onClick={sortByNameDesc} style={{ cursor: 'pointer' }}>Filter By Name (Z-A)</p>
+                            </div>
+                        </div>
+                        <div className="dropdown sort">
+                            <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
+                                <small className="nameFitur">Sort</small>
+                                <small className="dropdown-toggle"></small>
+                            </button>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
+                                <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer' }}>Sort By Price (Low-High)</p>
+                                <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer' }}>Sort By Price (High-Low)</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="dropdown sort">
-                        <button className="btn btn-secondary filter-sort-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: '#545454', color: 'white' }}>
-                            <small className="nameFitur">Sort</small>
-                            <small className="dropdown-toggle"></small>
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ color: 'white' }}>
-                            <p className='dropdown-item' onClick={sortByPriceAsc} style={{ cursor: 'pointer' }}>Sort By Price (Low-High)</p>
-                            <p className='dropdown-item' onClick={sortByPriceDesc} style={{ cursor: 'pointer' }}>Sort By Price (High-Low)</p>
-                        </div>
-                    </div>
-                </div>
                 </div>
                 {/* </div> */}
                 {/* <Link to='/createField'>
