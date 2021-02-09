@@ -8,7 +8,6 @@ export const GetProfile = () => {
     return async (dispatch) => {
         const token = localStorage.getItem('token2')
         try {
-            console.log('TOKEN USER', token)
             const res = await axios.get(API + `/user/profile`,
                 {
                     headers: {
@@ -18,15 +17,12 @@ export const GetProfile = () => {
                     }
                 }
             );
-            console.log('Ini Res', res)
             dispatch({
                 type: GET_PROFILE_SUCCESS,
                 payload: res.data.data
             });
-            console.log('DAta User', res.data.data)
             return res.data
         } catch (error) {
-            console.log("error login ", error);
             return '';
         }
     };
@@ -46,14 +42,12 @@ export const UpdateProfile = (data) => {
                     }
                 }
             );
-            console.log('Ini Res', res)
             dispatch({
                 type: UPDATE_PROFILE_SUCCESS,
                 payload: res.data.data
             });
             return res.data.data
         } catch (error) {
-            console.log("error login ", error);
             return '';
         }
     };

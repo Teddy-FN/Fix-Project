@@ -23,7 +23,6 @@ function App(state) {
   const token = localStorage.getItem('token')
   const [isLogin, setIsLogin] = useState(false);
   const loginUser = useSelector((state) => state.AuthReducer.isLoggedIn)
-  console.log('Ini IsLogin', loginUser)
 
   // Google 
   const tokenAuth = localStorage.getItem('GoogleAuth')
@@ -49,31 +48,31 @@ function App(state) {
         token || tokenAuth ? <HeaderAuth /> : <HeaderNonAuth isLogin={isLogin} loginGooleLog={loginGooleLog} />
       }
       <Switch>
-    <React.StrictMode>
-        <Route path='/' exact>
-          <LandingPage />
-        </Route>
-        <Route path='/aboutPage' exact>
-          <AboutPage />
-        </Route>
-        <Route path='/browseFields' exact>
-          <BrowseFields />
-        </Route>
-        <Route path='/field-details/:id' exact>
-          <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin} />
-        </Route>
-        <Route path='/player-list' exact>
-          <PlayerList />
-        </Route>
-        <Route path='/bio' exact>
-          <Bio />
-        </Route>
-        <Route path='/createField' exact>
-          <CreateField isLogin={isLogin} setIsLogin={setIsLogin} />
-        </Route>
-        <Route path='/confirm'>
-          <Confirm />
-        </Route>
+        <React.StrictMode>
+          <Route path='/' exact>
+            <LandingPage />
+          </Route>
+          <Route path='/aboutPage' exact>
+            <AboutPage />
+          </Route>
+          <Route path='/browseFields' exact>
+            <BrowseFields />
+          </Route>
+          <Route path='/field-details/:id' exact>
+            <FieldDetails isLogin={isLogin} setIsLogin={setIsLogin} />
+          </Route>
+          <Route path='/player-list' exact>
+            <PlayerList />
+          </Route>
+          <Route path='/bio' exact>
+            <Bio />
+          </Route>
+          <Route path='/createField' exact>
+            <CreateField isLogin={isLogin} setIsLogin={setIsLogin} />
+          </Route>
+          <Route path='/confirm'>
+            <Confirm />
+          </Route>
         </React.StrictMode>
       </Switch>
     </>

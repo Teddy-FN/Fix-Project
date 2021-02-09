@@ -47,7 +47,6 @@ const FieldDetail = (props) => {
         axios
             .get(urlFeedBacks, config)
             .then((res) => {
-                console.log('ini respon feedbacks: ', res.data);
                 setFeedbacks(res.data.data);
                 setRatingAvg(res.data)
             })
@@ -62,10 +61,8 @@ const FieldDetail = (props) => {
             .then((res) => {
                 setFields(res.data.data);
                 setLoading(true);
-                console.log(fields);
             })
             .catch((err) => {
-                console.log(err);
                 swal({
                     icon: "warning",
                     title: "Failed to get data",
@@ -85,9 +82,7 @@ const FieldDetail = (props) => {
         getFeedBacks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    // console.log('rating: ', ratingAvg.ratingAvg)
     // let price = fields.price.$numberDecimal
-    // console.log('data price fields: ', price)
     return (
         <>
             <Container>

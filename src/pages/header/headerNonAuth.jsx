@@ -75,7 +75,6 @@ const HeaderNonAuth = () => {
                     timer: 2000,
                 })
             )
-        console.log('Ini Event', event)
     };
 
     // LOGIN
@@ -116,10 +115,6 @@ const HeaderNonAuth = () => {
                 }
             })
     };
-    console.log("token", token);
-
-
-
 
     return (
         <nav class="navbar navbar-expand-lg fixed-top" style={{ boxShadow: '5px 5px 5px black' }}>
@@ -151,7 +146,7 @@ const HeaderNonAuth = () => {
                     <br />
                     <Form onSubmit={handleOnSubmitSignUp}>
                         <FormGroup>
-                            <Label for="email">Email</Label>
+                            <Label className="label" for="email">Email</Label>
                             <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
                                 type="email"
                                 name="email"
@@ -169,17 +164,17 @@ const HeaderNonAuth = () => {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="password">Password</Label>
+                            <Label className="label" for="password">Password</Label>
                             <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
                                 type={passwordInputType}
                                 name="password"
                                 id="password"
                                 placeholder="Write your password here"
                             />
-                            <span className="passwordToogle">{ToogleIcon}</span>
+                            <span className="passwordToogleUser">{ToogleIcon}</span>
                         </FormGroup>
                         <FormGroup>
-                            <Label for="passwordConfirmation">Confirm Password</Label>
+                            <Label className="label" for="passwordConfirmation">Confirm Password</Label>
                             <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
                                 type={passwordConfirm}
                                 name="passwordConfirmation"
@@ -190,10 +185,10 @@ const HeaderNonAuth = () => {
                         </FormGroup>
                         <br />
                         <Button type="submit" className="submit-button" style={{ backgroundColor: '#28df99' }}>Sign Up</Button>
-                        <br />
+                        {/* <br />
                         <br />
                         <p class="para" >Or</p>
-                        <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }}>Sign Up with Google</Button>
+                        <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }}>Sign Up with Google</Button> */}
                     </Form>
                     <span class="statement" >Have account? <Button color="link" style={{ color: '#28df99', textDecoration: 'none' }} onClick={toggleLogin}>Log In</Button></span>
                 </ModalBody>
@@ -212,7 +207,7 @@ const HeaderNonAuth = () => {
                         <br></br>
                         <Form onSubmit={handleSubmitLogin}>
                             <FormGroup>
-                                <Label for="emailUser">Email</Label>
+                                <Label className="label" for="emailUser">Email</Label>
                                 <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
                                     type="email"
                                     name="email"
@@ -220,7 +215,7 @@ const HeaderNonAuth = () => {
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Label for="passwordUser">Password</Label>
+                                <Label className="label" for="passwordUser">Password</Label>
                                 <Input className="modal-form" style={{ backgroundColor: '#545454', color: 'white' }}
                                     type={passwordInputType}
                                     name="password"
@@ -232,7 +227,7 @@ const HeaderNonAuth = () => {
                             <Button type="submit" className="submit-button" style={{ backgroundColor: '#28df99', textDecoration: 'none', cursor: 'pointer' }} onClick={toggleLogin}>Log In</Button>
                             <br />
                             <br />
-                            <p class="para">Or</p>
+                            {/* <p class="para">Or</p> */}
                             {/* <Button className="google-button" style={{ backgroundColor: 'white', color: 'black' }} onClick={handleGoogleLogin} >Log In with Google</Button> */}
                             {/* <LoginUsingGoogle /> */}
                             {/* <Button className="google-button" style={{ backgroundColor: '#3b5998' }} >Log In with Facebook</Button> */}

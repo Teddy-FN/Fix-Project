@@ -21,7 +21,6 @@ class ComponentToPrint extends React.PureComponent {
             timeslot: props.timeslot,
             price: props.price,
         }
-        console.log('PROPS CLASS COMPONENT', props.data)
     }
 
     render() {

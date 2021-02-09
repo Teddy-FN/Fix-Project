@@ -19,17 +19,16 @@ function Bio(props) {
     const toggle = () => setModal(!modal);
     const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
 
-    const token = localStorage.getItem('token')
-    console.log(token)
-    const id = localStorage.getItem('id')
-    console.log('Id User', id)
+    // const token = localStorage.getItem('token')
+
+    // const id = localStorage.getItem('id')
+
 
     // Get data user    
     const user = useSelector((state) => state.profileUser.data);
-    console.log('Ini USer BROOOOO', user)
+
     // Get Data User Google 
-    const profileUserGoogle = localStorage.getItem('GoogleAuth')
-    console.log(profileUserGoogle)
+    // const profileUserGoogle = localStorage.getItem('GoogleAuth')
 
     // data patch profile
     const dispatch = useDispatch()
@@ -100,7 +99,6 @@ function Bio(props) {
         axios
             .get(urlBookHistory, config)
             .then((res) => {
-                console.log('ini res history Book: ', res.data)
                 setBookHistory(res.data.data)
                 setLoading(true)
             })
@@ -124,7 +122,6 @@ function Bio(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [bookHistory]);
 
-    // console.log('book history: ',bookHistory)
 
     return (
         <div>
