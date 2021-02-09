@@ -20,9 +20,14 @@ body {
 }
 
 .photo {
-    height: 100px;
+    height: 150px;
+    width: 150px;
     border-radius: 5px;
-    margin-left: -10px;
+    margin-left: 80px;
+}
+
+.fullname {
+    margin-left: 60px;
 }
 
 .desc {

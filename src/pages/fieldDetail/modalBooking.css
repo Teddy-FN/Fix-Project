@@ -34,9 +34,35 @@
 }
 
 #barcode {
-    width: 460px !important;
+    width: 400px !important;
+    margin-left: -10px !important;
 }
 
+.modal-body {
+    width: fit-content !important;
+    padding-left: 7px !important;
+}
+
+.modal-content {
+    width: fit-content !important;
+}
+
+.dateFormat-picker {
+    width: 470px !important;
+    height: 40px !important;
+    border-radius: 5px;
+    border-color: none;
+    margin-left: 5px;
+}
+
+.multi-option {
+    width: 470px !important;
+    margin-left: 5px;
+}
+
+.subtitle-book {
+    text-align: center;
+}
 
 @media (max-width: 768px) {
     .modal-booking {

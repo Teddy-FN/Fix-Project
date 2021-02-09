@@ -27,8 +27,8 @@ class ComponentToPrint extends React.PureComponent {
     render() {
 
         return (
-            <div>
-                <div className='modal-tiket'>
+            <div clasName="modal-tiket">
+                <div>
                     <div style={{ textAlign: 'center', marginBottom: '-5px' }} className='tiket-logo'>
                         <img
                             class="logo"
