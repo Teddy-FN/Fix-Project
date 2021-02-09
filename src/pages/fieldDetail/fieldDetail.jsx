@@ -29,6 +29,7 @@ const FieldDetail = (props) => {
     const [loading, setLoading] = useState(false);
     const url = `https://soka.kuyrek.com:3001/field/${params.id}`;
     const urlFeedBacks = `https://soka.kuyrek.com:3002/feedback/${params.id}`;
+    const urlRatingAvg = `https://soka.kuyrek.com:3002/feedback/rating/${params.id}`;
     const token = localStorage.getItem('token');
     const [loadMore, setLoadMore] = useState(3);
 
@@ -48,11 +49,22 @@ const FieldDetail = (props) => {
             .get(urlFeedBacks, config)
             .then((res) => {
                 setFeedbacks(res.data.data);
-                setRatingAvg(res.data)
             })
             .catch((err) => {
                 setNoFeedbacks(true);
             })
+    }
+
+    const getRatingAvg = () => {
+        axios
+        .get(urlRatingAvg, config)
+        .then((res) => {
+            // console.log('ini respon api rating avg: ', res.data.ratingAvg)
+            setRatingAvg(res.data.ratingAvg)
+        })
+        .catch((err) => {
+            // console.log('ini respon error: ', err)
+        })
     }
 
     useEffect(() => {
@@ -80,6 +92,7 @@ const FieldDetail = (props) => {
         //     duration: 4000
         // });
         getFeedBacks();
+        getRatingAvg();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     // let price = fields.price.$numberDecimal
@@ -163,7 +176,7 @@ const FieldDetail = (props) => {
                         <span>
                             <h3 className='ml-auto mr-2' style={{ color: '#e5e5e5' }}>
 
-                                {ratingAvg.ratingAvg === undefined ? 0 : Math.ceil(ratingAvg.ratingAvg)} /{' '}
+                                {ratingAvg} /{' '}
                                 <span style={{ color: '#e5e5e5' }}>5</span>
                             </h3>
                         </span>

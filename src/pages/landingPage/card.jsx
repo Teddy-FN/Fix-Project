@@ -28,7 +28,8 @@ const Cards = () => {
 
         setLoading(true);
       })
-      .catch((err) => err);
+      .catch((err) =>       console.log('ini error field: ', err)
+      );
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     // Animation

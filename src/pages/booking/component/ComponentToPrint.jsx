@@ -1,7 +1,8 @@
 import React from 'react'
 
 import Logo from '../../../assets/img/logo.png';
-import Barcode from 'react-barcode';
+// import Barcode from 'react-barcode';
+import { QRCode } from 'react-qrcode-logo';
 import {
     Col,
     Row,
@@ -69,7 +70,7 @@ class ComponentToPrint extends React.PureComponent {
                             <Col></Col>
                         </Row>
                         <div style={{ textAlign: 'center' }}>
-                            <Barcode value={this.state.id} />
+                            <QRCode value={this.state.id} />
                         </div>
                     </div>
                 </div>

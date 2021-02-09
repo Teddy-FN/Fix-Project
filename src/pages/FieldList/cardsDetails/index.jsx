@@ -6,7 +6,7 @@ import './style.css';
 import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Pagination from './pagination';
+// import Pagination from './pagination';
 import Loading from '../../loading/loading';
 // import ButtonAdmin from '../addFields/buttonAdmin';
 import AOS from "aos";
@@ -19,8 +19,8 @@ function CardFields() {
     const [loading, setLoading] = useState(false);
     // eslint-disable-next-line no-unused-vars
     const [search, setSearch] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage] = useState(8);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [postPerPage] = useState(8);
 
     const url = 'https://soka.kuyrek.com:3001/field'
 
@@ -86,12 +86,12 @@ function CardFields() {
     };
 
     // Get current posts
-    const indexOfLastPost = currentPage * postPerPage;
-    const indexOfFirstPost = indexOfLastPost - postPerPage;
-    const currentPosts = fields.slice(indexOfFirstPost, indexOfLastPost);
+    // const indexOfLastPost = currentPage * postPerPage;
+    // const indexOfFirstPost = indexOfLastPost - postPerPage;
+    // const currentPosts = fields.slice(indexOfFirstPost, indexOfLastPost);
 
     // ubah page
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    // const paginate = (pageNumber) => setCurrentPage(pageNumber);
     return (
         <div >
             <Container className='container fluid' >
@@ -138,7 +138,7 @@ function CardFields() {
                     <div className="content-browse">
                         {fields && loading ? (
                             // eslint-disable-next-line array-callback-return
-                            currentPosts.filter((val) => {
+                            fields.filter((val) => {
                                 if (setSearch === '') {
                                     return val
                                 } else if (val.fieldName.toLowerCase().includes(search.toLowerCase())) {
@@ -165,13 +165,13 @@ function CardFields() {
                     </div>
                 </div>
             </Container>
-            <div className='page'>
+            {/* <div className='page'>
                 <Pagination
                     postsPerPage={postPerPage}
                     totalPosts={fields.length}
                     paginate={paginate}
                 />
-            </div>
+            </div> */}
         </div >
     )
 }
